@@ -19,7 +19,7 @@ import ringProgressChart from './components/ringProgressChart.vue';
 const charts = {
     barChart, barChart2, barLineChart, barLineChart2, dashboardChart, elderlyBarLineChart, elderlyHorizontalBarChart, elderlyRingBarChart,
     elderlyRingChart, elderlyRingChart2, horizontalBarChart, lineChart, ringBarChart, ringChart, ringChart2, ringChart3, ringProgressChart
-}
+};
 
 export {
     barChart, barChart2, barLineChart, barLineChart2, dashboardChart, elderlyBarLineChart, elderlyHorizontalBarChart, elderlyRingBarChart,
