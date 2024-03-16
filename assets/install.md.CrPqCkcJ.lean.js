@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,aR as h}from"./chunks/framework.Ck4VylJ2.js";const c=JSON.parse('{"title":"图表组件库","description":"","frontmatter":{},"headers":[],"relativePath":"install.md","filePath":"install.md"}'),t={name:"install.md"},n=h("",21),l=[n];function p(e,k,r,d,E,o){return a(),i("div",null,l)}const y=s(t,[["render",p]]);export{c as __pageData,y as default};
