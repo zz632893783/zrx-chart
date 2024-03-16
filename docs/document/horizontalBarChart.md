@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demof60e1080e04b />
+<demo3f6cdbbd0c88 />
 ```vue{4}
 <template>
     <horizontal-bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></horizontal-bar-chart>
@@ -35,7 +35,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.基础用法
-<demod6890ead68e8 />
+<demobd6c413dbe3d />
 ```vue{4}
 <template>
     <horizontal-bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></horizontal-bar-chart>
@@ -78,6 +78,6 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demof60e1080e04b from '../../document/horizontalBarChart/1.基础用法.vue'
-import demod6890ead68e8 from '../../document/horizontalBarChart/2.基础用法.vue'
+import demo3f6cdbbd0c88 from '../../document/horizontalBarChart/1.基础用法.vue'
+import demobd6c413dbe3d from '../../document/horizontalBarChart/2.基础用法.vue'
 </script>
