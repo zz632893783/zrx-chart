@@ -4,9 +4,6 @@
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
-  "publishConfig": {
-    "registry": "http://10.10.120.191:8081/repository/npm-private/"
-  },
   "scripts": {
     "docs:build": "node handleDirectory.js && node copyReadme.js && vitepress build docs",
     "docs:preview": "vitepress preview docs",
