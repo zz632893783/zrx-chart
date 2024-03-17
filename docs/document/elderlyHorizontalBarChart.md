@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoaf564abbf272 />
+<demoe12a55c314b0 />
 ```vue{4}
 <template>
     <elderly-horizontal-bar-chart ref="chartRef"></elderly-horizontal-bar-chart>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demoaf564abbf272 from '../../document/elderlyHorizontalBarChart/1.基础用法.vue'
+import demoe12a55c314b0 from '../../document/elderlyHorizontalBarChart/1.基础用法.vue'
 </script>

@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo5b3b2837a1a4 />
+<demo1bc455a3df7b />
 ```vue{4}
 <template>
     <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
@@ -45,7 +45,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.只有折线
-<demoec3c063a0d81 />
+<demo173efec59190 />
 ```vue{4}
 <template>
     <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
@@ -104,7 +104,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.只有折线
-<demoa9611fa2dfd5 />
+<demo32199151e519 />
 ```vue{4}
 <template>
     <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
@@ -161,7 +161,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.混合
-<demo1808e35ce33c />
+<demo7a7ec50d8c9b />
 ```vue{4}
 <template>
     <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
@@ -245,8 +245,8 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demo5b3b2837a1a4 from '../../document/elderlyBarLineChart/1.基础用法.vue'
-import demoec3c063a0d81 from '../../document/elderlyBarLineChart/2.只有折线.vue'
-import demoa9611fa2dfd5 from '../../document/elderlyBarLineChart/3.只有折线.vue'
-import demo1808e35ce33c from '../../document/elderlyBarLineChart/4.混合.vue'
+import demo1bc455a3df7b from '../../document/elderlyBarLineChart/1.基础用法.vue'
+import demo173efec59190 from '../../document/elderlyBarLineChart/2.只有折线.vue'
+import demo32199151e519 from '../../document/elderlyBarLineChart/3.只有折线.vue'
+import demo7a7ec50d8c9b from '../../document/elderlyBarLineChart/4.混合.vue'
 </script>

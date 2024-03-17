@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo71c2bbc03523 />
+<demo3b06e14cd625 />
 ```vue{4}
 <template>
     <line-chart class="line-chart" ref="chartRef"></line-chart>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 <script setup>
-import demo71c2bbc03523 from '../../document/lineChart/1.基础用法.vue'
+import demo3b06e14cd625 from '../../document/lineChart/1.基础用法.vue'
 </script>

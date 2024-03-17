@@ -1,5 +1,5 @@
 ## 1.基础用法
-<democ39ca114eddf />
+<demo1f0e5555a55c />
 ```vue{4}
 <template>
     <dashboard-chart class="dashboard-chart" ref="chartRef" v-bind="chartOption">
@@ -27,5 +27,5 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 <script setup>
-import democ39ca114eddf from '../../document/dashboardChart/1.基础用法.vue'
+import demo1f0e5555a55c from '../../document/dashboardChart/1.基础用法.vue'
 </script>

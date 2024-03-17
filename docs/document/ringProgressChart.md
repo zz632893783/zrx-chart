@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demof0c80675cd33 />
+<demo9ab618748959 />
 ```vue{4}
 <template>
     <ring-progress-chart class="ring-progress-chart" ref="chartRef" :value="20"></ring-progress-chart>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 <script setup>
-import demof0c80675cd33 from '../../document/ringProgressChart/1.基础用法.vue'
+import demo9ab618748959 from '../../document/ringProgressChart/1.基础用法.vue'
 </script>
