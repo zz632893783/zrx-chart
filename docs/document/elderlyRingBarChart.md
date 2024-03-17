@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoe7d82941d13f />
+<demo535c0c499a3e />
 ```vue{4}
 <template>
     <elderly-ring-bar-chart ref="chartRef"></elderly-ring-bar-chart>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demoe7d82941d13f from '../../document/elderlyRingBarChart/1.基础用法.vue'
+import demo535c0c499a3e from '../../document/elderlyRingBarChart/1.基础用法.vue'
 </script>
