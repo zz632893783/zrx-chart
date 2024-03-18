@@ -11,14 +11,14 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // x 轴坐标
+    // y 轴坐标
     yAxisData: {
         type: [Array],
         // default: () => [
         //     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
         //     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
         // ]
-        default: () => [ [], [] ]
+        default: () => []
     },
     // 数据数组
     seriesData: {
