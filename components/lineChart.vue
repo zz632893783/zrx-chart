@@ -4,9 +4,15 @@
     </div>
 </template>
 <script setup>
-import * as echarts from 'echarts'
-import { defineProps, ref, onMounted, defineExpose } from 'vue'
+import * as echarts from 'echarts';
+import { defineProps, ref, onMounted, defineExpose } from 'vue';
+// 图表实例
+let chart;
+// 图表 dom 对象
+const chartDom = ref();
+// 可配置属性
 const props = defineProps({
+    // 预设颜色
     color: {
         type: [Array],
         default: function () {
@@ -44,12 +50,14 @@ const props = defineProps({
             ]
         }
     },
+    // x 轴坐标
     xAxisData: {
         type: [Array],
         default: function () {
             return ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         }
     },
+    // 图表数据
     seriesData: {
         type: [Array],
         default: function () {
@@ -59,36 +67,42 @@ const props = defineProps({
             ]
         }
     },
+    // legend 数据
     legendData: {
         type: [Array],
         default: function () {
             return ['总能耗', '能耗照明']
         }
     },
+    // 是否平滑
     smooth: {
         type: [Boolean, Number],
         default: function () {
             return true
         }
     },
+    // 是否显示 label
     showLabel: {
         type: [Boolean, Number],
         default: function () {
             return false
         }
     },
+    // 是否显示 symbol
     showSymbol: {
         type: [Boolean, Number],
         default: function () {
             return false
         }
     },
+    // 单位
     unit: {
         type: [String, Array],
         default: function () {
             return ['kw/h', 'kg']
         }
     },
+    // 上下左右间距
     grid: {
         type: [Object],
         default: function () {
@@ -101,12 +115,14 @@ const props = defineProps({
             }
         }
     },
+    // y 轴名称
     yAxisName: {
         type: [String],
         default: function () {
             return ''
         }
     },
+    // legend 定位
     legendPosition: {
         type: [Object],
         default: function () {
@@ -116,16 +132,26 @@ const props = defineProps({
             }
         }
     },
+    // tooltip 名称数组
     tooltipNames: {
         // type: [String, Array],
         type: [Array],
         default: function () {
             return []
         }
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
-})
-let chart;
-const chartDom = ref()
+});
+// 渲染函数
 const renderChart = () => {
     if (chart) {
         typeof chart.dispose === 'function' && chart.dispose()
@@ -319,10 +345,11 @@ const renderChart = () => {
             }
         })
     }
-    chart.setOption(option)
-}
-onMounted(renderChart)
-defineExpose({ renderChart })
+    typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
+    chart.setOption(option);
+    typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
+};
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 .line-chart {

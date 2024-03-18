@@ -13,16 +13,15 @@ import ringChart3 from './components/ringChart3.vue';
 import ringChart4 from './components/ringChart4.vue';
 import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
-import ringChart7 from './components/ringChart7.vue';
 
 const charts = {
     barChart, barChart2, barLineChart, barLineChart2, dashboardChart, barLineChart3, barChart3, ringChart4,
-    ringChart5, ringChart6, barChart4, lineChart, ringChart7, ringChart, ringChart2, ringChart3
+    ringChart5, ringChart6, barChart4, lineChart, ringChart, ringChart2, ringChart3
 }
 
 export {
     barChart, barChart2, barLineChart, barLineChart2, dashboardChart, barLineChart3, barChart3, ringChart4,
-    ringChart5, ringChart6, barChart4, lineChart, ringChart7, ringChart, ringChart2, ringChart3
+    ringChart5, ringChart6, barChart4, lineChart, ringChart, ringChart2, ringChart3
 };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -47,5 +46,5 @@ const install = function (Vue, opts = {}) {
 export default {
     install,
     barChart, barChart2, barLineChart, barLineChart2, dashboardChart, barLineChart3, barChart3, ringChart4,
-    ringChart5, ringChart6, barChart4, lineChart, ringChart7, ringChart, ringChart2, ringChart3
+    ringChart5, ringChart6, barChart4, lineChart, ringChart, ringChart2, ringChart3
 }

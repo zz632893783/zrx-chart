@@ -4,9 +4,11 @@
 <script setup>
 import { ref } from 'vue'
 import * as echarts from 'echarts'
-
+// 图表实例
 let chart;
+// 图表 dom 对象
 const chartRef = ref();
+// 可配置属性
 const props = defineProps({
     // x 轴坐标
     xAxisData: {
@@ -67,15 +69,18 @@ const props = defineProps({
         type: [Number],
         default: () => 5
     },
+    // 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
     dataZoomType: {
         type: [String],
         default: () => 'inside'
         // default: () => 'slider'
     },
+    // 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
     dataZoomBottom: {
         type: [Number],
         default: () => 0
     },
+    // 是否显示 legend
     showLegend: {
         type: [Boolean],
         default: () => true
@@ -100,6 +105,7 @@ const props = defineProps({
     //     type: [String, Array],
     //     default: () => ['linerect', 'rect']
     // },
+    // 标记线
     markLine: {
         type: [Array],
         default: () => []
@@ -116,46 +122,59 @@ const props = defineProps({
         //     }
         // ]
     },
+    // 万能方法，图表渲染之前执行
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
+    // 万能方法，图表渲染之后执行
     afterSetOption: {
         type: [Function],
         default: () => null
     },
+    // 图表项颜色
     color: {
         type: [Array],
         default: () => ['blue', 'yellow', 'grey']
     },
+    // 线条是否显示区域颜色
     showLineArea: {
         type: [Boolean],
         default: () => false
     },
+    // tooltip 标题
     tooltipTitle: {
         type: [Array],
         default: () => null
     },
+    // 高亮区域的索引
     xAxisHighlightArea: {
         type: [Array],
         default: () => []
     },
+    // 从末尾开始显示图表
     dataZoomStartAtEnd: {
         type: [Boolean],
         default: () => true
+    },
+    // 图表缩放比例
+    scale: {
+        type: [Number],
+        // default: () => window.innerHeight / 1080;
+        default: () => 1
     }
     // lineType: {
     //     type: [String],
     //     default: () => 'solid'
     // }
 });
-
+// legend 图标映射
 const legendIconMap = {
     // line: 'path://M0,15L8,15L8,8L24,8L24,15L32,15L32,17L22,17L22,10L10,10L10,17L0,17ZM8,17L8,24L24,24L24,17L22,17L22,22L10,22L10,17Z',
     line: 'path://M8,16A8,8,180,1,1,24,16A8,8,-180,1,1,8,16ZM0,15L32,15L32,17L0,17Z',
     bar: 'path://M8,8L24,8L24,24L8,24ZM0,0L32,32M32,0L0,32'
 };
-
+// 默认颜色映射
 const colorMap = {
     blue: {
         legend: '#2e9dff',
@@ -221,9 +240,7 @@ const colorMap = {
         }
     }
 };
-
-const scale = window.innerHeight / 1080;
-
+// 渲染函数
 const renderChart = () => {
     if (chart) {
         chart.dispose();
@@ -235,7 +252,7 @@ const renderChart = () => {
             const grid = { top: 60, right: 50, bottom: 33, left: 56 };
             for (const k in grid) {
                 props.grid[k] !== undefined && (grid[k] = props.grid[k]);
-                grid[k] = grid[k] * scale;
+                grid[k] = grid[k] * props.scale;
             }
             return grid;
         })(),
@@ -261,30 +278,30 @@ const renderChart = () => {
                 }
                 !tooltipTitle && (tooltipTitle = params[0]?.axisValue);
                 return `
-                    <div style="background-color: #125176; padding: ${ 8 * scale }px; border-radius: 0; border: ${ 1 * scale }px solid rgba(102, 255, 255, 0.2);">
-                        <h4 style="font-family: MicrosoftYaHei; font-size: ${ 14 * scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
-                        <div style="display: grid; grid-auto-rows: ${ 19 * scale }px; grid-row-gap: ${ 4 * scale }px; grid-template-columns: ${ 16 * scale }px min-content min-content; grid-column-gap: ${ 2 * scale }px ${ 12 * scale }px; align-items: center; margin-top: ${ 8 * scale }px;">
+                    <div style="background-color: #125176; padding: ${ 8 * props.scale }px; border-radius: 0; border: ${ 1 * props.scale }px solid rgba(102, 255, 255, 0.2);">
+                        <h4 style="font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
+                        <div style="display: grid; grid-auto-rows: ${ 19 * props.scale }px; grid-row-gap: ${ 4 * props.scale }px; grid-template-columns: ${ 16 * props.scale }px min-content min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center; margin-top: ${ 8 * props.scale }px;">
                             ${
-    params.slice(0, params.length - 1).map(n => {
-        const colorName = props.color[n.seriesIndex % props.color.length];
-        // const colors = props.tooltipColors || props.itemColors;
-        // const color = colors[n.seriesIndex % colors.length];
-        const color = colorMap[colorName]?.tooltip;
-        const yAxisName = typeof props.yAxisName === 'string' ? [props.yAxisName] : props.yAxisName
-        const yAxisIndex = props.seriesData[n.seriesIndex]?.yAxisIndex || 0;
-        const unit = yAxisName[yAxisIndex % yAxisName.length] || '';
-        const svgPath = legendIconMap[n.seriesType || 'bar'].replace('path://', '').replace(/(?<!(a|A)(-?\d+(\.\d+)?,){3,4})-?\d+(\.\d+)?/g, s => s * scale);
-        return `
-                                        <i style="height: ${ 16 * scale }px; position: relative; overflow: hidden;">
-                                            <svg viewbox="0 0 ${ 32 * scale } ${ 32 * scale }" width="${ 16 * scale }" height="${ 16 * scale }" style="filter: drop-shadow(${ 16 * scale }px 0 0 ${ color }); margin-left: ${ -16 * scale }px; position: absolute; top: 0; left: 0;">
+                                params.slice(0, params.length - 1).map(n => {
+                                    const colorName = props.color[n.seriesIndex % props.color.length];
+                                    // const colors = props.tooltipColors || props.itemColors;
+                                    // const color = colors[n.seriesIndex % colors.length];
+                                    const color = colorMap[colorName]?.tooltip;
+                                    const yAxisName = typeof props.yAxisName === 'string' ? [props.yAxisName] : props.yAxisName
+                                    const yAxisIndex = props.seriesData[n.seriesIndex]?.yAxisIndex || 0;
+                                    const unit = yAxisName[yAxisIndex % yAxisName.length] || '';
+                                    const svgPath = legendIconMap[n.seriesType || 'bar'].replace('path://', '').replace(/(?<!(a|A)(-?\d+(\.\d+)?,){3,4})-?\d+(\.\d+)?/g, s => s * props.scale);
+                                    return `
+                                        <i style="height: ${ 16 * props.scale }px; position: relative; overflow: hidden;">
+                                            <svg viewbox="0 0 ${ 32 * props.scale } ${ 32 * props.scale }" width="${ 16 * props.scale }" height="${ 16 * props.scale }" style="filter: drop-shadow(${ 16 * props.scale }px 0 0 ${ color }); margin-left: ${ -16 * props.scale }px; position: absolute; top: 0; left: 0;">
                                                 <path d="${ svgPath }"></path>
                                             </svg>
                                         </i>
-                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3; margin-left: ${ 6 * scale }px; display: ${ n.seriesName ? 'block' : 'none' };">${ n.seriesName }</label>
-                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5; margin-left: ${ 6 * scale }px;">${ [null, undefined, '', NaN].includes(n.value) ? '- -' : n.value }${ unit }</label>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3; margin-left: ${ 6 * props.scale }px; display: ${ n.seriesName ? 'block' : 'none' };">${ n.seriesName }</label>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5; margin-left: ${ 6 * props.scale }px;">${ [null, undefined, '', NaN].includes(n.value) ? '- -' : n.value }${ unit }</label>
                                     `;
-    }).join('')
-}
+                                }).join('')
+                            }
                         </div>
                     </div>
                 `
@@ -299,7 +316,7 @@ const renderChart = () => {
                     lineStyle: { color: '#677b87' }
                 },
                 axisLabel: {
-                    fontSize: 14 * scale,
+                    fontSize: 14 * props.scale,
                     color: '#ccd2d7'
                 },
                 nameGap: 0
@@ -336,9 +353,9 @@ const renderChart = () => {
                         if (value.max < maxV) return maxV
                     },
                     nameTextStyle: {
-                        fontSize: 14 * scale,
+                        fontSize: 14 * props.scale,
                         color: '#ccd4da',
-                        padding: [[0, 40, -2, 0], [0, 0, 0, 42]][index].map(n => n * scale)
+                        padding: [[0, 40, -2, 0], [0, 0, 0, 42]][index].map(n => n * props.scale)
                     },
                     splitNumber: 3,
                     splitLine: {
@@ -348,9 +365,9 @@ const renderChart = () => {
                         }
                     },
                     axisLabel: {
-                        fontSize: 14 * scale,
+                        fontSize: 14 * props.scale,
                         color: '#ccd3d8',
-                        margin: 10 * scale
+                        margin: 10 * props.scale
                     }
                 }
             }),
@@ -388,7 +405,7 @@ const renderChart = () => {
                     // }
                 };
                 if (seriesOption.type === 'bar') {
-                    seriesOption.barWidth = 36 * scale;
+                    seriesOption.barWidth = 36 * props.scale;
                     seriesOption.barGap = `${8 / 36 * 100}%`;
                     seriesOption.itemStyle = {
                         color: colorMap[colorName]?.barArea
@@ -396,11 +413,11 @@ const renderChart = () => {
                     seriesOption.label = {
                         show: true,
                         fontFamily: 'DINAlternate-Bold',
-                        fontSize: 16 * scale,
+                        fontSize: 16 * props.scale,
                         color: 'white',
-                        textShadowBlur: 4 * scale,
+                        textShadowBlur: 4 * props.scale,
                         textShadowOffsetX: 0,
-                        textShadowOffsetY: 2 * scale,
+                        textShadowOffsetY: 2 * props.scale,
                         textShadowColor: 'rgba(0, 0, 0, 0.50)'
                     };
                     seriesOption.showBackground = true;
@@ -411,26 +428,26 @@ const renderChart = () => {
                 }
                 if (seriesOption.type === 'line') {
                     seriesOption.symbol = 'circle';
-                    seriesOption.symbolSize = 8 * scale;
+                    seriesOption.symbolSize = 8 * props.scale;
                     seriesOption.itemStyle = {
                         color: colorMap[colorName]?.line,
-                        width: 1 * scale
+                        width: 1 * props.scale
                     };
                     seriesOption.lineStyle = {
                         // color: props.itemColors[seriesIndex % props.itemColors.length],
                         color: colorMap[colorName]?.line,
-                        width: 1 * scale,
+                        width: 1 * props.scale,
                         type: seriesItem.lineType || 'solid'
                     };
                     seriesOption.label = {
                         show: true,
                         fontFamily: 'DINAlternate-Bold',
-                        fontSize: 16 * scale,
+                        fontSize: 16 * props.scale,
                         // color: props.itemColors[seriesIndex % props.itemColors.length] || '#F4DC3C',
                         color: colorMap[colorName]?.line,
-                        textShadowBlur: 4 * scale,
+                        textShadowBlur: 4 * props.scale,
                         textShadowOffsetX: 0,
-                        textShadowOffsetY: 2 * scale,
+                        textShadowOffsetY: 2 * props.scale,
                         textShadowColor: 'rgba(0, 0, 0, 0.50)',
                         // formatter: v => `${ v.value } ${ props.yAxisName[v.seriesIndex % props.yAxisName.length] }`
                         formatter: v => v.value
@@ -491,14 +508,14 @@ const renderChart = () => {
                         }
                     }
                 }),
-                top: 20 * scale,
+                top: 20 * props.scale,
                 textStyle: {
-                    fontSize: 16 * scale,
+                    fontSize: 16 * props.scale,
                     color: 'white'
                 },
-                itemGap: 20 * scale,
-                itemWidth: 16 * scale,
-                itemHeight: 16 * scale
+                itemGap: 20 * props.scale,
+                itemWidth: 16 * props.scale,
+                itemHeight: 16 * props.scale
             }
             return legendConfig;
         })()
@@ -557,9 +574,6 @@ const renderChart = () => {
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 
-defineExpose({
-    renderChart,
-    clearChart: () => chart?.clear()
-});
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped></style>

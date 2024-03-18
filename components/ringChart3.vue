@@ -7,8 +7,9 @@
     </div>
 </template>
 <script setup>
-import * as echarts from 'echarts'
-import { defineProps, ref, onMounted } from 'vue'
+import * as echarts from 'echarts';
+import { defineProps, ref, onMounted } from 'vue';
+
 const props = defineProps({
     // name: {
     //     type: [String],
@@ -90,6 +91,16 @@ const props = defineProps({
         default: function () {
             return 5
         }
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     },
     // 饼图的扇区是否是顺时针排布
     clockwise: {
@@ -215,10 +226,11 @@ function renderChart () {
             }
         ]
     }
-    chart.setOption(option)
+    typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
+    chart.setOption(option);
+    typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 }
-onMounted(renderChart)
-defineExpose({ renderChart })
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 .ring-chart {

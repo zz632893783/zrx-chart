@@ -9,47 +9,70 @@
 <script setup>
 import { ref } from 'vue'
 import * as echarts from 'echarts'
-
+// 图表实例
 let chart;
+// 图表 dom 对象
 const chartRef = ref();
-
+// 可配置属性
 const props = defineProps({
+    // 最大值
     max: {
         type: [Number],
         default: () => 100
     },
+    // 底色
     layerColor: {
         type: [String],
         default: () => '#50697a'
     },
+    // 颜色
     color: {
         type: [String],
         default: () => '#34d3ec'
     },
+    // 起始角度
     startAngle: {
         type: [Number],
         default: () => 200
     },
+    // 终止角度
     endAngle: {
         type: [Number],
         default: () => -20
     },
+    // 数值
     value: {
         type: [Number],
         default: () => 0
     },
+    // 环形条宽度
     barWidth: {
         type: [Number],
         default: () => 10
     },
+    // 半径
     radius: {
         type: [Number],
         default: () => 95
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 图表缩放比例
+    scale: {
+        type: [Number],
+        // default: () => window.innerHeight / 1080;
+        default: () => 1
     }
 });
-
-const scale = window.innerHeight / 1080;
-
+// 渲染函数
 const renderChart = () => {
     if (chart) {
         chart.dispose();
@@ -60,13 +83,13 @@ const renderChart = () => {
         series: [
             {
                 type: 'gauge',
-                radius: props.radius * scale,
+                radius: props.radius * props.scale,
                 max: props.max,
                 startAngle: props.startAngle,
                 endAngle: props.endAngle,
                 progress: {
                     show: true,
-                    width: props.barWidth * scale,
+                    width: props.barWidth * props.scale,
                     roundCap: true
                 },
                 axisTick: { show: false },
@@ -77,7 +100,7 @@ const renderChart = () => {
                     roundCap: true,
                     lineStyle: {
                         color: [[1, props.layerColor]],
-                        width: props.barWidth * scale
+                        width: props.barWidth * props.scale
                     }
                 },
                 anchor: { show: false },
@@ -99,10 +122,7 @@ const renderChart = () => {
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 
-defineExpose({
-    renderChart,
-    clearChart: () => chart?.clear()
-});
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 .chart-container {

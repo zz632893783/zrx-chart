@@ -8,8 +8,8 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-import * as echarts from 'echarts'
+import { ref } from 'vue';
+import * as echarts from 'echarts';
 // import riseIcon from '@/assets/imgs/header/common_angle_up_red.svg';
 // import fallIcon from '@/assets/imgs/header/common_angle_down_green.svg';
 const riseIcon = 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDx0aXRsZT5jb21tb25fYW5nbGVfdXBfcmVkPC90aXRsZT4NCiAgICA8ZGVmcz4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSI1MCUiIHkxPSIwJSIgeDI9IjUwJSIgeTI9IjEwMCUiIGlkPSJsaW5lYXJHcmFkaWVudC0xIj4NCiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNGNzQ3NjgiIG9mZnNldD0iMC4wNjI4Mjc3OTcyJSI+PC9zdG9wPg0KICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0Y3NDc2OCIgc3RvcC1vcGFjaXR5PSIwLjIiIG9mZnNldD0iMTAwJSI+PC9zdG9wPg0KICAgICAgICA8L2xpbmVhckdyYWRpZW50Pg0KICAgIDwvZGVmcz4NCiAgICA8ZyBpZD0iY29tbW9uX2FuZ2xlX3VwX3JlZCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+DQogICAgICAgIDxyZWN0IGlkPSLnn6nlvaIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PC9yZWN0Pg0KICAgICAgICA8cG9seWdvbiBpZD0i6Lev5b6EIiBmaWxsPSJ1cmwoI2xpbmVhckdyYWRpZW50LTEpIiBwb2ludHM9IjEgOSA4IDIuMTk4OTgxNzRlLTE0IDE1IDkgMTEgOSAxMSAxNiA1IDE2IDUgOSI+PC9wb2x5Z29uPg0KICAgIDwvZz4NCjwvc3ZnPg==';
@@ -64,10 +64,12 @@ const props = defineProps({
     //     type: [Boolean],
     //     default: () => true
     // },
+    // 万能方法，图表渲染之前执行
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
+    // 万能方法，图表渲染之后执行
     afterSetOption: {
         type: [Function],
         default: () => null
@@ -83,10 +85,14 @@ const props = defineProps({
     minAngle: {
         type: [Number],
         default: () => 4
+    },
+    // 图表缩放比例
+    scale: {
+        type: [Number],
+        // default: () => window.innerHeight / 1080;
+        default: () => 1
     }
 });
-
-const scale = window.innerHeight / 1080;
 
 const renderChart = () => {
     if (chart) {
@@ -108,7 +114,7 @@ const renderChart = () => {
                 radius: [
                     props.radius[0] - props.itemGap,
                     props.radius[1] + props.itemGap
-                ].map(n => n * scale),
+                ].map(n => n * props.scale),
                 minAngle: props.minAngle,
                 data: props.seriesData.map((value, index) => {
                     typeof value !== 'object' && (value = { value });
@@ -120,48 +126,48 @@ const renderChart = () => {
                             show: props.showLabel,
                             alignTo: 'edge',
                             distanceToLabelLine: 0,
-                            edgeDistance: props.edgeDistance * scale,
+                            edgeDistance: props.edgeDistance * props.scale,
                             formatter: props.labelFormatter || (param => {
                                 return `{title|${ param.name || `第${ index }项` }}\n{split|}\n{value|${ [null, undefined, '', NaN].includes(param.value) ? '- -' : param.value }}{unit|${ props.unit }}{colGap|}{value|${ param.percent }}{unit|%}`
                             }),
                             rich: {
                                 title: {
                                     color: 'white',
-                                    lineHeight: 32 * scale,
-                                    fontSize: 24 * scale,
+                                    lineHeight: 32 * props.scale,
+                                    fontSize: 24 * props.scale,
                                     verticalAlign: 'center'
                                 },
                                 split: {
-                                    height: 2 * scale,
+                                    height: 2 * props.scale,
                                     width: '100%',
                                     backgroundColor: '#B0E2FF'
                                 },
                                 value: {
                                     color: 'white',
                                     fontFamily: 'DINAlternate-Bold',
-                                    fontSize: 28 * scale,
-                                    lineHeight: 32 * scale,
+                                    fontSize: 28 * props.scale,
+                                    lineHeight: 32 * props.scale,
                                     verticalAlign: 'bottom'
                                 },
                                 unit: {
                                     // color: 'rgba(255, 255, 255, 0.6)',
                                     color: 'rgba(255, 255, 255, 1)',
-                                    lineHeight: 32 * scale,
-                                    fontSize: 24 * scale,
+                                    lineHeight: 32 * props.scale,
+                                    fontSize: 24 * props.scale,
                                     verticalAlign: 'bottom'
                                 },
-                                colGap: { width: 6 * scale },
+                                colGap: { width: 6 * props.scale },
                                 rise: {
-                                    width: 24 * scale,
-                                    height: 24 * scale,
+                                    width: 24 * props.scale,
+                                    height: 24 * props.scale,
                                     backgroundColor: {
                                         image: riseIcon
                                     },
                                     verticalAlign: 'center'
                                 },
                                 fall: {
-                                    width: 24 * scale,
-                                    height: 24 * scale,
+                                    width: 24 * props.scale,
+                                    height: 24 * props.scale,
                                     backgroundColor: {
                                         image: fallIcon
                                     },
@@ -171,7 +177,7 @@ const renderChart = () => {
                         },
                         labelLine: {
                             show: true,
-                            lineStyle: { color: '#B0E2FF', width: 2 * scale }
+                            lineStyle: { color: '#B0E2FF', width: 2 * props.scale }
                         }
                         // emphasis: {
                         //     label: { show: props.centerDisplay === 'item' }
@@ -187,7 +193,7 @@ const renderChart = () => {
                     // borderColor: 'rgb(15, 62, 114)'
                     borderColor: 'rgb(19, 72, 131)'
                 },
-                emphasis: { scaleSize: 5 * scale }
+                emphasis: { scaleSize: 5 * props.scale }
             }
         ]
     }
@@ -196,10 +202,7 @@ const renderChart = () => {
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 
-defineExpose({
-    renderChart,
-    clearChart: () => chart?.clear()
-});
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 $remh: 1px;

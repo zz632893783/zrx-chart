@@ -4,9 +4,11 @@
     </div>
 </template>
 <script setup>
-import * as echarts from 'echarts'
-import { defineProps, ref, onMounted } from 'vue'
+import * as echarts from 'echarts';
+import { defineProps, ref, onMounted } from 'vue';
+// 可配置属性
 const props = defineProps({
+    // 各项颜色
     color: {
         type: [Array],
         default: function () {
@@ -14,12 +16,14 @@ const props = defineProps({
             return ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
         }
     },
+    // x 轴坐标数据
     xAxisData: {
         type: [Array],
         default: function () {
             return ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         }
     },
+    // 图表数据
     seriesData: {
         type: [Array],
         default: function () {
@@ -30,25 +34,28 @@ const props = defineProps({
             ]
         }
     },
+    // legend 数据
     legendData: {
         type: [Array],
         default: function () {
-            // return ['总能耗', '能耗照明', '节约能耗', '同环比']
-            return ['']
+            return ['总能耗', '能耗照明', '节约能耗', '同环比']
         }
     },
+    // 是否平滑
     smooth: {
         type: [Boolean, Number],
         default: function () {
             return false
         }
     },
+    // y 轴单位
     yAxisName: {
         type: [String],
         default: function () {
             return '单位：次'
         }
     },
+    // 数据的单位
     unit: {
         type: [String, Array],
         default: function () {
@@ -56,6 +63,7 @@ const props = defineProps({
             return ''
         }
     },
+    // 上下左右间距
     grid: {
         type: [Object],
         default: function () {
@@ -68,44 +76,59 @@ const props = defineProps({
             }
         }
     },
+    // 是否显示 legend
     showLegend: {
         type: [Boolean],
         default: function () {
             return false
         }
     },
+    // 被选中时，遮罩层的颜色
     emphasisCoverColor: {
         type: [String],
         default: function () {
             return 'rgba(255, 255, 255, 0.4)'
         }
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
-})
-let chart
-const chartDom = ref()
+});
+// 图表实例
+let chart;
+// 图表 dom 对象
+const chartDom = ref();
+// 渲染函数
 const renderChart = () => {
     if (chart) {
-        typeof chart.dispose === 'function' && chart.dispose()
-        chart = null
+        typeof chart.dispose === 'function' && chart.dispose();
+        chart = null;
     }
-    chart = echarts.init(chartDom.value)
+    chart = echarts.init(chartDom.value);
     // UI 要求的高亮时覆盖上一层 0.4 透明度白色
     // 但是由于 props.color 可能为 red, #f00, #ff0000, rgb(255, 0, 0), rgba(255, 0, 0, 1) 中的任意一种格式
     // 所以引入一个 canvas 用于计算高亮颜色 emphasisColor
     // 计算方式为绘制本身颜色，之后再绘制 emphasisCoverColor，然后取绘制部分的 getImageData 的 r, g, b, a 值拼接成高亮颜色
-    const emphasisColor = []
-    const canvas = document.createElement('canvas')
-    canvas.width = canvas.height = 1
-    const ctx = canvas.getContext('2d')
+    const emphasisColor = [];
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const ctx = canvas.getContext('2d');
     props.color.forEach(color => {
-        ctx.clearRect(0, 0, 1, 1)
-        ctx.fillStyle = color
-        ctx.fillRect(0, 0, 1, 1)
-        ctx.fillStyle = props.emphasisCoverColor
-        ctx.fillRect(0, 0, 1, 1)
-        const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data
-        emphasisColor.push(`rgba(${r}, ${g}, ${b}, ${a / 255})`)
-    })
+        ctx.clearRect(0, 0, 1, 1);
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, 1, 1);
+        ctx.fillStyle = props.emphasisCoverColor;
+        ctx.fillRect(0, 0, 1, 1);
+        const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+        emphasisColor.push(`rgba(${r}, ${g}, ${b}, ${a / 255})`);
+    });
     const option = {
         legend: {
             show: props.showLegend,
@@ -115,7 +138,7 @@ const renderChart = () => {
             itemWidth: 8,
             itemGap: 16,
             data: props.legendData.map((name, index) => {
-                const color = props.color[index % props.color.length]
+                const color = props.color[index % props.color.length];
                 return {
                     icon: 'path://M 10, 10 m -10, 0 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0 Z',
                     name,
@@ -123,7 +146,7 @@ const renderChart = () => {
                         color,
                         borderWidth: 0
                     }
-                }
+                };
             }),
             textStyle: {
                 color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
@@ -147,9 +170,9 @@ const renderChart = () => {
             },
             formatter: (params) => {
                 const templateStr = params.map(item => {
-                    const seriesIndex = item.seriesIndex
-                    const color = props.color[seriesIndex % props.color.length]
-                    const unit = props.unit instanceof Array ? props.unit[seriesIndex % props.unit.length] : props.unit
+                    const seriesIndex = item.seriesIndex;
+                    const color = props.color[seriesIndex % props.color.length];
+                    const unit = props.unit instanceof Array ? props.unit[seriesIndex % props.unit.length] : props.unit;
                     return `
                         <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px auto min-content; grid-column-gap: 8px; align-items: center;">
                             <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
@@ -159,12 +182,12 @@ const renderChart = () => {
                                 <i style="font-weight: 400; font-size: 12px;">${unit || ''}</i>
                             </span>
                         </div>
-                    `
-                }).join('')
+                    `;
+                }).join('');
                 return `
                     <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155; line-height: 24px;">${params[0].axisValue}</h4>
                     ${templateStr}
-                `
+                `;
             }
         },
         xAxis: {
@@ -221,7 +244,7 @@ const renderChart = () => {
             }
         },
         series: props.seriesData.map((seriesItem, seriesIndex) => {
-            const color = props.color[seriesIndex % props.color.length]
+            const color = props.color[seriesIndex % props.color.length];
             return {
                 name: props.legendData[seriesIndex % props.legendData.length],
                 type: 'bar',
@@ -261,7 +284,7 @@ const renderChart = () => {
                                 color: emphasisColor[seriesIndex % emphasisColor.length]
                             }
                         }
-                    }
+                    };
                 }),
                 symbol: 'none',
                 itemStyle: {
@@ -272,13 +295,15 @@ const renderChart = () => {
                     show: true,
                     position: 'top'
                 }
-            }
+            };
         })
     }
-    chart.setOption(option)
-}
-onMounted(renderChart)
-defineExpose({ renderChart })
+    typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
+    chart.setOption(option);
+    typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
+};
+
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 .bar-chart {

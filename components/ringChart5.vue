@@ -8,45 +8,9 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-import * as echarts from 'echarts'
-// 这段不是我写的
-const setFixed = (value, toFixedNum = 2) => {
-    if (!value) return value
-    let flag = ''
-    if (Number(value) < 0) {
-        flag = '-'
-    }
-    if (!Math.abs(value)) return flag + value
-    // console.log('value', value, String(value).split('.').length)
-    if (String(value).split('.').length > 1) {
-        // return (value = Number(value).toFixed(toFixedNum))
-        const arr = String(value).split('.')
-        const integer = Math.abs(arr[0])
-        const decimal = arr[1] || '0'
-        // console.log('decimal', arr, decimal)
-        if (decimal?.length == toFixedNum) return value
-        value = Math.abs(value)
-        let res = value.toString()
-        if (decimal?.length < toFixedNum) {
-            for (let i = 0; i < toFixedNum - decimal.length; i += 1) {
-                res += '0'
-            }
-            return flag + res
-        }
-
-        res = toFixedNum > 0 ? integer + '.' + decimal?.substr(0, toFixedNum) : integer;
-        const last = decimal.substr(toFixedNum, 1);
-        // 四舍五入，转换为整数再处理，避免浮点数精度的损失
-        if (parseInt(last, 10) >= 5) {
-            const x = Math.pow(10, toFixedNum)
-            res = (Math.round((parseFloat(res) * x)) + 1) / x
-            res = res.toFixed(toFixedNum)
-        }
-        return flag + res
-    }
-    return flag + Math.abs(value)
-};
+import { ref } from 'vue';
+import * as echarts from 'echarts';
+import { setFixed } from '../utils/index.js';
 
 let chart;
 const chartRef = ref();
@@ -97,10 +61,12 @@ const props = defineProps({
         // default: () => 'itemValue'
         // default: () => 'itemPercentage'
     },
+    // 万能方法，图表渲染之前执行
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
+    // 万能方法，图表渲染之后执行
     afterSetOption: {
         type: [Function],
         default: () => null
@@ -108,10 +74,14 @@ const props = defineProps({
     minAngle: {
         type: [Number],
         default: () => 0
+    },
+    // 图表缩放比例
+    scale: {
+        type: [Number],
+        // default: () => window.innerHeight / 1080;
+        default: () => 1
     }
 });
-
-const scale = window.innerHeight / 1080;
 
 const renderChart = () => {
     if (chart) {
@@ -137,22 +107,22 @@ const renderChart = () => {
                         a: {
                             color: 'white',
                             fontFamily: 'MicrosoftYaHei-Bold',
-                            fontSize: 24 * scale,
-                            lineHeight: 31 * scale
+                            fontSize: 24 * props.scale,
+                            lineHeight: 31 * props.scale
                         },
-                        gap0: { height: 6 * scale },
+                        gap0: { height: 6 * props.scale },
                         b: {
                             color: '#F4DC3C',
                             fontFamily: 'DINAlternate-Bold',
-                            fontSize: 60 * scale,
-                            lineHeight: 70 * scale
+                            fontSize: 60 * props.scale,
+                            lineHeight: 70 * props.scale
                         },
                         gap1: { height: 6 },
                         c: {
                             color: 'white', 
                             fontFamily: 'MicrosoftYaHei-Bold',
-                            fontSize: 24 * scale,
-                            lineHeight: 31 * scale
+                            fontSize: 24 * props.scale,
+                            lineHeight: 31 * props.scale
                         }
                     }
                 }
@@ -173,9 +143,9 @@ const renderChart = () => {
                 lineStyle: { color: '#677b87' }
             },
             formatter: param => `
-                <div style="background-color: #125176; padding: ${ 12 * scale }px; border-radius: 0; border: ${ 2 * scale }px solid rgba(158,202,255,0.40);">
-                    ${ props.title ? `<h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * scale }px; color: #FFFFFF; font-weight: 400; margin-bottom: ${ 8 * scale }px;">${ props.title }</h4>` : '' }
-                    <div style="display: grid; grid-auto-rows: ${ 37 * scale }px; grid-row-gap: ${ 8 * scale }px; grid-template-columns: ${ 18 * scale }px ${ 8 * scale }px min-content ${ 12 * scale }px min-content; grid-column-gap: ${ 2 * scale }px ${ 12 * scale }px; align-items: center;">
+                <div style="background-color: #125176; padding: ${ 12 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(158,202,255,0.40);">
+                    ${ props.title ? `<h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; margin-bottom: ${ 8 * props.scale }px;">${ props.title }</h4>` : '' }
+                    <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center;">
                         ${
                             (() => {
                                 const colors = props.color;
@@ -197,9 +167,9 @@ const renderChart = () => {
                                     value = parseInt(param.value) === Number(param.value) ? param.value : setFixed(Number(param.value) || 0, 2);
                                 }
                                 return `
-                                    <i style="${ background }; width: ${ 18 * scale }px; height: ${ 18 * scale }px;"></i>
-                                    <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3;">${ param.name }</label>
-                                    <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5;">${ value }${ props.unit }</label>
+                                    <i style="${ background }; width: ${ 18 * props.scale }px; height: ${ 18 * props.scale }px;"></i>
+                                    <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3;">${ param.name }</label>
+                                    <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5;">${ value }${ props.unit }</label>
                                 `;
                             })()
                         }
@@ -214,7 +184,7 @@ const renderChart = () => {
                 radius: [
                     props.radius[0] - props.itemGap,
                     props.radius[1] + props.itemGap
-                ].map(n => n * scale),
+                ].map(n => n * props.scale),
                 minAngle: props.minAngle,
                 data: props.seriesData.map((value, index) => {
                     typeof value !== 'object' && (value = { value });
@@ -239,46 +209,46 @@ const renderChart = () => {
                             labelConfig.rich = {
                                 dot: {
                                     backgroundColor: color,
-                                    width: 18 * scale,
-                                    height: 18 * scale,
+                                    width: 18 * props.scale,
+                                    height: 18 * props.scale,
                                     verticalAlign: 'center'
                                 },
-                                colGap0: { width: 8 * scale },
+                                colGap0: { width: 8 * props.scale },
                                 itemTitle: {
                                     color: 'white',
                                     fontFamily: 'MicrosoftYaHei-Bold',
-                                    fontSize: 24 * scale,
-                                    lineHeight: 24 * scale,
+                                    fontSize: 24 * props.scale,
+                                    lineHeight: 24 * props.scale,
                                     verticalAlign: 'center'
                                 },
-                                rowGap0: { height: 4 * scale },
+                                rowGap0: { height: 4 * props.scale },
                                 value: {
                                     color: '#F4DC3C',
                                     fontFamily: 'DINAlternate-Bold',
-                                    fontSize: 60 * scale,
-                                    lineHeight: 70 * scale,
+                                    fontSize: 60 * props.scale,
+                                    lineHeight: 70 * props.scale,
                                     verticalAlign: 'bottom'
                                 },
                                 unit: {
                                     color: 'white',
                                     fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 24 * scale,
-                                    lineHeight: 31 * scale,
-                                    padding: [24 * scale, 0, 0]
+                                    fontSize: 24 * props.scale,
+                                    lineHeight: 31 * props.scale,
+                                    padding: [24 * props.scale, 0, 0]
                                 },
                                 rowGap1: { height: 0 },
                                 label: {
                                     color: 'rgba(255, 255, 255, 1)',
                                     fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 24 * scale,
-                                    lineHeight: 31 * scale,
+                                    fontSize: 24 * props.scale,
+                                    lineHeight: 31 * props.scale,
                                     verticalAlign: 'bottom'
                                 },
                                 percent: {
                                     color: 'rgba(255, 255, 255, 1)',
                                     fontFamily: 'MicrosoftYaHei-Bold',
-                                    fontSize: 28 * scale,
-                                    lineHeight: 37 * scale,
+                                    fontSize: 28 * props.scale,
+                                    lineHeight: 37 * props.scale,
                                     verticalAlign: 'bottom'
                                 }
                             };
@@ -294,28 +264,28 @@ const renderChart = () => {
                             labelConfig.rich = {
                                 dot: {
                                     backgroundColor: color,
-                                    width: 18 * scale,
-                                    height: 18 * scale
+                                    width: 18 * props.scale,
+                                    height: 18 * props.scale
                                 },
                                 title: {
                                     color: 'white',
                                     fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 24 * scale,
-                                    lineHeight: 31 * scale,
-                                    padding: [10, 0, 2, 0].map(n => n * scale)
+                                    fontSize: 24 * props.scale,
+                                    lineHeight: 31 * props.scale,
+                                    padding: [10, 0, 2, 0].map(n => n * props.scale)
                                 },
                                 value: {
                                     color: 'rgba(255, 255, 255, 1)',
                                     fontFamily: ' DINAlternate-Bold',
-                                    fontSize: 60 * scale,
-                                    lineHeight: 70 * scale,
+                                    fontSize: 60 * props.scale,
+                                    lineHeight: 70 * props.scale,
                                     verticalAlign: 'bottom'
                                 },
                                 unit: {
                                     color: 'rgba(255, 255, 255, 0.6)',
                                     fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 24 * scale,
-                                    lineHeight: 31 * scale,
+                                    fontSize: 24 * props.scale,
+                                    lineHeight: 31 * props.scale,
                                     verticalAlign: 'bottom'
                                 }
                             };
@@ -337,7 +307,7 @@ const renderChart = () => {
                     // borderColor: 'rgb(3, 43, 68)',
                     borderColor: 'rgb(27,85,148)'
                 },
-                emphasis: { scaleSize: 5 * scale }
+                emphasis: { scaleSize: 5 * props.scale }
             }
         ]
     }
@@ -352,10 +322,7 @@ const renderChart = () => {
     // })
 };
 
-defineExpose({
-    renderChart,
-    clearChart: () => chart?.clear()
-});
+defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 $remh: 1px;
