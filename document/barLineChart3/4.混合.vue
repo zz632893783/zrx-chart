@@ -1,5 +1,5 @@
 <template>
-    <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
+    <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
 </template>
 
 <script setup>

@@ -1,6 +1,7 @@
 <template>
-    <ring-progress-chart class="ring-progress-chart" ref="chartRef" :value="20"></ring-progress-chart>
+    <ring-chart-4 ref="chartRef"></ring-chart-4>
 </template>
+
 <script setup>
 import { ref, onMounted } from 'vue';
 
@@ -9,8 +10,8 @@ const chartRef = ref();
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.ring-progress-chart {
-    height: 340px;
-    background-color: white;
+.chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
 }
 </style>

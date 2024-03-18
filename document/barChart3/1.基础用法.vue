@@ -1,5 +1,5 @@
 <template>
-    <elderly-ring-chart-2 ref="chartRef"></elderly-ring-chart-2>
+    <bar-chart-3 ref="chartRef"></bar-chart-3>
 </template>
 
 <script setup>

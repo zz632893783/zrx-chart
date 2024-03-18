@@ -1,5 +1,8 @@
+## 1.基础用法
+<demo9f70f2b0487d />
+```vue{4}
 <template>
-    <elderly-ring-chart ref="chartRef"></elderly-ring-chart>
+    <ring-chart-4 ref="chartRef"></ring-chart-4>
 </template>
 
 <script setup>
@@ -15,3 +18,7 @@ onMounted(() => chartRef.value.renderChart());
     background-color: rgb(3, 43, 68);
 }
 </style>
+```
+<script setup>
+import demo9f70f2b0487d from '../../document/ringChart4/1.基础用法.vue'
+</script>

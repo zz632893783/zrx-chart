@@ -1,5 +1,5 @@
 <template>
-    <elderly-bar-line-chart v-bind="chartOption" ref="chartRef"></elderly-bar-line-chart>
+    <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
 </template>
 
 <script setup>
@@ -17,30 +17,32 @@ const seriesData = [
     {
         type: 'line',
         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-    },
-    {
-        type: 'line',
-        data: [82, 85, 74, 70, 63, 85, 62, 50, 69, 65]
-    },
-    {
-        type: 'line',
-        data: [88, 53, 96, 80, 100, 93, 77, 84, 71, 80]
-    },
-    {
-        type: 'line',
-        data: [59, 94, 86, 70, 93, 80, 74, 93, 85, 90]
     }
 ];
-const color = ['yellow', 'celeste', 'green', 'grey', 'pink'];
-const yAxisName = ['亿元'];
-const legendData = ['香洲区', '金湾区', '斗门区', '高新区', '鹤洲新区'];
+const color = ['yellow', 'celeste'];
+const yAxisName = ['亿元', '%'];
+const legendData = ['销售额', '贸易额'];
+const showLineArea = true;
+const markLine = [
+    {
+        value: 77,
+        yAxisIndex: 0,
+        color: '#F74768'
+    }
+];
+const beforeSetOption = option => {
+    option.series.forEach(item => item.type === 'line' && (item.markLine.data[0].label.formatter = param => `目标增速：{value|${ param.value }}`));
+};
 const chartOption = {
     showCount: 3,
     xAxisData,
     seriesData,
     yAxisName,
     legendData,
-    color
+    color,
+    showLineArea,
+    markLine,
+    beforeSetOption
 };
 
 onMounted(() => chartRef.value.renderChart());

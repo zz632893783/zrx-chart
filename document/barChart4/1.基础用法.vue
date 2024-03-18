@@ -1,5 +1,5 @@
 <template>
-    <horizontal-bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></horizontal-bar-chart>
+    <bar-chart-4 class="bar-chart" ref="chartRef" v-bind="chartOption"></bar-chart-4>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';

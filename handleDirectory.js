@@ -27,6 +27,7 @@ import path from 'path'
 export default defineConfig({
     title: 'zrx-chart',
     description: 'A VitePress Site',
+    // base: '/zrx-chart',
     themeConfig: {
         nav: [
             { text: '首页', link: '/' },

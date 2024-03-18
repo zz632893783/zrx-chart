@@ -1,5 +1,8 @@
+## 1.基础用法
+<demoebf7313da46e />
+```vue{4}
 <template>
-    <elderly-ring-bar-chart ref="chartRef"></elderly-ring-bar-chart>
+    <bar-chart-3 ref="chartRef"></bar-chart-3>
 </template>
 
 <script setup>
@@ -15,3 +18,7 @@ onMounted(() => chartRef.value.renderChart());
     background-color: rgb(3, 43, 68);
 }
 </style>
+```
+<script setup>
+import demoebf7313da46e from '../../document/barChart3/1.基础用法.vue'
+</script>
