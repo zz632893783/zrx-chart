@@ -10,33 +10,41 @@
 import { ref, onMounted } from 'vue';
 import * as echarts from 'echarts';
 import { setFixed } from '../utils/index.js';
-
+// 图表实例
 let chart;
+// 图表 dom 对象
 const chartRef = ref();
+// 图表外侧容器 dom 对象
 const containerRef = ref();
-
+// 可配置属性
 const props = defineProps({
+    // 半径
     radius: {
         type: [Array],
         // default: () => [59, 70]
         default: () => [60, 68]
     },
+    // 圆环颜色
     ringColor: {
         type: [Array],
         default: () => ['#0e8fff', '#00d5ef', '#b5bfe2']
     },
+    // 柱子颜色
     barColor: {
         type: [Array],
         default: () => ['#206e8a', '#72dde0']
     },
+    // 间距
     itemGap: {
         type: [Number],
         default: () => 2
     },
+    // 圆环数据
     ringSeriesData: {
         type: [Array],
         default: () => [73, 54, 98]
     },
+    // 柱子数据
     barSeriesData: {
         type: [Array],
         default: () => [73, 54, 23, 66]
@@ -51,14 +59,17 @@ const props = defineProps({
         type: [Function],
         default: () => null
     },
+    // 柱子的高度
     barHeight: {
         type: [Number],
         default: () => 120
     },
+    // 连接线长度
     lineLength: {
         type: [Number],
         default: () => 34
     },
+    // 单位
     unit: {
         type: [String],
         default: () => ''
@@ -75,10 +86,7 @@ const props = defineProps({
         default: () => 52
     }
 });
-
-const startAngle = 0
-// const startAngle = 75
-
+// 渲染函数
 const renderChart = () => {
     if (chart) {
         chart.dispose();

@@ -11,28 +11,34 @@
 import { ref } from 'vue';
 import * as echarts from 'echarts';
 import { setFixed } from '../utils/index.js';
-
+// 图表实例
 let chart;
+// 图表 dom 对象
 const chartRef = ref();
-
+// 可配置属性
 const props = defineProps({
+    // 标题
     title: {
         type: [String],
         default: () => ''
     },
+    // 半径
     radius: {
         type: [Array],
         // default: () => [60, 70]
         default: () => [128, 150]
     },
+    // 间距
     itemGap: {
         type: [Number],
         default: () => 4
     },
+    // 图表数据
     seriesData: {
         type: [Array],
         default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
     },
+    // 颜色
     color: {
         type: [Array],
         default: () => ['#ae7efd', '#7670d7', '#709ad7', '#72dde0', '#d0f1ff', '#b5bfe2', '#206e8a', '#1dd1ff', '#d2abea', '#0e8fff']
@@ -41,6 +47,7 @@ const props = defineProps({
     //     type: [String],
     //     default: () => 'tooltip标题'
     // },
+    // 单位
     unit: {
         type: [String],
         default: () => ''
@@ -71,6 +78,7 @@ const props = defineProps({
         type: [Function],
         default: () => null
     },
+    // 最小角度
     minAngle: {
         type: [Number],
         default: () => 0
@@ -82,7 +90,7 @@ const props = defineProps({
         default: () => 1
     }
 });
-
+// 渲染函数
 const renderChart = () => {
     if (chart) {
         chart.dispose();

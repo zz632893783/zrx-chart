@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo7865621c381b />
+<demob677a6fb647e />
 ```vue{4}
 <template>
     <ring-chart-3 class="ring-chart" ref="chartRef"></ring-chart-3>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 <script setup>
-import demo7865621c381b from '../../document/ringChart3/1.基础用法.vue'
+import demob677a6fb647e from '../../document/ringChart3/1.基础用法.vue'
 </script>

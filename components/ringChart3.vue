@@ -9,7 +9,11 @@
 <script setup>
 import * as echarts from 'echarts';
 import { defineProps, ref, onMounted } from 'vue';
-
+// 图表实例
+let chart;
+// 图表 dom 对象
+const chartDom = ref();
+// 可配置属性
 const props = defineProps({
     // name: {
     //     type: [String],
@@ -17,24 +21,28 @@ const props = defineProps({
     //         return '当月运营总数'
     //     }
     // },
+    // 半径
     radius: {
         type: [Array],
         default: function () {
             return [58, 76]
         }
     },
+    // 底色圆环半径
     backgroundRadius: {
         type: [Array],
         default: function () {
             return [53, 76]
         }
     },
+    // 底色
     backgroundColor: {
         type: [String],
         default: function () {
             return 'rgb(232, 234, 240)'
         }
     },
+    // 预设颜色
     color: {
         type: [Array],
         default: function () {
@@ -42,6 +50,7 @@ const props = defineProps({
             return ['#1BBE8C', '#F0465A', '#FFA433', '#B8BED5']
         }
     },
+    // 图表数据
     seriesData: {
         type: [Array],
         default: function () {
@@ -80,12 +89,14 @@ const props = defineProps({
     //         return 18
     //     }
     // },
+    // 单位
     unit: {
         type: [String],
         default: function () {
             return ''
         }
     },
+    // 悬浮选中单项时，增加的半径
     scaleSize: {
         type: [Number],
         default: function () {
@@ -110,9 +121,8 @@ const props = defineProps({
         }
     }
 })
-let chart
-const chartDom = ref()
-function renderChart () {
+// 渲染函数
+const renderChart = () => {
     if (chart) {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
