@@ -45,11 +45,6 @@ onMounted(() => chartRef.value.renderChart());
 npm run doc
 ```
 
-### 发布
-```bash{4}
-npm publish --registry http://10.10.120.191:8081/repository/npm-group/
-```
-
 ### 在线运行文档
 ```bash{4}
 npm run doc
