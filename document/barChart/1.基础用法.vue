@@ -1,5 +1,5 @@
 <template>
-    <bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></bar-chart>
+    <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -23,7 +23,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.bar-chart {
+.zrx-chart {
     height: 340px;
     background-color: rgb(3, 43, 68);
 }

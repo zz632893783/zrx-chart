@@ -16,11 +16,14 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
+const yAxisHighlightArea = [2, 4];
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
-    legendData
+    legendData,
+    yAxisHighlightArea,
+    highlightAreaColor: 'rgba(255, 0, 0, 0.3)'
 };
 
 onMounted(() => chartRef.value.renderChart());

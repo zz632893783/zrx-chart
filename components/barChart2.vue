@@ -1,7 +1,5 @@
 <template>
-    <div class="bar-chart">
-        <div class="chart" ref="chartDom"></div>
-    </div>
+    <div class="zrx-chart" ref="chartDom"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -11,84 +9,57 @@ const props = defineProps({
     // 各项颜色
     color: {
         type: [Array],
-        default: function () {
-            // return ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)', '#F0465A']
-            return ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
-        }
+        // default: () => ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)', '#F0465A']
+        default: () => ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
     },
     // x 轴坐标数据
     xAxisData: {
         type: [Array],
-        default: function () {
-            return ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        }
+        // default: () => ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        default: () => []
     },
     // 图表数据
     seriesData: {
         type: [Array],
-        default: function () {
-            return [
-                [8, 30, 50, 82, 73, 84, 50],
-                [32, 94, 61, 11, 52, 68, 58],
-                [33, 13, 27, 92, 44, 82, 19]
-            ]
-        }
+        // default: () => [
+        //     [8, 30, 50, 82, 73, 84, 50],
+        //     [32, 94, 61, 11, 52, 68, 58],
+        //     [33, 13, 27, 92, 44, 82, 19]
+        // ]
+        default: () => []
     },
     // legend 数据
     legendData: {
         type: [Array],
-        default: function () {
-            return ['总能耗', '能耗照明', '节约能耗', '同环比']
-        }
-    },
-    // 是否平滑
-    smooth: {
-        type: [Boolean, Number],
-        default: function () {
-            return false
-        }
+        // default: () => ['总能耗', '能耗照明', '节约能耗', '同环比']
+        default: () => []
     },
     // y 轴单位
     yAxisName: {
         type: [String],
-        default: function () {
-            return '单位：次'
-        }
+        // default: () => '单位：次'
+        default: () => ''
     },
     // 数据的单位
     unit: {
         type: [String, Array],
-        default: function () {
-            // return ['kw/h', 'kw', 'h']
-            return ''
-        }
+        // default: () => ['kw/h', 'kw', 'h']
+        default: () => ''
     },
     // 上下左右间距
     grid: {
         type: [Object],
-        default: function () {
-            // return ['kw/h', 'kw', 'h']
-            return {
-                top: 89,
-                right: 16,
-                bottom: 40,
-                left: 53
-            }
-        }
+        default: () => ({ top: 89, right: 16, bottom: 40, left: 53 })
     },
     // 是否显示 legend
     showLegend: {
         type: [Boolean],
-        default: function () {
-            return false
-        }
+        default: () => false
     },
     // 被选中时，遮罩层的颜色
     emphasisCoverColor: {
         type: [String],
-        default: function () {
-            return 'rgba(255, 255, 255, 0.4)'
-        }
+        default: () => 'rgba(255, 255, 255, 0.4)'
     },
     // 万能方法，图表渲染之前执行
     beforeSetOption: {
@@ -179,7 +150,7 @@ const renderChart = () => {
                             <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
                             <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                                 ${item.value}
-                                <i style="font-weight: 400; font-size: 12px;">${unit || ''}</i>
+                                <i style="font-weight: 400; font-size: 12px; font-style: normal;">${unit || ''}</i>
                             </span>
                         </div>
                     `;
@@ -305,12 +276,4 @@ const renderChart = () => {
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
-<style lang="scss" scoped>
-.bar-chart {
-    position: relative;
-    .chart {
-        width: 100%;
-        height: 100%;
-    }
-}
-</style>
+<style lang="scss" scoped></style>

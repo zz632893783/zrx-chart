@@ -16,11 +16,15 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
+const barWidth = 12;
+const showSeriesLabel = false;
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
-    legendData
+    legendData,
+    barWidth,
+    showSeriesLabel
 };
 
 onMounted(() => chartRef.value.renderChart());

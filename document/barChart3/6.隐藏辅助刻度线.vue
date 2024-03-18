@@ -16,11 +16,13 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
+const showSplitLine = false;
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
-    legendData
+    legendData,
+    showSplitLine
 };
 
 onMounted(() => chartRef.value.renderChart());

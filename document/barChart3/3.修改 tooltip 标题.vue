@@ -16,11 +16,13 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
+const tooltipTitle = new Array(10).fill().map((n, i) => `第 ${ i + 1 } 个 tooltip 标题`);
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
-    legendData
+    legendData,
+    tooltipTitle
 };
 
 onMounted(() => chartRef.value.renderChart());

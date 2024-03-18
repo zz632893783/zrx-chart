@@ -13,14 +13,18 @@ const yAxisData = [
 ];
 const seriesData = [
     [54, -89, -86, 65, 54, 53, -72, 65, -60],
-    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+    [95, -97, 75, 72, 90, -88, 54, -77, -98],
 ];
-const legendData = ['统计金额', '开票金额'];
+const legendData = ['统计金额', '1开票金额'];
+const grid = { right: 100 };
+const dataZoomRight = 32;
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
-    legendData
+    legendData,
+    grid,
+    dataZoomRight
 };
 
 onMounted(() => chartRef.value.renderChart());

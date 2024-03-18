@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="chartRef"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -421,7 +421,4 @@ const renderChart = () => {
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
-<style lang="scss" scoped>
-.chart {
-}
-</style>
+<style lang="scss" scoped></style>

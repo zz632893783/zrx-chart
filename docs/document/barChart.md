@@ -1,8 +1,8 @@
 ## 1.基础用法
-<demo087954088d98 />
+<demob12c8eb2a0af />
 ```vue{4}
 <template>
-    <bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></bar-chart>
+    <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -26,7 +26,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.bar-chart {
+.zrx-chart {
     height: 340px;
     background-color: rgb(3, 43, 68);
 }
@@ -34,10 +34,10 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.指定区域高亮
-<demoe0cccfb280a4 />
+<demo792c94802184 />
 ```vue{4}
 <template>
-    <bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></bar-chart>
+    <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -64,17 +64,17 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.bar-chart {
+.zrx-chart {
     height: 340px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demo3effb75d8145 />
+<demo57334cc672d4 />
 ```vue{4}
 <template>
-    <bar-chart class="bar-chart" ref="chartRef" v-bind="chartOption"></bar-chart>
+    <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -102,14 +102,14 @@ onMounted(() => chartRef.value.renderChart());
 
 </script>
 <style lang="scss" scoped>
-.bar-chart {
+.zrx-chart {
     height: 340px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 <script setup>
-import demo087954088d98 from '../../document/barChart/1.基础用法.vue'
-import demoe0cccfb280a4 from '../../document/barChart/2.指定区域高亮.vue'
-import demo3effb75d8145 from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demob12c8eb2a0af from '../../document/barChart/1.基础用法.vue'
+import demo792c94802184 from '../../document/barChart/2.指定区域高亮.vue'
+import demo57334cc672d4 from '../../document/barChart/3.拖拽区域为滚动条.vue'
 </script>
