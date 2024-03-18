@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo802e18caa3eb />
+<demo3ff9f405f540 />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -38,14 +38,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 664px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 2.只有折线
-<demof0454c2f64f4 />
+<demod2ef356a29de />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -97,14 +97,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 664px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 3.只有折线
-<demo4aafd8a535a8 />
+<demo4643832d1ac6 />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -154,14 +154,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 664px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 4.混合
-<demof53b510e3613 />
+<democ0da35c51cba />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -238,15 +238,15 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 664px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 <script setup>
-import demo802e18caa3eb from '../../document/barLineChart3/1.基础用法.vue'
-import demof0454c2f64f4 from '../../document/barLineChart3/2.只有折线.vue'
-import demo4aafd8a535a8 from '../../document/barLineChart3/3.只有折线.vue'
-import demof53b510e3613 from '../../document/barLineChart3/4.混合.vue'
+import demo3ff9f405f540 from '../../document/barLineChart3/1.基础用法.vue'
+import demod2ef356a29de from '../../document/barLineChart3/2.只有折线.vue'
+import demo4643832d1ac6 from '../../document/barLineChart3/3.只有折线.vue'
+import democ0da35c51cba from '../../document/barLineChart3/4.混合.vue'
 </script>

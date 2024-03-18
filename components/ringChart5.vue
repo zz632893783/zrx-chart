@@ -1,5 +1,5 @@
 <template>
-    <div class="chart">
+    <div class="zrx-chart">
         <div class="chart-content" ref="chartRef"></div>
         <div class="center">
             <slot></slot>
@@ -36,7 +36,8 @@ const props = defineProps({
     // 图表数据
     seriesData: {
         type: [Array],
-        default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        // default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        default: () => []
     },
     // 颜色
     color: {
@@ -334,7 +335,7 @@ defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 $remh: 1px;
-.chart {
+.zrx-chart {
     position: relative;
     >.chart-content {
         height: 100%;

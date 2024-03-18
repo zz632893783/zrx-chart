@@ -51,7 +51,7 @@ const toggleFn = name => {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 256px;
     height: 256px;
     background-color: rgb(3, 43, 68);

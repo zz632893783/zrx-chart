@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="chartRef"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -14,18 +14,20 @@ const props = defineProps({
     // x 轴坐标
     yAxisData: {
         type: [Array],
-        default: () => [
-            ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
-            ['农', '工', '建', '批', '交', '住', '金', '房', '其']
-        ]
+        // default: () => [
+        //     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+        //     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+        // ]
+        default: () => []
     },
     // 数据数组
     seriesData: {
         type: [Array],
-        default: () => [
-            [54, 89, 86, 65, 54, 53, 72, 65, 60],
-            [95, 97, 75, 72, 90, 88, 54, 77, 98]
-        ]
+        // default: () => [
+        //     [54, 89, 86, 65, 54, 53, 72, 65, 60],
+        //     [95, 97, 75, 72, 90, 88, 54, 77, 98]
+        // ]
+        default: () => []
     },
     // 上下左右边距
     grid: {
@@ -62,7 +64,8 @@ const props = defineProps({
     // legend 数据
     legendData: {
         type: [Array],
-        default: () => ['统计金额', '开票金额']
+        // default: () => ['统计金额', '开票金额']
+        default: () => []
     },
     // y轴单位
     // xAxisName: {
@@ -130,9 +133,14 @@ const props = defineProps({
         default: () => null
     },
     // 高亮区域的索引
-    xAxisHighlightArea: {
+    yAxisHighlightArea: {
         type: [Array],
         default: () => []
+    },
+    // 高亮区域颜色
+    highlightAreaColor: {
+        type: [String],
+        default: () => 'rgba(14, 143, 255, 0.2)'
     },
     // 单位
     unit: {
@@ -292,6 +300,7 @@ const renderChart = () => {
             }
         },
         yAxis: props.yAxisData.map((yAxis, index) => {
+            console.log(yAxis, props.yAxisHighlightArea)
             return {
                 type: 'category',
                 inverse: true,
@@ -313,7 +322,7 @@ const renderChart = () => {
                 splitArea: {
                     show: true,
                     areaStyle: {
-                        color: props.yAxisData.map((n, i) => props.xAxisHighlightArea.includes(i) ? 'rgba(14, 143, 255, 0.2)' : 'transparent')
+                        color: yAxis.map((n, i) => props.yAxisHighlightArea.includes(i) ? props.highlightAreaColor : 'transparent')
                     }
                 },
                 nameGap: 0
@@ -442,7 +451,4 @@ defineExpose({
     clearChart: () => chart?.clear()
 });
 </script>
-<style lang="scss" scoped>
-.chart {
-}
-</style>
+<style lang="scss" scoped></style>

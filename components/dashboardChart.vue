@@ -1,5 +1,5 @@
 <template>
-    <div class="chart">
+    <div class="zrx-chart">
         <div class="chart-container" ref="chartRef"></div>
         <div class="center">
             <slot></slot>
@@ -129,7 +129,7 @@ defineExpose({ renderChart, clearChart: () => chart?.clear() });
     width: 100%;
     height: 100%;
 }
-.chart {
+.zrx-chart {
     position: relative;
     .center {
         position: absolute;

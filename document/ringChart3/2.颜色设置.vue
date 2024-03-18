@@ -5,7 +5,6 @@
 import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
-const unit = '单位';
 
 const seriesData = [
     { value: 1048, name: '正常' },
@@ -13,10 +12,11 @@ const seriesData = [
     { value: 580, name: '告警' },
     { value: 484, name: '离线' }
 ];
+const color = ['rgb(0, 221, 255)', 'rgb(55, 162, 255)', 'rgb(255, 0, 135)', 'rgb(255, 191, 0)'];
 // 组合配置项
 const chartOption = {
-    unit,
-    seriesData
+    seriesData,
+    color
 };
 
 onMounted(() => chartRef.value.renderChart());

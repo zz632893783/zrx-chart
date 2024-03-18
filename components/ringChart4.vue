@@ -1,5 +1,5 @@
 <template>
-    <div class="chart">
+    <div class="zrx-chart">
         <div class="chart-container" ref="chartRef"></div>
         <div class="center">
             <slot></slot>
@@ -20,11 +20,6 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // 标题
-    title: {
-        type: [String],
-        default: () => '标题'
-    },
     // 半径
     radius: {
         type: [Array],
@@ -39,7 +34,8 @@ const props = defineProps({
     // 数据项
     seriesData: {
         type: [Array],
-        default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        // default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        default: () => []
     },
     // 颜色
     color: {
@@ -72,16 +68,6 @@ const props = defineProps({
     //     type: [Boolean],
     //     default: () => true
     // },
-    // 万能方法，图表渲染之前执行
-    beforeSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 万能方法，图表渲染之后执行
-    afterSetOption: {
-        type: [Function],
-        default: () => null
-    },
     // 自定义 label 函数
     labelFormatter: {
         type: [Function],
@@ -96,6 +82,16 @@ const props = defineProps({
     minAngle: {
         type: [Number],
         default: () => 4
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     },
     // 图表缩放比例
     scale: {
@@ -221,7 +217,7 @@ $remh: 1px;
     width: 100%;
     height: 100%;
 }
-.chart {
+.zrx-chart {
     position: relative;
     .center {
         position: absolute;

@@ -38,7 +38,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 264px;
     background-color: rgb(3, 43, 68);
 }

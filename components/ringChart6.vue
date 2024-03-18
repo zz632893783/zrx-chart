@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="containerRef">
+    <div class="zrx-chart" ref="containerRef">
         <div class="chart-container" ref="chartRef"></div>
         <div class="bar" :style="computeBarStyle()">
             <div class="bar-item" v-for="(n, i) in barSeriesData" :style="`background-color: ${ barColor[i % barColor.length] };`"></div>
@@ -214,7 +214,7 @@ defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 $remh: 1px;
-.chart {
+.zrx-chart {
     position: relative;
     .chart-container {
         width: 100%;

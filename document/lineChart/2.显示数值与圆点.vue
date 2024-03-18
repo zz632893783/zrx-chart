@@ -12,11 +12,15 @@ const seriesData = [
 ];
 const legendData = ['用水', '用电'];
 const unit = ['吨', '千瓦时'];
+const showLabel = true;
+const showSymbol = true;
 // 组合配置项
 const chartOption = {
     xAxisData,
     seriesData,
     legendData,
+    showLabel,
+    showSymbol,
     unit
 };
 

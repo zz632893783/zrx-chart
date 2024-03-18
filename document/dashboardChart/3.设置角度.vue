@@ -9,8 +9,11 @@ import { ref, onMounted } from 'vue';
 const chartRef = ref();
 
 const value = 66;
-const max = 100;
-const chartOption = { value, max };
+const chartOption = {
+    value,
+    startAngle: 120,
+    endAngle: -120
+};
 
 onMounted(() => chartRef.value.renderChart());
 </script>

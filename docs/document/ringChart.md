@@ -1,5 +1,5 @@
 ## 1.只有圆环
-<demo06b162e6d896 />
+<demoa460eb3333f4 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -11,7 +11,6 @@ import { ref, onMounted } from 'vue';
 const chartRef = ref();
 
 const radius = [80, 90];
-const color = ['#d0f1ff', '#1dd1ff', '#b5bfe2', '#0e8fff'];
 const seriesData = [
     { value: 2, name: '住宿业营业额' },
     { value: 3, name: '餐饮业营业额' },
@@ -20,14 +19,13 @@ const seriesData = [
 ];
 const chartOption = {
     radius,
-    color,
     seriesData
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 256px;
     height: 256px;
     background-color: rgb(3, 43, 68);
@@ -35,7 +33,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心部分总量
-<demoe02063bcc80e />
+<demo2bce55a652ac />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -49,7 +47,6 @@ const chartRef = ref();
 const centerDisplay = 'sum';
 const title = '企业总数';
 const unit = '家';
-const color = ['#d0f1ff', '#1dd1ff', '#b5bfe2', '#0e8fff'];
 const seriesData = [
     { value: 123, name: '住宿业营业额' },
     { value: 234, name: '餐饮业营业额' },
@@ -59,7 +56,6 @@ const seriesData = [
 const chartOption = {
     title,
     unit,
-    color,
     seriesData,
     centerDisplay
 };
@@ -67,7 +63,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 256px;
     height: 256px;
     background-color: rgb(3, 43, 68);
@@ -75,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.中心部分单项
-<demo180db9f0f059 />
+<demo59c6dafd0846 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -133,7 +129,7 @@ onBeforeUnmount(() => {
 });
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 200px;
     height: 200px;
     background-color: rgb(3, 43, 68);
@@ -141,7 +137,7 @@ onBeforeUnmount(() => {
 </style>
 ```
 ## 4.与图表联动
-<democ89a28ef52c2 />
+<demo8a79a6b26223 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -196,7 +192,7 @@ const toggleFn = name => {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 256px;
     height: 256px;
     background-color: rgb(3, 43, 68);
@@ -223,7 +219,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.中心只显示值
-<demo1f55158ed3b2 />
+<demo092cfbb57b81 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -255,7 +251,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 200px;
     height: 200px;
     background-color: rgb(3, 43, 68);
@@ -263,9 +259,9 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demo06b162e6d896 from '../../document/ringChart/1.只有圆环.vue'
-import demoe02063bcc80e from '../../document/ringChart/2.中心部分总量.vue'
-import demo180db9f0f059 from '../../document/ringChart/3.中心部分单项.vue'
-import democ89a28ef52c2 from '../../document/ringChart/4.与图表联动.vue'
-import demo1f55158ed3b2 from '../../document/ringChart/5.中心只显示值.vue'
+import demoa460eb3333f4 from '../../document/ringChart/1.只有圆环.vue'
+import demo2bce55a652ac from '../../document/ringChart/2.中心部分总量.vue'
+import demo59c6dafd0846 from '../../document/ringChart/3.中心部分单项.vue'
+import demo8a79a6b26223 from '../../document/ringChart/4.与图表联动.vue'
+import demo092cfbb57b81 from '../../document/ringChart/5.中心只显示值.vue'
 </script>

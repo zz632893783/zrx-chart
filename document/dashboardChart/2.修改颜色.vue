@@ -9,8 +9,11 @@ import { ref, onMounted } from 'vue';
 const chartRef = ref();
 
 const value = 66;
-const max = 100;
-const chartOption = { value, max };
+const chartOption = {
+	value,
+	layerColor: 'rgba(255, 0, 0, 0.3)',
+	color: 'green'
+};
 
 onMounted(() => chartRef.value.renderChart());
 </script>

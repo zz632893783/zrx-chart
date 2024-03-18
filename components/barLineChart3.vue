@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="chartRef"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -14,7 +14,8 @@ const props = defineProps({
     // x 轴坐标
     xAxisData: {
         type: [Array],
-        default: () => ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+        // default: () => ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+        default: () => []
     },
     // 上下左右边距
     grid: {
@@ -29,20 +30,21 @@ const props = defineProps({
     // 数据数组
     seriesData: {
         type: [Array],
-        default: () => [
-            {
-                // 需要指定类型
-                type: 'bar',
-                // 需要指定 y 轴索引
-                yAxisIndex: 0,
-                data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
-            },
-            {
-                type: 'line',
-                yAxisIndex: 1,
-                data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-            }
-        ]
+        // default: () => [
+        //     {
+        //         // 需要指定类型
+        //         type: 'bar',
+        //         // 需要指定 y 轴索引
+        //         yAxisIndex: 0,
+        //         data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+        //     },
+        //     {
+        //         type: 'line',
+        //         yAxisIndex: 1,
+        //         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+        //     }
+        // ]
+        default: () => []
     },
     // 每一项颜色
     // itemColors: {

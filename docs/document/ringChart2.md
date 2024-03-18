@@ -1,8 +1,8 @@
 ## 1.带线段标签
-<demoa9f765c529d7 />
+<demo93076f853b99 />
 ```vue{4}
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef"></ring-chart2>
+    <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
 </template>
 
 <script setup>
@@ -32,7 +32,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 440px;
     height: 296px;
     background-color: rgb(3, 43, 68);
@@ -40,12 +40,12 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心自定义
-<demoe08661d1f433 />
+<demo98a7b2f380ce />
 ```vue{4}
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef">
+    <ring-chart-2 v-bind="chartOption" ref="chartRef">
         <h4 style="font-size: 16px; color: red; font-weight: 600;">自定义中心</h4>
-    </ring-chart2>
+    </ring-chart-2>
 </template>
 
 <script setup>
@@ -75,7 +75,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 440px;
     height: 296px;
     background-color: rgb(3, 43, 68);
@@ -83,10 +83,10 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.自定义标签
-<demob617d65297b6 />
+<demo450c983b9aab />
 ```vue{4}
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef"></ring-chart2>
+    <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
     <p style="font-size: 14px; line-height: 1.5; padding: 12px 0;">
         自定义标签富文本对应名<br/>
         title: label标题<br/>
@@ -148,7 +148,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 740px;
     height: 256px;
     background-color: rgb(3, 43, 68);
@@ -156,10 +156,10 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.绑定原生html属性
-<demod8763bdb9b90 />
+<democ5899b4dc405 />
 ```vue{4}
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef"></ring-chart2>
+    <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
 </template>
 
 <script setup>
@@ -184,16 +184,16 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
-    width: 740px;
+.zrx-chart {
+    width: 440px;
     height: 256px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 <script setup>
-import demoa9f765c529d7 from '../../document/ringChart2/1.带线段标签.vue'
-import demoe08661d1f433 from '../../document/ringChart2/2.中心自定义.vue'
-import demob617d65297b6 from '../../document/ringChart2/3.自定义标签.vue'
-import demod8763bdb9b90 from '../../document/ringChart2/4.绑定原生html属性.vue'
+import demo93076f853b99 from '../../document/ringChart2/1.带线段标签.vue'
+import demo98a7b2f380ce from '../../document/ringChart2/2.中心自定义.vue'
+import demo450c983b9aab from '../../document/ringChart2/3.自定义标签.vue'
+import democ5899b4dc405 from '../../document/ringChart2/4.绑定原生html属性.vue'
 </script>

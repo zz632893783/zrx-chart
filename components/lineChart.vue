@@ -1,7 +1,5 @@
 <template>
-    <div class="line-chart">
-        <div class="chart" ref="chartDom"></div>
-    </div>
+    <div class="zrx-chart" ref="chartDom"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -15,130 +13,106 @@ const props = defineProps({
     // 预设颜色
     color: {
         type: [Array],
-        default: function () {
-            return [
-                {
-                    color: '#405FFE',
-                    lineColor: '#405FFE',
-                    areaColor: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [
-                            { offset: 0, color: 'rgba(64, 95, 254, 0.4)' },
-                            { offset: 1, color: 'rgba(64, 95, 254, 0)' }
-                        ]
-                    }
-                },
-                {
-                    color: '#1BBE8C',
-                    lineColor: '#1BBE8C',
-                    areaColor: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [
-                            { offset: 0, color: 'rgba(27, 190, 140, 0.4)' },
-                            { offset: 1, color: 'rgba(27, 190, 140, 0)' }
-                        ]
-                    }
+        default: () => [
+            {
+                color: '#405FFE',
+                lineColor: '#405FFE',
+                areaColor: {
+                    type: 'linear',
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [
+                        { offset: 0, color: 'rgba(64, 95, 254, 0.4)' },
+                        { offset: 1, color: 'rgba(64, 95, 254, 0)' }
+                    ]
                 }
-            ]
-        }
+            },
+            {
+                color: '#1BBE8C',
+                lineColor: '#1BBE8C',
+                areaColor: {
+                    type: 'linear',
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [
+                        { offset: 0, color: 'rgba(27, 190, 140, 0.4)' },
+                        { offset: 1, color: 'rgba(27, 190, 140, 0)' }
+                    ]
+                }
+            }
+        ]
     },
     // x 轴坐标
     xAxisData: {
         type: [Array],
-        default: function () {
-            return ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        }
+        // default: () => ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        default: () => []
     },
     // 图表数据
     seriesData: {
         type: [Array],
-        default: function () {
-            return [
-                [8, 30, 50, 82, 73, 84, 50],
-                [32, 94, 61, 11, 52, 68, 58]
-            ]
-        }
+        // default: () => [
+        //     [8, 30, 50, 82, 73, 84, 50],
+        //     [32, 94, 61, 11, 52, 68, 58]
+        // ]
+        default: () => []
     },
     // legend 数据
     legendData: {
         type: [Array],
-        default: function () {
-            return ['总能耗', '能耗照明']
-        }
+        // default: () => ['总能耗', '能耗照明']
+        default: () => []
     },
     // 是否平滑
     smooth: {
         type: [Boolean, Number],
-        default: function () {
-            return true
-        }
+        default: () => true
     },
     // 是否显示 label
     showLabel: {
-        type: [Boolean, Number],
-        default: function () {
-            return false
-        }
+        type: [Boolean],
+        default: () => false
     },
     // 是否显示 symbol
     showSymbol: {
-        type: [Boolean, Number],
-        default: function () {
-            return false
-        }
+        type: [Boolean],
+        default: () => false
     },
     // 单位
     unit: {
         type: [String, Array],
-        default: function () {
-            return ['kw/h', 'kg']
-        }
+        // default: () => ['kw/h', 'kg']
+        default: () => []
     },
     // 上下左右间距
     grid: {
         type: [Object],
-        default: function () {
-            // return ['kw/h', 'kw', 'h']
-            return {
-                top: 60,
-                right: 29,
-                bottom: 36,
-                left: 48
-            }
-        }
+        default: () => ({
+            top: 60,
+            right: 29,
+            bottom: 36,
+            left: 48
+        })
     },
     // y 轴名称
     yAxisName: {
         type: [String],
-        default: function () {
-            return ''
-        }
+        default: () => ''
     },
     // legend 定位
     legendPosition: {
         type: [Object],
-        default: function () {
-            return {
-                top: 20,
-                left: 16
-            }
-        }
+        default: () => ({ top: 20, left: 16 })
     },
     // tooltip 名称数组
     tooltipNames: {
         // type: [String, Array],
         type: [Array],
-        default: function () {
-            return []
-        }
+        default: () => []
     },
     // 万能方法，图表渲染之前执行
     beforeSetOption: {
@@ -213,7 +187,7 @@ const renderChart = () => {
                             <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
                             <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                                 ${item.value}
-                                <i style="font-weight: 400; font-size: 12px;">${unit || ''}</i>
+                                <i style="font-weight: 400; font-size: 12px; font-style: normal;">${unit || ''}</i>
                             </span>
                         </div>
                     `
@@ -351,12 +325,4 @@ const renderChart = () => {
 };
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
-<style lang="scss" scoped>
-.line-chart {
-    position: relative;
-    .chart {
-        width: 100%;
-        height: 100%;
-    }
-}
-</style>
+<style lang="scss" scoped></style>

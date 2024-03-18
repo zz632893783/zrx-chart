@@ -1,7 +1,7 @@
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef">
+    <ring-chart-2 v-bind="chartOption" ref="chartRef">
         <h4 style="font-size: 16px; color: red; font-weight: 600;">自定义中心</h4>
-    </ring-chart2>
+    </ring-chart-2>
 </template>
 
 <script setup>
@@ -31,7 +31,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 440px;
     height: 296px;
     background-color: rgb(3, 43, 68);

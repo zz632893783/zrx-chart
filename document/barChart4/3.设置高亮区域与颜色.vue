@@ -15,11 +15,17 @@ const yAxisData = [
     ['33%', '29%', '38%', '21%', '11%', '19%', '33%', '29%', '14%']
 ];
 const legendData = ['建筑业总产值', '前20名产值'];
+const barWidth = 18;
+const yAxisHighlightArea = [2, 4];
+const highlightAreaColor = 'rgba(255, 0, 0, 0.2)';
+
 const chartOption = {
     seriesData,
     yAxisData,
     legendData,
-    showCount: 3
+    barWidth,
+    yAxisHighlightArea,
+    highlightAreaColor
 };
 
 onMounted(() => chartRef.value.renderChart());

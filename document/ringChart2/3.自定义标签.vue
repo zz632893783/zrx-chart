@@ -1,5 +1,5 @@
 <template>
-    <ring-chart2 v-bind="chartOption" ref="chartRef"></ring-chart2>
+    <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
     <p style="font-size: 14px; line-height: 1.5; padding: 12px 0;">
         自定义标签富文本对应名<br/>
         title: label标题<br/>
@@ -61,7 +61,7 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 740px;
     height: 256px;
     background-color: rgb(3, 43, 68);

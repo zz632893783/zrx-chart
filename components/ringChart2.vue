@@ -1,5 +1,5 @@
 <template>
-    <div class="chart">
+    <div class="zrx-chart">
         <div class="chart-container" ref="chartRef"></div>
         <div class="center">
             <slot></slot>
@@ -22,7 +22,8 @@ const props = defineProps({
     // 标题
     title: {
         type: [String],
-        default: () => '标题'
+        // default: () => '标题'
+        default: () => ''
     },
     // 半径
     radius: {
@@ -38,7 +39,8 @@ const props = defineProps({
     // 图表数据
     seriesData: {
         type: [Array],
-        default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        // default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        default: () => []
     },
     // 颜色
     color: {
@@ -209,7 +211,7 @@ defineExpose({ renderChart, clearChart: () => chart?.clear() });
     width: 100%;
     height: 100%;
 }
-.chart {
+.zrx-chart {
     position: relative;
     .center {
         position: absolute;

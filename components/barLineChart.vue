@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="chartRef"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -13,7 +13,8 @@ const props = defineProps({
     // x 轴坐标
     xAxisData: {
         type: [Array],
-        default: () => ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+        // default: () => ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+        default: () => []
     },
     // 上下左右边距
     grid: {
@@ -28,55 +29,57 @@ const props = defineProps({
     // 数据数组
     seriesData: {
         type: [Array],
-        default: () => [
-            {
-                // 需要指定类型
-                type: 'bar',
-                // 需要指定 y 轴索引
-                yAxisIndex: 0,
-                data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
-            },
-            {
-                type: 'bar',
-                yAxisIndex: 0,
-                data: [102, 126, 120, 136, 160, 198, 128, 141, 123]
-            },
-            {
-                type: 'bar',
-                yAxisIndex: 0,
-                data: [182, 108, 114, 149, 188, 178, 122, 160, 106]
-            },
-            {
-                type: 'bar',
-                yAxisIndex: 0,
-                data: [187, 119, 141, 131, 139, 195, 113, 101, 167]
-            },
-            {
-                type: 'line',
-                yAxisIndex: 1,
-                data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-            },
-            {
-                type: 'line',
-                yAxisIndex: 1,
-                data: [36, 17, 43, 86, 23, 77, 66, 60, 18]
-            },
-            {
-                type: 'line',
-                yAxisIndex: 1,
-                data: [19, 97, 96, 21, 57, 71, 5, 65, 63]
-            },
-            {
-                type: 'line',
-                yAxisIndex: 1,
-                data: [46, 51, 35, 23, 78, 29, 79, 37, 38]
-            }
-        ]
+        // default: () => [
+        //     {
+        //         // 需要指定类型
+        //         type: 'bar',
+        //         // 需要指定 y 轴索引
+        //         yAxisIndex: 0,
+        //         data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+        //     },
+        //     {
+        //         type: 'bar',
+        //         yAxisIndex: 0,
+        //         data: [102, 126, 120, 136, 160, 198, 128, 141, 123]
+        //     },
+        //     {
+        //         type: 'bar',
+        //         yAxisIndex: 0,
+        //         data: [182, 108, 114, 149, 188, 178, 122, 160, 106]
+        //     },
+        //     {
+        //         type: 'bar',
+        //         yAxisIndex: 0,
+        //         data: [187, 119, 141, 131, 139, 195, 113, 101, 167]
+        //     },
+        //     {
+        //         type: 'line',
+        //         yAxisIndex: 1,
+        //         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+        //     },
+        //     {
+        //         type: 'line',
+        //         yAxisIndex: 1,
+        //         data: [36, 17, 43, 86, 23, 77, 66, 60, 18]
+        //     },
+        //     {
+        //         type: 'line',
+        //         yAxisIndex: 1,
+        //         data: [19, 97, 96, 21, 57, 71, 5, 65, 63]
+        //     },
+        //     {
+        //         type: 'line',
+        //         yAxisIndex: 1,
+        //         data: [46, 51, 35, 23, 78, 29, 79, 37, 38]
+        //     }
+        // ]
+        default: () => []
     },
     // 每一项颜色
     color: {
         type: [Array],
-        default: () => ['blue', 'green', 'celeste', 'grey']
+        // default: () => ['blue', 'green', 'celeste', 'grey']
+        default: () => []
     },
     // y轴单位
     yAxisName: {
@@ -118,7 +121,8 @@ const props = defineProps({
     // legend 数据
     legendData: {
         type: [Array],
-        default: () => ['统计金额', '开票金额']
+        // default: () => ['统计金额', '开票金额']
+        default: () => []
     },
     // legendIcon: {
     //     type: [String, Array],

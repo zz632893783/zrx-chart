@@ -1,5 +1,5 @@
 <template>
-    <div class="chart" ref="chartRef"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -30,7 +30,8 @@ const props = defineProps({
     // 数据项
     seriesData: {
         type: [Array],
-        default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        // default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
+        default: () => []
     },
     // 颜色
     color: {
@@ -327,6 +328,4 @@ const renderChart = () => {
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
-<style lang="scss" scoped>
-.chart {}
-</style>
+<style lang="scss" scoped></style>

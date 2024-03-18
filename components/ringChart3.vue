@@ -1,5 +1,5 @@
 <template>
-    <div class="ring-chart">
+    <div class="zrx-chart">
         <div class="ring-label">
             <slot></slot>
         </div>
@@ -24,43 +24,34 @@ const props = defineProps({
     // 半径
     radius: {
         type: [Array],
-        default: function () {
-            return [58, 76]
-        }
+        default: () => [58, 76]
     },
     // 底色圆环半径
     backgroundRadius: {
         type: [Array],
-        default: function () {
-            return [53, 76]
-        }
+        default: () => [53, 76]
     },
     // 底色
     backgroundColor: {
         type: [String],
-        default: function () {
-            return 'rgb(232, 234, 240)'
-        }
+        default: () => 'rgb(232, 234, 240)'
     },
     // 预设颜色
     color: {
         type: [Array],
-        default: function () {
-            // return ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
-            return ['#1BBE8C', '#F0465A', '#FFA433', '#B8BED5']
-        }
+        // default: () => ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
+        default: () => ['#1BBE8C', '#F0465A', '#FFA433', '#B8BED5']
     },
     // 图表数据
     seriesData: {
         type: [Array],
-        default: function () {
-            return [
-                { value: 1048, name: '正常' },
-                { value: 735, name: '故障' },
-                { value: 580, name: '告警' },
-                { value: 484, name: '离线' }
-            ]
-        }
+        // default: () => [
+        //     { value: 1048, name: '正常' },
+        //     { value: 735, name: '故障' },
+        //     { value: 580, name: '告警' },
+        //     { value: 484, name: '离线' }
+        // ]
+        default: () => []
     },
     // showLegend: {
     //     type: [Boolean],
@@ -92,16 +83,12 @@ const props = defineProps({
     // 单位
     unit: {
         type: [String],
-        default: function () {
-            return ''
-        }
+        default: () => ''
     },
     // 悬浮选中单项时，增加的半径
     scaleSize: {
         type: [Number],
-        default: function () {
-            return 5
-        }
+        default: () => 5
     },
     // 万能方法，图表渲染之前执行
     beforeSetOption: {
@@ -116,9 +103,7 @@ const props = defineProps({
     // 饼图的扇区是否是顺时针排布
     clockwise: {
         type: [Boolean],
-        default: function () {
-            return true
-        }
+        default: () => true
     }
 })
 // 渲染函数
@@ -164,7 +149,7 @@ const renderChart = () => {
                         </span>
                         <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                             ${params.value}
-                            <i style="font-weight: 400; font-size: 12px;">${props.unit || ''}</i>
+                            <i style="font-weight: 400; font-size: 12px; font-style: normal;">${props.unit || ''}</i>
                         </span>
                     </div>
                 `
@@ -243,7 +228,7 @@ const renderChart = () => {
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
-.ring-chart {
+.zrx-chart {
     position: relative;
     .ring-label {
         position: absolute;

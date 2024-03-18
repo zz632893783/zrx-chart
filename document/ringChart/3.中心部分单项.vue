@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 });
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     width: 200px;
     height: 200px;
     background-color: rgb(3, 43, 68);

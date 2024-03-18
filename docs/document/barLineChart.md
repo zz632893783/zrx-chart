@@ -1,5 +1,5 @@
 ## 1.柱-折线混合
-<demo5956773deac1 />
+<demo403c296107e1 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -50,14 +50,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 2.只有折线
-<demo31a147ea6587 />
+<demo05b1fd73645f />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -120,14 +120,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 3.只有柱
-<demo0582452ef318 />
+<demo4e32ec66cf66 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -170,14 +170,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 4.与图表联动
-<demo7e0209e969a2 />
+<demo096d924f76ec />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -223,14 +223,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 5.指定区域高亮
-<demo09890f5412bb />
+<demod1a3dd1b2097 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -275,14 +275,14 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 6.拖拽区域为滚动条
-<demod12709b90359 />
+<demo1b4dd8631a8e />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -332,17 +332,17 @@ const chartOption = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-.chart {
+.zrx-chart {
     height: 400px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 <script setup>
-import demo5956773deac1 from '../../document/barLineChart/1.柱-折线混合.vue'
-import demo31a147ea6587 from '../../document/barLineChart/2.只有折线.vue'
-import demo0582452ef318 from '../../document/barLineChart/3.只有柱.vue'
-import demo7e0209e969a2 from '../../document/barLineChart/4.与图表联动.vue'
-import demo09890f5412bb from '../../document/barLineChart/5.指定区域高亮.vue'
-import demod12709b90359 from '../../document/barLineChart/6.拖拽区域为滚动条.vue'
+import demo403c296107e1 from '../../document/barLineChart/1.柱-折线混合.vue'
+import demo05b1fd73645f from '../../document/barLineChart/2.只有折线.vue'
+import demo4e32ec66cf66 from '../../document/barLineChart/3.只有柱.vue'
+import demo096d924f76ec from '../../document/barLineChart/4.与图表联动.vue'
+import demod1a3dd1b2097 from '../../document/barLineChart/5.指定区域高亮.vue'
+import demo1b4dd8631a8e from '../../document/barLineChart/6.拖拽区域为滚动条.vue'
 </script>
