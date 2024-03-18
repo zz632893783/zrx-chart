@@ -1,6 +1,7 @@
 import DefaultTheme from 'vitepress/theme';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+import '../../../style/index.scss';
 export default {
     ...DefaultTheme,
     NotFound: () => '404',

@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo747a0f15a460 />
+<demo1e24126d9f1f />
 ```vue{4}
 <template>
     <bar-chart-4 ref="chartRef" v-bind="chartOption"></bar-chart-4>
@@ -35,7 +35,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.调整宽度与显示行数
-<demoac5b89d5dbbe />
+<demo8a5b60acad9c />
 ```vue{4}
 <template>
     <bar-chart-4 ref="chartRef" v-bind="chartOption"></bar-chart-4>
@@ -78,7 +78,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.设置高亮区域与颜色
-<demo29a69697653e />
+<demo70171395c6aa />
 ```vue{4}
 <template>
     <bar-chart-4 ref="chartRef" v-bind="chartOption"></bar-chart-4>
@@ -120,7 +120,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demo747a0f15a460 from '../../document/barChart4/1.基础用法.vue'
-import demoac5b89d5dbbe from '../../document/barChart4/2.调整宽度与显示行数.vue'
-import demo29a69697653e from '../../document/barChart4/3.设置高亮区域与颜色.vue'
+import demo1e24126d9f1f from '../../document/barChart4/1.基础用法.vue'
+import demo8a5b60acad9c from '../../document/barChart4/2.调整宽度与显示行数.vue'
+import demo70171395c6aa from '../../document/barChart4/3.设置高亮区域与颜色.vue'
 </script>

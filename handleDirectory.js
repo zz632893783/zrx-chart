@@ -85,21 +85,26 @@ directory.forEach(item => {
     const contents = item.children.map(n => {
         // 随机计算一个组件名，确保不重复
         const demoName = `demo${ new Array(12).fill().map(() => Math.floor(Math.random() * 16).toString(16)).join('') }`;
+        const content = [
+            // 锚点标题
+            `## ${ n.name.replace(/\.[a-zA-Z\d]+$/, '') }`,
+            // 引入组件
+            `<${ demoName } />`
+        ];
+        // 以"1.xxxx"这样命名的组件，认为是组件使用例子，需显示代码
+        // 否则只渲染组件，不显示组件代码
+        /^\d+\./.test(n.name) && content.push(
+            // 代码起始标志
+            '```vue{4}',
+            // 例子代码
+            fs.readFileSync(`./document/${ item.name }/${ n.name }`).toString(),
+            // 代码结束标志
+            '```'
+        );
         return {
             demoName,
             path: `../../document/${ item.name }/${ n.name }`,
-            content: [
-                // 锚点标题
-                `## ${ n.name.replace(/\.[a-zA-Z\d]+$/, '') }`,
-                // 引入组件
-                `<${ demoName } />`,
-                // 代码起始标志
-                '```vue{4}',
-                // 例子代码
-                fs.readFileSync(`./document/${ item.name }/${ n.name }`).toString(),
-                // 代码结束标志
-                '```'
-            ].join('\n')
+            content: content.join('\n')
         };
     });
     const readmeContent = [

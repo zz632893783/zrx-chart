@@ -13,15 +13,17 @@ const props = defineProps({
     // x 轴坐标
     xAxisData: {
         type: [Array],
-        default: () => ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
+        // default: () => ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
+        default: () => []
     },
     // 数据数组
     seriesData: {
         type: [Array],
-        default: () => [
-            [54, 89, 86, 65, 54, 53, 72, 65, 60],
-            [95, 97, 75, 72, 90, 88, 54, 77, 98]
-        ]
+        // default: () => [
+        //     [54, 89, 86, 65, 54, 53, 72, 65, 60],
+        //     [95, 97, 75, 72, 90, 88, 54, 77, 98]
+        // ]
+        default: () => []
     },
     // 上下左右边距
     grid: {
@@ -58,7 +60,8 @@ const props = defineProps({
     // legend 数据
     legendData: {
         type: [Array],
-        default: () => ['统计金额', '开票金额']
+        // default: () => ['统计金额', '开票金额']
+        default: () => []
     },
     // y轴单位
     yAxisName: {
@@ -90,16 +93,6 @@ const props = defineProps({
     tooltipFormatter: {
         type: [Function, String],
         default: () => ''
-    },
-    // 万能方法，图表渲染之前执行
-    beforeSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 万能方法，图表渲染之后执行
-    afterSetOption: {
-        type: [Function],
-        default: () => null
     },
     // legend 颜色
     // legendColors: {
@@ -140,7 +133,7 @@ const props = defineProps({
         type: [Number],
         // default: () => window.innerHeight / 1080;
         default: () => 1
-    }
+    },
     // visualMap: {
     //     type: [Array],
     //     // default: () => null
@@ -151,7 +144,17 @@ const props = defineProps({
     //             end: 2
     //         }
     //     ]
-    // }
+    // },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
+    }
 });
 // legend 图标映射
 const legendIconMap = {

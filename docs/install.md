@@ -1,5 +1,7 @@
 # 图表组件库
 
+## [文档地址 Click me](https://zrx-chart.pages.dev/)
+
 ## 使用方法
 
 ### 安装
