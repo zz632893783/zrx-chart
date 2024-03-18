@@ -18,7 +18,6 @@ folders.forEach(folder => {
         children: examples.map(n => ({ name: n }))
     });
 });
-
 const docsConfigStr = `
 import { SearchPlugin  } from 'vitepress-plugin-search'
 import { defineConfig } from 'vitepress'
@@ -77,6 +76,8 @@ export default defineConfig({
 
 `;
 fs.writeFileSync(`./docs/.vitepress/config.js`, docsConfigStr);
+// 清空文档目录
+fs.existsSync('./docs/document') && fs.rmSync('./docs/document/', { recursive: true, force: true });
 // 如果目录不存在，则创建目录
 !fs.existsSync('./docs/document') && fs.mkdirSync('./docs/document');
 // !fs.existsSync(outputPath) && fs.mkdirSync(outputPath);

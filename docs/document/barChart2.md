@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo866280d670b7 />
+<demoaa5be3a8c852 />
 ```vue{4}
 <template>
     <bar-chart-2 class="bar-chart" ref="chartRef"></bar-chart-2>
@@ -20,5 +20,5 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 <script setup>
-import demo866280d670b7 from '../../document/barChart2/1.基础用法.vue'
+import demoaa5be3a8c852 from '../../document/barChart2/1.基础用法.vue'
 </script>
