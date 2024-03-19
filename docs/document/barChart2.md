@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoe8ceaf263bfd />
+<demo452fd9d53a54 />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -38,11 +38,11 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demod1066850d11b />
+<demo636c46f90cf1 />
 ## 支持方法
-<demo44f27a720374 />
+<demo8e15f696b605 />
 <script setup>
-import demoe8ceaf263bfd from '../../document/barChart2/1.基础用法.vue'
-import demod1066850d11b from '../../document/barChart2/属性.vue'
-import demo44f27a720374 from '../../document/barChart2/支持方法.vue'
+import demo452fd9d53a54 from '../../document/barChart2/1.基础用法.vue'
+import demo636c46f90cf1 from '../../document/barChart2/属性.vue'
+import demo8e15f696b605 from '../../document/barChart2/支持方法.vue'
 </script>
