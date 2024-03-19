@@ -5,9 +5,10 @@
   "main": "index.js",
   "keyword": "zrx-chart",
   "scripts": {
-    "docs:build": "node handleDirectory.js && node copyReadme.js && vitepress build docs",
+    "build": "node handleExport.js",
+    "docs:build": "node handleDirectory.js && node copyReadme.js && node handleExport.js && vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "doc": "node handleDirectory.js && vitepress dev docs"
+    "doc": "node handleDirectory.js && node handleExport.js && vitepress dev docs"
   },
   "dependencies": {
     "vue": "^3.3.4"

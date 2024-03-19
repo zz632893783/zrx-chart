@@ -9,12 +9,7 @@ export default {
         const { app } = ctx;
         DefaultTheme.enhanceApp(ctx);
         app.use(ElementPlus);
-        app.mixin({
-            mounted: () => {
-                import('../../../index.js').then(zrxChart => {
-                    app.use(zrxChart.default);
-                });
-            }
-        });
+        const zrxChart = await import('../../../index.js');
+        app.use(zrxChart.default);
     }
 };

@@ -42,12 +42,14 @@ const props = defineProps({
     // 圆环数据
     ringSeriesData: {
         type: [Array],
-        default: () => [73, 54, 98]
+        // default: () => [73, 54, 98]
+        default: () => []
     },
     // 柱子数据
     barSeriesData: {
         type: [Array],
-        default: () => [73, 54, 23, 66]
+        // default: () => [73, 54, 23, 66]
+        default: () => []
     },
     // 万能方法，图表渲染之前执行
     beforeSetOption: {
@@ -80,7 +82,7 @@ const props = defineProps({
         // default: () => window.innerHeight / 1080;
         default: () => 1
     },
-    // 图表缩放比例
+    // 起始角度
     startAngle: {
         type: [Number],
         default: () => 52
