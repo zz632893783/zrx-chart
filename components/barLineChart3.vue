@@ -78,16 +78,16 @@ const props = defineProps({
         // default: () => 'inside'
         default: () => 'slider'
     },
-    // 从末尾开始显示图表
-    dataZoomStartAtEnd: {
-        type: [Boolean],
-        default: () => true
-    },
     // 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
     dataZoomBottom: {
         type: [Number],
         default: () => 0
         // default: () => 16
+    },
+    // 从末尾开始显示图表
+    dataZoomStartAtEnd: {
+        type: [Boolean],
+        default: () => true
     },
     // 是否显示 legend
     showLegend: {

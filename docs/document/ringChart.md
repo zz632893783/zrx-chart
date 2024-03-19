@@ -1,5 +1,5 @@
 ## 1.只有圆环
-<demo574e438494d5 />
+<demobbf2b83cf64a />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -33,7 +33,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心部分总量
-<demo35a474e007d3 />
+<demo5182fa5d1386 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -71,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.中心部分单项
-<demo0405271b6ffc />
+<demo352b5d03df86 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
 </style>
 ```
 ## 4.与图表联动
-<demo4fc86b043265 />
+<democ4e9b76012d4 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -219,7 +219,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.中心只显示值
-<demo50afff53ba88 />
+<demo6942832f7387 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -259,9 +259,9 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 <script setup>
-import demo574e438494d5 from '../../document/ringChart/1.只有圆环.vue'
-import demo35a474e007d3 from '../../document/ringChart/2.中心部分总量.vue'
-import demo0405271b6ffc from '../../document/ringChart/3.中心部分单项.vue'
-import demo4fc86b043265 from '../../document/ringChart/4.与图表联动.vue'
-import demo50afff53ba88 from '../../document/ringChart/5.中心只显示值.vue'
+import demobbf2b83cf64a from '../../document/ringChart/1.只有圆环.vue'
+import demo5182fa5d1386 from '../../document/ringChart/2.中心部分总量.vue'
+import demo352b5d03df86 from '../../document/ringChart/3.中心部分单项.vue'
+import democ4e9b76012d4 from '../../document/ringChart/4.与图表联动.vue'
+import demo6942832f7387 from '../../document/ringChart/5.中心只显示值.vue'
 </script>
