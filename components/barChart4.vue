@@ -11,7 +11,7 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // x 轴坐标
+    // y 轴坐标
     yAxisData: {
         type: [Array],
         // default: () => [

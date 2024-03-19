@@ -78,8 +78,8 @@ const props = defineProps({
     // 每一项颜色
     color: {
         type: [Array],
-        // default: () => ['blue', 'green', 'celeste', 'grey']
-        default: () => []
+        default: () => ['blue', 'green', 'celeste', 'grey']
+        // default: () => []
     },
     // y轴单位
     yAxisName: {

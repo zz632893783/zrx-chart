@@ -93,16 +93,6 @@ const props = defineProps({
         type: [Boolean],
         default: () => true
     },
-    // 万能方法，图表渲染之前执行
-    beforeSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 万能方法，图表渲染之后执行
-    afterSetOption: {
-        type: [Function],
-        default: () => null
-    },
     // legend 颜色
     // legendColors: {
     //     type: [Array],
@@ -184,6 +174,16 @@ const props = defineProps({
         type: [Number],
         // default: () => window.innerHeight / 1080;
         default: () => 1
+    },
+    // 万能方法，图表渲染之前执行
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    // 万能方法，图表渲染之后执行
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
 });
 // legend 图标映射
