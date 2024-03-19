@@ -55,6 +55,8 @@ const props = defineProps({
     // null，'' 或者不传，表示中心部分不显示
     // item 表示中心部分展示单项
     // sum 表示中心部分展示总量
+    // itemValue 表示中心部分展示值
+    // itemPercentage 表示中心部分展示单项占比
     centerDisplay: {
         type: [String],
         default: () => null

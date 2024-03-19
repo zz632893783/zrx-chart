@@ -55,18 +55,22 @@
                 <div class="table-cell">'元'</div>
             </div>
             <div class="table-row">
-                <div class="table-cell">centerDisplay</div>
-                <div class="table-cell">
-                    中心部分的展示部分<br />
-                    null: '' 或者不传: 中心部分不显示<br />
-                    'item': 中心部分展示单项<br />
-                    'sum': 中心部分展示总量<br />
-                    'itemValue': 中心部分展示值<br />
-                    'itemPercentage': 中心部分展示单项占比
-                </div>
-                <div class="table-cell">String</div>
+                <div class="table-cell">labelFormatter</div>
+                <div class="table-cell">自定义 label 函数</div>
+                <div class="table-cell">Function</div>
                 <div class="table-cell">null</div>
-                <div class="table-cell">'item'</div>
+                <div class="table-cell">
+                    function (...param) {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return '自定义 label 内容';<br/>
+                    }
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">edgeDistance</div>
+                <div class="table-cell">文字与边缘之间的距离</div>
+                <div class="table-cell">Number</div>
+                <div class="table-cell">10</div>
+                <div class="table-cell">20</div>
             </div>
             <div class="table-row">
                 <div class="table-cell">minAngle</div>
@@ -109,6 +113,6 @@
 </template>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 2fr) minmax(0, 2fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
 }
 </style>
