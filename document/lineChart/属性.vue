@@ -14,74 +14,8 @@
                 <div class="table-cell">color</div>
                 <div class="table-cell">预设颜色</div>
                 <div class="table-cell">Array</div>
-                <div class="table-cell">
-                    [
-                        {
-                            color: '#405FFE',
-                            lineColor: '#405FFE',
-                            areaColor: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
-                                colorStops: [
-                                    { offset: 0, color: 'rgba(64, 95, 254, 0.4)' },
-                                    { offset: 1, color: 'rgba(64, 95, 254, 0)' }
-                                ]
-                            }
-                        },
-                        {
-                            color: '#1BBE8C',
-                            lineColor: '#1BBE8C',
-                            areaColor: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
-                                colorStops: [
-                                    { offset: 0, color: 'rgba(27, 190, 140, 0.4)' },
-                                    { offset: 1, color: 'rgba(27, 190, 140, 0)' }
-                                ]
-                            }
-                        }
-                    ]
-                </div>
-                <div class="table-cell">
-                    [
-                        {
-                            color: '#405FFE',
-                            lineColor: '#405FFE',
-                            areaColor: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
-                                colorStops: [
-                                    { offset: 0, color: 'rgba(64, 95, 254, 0.4)' },
-                                    { offset: 1, color: 'rgba(64, 95, 254, 0)' }
-                                ]
-                            }
-                        },
-                        {
-                            color: '#1BBE8C',
-                            lineColor: '#1BBE8C',
-                            areaColor: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
-                                colorStops: [
-                                    { offset: 0, color: 'rgba(27, 190, 140, 0.4)' },
-                                    { offset: 1, color: 'rgba(27, 190, 140, 0)' }
-                                ]
-                            }
-                        }
-                    ]
-                </div>
+                <div class="table-cell" v-html="colorContent"></div>
+                <div class="table-cell" v-html="colorContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">xAxisData</div>
@@ -95,12 +29,7 @@
                 <div class="table-cell">图表数据</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                    [
-                        [8, 30, 50, 82, 73, 84, 50],
-                        [32, 94, 61, 11, 52, 68, 58]
-                    ]
-                </div>
+                <div class="table-cell" v-html="seriesDataContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">legendData</div>
@@ -204,6 +133,60 @@
         </div>
     </div>
 </template>
+<script setup>
+const colorContent = `
+[
+    {
+        color: '#405FFE',
+        lineColor: '#405FFE',
+        areaColor: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+                {
+                    offset: 0,
+                    color: 'rgba(64, 95, 254, 0.4)'
+                },
+                {
+                    offset: 1,
+                    color: 'rgba(64, 95, 254, 0)'
+                }
+            ]
+        }
+    },
+    {
+        color: '#1BBE8C',
+        lineColor: '#1BBE8C',
+        areaColor: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+                {
+                    offset: 0,
+                    color: 'rgba(27, 190, 140, 0.4)'
+                },
+                {
+                    offset: 1,
+                    color: 'rgba(27, 190, 140, 0)'
+                }
+            ]
+        }
+    }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+const seriesDataContent = `
+[
+    [8, 30, 50, 82, 73, 84, 50],
+    [32, 94, 61, 11, 52, 68, 58]
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+</script>
 <style lang="scss" scoped>
 .table-row {
     grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);

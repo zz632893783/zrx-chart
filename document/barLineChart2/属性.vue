@@ -29,22 +29,7 @@
                 <div class="table-cell">数据数组</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                	[
-			            {
-			                // 需要指定类型
-			                type: 'bar',
-			                // 需要指定 y 轴索引
-			                yAxisIndex: 0,
-			                data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
-			            },
-			            {
-			                type: 'line',
-			                yAxisIndex: 1,
-			                data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-			            }
-			        ]
-			    </div>
+                <div class="table-cell" v-html="seriesDataContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">yAxisName</div>
@@ -93,20 +78,7 @@
                 <div class="table-cell">标记线</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                	[
-			            {
-			                value: 134,
-			                yAxisIndex: 0,
-			                color: '#33FFBB'
-			            },
-			            {
-			                value: 166,
-			                yAxisIndex: 0,
-			                color: '#F74768'
-			            }
-			        ]
-                </div>
+                <div class="table-cell" v-html="markLineContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">color</div>
@@ -175,8 +147,41 @@
         </div>
     </div>
 </template>
+<script setup>
+const seriesDataContent = `
+[
+    {
+        // 需要指定类型
+        type: 'bar',
+        // 需要指定 y 轴索引
+        yAxisIndex: 0,
+        data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+    },
+    {
+        type: 'line',
+        yAxisIndex: 1,
+        data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+    }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+const markLineContent = `
+[
+    {
+        value: 134,
+        yAxisIndex: 0,
+        color: '#33FFBB'
+    },
+    {
+        value: 166,
+        yAxisIndex: 0,
+        color: '#F74768'
+    }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+</script>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+    // grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: 150px minmax(0, 1.8fr) 110px minmax(0, 2.6fr) minmax(0, 3.2fr);
 }
 </style>

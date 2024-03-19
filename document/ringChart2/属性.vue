@@ -36,9 +36,7 @@
                 <div class="table-cell">数据项</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                    [{"value":61,"name":"第1项"},{"value":52,"name":"第2项"},{"value":97,"name":"第3项"},{"value":99,"name":"第4项"},{"value":80,"name":"第5项"},{"value":77,"name":"第6项"},{"value":80,"name":"第7项"},{"value":67,"name":"第8项"},{"value":83,"name":"第9项"}]
-                </div>
+                <div class="table-cell" v-html="seriesDataContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">color</div>
@@ -111,6 +109,21 @@
         </div>
     </div>
 </template>
+<script setup>
+const seriesDataContent = `
+[
+    { value: 61, name: '第1项' },
+    { value: 52, name: '第2项' },
+    { value: 97, name: '第3项' },
+    { value: 99, name: '第4项' },
+    { value: 80, name: '第5项' },
+    { value: 77, name: '第6项' },
+    { value: 80, name: '第7项' },
+    { value: 67, name: '第8项' },
+    { value: 83, name: '第9项' }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');;
+</script>
 <style lang="scss" scoped>
 .table-row {
     grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);

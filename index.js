@@ -1,4 +1,4 @@
-// 运行 handleExport.js 会重新生成 index.js）
+// 运行 handleExport.js 会重新生成 index.js
 import barChart from './components/barChart.vue';
 import barChart2 from './components/barChart2.vue';
 import barChart3 from './components/barChart3.vue';
@@ -21,7 +21,7 @@ export { barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2,
 const install = function (Vue, opts = {}) {
     // 判断是否可以安装
     if (install.installed) {
-        return
+        return;
     }
     // 注册组件（此段代码由 handleExport.js 自动生成，运行 handleExport.js 会重新生成 index.js）
     Vue.component('barChart', barChart);
@@ -64,6 +64,6 @@ const install = function (Vue, opts = {}) {
     Vue.component('ringChart6', ringChart6);
     Vue.component('ring-chart6', ringChart6);
     Vue.component('ring-chart-6', ringChart6);
-}
+};
 
 export default { install, barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2, barLineChart3, dashboardChart, lineChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };

@@ -15,14 +15,14 @@
 				<div class="table-cell">y 轴坐标</div>
 				<div class="table-cell">Array</div>
 				<div class="table-cell">[]</div>
-				<div class="table-cell"> [ ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'], ['农', '工', '建', '批', '交', '住', '金', '房', '其'] ]</div>
+				<div class="table-cell" v-html="yAxisDataContent"></div>
 			</div>
 			<div class="table-row">
 				<div class="table-cell">seriesData</div>
 				<div class="table-cell">数据数组</div>
 				<div class="table-cell">Array</div>
 				<div class="table-cell">[]</div>
-				<div class="table-cell">[ [54, 89, 86, 65, 54, 53, 72, 65, 60], [95, 97, 75, 72, 90, 88, 54, 77, 98] ]</div>
+				<div class="table-cell" v-html="seriesDataContent"></div>
 			</div>
 			<div class="table-row">
 				<div class="table-cell">grid</div>
@@ -186,8 +186,23 @@
 		</div>
 	</div>
 </template>
+<script setup>
+const yAxisDataContent = `
+[
+    ['农业', '工业', '建筑', '批发', '交通', '住宿'],
+    ['农', '工', '建', '批', '交', '住']
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+const seriesDataContent = `
+[
+    [54, 89, 86, 65, 54, 53],
+    [95, 97, 75, 72, 90, 88]
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+</script>
 <style lang="scss" scoped>
 .table-row {
-	grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+	// grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+	grid-template-columns: 150px minmax(0, 1.8fr) 110px minmax(0, 2.6fr) minmax(0, 3.2fr);
 }
 </style>

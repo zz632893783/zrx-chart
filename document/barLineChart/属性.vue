@@ -29,52 +29,7 @@
                 <div class="table-cell">数据数组</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                    [
-                        {
-                            // 需要指定类型
-                            type: 'bar',
-                            // 需要指定 y 轴索引
-                            yAxisIndex: 0,
-                            data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
-                        },
-                        {
-                            type: 'bar',
-                            yAxisIndex: 0,
-                            data: [102, 126, 120, 136, 160, 198, 128, 141, 123]
-                        },
-                        {
-                            type: 'bar',
-                            yAxisIndex: 0,
-                            data: [182, 108, 114, 149, 188, 178, 122, 160, 106]
-                        },
-                        {
-                            type: 'bar',
-                            yAxisIndex: 0,
-                            data: [187, 119, 141, 131, 139, 195, 113, 101, 167]
-                        },
-                        {
-                            type: 'line',
-                            yAxisIndex: 1,
-                            data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-                        },
-                        {
-                            type: 'line',
-                            yAxisIndex: 1,
-                            data: [36, 17, 43, 86, 23, 77, 66, 60, 18]
-                        },
-                        {
-                            type: 'line',
-                            yAxisIndex: 1,
-                            data: [19, 97, 96, 21, 57, 71, 5, 65, 63]
-                        },
-                        {
-                            type: 'line',
-                            yAxisIndex: 1,
-                            data: [46, 51, 35, 23, 78, 29, 79, 37, 38]
-                        }
-                    ]
-                </div>
+                <div class="table-cell" v-html="seriesDataContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">color</div>
@@ -178,9 +133,58 @@
         </div>
     </div>
 </template>
+<script setup>
+const seriesDataContent = `
+[
+    {
+        // 需要指定类型
+        type: 'bar',
+        // 需要指定 y 轴索引
+        yAxisIndex: 0,
+        data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+    },
+    {
+        type: 'bar',
+        yAxisIndex: 0,
+        data: [102, 126, 120, 136, 160, 198, 128, 141, 123]
+    },
+    {
+        type: 'bar',
+        yAxisIndex: 0,
+        data: [182, 108, 114, 149, 188, 178, 122, 160, 106]
+    },
+    {
+        type: 'bar',
+        yAxisIndex: 0,
+        data: [187, 119, 141, 131, 139, 195, 113, 101, 167]
+    },
+    {
+        type: 'line',
+        yAxisIndex: 1,
+        data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+    },
+    {
+        type: 'line',
+        yAxisIndex: 1,
+        data: [36, 17, 43, 86, 23, 77, 66, 60, 18]
+    },
+    {
+        type: 'line',
+        yAxisIndex: 1,
+        data: [19, 97, 96, 21, 57, 71, 5, 65, 63]
+    },
+    {
+        type: 'line',
+        yAxisIndex: 1,
+        data: [46, 51, 35, 23, 78, 29, 79, 37, 38]
+    }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');
+</script>
 <style lang="scss" scoped>
 .table-row {
     // grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+    // grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: 150px minmax(0, 1.8fr) 110px minmax(0, 2.6fr) minmax(0, 3.2fr);
 }
 </style>

@@ -10,6 +10,9 @@
 .table {
 	// font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 	font-size: 14px;
+	.table-header {
+		font-weight: bold;
+	}
 	.table-header, .table-body {
 		.table-row {
 			display: grid;
@@ -22,7 +25,7 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: 0;
+				top: 0;
 				height: 1px;
 				background-color: var(--vp-c-text-1);
 				opacity: 0.1;

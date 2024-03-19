@@ -1,7 +1,7 @@
 // 用于处理自动生成包的导出模块即入口文件 '/index.js';
 import fs from 'fs';
 // 导出 index.js 存放的字符串数组
-const exportContent = ['// 运行 handleExport.js 会重新生成 index.js）'];
+const exportContent = ['// 运行 handleExport.js 会重新生成 index.js'];
 // 读取 根路径/components 目录下的所有 .vue 组件
 const names = fs.readdirSync('./components')
     .filter(path => !fs.statSync(`./components/${ path }`).isDirectory())
@@ -15,7 +15,7 @@ exportContent.push(`
 const install = function (Vue, opts = {}) {
     // 判断是否可以安装
     if (install.installed) {
-        return
+        return;
     }
     // 注册组件（此段代码由 handleExport.js 自动生成，运行 handleExport.js 会重新生成 index.js）
     ${
@@ -32,7 +32,7 @@ const install = function (Vue, opts = {}) {
             return x;
         }, []).join('\n')
     }
-}`);
+};`);
 // 设置 export default 增加 install 方法
 exportContent.push(`\nexport default { install, ${ names.join(', ') } };`);
 // 将文本作为 js 写入 ./index.js 中

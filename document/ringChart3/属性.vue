@@ -43,14 +43,7 @@
                 <div class="table-cell">数据项</div>
                 <div class="table-cell">Array</div>
                 <div class="table-cell">[]</div>
-                <div class="table-cell">
-                    [
-			            { value: 1048, name: '正常' },
-			            { value: 735, name: '故障' },
-			            { value: 580, name: '告警' },
-			            { value: 484, name: '离线' }
-			        ]
-                </div>
+                <div class="table-cell" v-html="seriesDataContent"></div>
             </div>
             <div class="table-row">
                 <div class="table-cell">unit</div>
@@ -98,6 +91,16 @@
         </div>
     </div>
 </template>
+<script setup>
+const seriesDataContent = `
+[
+    { value: 1048, name: '正常' },
+    { value: 735, name: '故障' },
+    { value: 580, name: '告警' },
+    { value: 484, name: '离线' }
+]
+`.trim().replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;');;
+</script>
 <style lang="scss" scoped>
 .table-row {
     grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
