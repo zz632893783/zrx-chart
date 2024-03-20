@@ -1,7 +1,7 @@
 // 根据注释自动生成属性文档脚本
 import fs from 'fs';
 
-// 读取 根路径/components 目录下的所有 .vue 组件
+// 读取 “根路径/components” 目录下的所有 .vue 组件
 const names = fs.readdirSync('./components')
     .filter(path => !fs.statSync(`./components/${ path }`).isDirectory())
     .filter(path => path.match(/\.vue$/))
