@@ -17,13 +17,15 @@ fs.writeFileSync('./package.json', packageJsonContent);
 const publishPackageJson = JSON.parse(packageJsonContent);
 // 删除无用 script
 delete publishPackageJson.scripts;
+delete publishPackageJson.devDependencies;
 // 匹配 vue 版本
 const vueVersion = (publishPackageJson.dependencies.vue.match(/[^"]+/) || ['^3.3.4'])[0];
 // 匹配 echarts 版本
-const echartsVersion = (publishPackageJson.devDependencies.echarts.match(/[^"]+/) || ['^5.5.0'])[0];
-// 重新指定 dependencies devDependencies 中 vue 与 echarts 版本
-publishPackageJson.dependencies = { vue: vueVersion };
-publishPackageJson.devDependencies = { echarts: echartsVersion };
+const echartsVersion = (publishPackageJson.dependencies.echarts.match(/[^"]+/) || ['^5.5.0'])[0];
+// 匹配 sass 版本
+const sassVersion = (publishPackageJson.dependencies.sass.match(/[^"]+/) || ['^1.71.1'])[0];
+// 重新指定 dependencies 中 vue, echarts, sass 版本
+publishPackageJson.dependencies = { vue: vueVersion, echarts: echartsVersion, sass: sassVersion };
 // 生成打包所用的 package.json （只含有必要的 vue 与 echarts 这俩依赖）
 fs.writeFileSync(`${ publishPath }/package.json`, JSON.stringify(publishPackageJson, null, 2));
 // 将入口文件复制到发布目录
