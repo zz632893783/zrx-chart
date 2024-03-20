@@ -1,5 +1,5 @@
 <template>
-    <bar-chart-3 ref="chartRef" v-bind="option"></bar-chart-3>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
 
 <script setup>
@@ -16,13 +16,15 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
-const showItemBackground = false;
+const barWidth = 12;
+const showSeriesLabel = false;
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
     legendData,
-    showItemBackground
+    barWidth,
+    showSeriesLabel
 };
 
 onMounted(() => chartRef.value.renderChart());

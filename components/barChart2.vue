@@ -1,274 +1,499 @@
 <template>
-    <div class="zrx-chart" ref="chartDom"></div>
+    <div class="zrx-chart" ref="chartRef"></div>
 </template>
 <script setup>
+import { ref } from 'vue';
 import * as echarts from 'echarts';
-import { defineProps, ref, onMounted } from 'vue';
+import { setMaxVal } from '../utils/index.js';
+// 图表实例
+let chart;
+// 图表 dom 对象
+const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // 各项颜色
-    color: {
+    /**
+     * @description y 轴坐标
+     * @example [
+     *     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+     *     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+     * ]
+     */
+    yAxisData: {
         type: [Array],
-        // default: () => ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)', '#F0465A']
-        default: () => ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
-    },
-    // x 轴坐标数据
-    xAxisData: {
-        type: [Array],
-        // default: () => ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         default: () => []
     },
-    // 图表数据
+    /**
+     * @description 数据数组
+     * @example [
+     *     [54, 89, 86, 65, 54, 53, 72, 65, 60],
+     *     [95, 97, 75, 72, 90, 88, 54, 77, 98]
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     [8, 30, 50, 82, 73, 84, 50],
-        //     [32, 94, 61, 11, 52, 68, 58],
-        //     [33, 13, 27, 92, 44, 82, 19]
-        // ]
         default: () => []
     },
-    // legend 数据
-    legendData: {
-        type: [Array],
-        // default: () => ['总能耗', '能耗照明', '节约能耗', '同环比']
-        default: () => []
-    },
-    // y 轴单位
-    yAxisName: {
-        type: [String],
-        // default: () => '单位：次'
-        default: () => ''
-    },
-    // 数据的单位
-    unit: {
-        type: [String, Array],
-        // default: () => ['kw/h', 'kw', 'h']
-        default: () => ''
-    },
-    // 上下左右间距
+    /**
+     * @description 上下左右边距
+     * @example { top: 84, right: 58, bottom: 56, left: 106 }
+     */
     grid: {
         type: [Object],
-        default: () => ({ top: 89, right: 16, bottom: 40, left: 53 })
+        default: () => ({
+            top: 84,
+            right: 58,
+            bottom: 56,
+            left: 106
+        })
     },
-    // 是否显示 legend
+    /**
+     * @description legend 数据
+     * @example ['统计金额', '开票金额']
+     */
+    legendData: {
+        type: [Array],
+        default: () => []
+    },
+    /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 4
+     */
+    showCount: {
+        type: [Number],
+        default: () => 4
+    },
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'slider'
+     */
+    dataZoomType: {
+        type: [String],
+        default: () => 'inside'
+    },
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离右侧的距离
+     * @example 12
+     */
+    dataZoomRight: {
+        type: [Number],
+        default: () => 0
+    },
+    /**
+     * @description 是否显示 legend
+     * @example false
+     */
     showLegend: {
         type: [Boolean],
-        default: () => false
+        default: () => true
     },
-    // 被选中时，遮罩层的颜色
-    emphasisCoverColor: {
+    /**
+     * @description legend 图表，支持字符串或数组
+     * @example ['rect']
+     */
+    legendIcon: {
+        type: [String, Array],
+        default: () => ['rect']
+    },
+    /**
+     * @description 图表项颜色
+     * @example ['blue', 'grey']
+     */
+    color: {
+        type: [String, Array],
+        default: () => ['blue', 'grey']
+    },
+    /**
+     * @description tooltip 标题
+     * @example ['标题']
+     */
+    tooltipTitle: {
+        type: [Array],
+        default: () => null
+    },
+    /**
+     * @description 高亮区域的索引
+     * @example [2, 4]
+     */
+    yAxisHighlightArea: {
+        type: [Array],
+        default: () => []
+    },
+    /**
+     * @description 高亮区域颜色
+     * @example 'rgba(255, 143, 255, 0.2)'
+     */
+    highlightAreaColor: {
         type: [String],
-        default: () => 'rgba(255, 255, 255, 0.4)'
+        default: () => 'rgba(14, 143, 255, 0.2)'
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 数据的单位
+     * @example '元'
+     */
+    unit: {
+        type: [String],
+        default: () => ''
+    },
+    /**
+     * @description 柱子的宽度
+     * @example 12
+     */
+    barWidth: {
+        type: [Number],
+        default: () => 24
+    },
+    /**
+     * @description 是否显示辅助刻度线
+     * @example false
+     */
+    showSplitLine: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
+     * @description 是否显示每一项的背景色
+     * @example false
+     */
+    showItemBackground: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
+     * @description 每一项的背景色
+     * @example 'rgba(255, 0, 0, 0.12)'
+     */
+    itemBackgroundColor: {
+        type: [String],
+        default: () => 'rgba(255, 255, 255, 0.12)'
+    },
+    /**
+     * @description 是否显示柱子对应的数值
+     * @example false
+     */
+    showSeriesLabel: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
     }
 });
-// 图表实例
-let chart;
-// 图表 dom 对象
-const chartDom = ref();
+// legend 图标映射
+const legendIconMap = {
+    linerect: 'path://M0,7L8,7L8,0L24,0L24,7L32,7L32,9L22,9L22,2L10,2L10,9L0,9ZM8,9L8,16L24,16L24,9L22,9L22,14L10,14L10,9Z',
+    rect: 'path://M4,4L12,4L12,12L4,12ZM0,0L16,16M16,0L0,16'
+};
+// 默认颜色映射
+const colorMap = {
+    blue: {
+        barArea: {
+            type: 'linear',
+            x: 0, y: 0, x2: 1, y2: 0,
+            colorStops: [
+                { offset: 0, color: '#3EB1FF' },
+                { offset: 1, color: '#1260C4' }
+            ]
+        },
+        legend: '#2e9dff',
+        tooltip: '#2e9dff'
+    },
+    grey: {
+        barArea: {
+            type: 'linear',
+            x: 0, y: 0, x2: 1, y2: 0,
+            colorStops: [
+                { offset: 0, color: '#D0F1FF' },
+                { offset: 1, color: '#89B9EF' }
+            ]
+        },
+        legend: '#d0f1ff',
+        tooltip: '#d0f1ff'
+    }
+};
 // 渲染函数
 const renderChart = () => {
     if (chart) {
-        typeof chart.dispose === 'function' && chart.dispose();
+        chart.dispose();
         chart = null;
     }
-    chart = echarts.init(chartDom.value);
-    // UI 要求的高亮时覆盖上一层 0.4 透明度白色
-    // 但是由于 props.color 可能为 red, #f00, #ff0000, rgb(255, 0, 0), rgba(255, 0, 0, 1) 中的任意一种格式
-    // 所以引入一个 canvas 用于计算高亮颜色 emphasisColor
-    // 计算方式为绘制本身颜色，之后再绘制 emphasisCoverColor，然后取绘制部分的 getImageData 的 r, g, b, a 值拼接成高亮颜色
-    const emphasisColor = [];
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = 1;
-    const ctx = canvas.getContext('2d');
-    props.color.forEach(color => {
-        ctx.clearRect(0, 0, 1, 1);
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, 1, 1);
-        ctx.fillStyle = props.emphasisCoverColor;
-        ctx.fillRect(0, 0, 1, 1);
-        const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
-        emphasisColor.push(`rgba(${r}, ${g}, ${b}, ${a / 255})`);
-    });
+    chart = echarts.init(chartRef.value);
     const option = {
-        legend: {
-            show: props.showLegend,
-            top: 12,
-            right: 24,
-            itemHeight: 8,
-            itemWidth: 8,
-            itemGap: 16,
-            data: props.legendData.map((name, index) => {
-                const color = props.color[index % props.color.length];
-                return {
-                    icon: 'path://M 10, 10 m -10, 0 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0 Z',
-                    name,
-                    itemStyle: {
-                        color,
-                        borderWidth: 0
-                    }
-                };
-            }),
-            textStyle: {
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                fontSize: 14,
-                fontFamily: 'MicrosoftYaHei'
+        grid: (() => {
+            // 默认间距
+            const grid = { top: 84, right: 58, bottom: 56, left: 106 };
+            // 根据输入值更新间距
+            for (const k in grid) {
+                props.grid[k] !== undefined && (grid[k] = props.grid[k]);
+                grid[k] = grid[k] * props.scale;
             }
-        },
-        grid: {
-            top: props.grid.top || 89,
-            right: props.grid.right || 16,
-            bottom: props.grid.bottom || 40,
-            left: props.grid.left || 53
-        },
+            return grid;
+        })(),
         tooltip: {
             trigger: 'axis',
+            confine: true,
+            backgroundColor: 'transparent',
+            padding: 0,
+            borderRadius: 0,
+            borderWidth: 0,
+            borderColor: 'transparent',
             axisPointer: {
-                lineStyle: {
-                    type: 'solid',
-                    color: 'transparent'
-                }
+                type: 'line',
+                lineStyle: { color: '#677b87', width: 2 * props.scale }
             },
-            formatter: (params) => {
-                const templateStr = params.map(item => {
-                    const seriesIndex = item.seriesIndex;
-                    const color = props.color[seriesIndex % props.color.length];
-                    const unit = props.unit instanceof Array ? props.unit[seriesIndex % props.unit.length] : props.unit;
-                    return `
-                        <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px auto min-content; grid-column-gap: 8px; align-items: center;">
-                            <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
-                            <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
-                            <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
-                                ${item.value}
-                                <i style="font-weight: 400; font-size: 12px; font-style: normal;">${unit || ''}</i>
-                            </span>
-                        </div>
-                    `;
-                }).join('');
+            formatter: params => {
+                let tooltipTitle;
+                if (props.tooltipTitle instanceof Array) {
+                    tooltipTitle = props.tooltipTitle[params[0]?.dataIndex];
+                }
+                !tooltipTitle && (tooltipTitle = params[0]?.axisValue);
                 return `
-                    <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155; line-height: 24px;">${params[0].axisValue}</h4>
-                    ${templateStr}
-                `;
+                    <div style="background-color: #125176; padding: ${ 16 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(102, 255, 255, 0.2);">
+                        <h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
+                        <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 4 * props.scale }px ${ 12 * props.scale }px; align-items: center; margin-top: ${ 8 * props.scale }px;">
+                            ${
+                                params.map(n => {
+                                    const seriesIndex = n.seriesIndex / 2;
+                                    const colorName = props.color[seriesIndex % props.color.length];
+                                    const color = colorMap[colorName]?.tooltip;
+                                    if (n.data instanceof Object && n.data?.isGap) {
+                                        return '';
+                                    }
+                                    return `
+                                        <i style="background-color: ${ color }; height: ${ 18 * props.scale }px;"></i>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3;">${ n.seriesName }</label>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5;">${ [null, undefined, '', NaN].includes(n.value) ? '- -' : n.value }${ props.unit || '' }</label>
+                                    `
+                                }).join('')
+                            }
+                        </div>
+                    </div>
+                `
             }
         },
         xAxis: {
-            type: 'category',
-            data: props.xAxisData,
-            axisTick: {
-                show: false,
-                inside: true,
-                length: 3,
-                alignWithLabel: true,
-                lineStyle: {
-                    color: '#DCDFE8'
-                }
-            },
-            axisLine: {
-                lineStyle: {
-                    color: '#DCDFE8'
-                }
-            },
-            axisLabel: {
-                fontFamily: 'MicrosoftYaHei',
-                fontSize: 12,
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                lineHeight: 20,
-                margin: 4
-            }
-        },
-        yAxis: {
             type: 'value',
-            name: props.yAxisName,
+            min: v => v.min <= 0 ? -setMaxVal(Math.max(Math.abs(v.max), Math.abs(v.min)) * ( props.showSeriesLabel ? 1.31 : 1))  : 0,
+            max: v => v.max >= 0 ? setMaxVal(Math.max(Math.abs(v.max), Math.abs(v.min)) * ( props.showSeriesLabel ? 1.31 : 1))  : 0,
+            position: 'top',
             nameTextStyle: {
-                align: 'left',
-                padding: [0, 0, 0, -36],
-                fontFamily: 'MicrosoftYaHei',
-                fontSize: 14,
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                lineHeight: 32
+                fontSize: 14 * props.scale,
+                color: '#ccd4da',
+                padding: [0, 40, -2, 0].map(n => n * props.scale)
             },
-            splitNumber: 4,
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                fontFamily: 'MicrosoftYaHei',
-                fontSize: 12,
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                margin: 8
-            },
+            splitNumber: 6,
             splitLine: {
+                show: props.showSplitLine,
                 lineStyle: {
-                    color: '#DCDFE8',
+                    color: '#4f6878',
                     type: 'dashed'
                 }
+            },
+            axisLabel: {
+                fontSize: 20 * props.scale,
+                color: 'rgba(255, 255, 255, 0.8)'
             }
         },
-        series: props.seriesData.map((seriesItem, seriesIndex) => {
-            const color = props.color[seriesIndex % props.color.length];
+        yAxis: props.yAxisData.map((yAxis, index) => {
             return {
-                name: props.legendData[seriesIndex % props.legendData.length],
-                type: 'bar',
-                barWidth: 12,
-                data: seriesItem.map(value => {
-                    return {
-                        value,
-                        label: {
-                            show: false,
-                            formatter: `{a|${value}}\n{b|}`,
-                            distance: 4,
-                            rich: {
-                                a: {
-                                    backgroundColor: 'white',
-                                    padding: [1, 9],
-                                    fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 12,
-                                    color: '#3B4155',
-                                    lineHeight: 20,
-                                    height: 20,
-                                    borderRadius: 4,
-                                    shadowColor: 'rgba(0, 0, 0, 0.12)',
-                                    shadowBlur: 4
-                                },
-                                b: {
-                                    width: 8,
-                                    height: 4,
-                                    align: 'center',
-                                    backgroundColor: {
-                                        image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAACxJREFUGFdj/P///38GAoARJI9PISMIwAzBphAmD1eEbiKyASiKYAqRFYDEANlzFAIJfsytAAAAAElFTkSuQmCC'
-                                    }
-                                }
-                            }
-                        },
-                        emphasis: {
-                            itemStyle: {
-                                color: emphasisColor[seriesIndex % emphasisColor.length]
-                            }
-                        }
-                    };
-                }),
-                symbol: 'none',
-                itemStyle: {
-                    color,
-                    borderRadius: [2, 2, 0, 0]
+                type: 'category',
+                inverse: true,
+                data: yAxis,
+                axisTick: { show: false },
+                axisLine: {
+                    show: index === 0,
+                    lineStyle: {
+                    	width: 2,
+                    	color: 'rgba(46, 157, 255, 1)'
+                    }
                 },
-                label: {
+                axisLabel: {
+                    fontSize: 20 * props.scale,
+                    color: '#ccd2d7',
+                    lineHeight: 20 * props.scale,
+                    verticalAlign: 'middle',
+                    borderWidth: 1
+                },
+                splitArea: {
                     show: true,
-                    position: 'top'
+                    areaStyle: {
+                        color: yAxis.map((n, i) => props.yAxisHighlightArea.includes(i) ? props.highlightAreaColor : 'transparent')
+                    }
+                },
+                nameGap: 0
+            }
+        }),
+        series: (() => {
+            const series = props.seriesData.map((seriesItem, seriesIndex) => {
+                const colorName = props.color[seriesIndex % props.color.length];
+                return {
+                    data: seriesItem.map(value => {
+                        const barAreaColor = { ...colorMap[colorName]?.barArea };
+                        const { x, x2 } = barAreaColor;
+                        if (value < 0) {
+                            barAreaColor.x = x2;
+                            barAreaColor.x2 = x;
+                        }
+                        return {
+                            value,
+                            itemStyle: { color: barAreaColor }
+                        }
+                    }),
+                    name: props.legendData[seriesIndex % props.legendData.length],
+                    type: 'bar',
+                    // barGap: `${10 / props.barWidth * 100}%`,
+                    // barGap: `${9 / props.barWidth * 100}%`,
+                    barGap: `0%`,
+                    barWidth: props.barWidth * props.scale,
+                    showBackground: props.showItemBackground,
+                    // showBackground: false,
+                    label: {
+                        show: props.showSeriesLabel,
+                        position: 'outside',
+                        textStyle: {
+                            fontSize: 20 * props.scale,
+                            color: 'white',
+                            fontFamily: 'MicrosoftYaHei',
+                            fontWeight: 400
+                        }
+                    },
+                    backgroundStyle: { color: props.itemBackgroundColor }
                 }
-            };
-        })
+            });
+            const result = [series.shift()];
+            while (series.length) {
+                result.push({
+                    type: 'bar',
+                    data: new Array(props.yAxisData[0]?.length).fill({
+                        value: 0,
+                        isGap: true
+                    }),
+                    barWidth: 9 * props.scale,
+                    itemStyle: { color: 'red' },
+                    showBackground: props.showItemBackground,
+                    backgroundStyle: {
+                        color: props.itemBackgroundColor
+                    }
+                });
+                result.push(series.shift());
+            }
+            return result;
+            // showItemBackground
+        })(),
+        legend: (() => {
+            const legendConfig = {
+                show: props.showLegend,
+                data: props.legendData.map((name, index) => {
+                    // const colors = props.legendColors || props.itemColors;
+                    const colorName = props.color[index % props.color.length];
+                    const legendIcon = props.legendIcon instanceof Array ? props.legendIcon : [props.legendIcon];
+                    const iconName = legendIcon[index % legendIcon.length];
+                    return {
+                        name,
+                        icon: legendIconMap[iconName] || legendIconMap.rect,
+                        itemStyle: {
+                            // color: colors[index % colors.length]
+                            color: colorMap[colorName]?.legend
+                        }
+                    }
+                }),
+                top: 20 * props.scale,
+                textStyle: {
+                    fontSize: 20 * props.scale,
+                    color: 'white'
+                },
+                itemGap: 20 * props.scale,
+                itemWidth: 36 * props.scale,
+                itemHeight: 36 * props.scale
+            }
+            return legendConfig;
+        })()
+    };
+    if (props.showCount) {
+        const start = 0;
+        const end = props.showCount / props.yAxisData[0].length * 100;
+        if (props.dataZoomType === 'slider') {
+            option.dataZoom = [
+                {
+                    type: 'slider',
+                    yAxisIndex: props.yAxisData.map((n, i) => i),
+                    brushSelect : false,
+                    handleIcon: 'none',
+                    borderColor: 'transparent',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    selectedDataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    width: 8,
+                    // fillerColor: '#467C9F',
+                    fillerColor: 'rgb(70, 124, 159)',
+                    labelFormatter: '',
+                    // backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    backgroundColor: 'rgba(63, 96, 137, 1)',
+                    borderWidth: 0,
+                    start,
+                    end,
+                    handleStyle: {
+                        color: 'red'
+                    },
+                    right: props.dataZoomRight
+                }
+            ];
+        } else {
+            option.dataZoom = [
+                {
+                    type: 'inside',
+                    yAxisIndex: props.yAxisData.map((n, i) => i),
+                    start,
+                    end
+                }
+            ];
+        }
     }
+    // if (props.showCount) {
+    //     const start = 0;
+    //     const end = props.showCount / Math.max(...props.yAxisData.map(n => n.length)) * 100;
+    //     option.dataZoom = [
+    //         { type: 'inside', start, end, yAxisIndex: 0 },
+    //         { type: 'inside', start, end, yAxisIndex: 1 }
+    //     ];
+    // }
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);

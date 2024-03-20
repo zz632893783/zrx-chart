@@ -18,74 +18,113 @@ const chartRef = ref();
 const containerRef = ref();
 // 可配置属性
 const props = defineProps({
-    // 半径
+    /**
+     * @description 半径
+     * @example [60, 70]
+     */
     radius: {
         type: [Array],
-        // default: () => [59, 70]
         default: () => [60, 68]
     },
-    // 圆环颜色
+    /**
+     * @description 圆环颜色
+     * @example ['#0e8fff', '#00d5ef', '#b5bfe2']
+     */
     ringColor: {
         type: [Array],
         default: () => ['#0e8fff', '#00d5ef', '#b5bfe2']
     },
-    // 柱子颜色
+    /**
+     * @description 柱子颜色
+     * @example ['#206e8a', '#72dde0']
+     */
     barColor: {
         type: [Array],
         default: () => ['#206e8a', '#72dde0']
     },
-    // 间距
+    /**
+     * @description 间距
+     * @example 4
+     */
     itemGap: {
         type: [Number],
         default: () => 2
     },
-    // 圆环数据
+    /**
+     * @description 圆环数据
+     * @example [73, 54, 98]
+     */
     ringSeriesData: {
         type: [Array],
-        // default: () => [73, 54, 98]
         default: () => []
     },
-    // 柱子数据
+    /**
+     * @description 柱子数据
+     * @example [73, 54, 23, 66]
+     */
     barSeriesData: {
         type: [Array],
-        // default: () => [73, 54, 23, 66]
         default: () => []
     },
-    // 万能方法，图表渲染之前执行
-    beforeSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 万能方法，图表渲染之后执行
-    afterSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 柱子的高度
+    /**
+     * @description 柱子的高度
+     * @example 160
+     */
     barHeight: {
         type: [Number],
         default: () => 120
     },
-    // 连接线长度
+    /**
+     * @description 连接线长度
+     * @example 20
+     */
     lineLength: {
         type: [Number],
         default: () => 34
     },
-    // 单位
+    /**
+     * @description 单位
+     * @example '个'
+     */
     unit: {
         type: [String],
         default: () => ''
     },
-    // 图表缩放比例
-    scale: {
-        type: [Number],
-        // default: () => window.innerHeight / 1080;
-        default: () => 1
-    },
-    // 起始角度
+    /**
+     * @description 起始角度
+     * @example 40
+     */
     startAngle: {
         type: [Number],
         default: () => 52
+    },
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
 });
 // 渲染函数

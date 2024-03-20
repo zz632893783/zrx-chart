@@ -10,13 +10,18 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // x 轴坐标
+    /**
+     * @description x 轴坐标
+     * @example ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+     */
     xAxisData: {
         type: [Array],
-        // default: () => ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
         default: () => []
     },
-    // 上下左右边距
+    /**
+     * @description 上下左右边距
+     * @example { top: 84, right: 18, bottom: 56, left: 56 }
+     */
     grid: {
         type: [Object],
         default: () => ({
@@ -26,149 +31,162 @@ const props = defineProps({
             left: 53
         })
     },
-    // 数据数组
+    /**
+     * @description 数据数组
+     * @example [
+     *     {
+     *         // 需要指定类型
+     *         type: 'bar',
+     *         // 需要指定 y 轴索引
+     *         yAxisIndex: 0,
+     *         data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+     *     },
+     *     {
+     *         type: 'line',
+     *         yAxisIndex: 1,
+     *         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+     *     }
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     {
-        //         // 需要指定类型
-        //         type: 'bar',
-        //         // 需要指定 y 轴索引
-        //         yAxisIndex: 0,
-        //         data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
-        //     },
-        //     {
-        //         type: 'line',
-        //         yAxisIndex: 1,
-        //         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
-        //     }
-        // ]
         default: () => []
     },
-    // 每一项颜色
-    // itemColors: {
-    //     type: [Array],
-    //     default: () => [
-    //         {
-    //             type: 'linear',
-    //             x: 0, y: 0, x2: 1, y2: 1,
-    //             colorStops: [
-    //                 { offset: 0, color: '#1260c4' },
-    //                 { offset: 1, color: '#3db0fe' }
-    //             ]
-    //         },
-    //         '#F4DC3C'
-    //     ]
-    // },
-    // y轴单位
+    /**
+     * @description y轴单位
+     * @example ['亿元', '%']
+     */
     yAxisName: {
         type: [String, Array],
-        // default: () => ['亿元', '%']
         default: () => ['']
     },
-    // 最多显示的数量（实际显示数量会根据输入值调整）
+    /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 3
+     */
     showCount: {
         type: [Number],
         default: () => 5
     },
-    // 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'slider'
+     */
     dataZoomType: {
         type: [String],
         default: () => 'inside'
-        // default: () => 'slider'
     },
-    // 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+     * @example 12
+     */
     dataZoomBottom: {
         type: [Number],
         default: () => 0
     },
-    // 是否显示 legend
+    /**
+     * @description 是否显示 legend
+     * @example false
+     */
     showLegend: {
         type: [Boolean],
         default: () => true
     },
-    // legend 颜色
-    // legendColors: {
-    //     type: [Array],
-    //     default: () => ['#2E9DFF', '#F4DC3C']
-    // },
-    //  tooltip 颜色
-    // tooltipColors: {
-    //     type: [Array],
-    //     default: () => null
-    // },
-    // legend 数据
+    /**
+     * @description legend 数据
+     * @example ['统计金额', '开票金额']
+     */
     legendData: {
         type: [Array],
-        // default: () => ['统计金额', '开票金额']
         default: () => []
     },
-    // legendIcon: {
-    //     type: [String, Array],
-    //     default: () => ['linerect', 'rect']
-    // },
-    // 标记线
+    /**
+     * @description 标记线
+     * @example [
+     *     {
+     *         value: 134,
+     *         yAxisIndex: 0,
+     *         color: '#33FFBB'
+     *     },
+     *     {
+     *         value: 166,
+     *         yAxisIndex: 0,
+     *         color: '#F74768'
+     *     }
+     * ]
+     */
     markLine: {
         type: [Array],
         default: () => []
-        // default: () => [
-        //     {
-        //         value: 134,
-        //         yAxisIndex: 0,
-        //         color: '#33FFBB'
-        //     },
-        //     {
-        //         value: 166,
-        //         yAxisIndex: 0,
-        //         color: '#F74768'
-        //     }
-        // ]
     },
-    // 万能方法，图表渲染之前执行
-    beforeSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 万能方法，图表渲染之后执行
-    afterSetOption: {
-        type: [Function],
-        default: () => null
-    },
-    // 图表项颜色
+    /**
+     * @description 图表项颜色
+     * @example ['blue', 'yellow', 'grey']
+     */
     color: {
         type: [Array],
         default: () => ['blue', 'yellow', 'grey']
     },
-    // 线条是否显示区域颜色
+    /**
+     * @description 线条是否显示区域颜色
+     * @example true
+     */
     showLineArea: {
         type: [Boolean],
         default: () => false
     },
-    // tooltip 标题
+    /**
+     * @description tooltip 标题
+     * @example ['标题A']
+     */
     tooltipTitle: {
         type: [Array],
         default: () => null
     },
-    // 高亮区域的索引
+    /**
+     * @description 高亮区域的索引
+     * @example [2, 4]
+     */
     xAxisHighlightArea: {
         type: [Array],
         default: () => []
     },
-    // 从末尾开始显示图表
+    /**
+     * @description 从末尾开始显示图表
+     * @example false
+     */
     dataZoomStartAtEnd: {
         type: [Boolean],
         default: () => true
     },
-    // 图表缩放比例
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
     scale: {
         type: [Number],
-        // default: () => window.innerHeight / 1080;
         default: () => 1
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
-    // lineType: {
-    //     type: [String],
-    //     default: () => 'solid'
-    // }
 });
 // legend 图标映射
 const legendIconMap = {

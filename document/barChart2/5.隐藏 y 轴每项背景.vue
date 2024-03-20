@@ -1,32 +1,35 @@
 <template>
-    <bar-chart-4 ref="chartRef" v-bind="chartOption"></bar-chart-4>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
+
 <script setup>
 import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
 
-const seriesData = [
-    [-12, -64, -84, 11, 69, 51, 46, 76, -69],
-    [87, 29, -80, -66, 21, -23, 88, 9, -9]
-];
 const yAxisData = [
     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
-    ['33%', '29%', '38%', '21%', '11%', '19%', '33%', '29%', '14%']
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
 ];
-const legendData = ['建筑业总产值', '前20名产值'];
-const chartOption = {
-    seriesData,
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const showItemBackground = false;
+// 组合配置项
+const option = {
     yAxisData,
+    seriesData,
     legendData,
-    showCount: 3
+    showItemBackground
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 640px;
+    height: 664px;
     background-color: rgb(3, 43, 68);
 }
 </style>

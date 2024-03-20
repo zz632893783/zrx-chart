@@ -10,85 +10,69 @@ let chart;
 const chartDom = ref();
 // 可配置属性
 const props = defineProps({
-    // 预设颜色
-    color: {
-        type: [Array],
-        default: () => [
-            {
-                color: '#405FFE',
-                lineColor: '#405FFE',
-                areaColor: {
-                    type: 'linear',
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                        { offset: 0, color: 'rgba(64, 95, 254, 0.4)' },
-                        { offset: 1, color: 'rgba(64, 95, 254, 0)' }
-                    ]
-                }
-            },
-            {
-                color: '#1BBE8C',
-                lineColor: '#1BBE8C',
-                areaColor: {
-                    type: 'linear',
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                        { offset: 0, color: 'rgba(27, 190, 140, 0.4)' },
-                        { offset: 1, color: 'rgba(27, 190, 140, 0)' }
-                    ]
-                }
-            }
-        ]
-    },
-    // x 轴坐标
+    /**
+     * @description x 轴坐标
+     * @example ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+     */
     xAxisData: {
         type: [Array],
-        // default: () => ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         default: () => []
     },
-    // 图表数据
+    /**
+     * @description 图表数据
+     * @example [
+     *     [8, 30, 50, 82, 73, 84, 50],
+     *     [32, 94, 61, 11, 52, 68, 58]
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     [8, 30, 50, 82, 73, 84, 50],
-        //     [32, 94, 61, 11, 52, 68, 58]
-        // ]
         default: () => []
     },
-    // legend 数据
+    /**
+     * @description legend 数据
+     * @example ['总能耗', '能耗照明']
+     */
     legendData: {
         type: [Array],
-        // default: () => ['总能耗', '能耗照明']
         default: () => []
     },
-    // 是否平滑
+    /**
+     * @description 是否平滑
+     * @example false
+     */
     smooth: {
         type: [Boolean, Number],
         default: () => true
     },
-    // 是否显示 label
+    /**
+     * @description 是否显示 label
+     * @example true
+     */
     showLabel: {
         type: [Boolean],
         default: () => false
     },
-    // 是否显示 symbol
+    /**
+     * @description 是否显示 symbol
+     * @example true
+     */
     showSymbol: {
         type: [Boolean],
         default: () => false
     },
-    // 单位
+    /**
+     * @description 单位
+     * @example ['kw/h', 'kg']
+     */
     unit: {
         type: [String, Array],
-        // default: () => ['kw/h', 'kg']
         default: () => []
     },
-    // 上下左右间距
+    /**
+     * @description 上下左右边距
+     * @example { top: 84, right: 18, bottom: 56, left: 56 }
+     */
     grid: {
         type: [Object],
         default: () => ({
@@ -98,28 +82,128 @@ const props = defineProps({
             left: 48
         })
     },
-    // y 轴名称
+    /**
+     * @description y 轴名称
+     * @example '亿元'
+     */
     yAxisName: {
         type: [String],
         default: () => ''
     },
-    // legend 定位
+    /**
+     * @description legend 定位
+     * @example { top: 120, left: 316 }
+     */
     legendPosition: {
         type: [Object],
         default: () => ({ top: 20, left: 16 })
     },
-    // tooltip 名称数组
+    /**
+     * @description tooltip 名称数组
+     * @example ['名称A', '名称B']
+     */
     tooltipNames: {
-        // type: [String, Array],
         type: [Array],
         default: () => []
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 预设颜色
+     * @example [
+     *     {
+     *         color: '#405FFE',
+     *         lineColor: '#405FFE',
+     *         areaColor: {
+     *             type: 'linear',
+     *             x: 0, y: 0, x2: 0, y2: 1,
+     *             colorStops: [
+     *                 {
+     *                     offset: 0,
+     *                     color: 'rgba(64, 95, 254, 0.4)'
+     *                 },
+     *                 {
+     *                     offset: 1,
+     *                     color: 'rgba(64, 95, 254, 0)'
+     *                 }
+     *             ]
+     *         }
+     *     },
+     *     {
+     *         color: '#1BBE8C',
+     *         lineColor: '#1BBE8C',
+     *         areaColor: {
+     *             type: 'linear',
+     *             x: 0, y: 0, x2: 0, y2: 1,
+     *             colorStops: [
+     *                 {
+     *                     offset: 0,
+     *                     color: 'rgba(27, 190, 140, 0.4)'
+     *                 },
+     *                 {
+     *                     offset: 1,
+     *                     color: 'rgba(27, 190, 140, 0)'
+     *                 }
+     *             ]
+     *         }
+     *     }
+     * ]
+     */
+    color: {
+        type: [Array],
+        default: () => [
+            {
+                color: '#405FFE',
+                lineColor: '#405FFE',
+                areaColor: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 0, y2: 1,
+                    colorStops: [
+                        {
+                            offset: 0,
+                            color: 'rgba(64, 95, 254, 0.4)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(64, 95, 254, 0)'
+                        }
+                    ]
+                }
+            },
+            {
+                color: '#1BBE8C',
+                lineColor: '#1BBE8C',
+                areaColor: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 0, y2: 1,
+                    colorStops: [
+                        {
+                            offset: 0,
+                            color: 'rgba(27, 190, 140, 0.4)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(27, 190, 140, 0)'
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null

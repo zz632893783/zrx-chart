@@ -1,5 +1,5 @@
 <template>
-    <bar-chart-3 ref="chartRef" v-bind="option"></bar-chart-3>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
 
 <script setup>

@@ -15,13 +15,13 @@ hero:
       link: https://github.com/zz632893783/zrx-chart
 
 features:
-  - icon: 🧬
+  - icon: 🚀
     title: 图表组件
     details: 目前提供 13 种类型组件
   - icon: 🥽
     title: 应用
     details: 适用于 PC 端
-  - icon: ☘
+  - icon: 🦄
     title: 案例
     details: 香洲经济大脑，鹿泉一体化驾驶舱
 ---

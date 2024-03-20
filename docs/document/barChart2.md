@@ -1,48 +1,291 @@
 ## 1.基础用法
-<demoda86ccbfab70 />
+<demo2d03197b9f1d />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
+
 <script setup>
 import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
 
-const xAxisData = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-const seriesData = [
-    [8, 30, 50, 82, 73, 84, 50],
-    [32, 94, 61, 11, 52, 68, 58],
-    [33, 13, 27, 92, 44, 82, 19]
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
 ];
-const legendData = ['总能耗', '能耗照明', '节约能耗', '同环比'];
-const yAxisName = '用量';
-const unit = ['kw/h', '度', '千焦耳'];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
 // 组合配置项
 const option = {
-    xAxisData,
+    yAxisData,
     seriesData,
-    legendData,
-    yAxisName,
-    unit
+    legendData
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 340px;
-    background-color: white;
+    height: 664px;
+    background-color: rgb(3, 43, 68);
 }
 </style>
+```
+## 2.滑块间距设置
+<demoeece8fc9206b />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
 
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98],
+];
+const legendData = ['统计金额', '1开票金额'];
+const grid = { right: 100 };
+const dataZoomRight = 32;
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    grid,
+    dataZoomRight
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 3.修改 tooltip 标题
+<demoac794214b912 />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const tooltipTitle = new Array(10).fill().map((n, i) => `第 ${ i + 1 } 个 tooltip 标题`);
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    tooltipTitle
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 4.部分区域高亮
+<demo9686483a0bef />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const yAxisHighlightArea = [2, 4];
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    yAxisHighlightArea,
+    highlightAreaColor: 'rgba(255, 0, 0, 0.3)'
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 5.隐藏 y 轴每项背景
+<demo83f7ec07e821 />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const showItemBackground = false;
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    showItemBackground
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 6.隐藏辅助刻度线
+<demob405fbaf21ca />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const showSplitLine = false;
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    showSplitLine
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 7.柱宽与数值显示
+<demo3946edde6635 />
+```vue{4}
+<template>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const chartRef = ref();
+
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
+const barWidth = 12;
+const showSeriesLabel = false;
+// 组合配置项
+const option = {
+    yAxisData,
+    seriesData,
+    legendData,
+    barWidth,
+    showSeriesLabel
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    height: 664px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
 ```
 ## 属性
-<demodfd52a333af2 />
+<demof2c93597c020 />
 ## 支持方法
-<democf693719d4e2 />
+<demo8fbaa4c42e28 />
 <script setup>
-import demoda86ccbfab70 from '../../document/barChart2/1.基础用法.vue'
-import demodfd52a333af2 from '../../document/barChart2/属性.vue'
-import democf693719d4e2 from '../../document/barChart2/支持方法.vue'
+import demo2d03197b9f1d from '../../document/barChart2/1.基础用法.vue'
+import demoeece8fc9206b from '../../document/barChart2/2.滑块间距设置.vue'
+import demoac794214b912 from '../../document/barChart2/3.修改 tooltip 标题.vue'
+import demo9686483a0bef from '../../document/barChart2/4.部分区域高亮.vue'
+import demo83f7ec07e821 from '../../document/barChart2/5.隐藏 y 轴每项背景.vue'
+import demob405fbaf21ca from '../../document/barChart2/6.隐藏辅助刻度线.vue'
+import demo3946edde6635 from '../../document/barChart2/7.柱宽与数值显示.vue'
+import demof2c93597c020 from '../../document/barChart2/属性.vue'
+import demo8fbaa4c42e28 from '../../document/barChart2/支持方法.vue'
 </script>

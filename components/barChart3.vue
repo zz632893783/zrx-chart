@@ -11,25 +11,32 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // y 轴坐标
+    /**
+     * @description y 轴坐标
+     * @example [
+     *     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+     *     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+     * ]
+     */
     yAxisData: {
         type: [Array],
-        // default: () => [
-        //     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
-        //     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
-        // ]
         default: () => []
     },
-    // 数据数组
+    /**
+     * @description 数据数组
+     * @example [
+     *     [54, 89, 86, 65, 54, 53, 72, 65, 60],
+     *     [95, 97, 75, 72, 90, 88, 54, 77, 98]
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     [54, 89, 86, 65, 54, 53, 72, 65, 60],
-        //     [95, 97, 75, 72, 90, 88, 54, 77, 98]
-        // ]
         default: () => []
     },
-    // 上下左右边距
+    /**
+     * @description 上下左右边距
+     * @example { top: 84, right: 58, bottom: 56, left: 106 }
+     */
     grid: {
         type: [Object],
         default: () => ({
@@ -39,148 +46,160 @@ const props = defineProps({
             left: 106
         })
     },
-    // 每一项颜色
-    // itemColors: {
-    //     type: [Array],
-    //     default: () => [
-    //         {
-    //             type: 'linear',
-    //             x: 0, y: 0, x2: 0, y2: 1,
-    //             colorStops: [
-    //                 { offset: 0, color: '#1260c4' },
-    //                 { offset: 1, color: '#3db0fe' }
-    //             ]
-    //         },
-    //         {
-    //             type: 'linear',
-    //             x: 0, y: 0, x2: 0, y2: 1,
-    //             colorStops: [
-    //                 { offset: 0, color: '#89baef' },
-    //                 { offset: 1, color: '#d0f1ff' }
-    //             ]
-    //         }
-    //     ]
-    // },
-    // legend 数据
+    /**
+     * @description legend 数据
+     * @example ['统计金额', '开票金额']
+     */
     legendData: {
         type: [Array],
-        // default: () => ['统计金额', '开票金额']
         default: () => []
     },
-    // y轴单位
-    // xAxisName: {
-    //     type: [String],
-    //     default: () => ''
-    // },
-    // 最多显示的数量（实际显示数量会根据输入值调整）
+    /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 4
+     */
     showCount: {
         type: [Number],
         default: () => 4
     },
-    // 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'slider'
+     */
     dataZoomType: {
         type: [String],
-        // default: () => 'inside'
-        default: () => 'slider'
+        default: () => 'inside'
     },
-    // 当 dataZoomType 为 slider 时，拖动区域距离右侧的距离
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离右侧的距离
+     * @example 12
+     */
     dataZoomRight: {
         type: [Number],
         default: () => 0
     },
-    // 是否显示 legend
+    /**
+     * @description 是否显示 legend
+     * @example false
+     */
     showLegend: {
         type: [Boolean],
         default: () => true
     },
-    // legend 颜色
-    // legendColors: {
-    //     type: [Array],
-    //     default: () => ['#2E9DFF', '#D0F1FF']
-    // },
-    // tooltipColors: {
-    //     type: [Array],
-    //     default: () => ['#2E9DFF', '#D0F1FF']
-    // },
-    // legend 图表，支持字符串或数组
+    /**
+     * @description 自定义 tooltip 的格式，支持模板字符串或函数
+     * @example function (...params) {
+     *     return '返回自定义格式'
+     * }
+     */
+    tooltipFormatter: {
+        type: [Function, String],
+        default: () => ''
+    },
+    /**
+     * @description legend 图表，支持字符串或数组
+     * @example ['rect']
+     */
     legendIcon: {
         type: [String, Array],
         default: () => ['rect']
     },
-    // 图表项颜色
+    /**
+     * @description 图表项颜色
+     * @example ['blue', 'grey']
+     */
     color: {
         type: [String, Array],
         default: () => ['blue', 'grey']
     },
-    // tooltip 标题
+    /**
+     * @description tooltip 标题
+     * @example ['标题']
+     */
     tooltipTitle: {
         type: [Array],
         default: () => null
     },
-    // 高亮区域的索引
+    /**
+     * @description 高亮区域的索引
+     * @example [2, 4]
+     */
     yAxisHighlightArea: {
         type: [Array],
         default: () => []
     },
-    // 高亮区域颜色
+    /**
+     * @description 高亮区域颜色
+     * @example 'rgba(255, 143, 255, 0.2)'
+     */
     highlightAreaColor: {
         type: [String],
         default: () => 'rgba(14, 143, 255, 0.2)'
     },
-    // 数据的单位
+    /**
+     * @description 数据的单位
+     * @example '元'
+     */
     unit: {
         type: [String],
         default: () => ''
     },
-    // 柱子的宽度
+    /**
+     * @description 柱子的宽度
+     * @example 24
+     */
     barWidth: {
         type: [Number],
-        default: () => 24
+        default: () => 10
     },
-    // 是否显示辅助刻度线
+    /**
+     * @description 是否显示辅助刻度线
+     * @example false
+     */
     showSplitLine: {
         type: [Boolean],
         default: () => true
     },
-    // 是否显示每一项的背景色
-    showItemBackground: {
-        type: [Boolean],
-        default: () => true
-    },
-    // 每一项的背景色
+    /**
+     * @description 每一项的背景色
+     * @example 'rgba(255, 0, 0, 0.12)'
+     */
     itemBackgroundColor: {
         type: [String],
-        default: () => `rgba(${ 0xff }, ${ 0xff }, ${ 0xff }, 0.12)`
-        // default: () => `rgba(${ 0x1d }, ${ 0x3f }, ${ 0x65 }, 1)`
+        default: () => 'rgba(29, 63, 105, 0.12)'
     },
-    // 是否显示柱子对应的数值
+    /**
+     * @description 是否显示柱子对应的数值
+     * @example true
+     */
     showSeriesLabel: {
         type: [Boolean],
-        default: () => true
+        default: () => false
     },
-    // visualMap: {
-    //     type: [Array],
-    //     // default: () => null
-    //     default: () => [
-    //         {
-    //             seriesIndex: 0,
-    //             start: 1,
-    //             end: 2
-    //         }
-    //     ]
-    // },
-    // 图表缩放比例
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
     scale: {
         type: [Number],
-        // default: () => window.innerHeight / 1080;
         default: () => 1
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
@@ -246,8 +265,9 @@ const renderChart = () => {
             borderColor: 'transparent',
             axisPointer: {
                 type: 'line',
-                lineStyle: { color: '#677b87', width: 2 * props.scale }
+                lineStyle: { color: '#677b87' }
             },
+            // tooltipTitle
             formatter: params => {
                 let tooltipTitle;
                 if (props.tooltipTitle instanceof Array) {
@@ -255,21 +275,17 @@ const renderChart = () => {
                 }
                 !tooltipTitle && (tooltipTitle = params[0]?.axisValue);
                 return `
-                    <div style="background-color: #125176; padding: ${ 16 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(102, 255, 255, 0.2);">
-                        <h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
-                        <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 4 * props.scale }px ${ 12 * props.scale }px; align-items: center; margin-top: ${ 8 * props.scale }px;">
+                    <div style="background-color: #125176; padding: ${ 8 * props.scale }px; border-radius: 0; border: ${ 1 * props.scale }px solid rgba(102, 255, 255, 0.2);">
+                        <h4 style="font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
+                        <div style="display: grid; grid-auto-rows: ${ 19 * props.scale }px; grid-row-gap: ${ 4 * props.scale }px; grid-template-columns: ${ 8 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center; margin-top: ${ 8 * props.scale }px;">
                             ${
                                 params.map(n => {
-                                    const seriesIndex = n.seriesIndex / 2;
-                                    const colorName = props.color[seriesIndex % props.color.length];
+                                    const colorName = props.color[n.seriesIndex % props.color.length];
                                     const color = colorMap[colorName]?.tooltip;
-                                    if (n.data instanceof Object && n.data?.isGap) {
-                                        return '';
-                                    }
                                     return `
-                                        <i style="background-color: ${ color }; height: ${ 18 * props.scale }px;"></i>
-                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3;">${ n.seriesName }</label>
-                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5;">${ [null, undefined, '', NaN].includes(n.value) ? '- -' : n.value }${ props.unit || '' }</label>
+                                        <i style="background-color: ${ color }; height: ${ 8 * props.scale }px;"></i>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 3;">${ n.seriesName }</label>
+                                        <label style="white-space: nowrap; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400; grid-column-start: 5;">${ [null, undefined, '', NaN].includes(n.value) ? '- -' : n.value }${ props.unit || '' }</label>
                                     `
                                 }).join('')
                             }
@@ -282,6 +298,8 @@ const renderChart = () => {
             type: 'value',
             min: v => v.min <= 0 ? -setMaxVal(Math.max(Math.abs(v.max), Math.abs(v.min)) * ( props.showSeriesLabel ? 1.31 : 1))  : 0,
             max: v => v.max >= 0 ? setMaxVal(Math.max(Math.abs(v.max), Math.abs(v.min)) * ( props.showSeriesLabel ? 1.31 : 1))  : 0,
+            // name: 'props.xAxisName',
+            // nameLocation: 'center',
             position: 'top',
             nameTextStyle: {
                 fontSize: 14 * props.scale,
@@ -297,25 +315,25 @@ const renderChart = () => {
                 }
             },
             axisLabel: {
-                fontSize: 20 * props.scale,
-                color: 'rgba(255, 255, 255, 0.8)'
+                fontSize: 14 * props.scale,
+                color: '#ccd3d8'
             }
         },
         yAxis: props.yAxisData.map((yAxis, index) => {
+            console.log(yAxis, props.yAxisHighlightArea)
             return {
                 type: 'category',
                 inverse: true,
+                // nameLocation: 'right',
+                // name: 'props.xAxisName',
                 data: yAxis,
                 axisTick: { show: false },
                 axisLine: {
                     show: index === 0,
-                    lineStyle: {
-                    	width: 2,
-                    	color: 'rgba(46, 157, 255, 1)'
-                    }
+                    lineStyle: { color: '#677b87' }
                 },
                 axisLabel: {
-                    fontSize: 20 * props.scale,
+                    fontSize: 14 * props.scale,
                     color: '#ccd2d7',
                     lineHeight: 20 * props.scale,
                     verticalAlign: 'middle',
@@ -330,63 +348,39 @@ const renderChart = () => {
                 nameGap: 0
             }
         }),
-        series: (() => {
-            const series = props.seriesData.map((seriesItem, seriesIndex) => {
-                const colorName = props.color[seriesIndex % props.color.length];
-                return {
-                    data: seriesItem.map(value => {
-                        const barAreaColor = { ...colorMap[colorName]?.barArea };
-                        const { x, x2 } = barAreaColor;
-                        if (value < 0) {
-                            barAreaColor.x = x2;
-                            barAreaColor.x2 = x;
-                        }
-                        return {
-                            value,
-                            itemStyle: { color: barAreaColor }
-                        }
-                    }),
-                    name: props.legendData[seriesIndex % props.legendData.length],
-                    type: 'bar',
-                    // barGap: `${10 / props.barWidth * 100}%`,
-                    // barGap: `${9 / props.barWidth * 100}%`,
-                    barGap: `0%`,
-                    barWidth: props.barWidth * props.scale,
-                    showBackground: props.showItemBackground,
-                    // showBackground: false,
-                    label: {
-                        show: props.showSeriesLabel,
-                        position: 'outside',
-                        textStyle: {
-                            fontSize: 20 * props.scale,
-                            color: 'white',
-                            fontFamily: 'MicrosoftYaHei',
-                            fontWeight: 400
-                        }
-                    },
-                    backgroundStyle: { color: props.itemBackgroundColor }
-                }
-            });
-            const result = [series.shift()];
-            while (series.length) {
-                result.push({
-                    type: 'bar',
-                    data: new Array(props.yAxisData[0]?.length).fill({
-                        value: 0,
-                        isGap: true
-                    }),
-                    barWidth: 9 * props.scale,
-                    itemStyle: { color: 'red' },
-                    showBackground: props.showItemBackground,
-                    backgroundStyle: {
-                        color: props.itemBackgroundColor
+        series: props.seriesData.map((seriesItem, seriesIndex) => {
+            const colorName = props.color[seriesIndex % props.color.length];
+            return {
+                data: seriesItem.map(value => {
+                    const barAreaColor = { ...colorMap[colorName]?.barArea };
+                    const { x, x2 } = barAreaColor;
+                    if (value < 0) {
+                        barAreaColor.x = x2;
+                        barAreaColor.x2 = x;
                     }
-                });
-                result.push(series.shift());
+                    return {
+                        value,
+                        itemStyle: { color: barAreaColor }
+                    }
+                }),
+                name: props.legendData[seriesIndex % props.legendData.length],
+                type: 'bar',
+                barGap: `${10 / props.barWidth * 100}%`,
+                barWidth: props.barWidth * props.scale,
+                // showBackground: true,
+                showBackground: false,
+                label: {
+                    show: props.showSeriesLabel,
+                    position: 'outside',
+                    textStyle: {
+                        color: 'white'
+                    }
+                },
+                backgroundStyle: {
+                    color: props.itemBackgroundColor
+                }
             }
-            return result;
-            // showItemBackground
-        })(),
+        }),
         legend: (() => {
             const legendConfig = {
                 show: props.showLegend,
@@ -406,12 +400,12 @@ const renderChart = () => {
                 }),
                 top: 20 * props.scale,
                 textStyle: {
-                    fontSize: 20 * props.scale,
+                    fontSize: 16 * props.scale,
                     color: 'white'
                 },
                 itemGap: 20 * props.scale,
-                itemWidth: 36 * props.scale,
-                itemHeight: 36 * props.scale
+                itemWidth: 16 * props.scale,
+                itemHeight: 16 * props.scale
             }
             return legendConfig;
         })()
@@ -444,11 +438,9 @@ const renderChart = () => {
                         }
                     },
                     width: 8,
-                    // fillerColor: '#467C9F',
-                    fillerColor: 'rgb(70, 124, 159)',
+                    fillerColor: '#467C9F',
                     labelFormatter: '',
-                    // backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    backgroundColor: 'rgba(63, 96, 137, 1)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     borderWidth: 0,
                     start,
                     end,
@@ -469,19 +461,14 @@ const renderChart = () => {
             ];
         }
     }
-    // if (props.showCount) {
-    //     const start = 0;
-    //     const end = props.showCount / Math.max(...props.yAxisData.map(n => n.length)) * 100;
-    //     option.dataZoom = [
-    //         { type: 'inside', start, end, yAxisIndex: 0 },
-    //         { type: 'inside', start, end, yAxisIndex: 1 }
-    //     ];
-    // }
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 
-defineExpose({ renderChart, clearChart: () => chart?.clear() });
+defineExpose({
+    renderChart,
+    clearChart: () => chart?.clear()
+});
 </script>
 <style lang="scss" scoped></style>

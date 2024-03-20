@@ -1,5 +1,5 @@
 <template>
-    <bar-chart-3 ref="chartRef" v-bind="option"></bar-chart-3>
+    <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
 
 <script setup>
@@ -16,13 +16,13 @@ const seriesData = [
     [95, -97, 75, 72, 90, -88, 54, -77, -98]
 ];
 const legendData = ['统计金额', '开票金额'];
-const tooltipTitle = new Array(10).fill().map((n, i) => `第 ${ i + 1 } 个 tooltip 标题`);
+const showSplitLine = false;
 // 组合配置项
 const option = {
     yAxisData,
     seriesData,
     legendData,
-    tooltipTitle
+    showSplitLine
 };
 
 onMounted(() => chartRef.value.renderChart());

@@ -20,84 +20,112 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // 半径
+    /**
+     * @description 半径
+     * @example [60, 70]
+     */
     radius: {
         type: [Array],
-        // default: () => [60, 70]
         default: () => [128, 150]
     },
-    // 间距
+    /**
+     * @description 间距
+     * @example 4
+     */
     itemGap: {
         type: [Number],
         default: () => 4
     },
-    // 数据项
+    /**
+     * @description 数据项
+     * @example [
+     *     { value: 2, name: '住宿业营业额' },
+     *     { value: 3, name: '餐饮业营业额' },
+     *     { value: 5, name: '零售业营业额' },
+     *     { value: 4, name: '批发业营业额' }
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [61, 52, 97, 99, 80, 77, 80, 67, 83].map((value, index) => ({ value, name: `第${ index + 1 }项` }))
         default: () => []
     },
-    // 颜色
+    /**
+     * @description 预设颜色
+     * @example ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
+     */
     color: {
         type: [Array],
         default: () => ['#ae7efd', '#7670d7', '#709ad7', '#72dde0', '#d0f1ff', '#b5bfe2', '#206e8a', '#1dd1ff', '#d2abea', '#0e8fff']
     },
-    // 是否显示 label
+    /**
+     * @description 是否显示 label
+     * @example false
+     */
     showLabel: {
         type: [Number],
         default: () => true
     },
-    // tooltipTitle: {
-    //     type: [String],
-    //     default: () => 'tooltip标题'
-    // },
-    // 单位
+    /**
+     * @description 单位
+     * @example '个'
+     */
     unit: {
         type: [String],
         default: () => ''
     },
-    // showLabel: {
-    //     type: [Boolean],
-    //     default: () => false
-    // },
-    // 中心部分的展示部分
-    // null，'' 或者不传，表示中心部分不显示
-    // item 表示中心部分展示单项
-    // sum 表示中心部分展示总量
-    // showSum: {
-    //     type: [Boolean],
-    //     default: () => true
-    // },
-    // 自定义 label 函数
+    /**
+     * @description 自定义 label 函数
+     * @example function (...params) {
+     *     return '自定义 label 格式'
+     * }
+     */
     labelFormatter: {
         type: [Function],
         default: () => null
     },
-    // 文字与边缘之间的距离
+    /**
+     * @description 文字与边缘之间的距离
+     * @example 20
+     */
     edgeDistance: {
         type: [Number],
         default: () => 48
     },
-    // 单项的最小角度
+    /**
+     * @description 单项的最小角度
+     * @example 12
+     */
     minAngle: {
         type: [Number],
         default: () => 4
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
-    },
-    // 图表缩放比例
-    scale: {
-        type: [Number],
-        // default: () => window.innerHeight / 1080;
-        default: () => 1
     }
 });
 // 渲染函数

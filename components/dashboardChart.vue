@@ -15,61 +15,97 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // 最大值
+    /**
+     * @description 最大值
+     * @example 200
+     */
     max: {
         type: [Number],
         default: () => 100
     },
-    // 底色
+    /**
+     * @description 底色
+     * @example '#aabbcc'
+     */
     layerColor: {
         type: [String],
         default: () => '#50697a'
     },
-    // 颜色
+    /**
+     * @description 颜色
+     * @example 'red'
+     */
     color: {
         type: [String],
         default: () => '#34d3ec'
     },
-    // 起始角度
+    /**
+     * @description 起始角度
+     * @example 180
+     */
     startAngle: {
         type: [Number],
         default: () => 200
     },
-    // 终止角度
+    /**
+     * @description 终止角度
+     * @example -40
+     */
     endAngle: {
         type: [Number],
         default: () => -20
     },
-    // 数值
+    /**
+     * @description 数值
+     * @example 60
+     */
     value: {
         type: [Number],
         default: () => 0
     },
-    // 环形条宽度
+    /**
+     * @description 环形条宽度
+     * @example 20
+     */
     barWidth: {
         type: [Number],
         default: () => 10
     },
-    // 半径
+    /**
+     * @description 半径
+     * @example 80
+     */
     radius: {
         type: [Number],
         default: () => 95
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
-    },
-    // 图表缩放比例
-    scale: {
-        type: [Number],
-        // default: () => window.innerHeight / 1080;
-        default: () => 1
     }
 });
 // 渲染函数

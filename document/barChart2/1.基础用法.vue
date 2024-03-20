@@ -1,34 +1,33 @@
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
 </template>
+
 <script setup>
 import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
 
-const xAxisData = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-const seriesData = [
-    [8, 30, 50, 82, 73, 84, 50],
-    [32, 94, 61, 11, 52, 68, 58],
-    [33, 13, 27, 92, 44, 82, 19]
+const yAxisData = [
+    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
+    ['农', '工', '建', '批', '交', '住', '金', '房', '其']
 ];
-const legendData = ['总能耗', '能耗照明', '节约能耗', '同环比'];
-const yAxisName = '用量';
-const unit = ['kw/h', '度', '千焦耳'];
+const seriesData = [
+    [54, -89, -86, 65, 54, 53, -72, 65, -60],
+    [95, -97, 75, 72, 90, -88, 54, -77, -98]
+];
+const legendData = ['统计金额', '开票金额'];
 // 组合配置项
 const option = {
-    xAxisData,
+    yAxisData,
     seriesData,
-    legendData,
-    yAxisName,
-    unit
+    legendData
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 340px;
-    background-color: white;
+    height: 664px;
+    background-color: rgb(3, 43, 68);
 }
 </style>

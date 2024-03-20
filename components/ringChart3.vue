@@ -15,95 +15,94 @@ let chart;
 const chartDom = ref();
 // 可配置属性
 const props = defineProps({
-    // name: {
-    //     type: [String],
-    //     default: function () {
-    //         return '当月运营总数'
-    //     }
-    // },
-    // 半径
+    /**
+     * @description 半径
+     * @example [60, 70]
+     */
     radius: {
         type: [Array],
         default: () => [58, 76]
     },
-    // 底色圆环半径
+    /**
+     * @description 底色圆环半径
+     * @example [50, 70]
+     */
     backgroundRadius: {
         type: [Array],
         default: () => [53, 76]
     },
-    // 底色
+    /**
+     * @description 底色
+     * @example 'green'
+     */
     backgroundColor: {
         type: [String],
         default: () => 'rgb(232, 234, 240)'
     },
-    // 预设颜色
+    /**
+     * @description 预设颜色
+     * @example ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
+     */
     color: {
         type: [Array],
-        // default: () => ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
         default: () => ['#1BBE8C', '#F0465A', '#FFA433', '#B8BED5']
     },
-    // 图表数据
+    /**
+     * @description 数据项
+     * @example [
+     *     { value: 1048, name: '正常' },
+     *     { value: 735, name: '故障' },
+     *     { value: 580, name: '告警' },
+     *     { value: 484, name: '离线' }
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     { value: 1048, name: '正常' },
-        //     { value: 735, name: '故障' },
-        //     { value: 580, name: '告警' },
-        //     { value: 484, name: '离线' }
-        // ]
         default: () => []
     },
-    // showLegend: {
-    //     type: [Boolean],
-    //     default: function () {
-    //         return true
-    //     }
-    // },
-    // legendPosition: {
-    //     type: [Object],
-    //     default: function () {
-    //         return {
-    //             top: 25,
-    //             left: 15
-    //         }
-    //     }
-    // },
-    // centerLabelFontSize: {
-    //     type: [Number],
-    //     default: function () {
-    //         return 14
-    //     }
-    // },
-    // centerValueFontSize: {
-    //     type: [Number],
-    //     default: function () {
-    //         return 18
-    //     }
-    // },
-    // 单位
+    /**
+     * @description 单位
+     * @example '个'
+     */
     unit: {
         type: [String],
         default: () => ''
     },
-    // 悬浮选中单项时，增加的半径
+    /**
+     * @description 悬浮选中单项时，增加的半径
+     * @example 20
+     */
     scaleSize: {
         type: [Number],
         default: () => 5
     },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 饼图的扇区是否是顺时针排布
+     * @example false
+     */
+    clockwise: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
-    },
-    // 饼图的扇区是否是顺时针排布
-    clockwise: {
-        type: [Boolean],
-        default: () => true
     }
 })
 // 渲染函数

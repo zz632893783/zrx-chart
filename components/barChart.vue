@@ -10,22 +10,29 @@ let chart;
 const chartRef = ref();
 // 可配置属性
 const props = defineProps({
-    // x 轴坐标
+    /**
+     * @description x 轴坐标
+     * @example ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
+     */
     xAxisData: {
         type: [Array],
-        // default: () => ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
         default: () => []
     },
-    // 数据数组
+    /**
+     * @description 数据数组
+     * @example [
+     *     [54, 89, 86, 65, 54, 53, 72, 65, 60],
+     *     [95, 97, 75, 72, 90, 88, 54, 77, 98]
+     * ]
+     */
     seriesData: {
         type: [Array],
-        // default: () => [
-        //     [54, 89, 86, 65, 54, 53, 72, 65, 60],
-        //     [95, 97, 75, 72, 90, 88, 54, 77, 98]
-        // ]
         default: () => []
     },
-    // 上下左右边距
+    /**
+     * @description 上下左右边距
+     * @example { top: 84, right: 18, bottom: 56, left: 56 }
+     */
     grid: {
         type: [Object],
         default: () => ({
@@ -35,122 +42,128 @@ const props = defineProps({
             left: 56
         })
     },
-    // 每一项颜色
-    // itemColors: {
-    //     type: [Array],
-    //     default: () => [
-    //         {
-    //             type: 'linear',
-    //             x: 0, y: 0, x2: 0, y2: 1,
-    //             colorStops: [
-    //                 { offset: 0, color: '#1260c4' },
-    //                 { offset: 1, color: '#3db0fe' }
-    //             ]
-    //         },
-    //         {
-    //             type: 'linear',
-    //             x: 0, y: 0, x2: 0, y2: 1,
-    //             colorStops: [
-    //                 { offset: 0, color: '#89baef' },
-    //                 { offset: 1, color: '#d0f1ff' }
-    //             ]
-    //         }
-    //     ]
-    // },
-    // legend 数据
+    /**
+     * @description legend 数据
+     * @example ['统计金额', '开票金额']
+     */
     legendData: {
         type: [Array],
-        // default: () => ['统计金额', '开票金额']
         default: () => []
     },
-    // y轴单位
+    /**
+     * @description y轴单位
+     * @example '万元'
+     */
     yAxisName: {
         type: [String],
         default: () => ''
     },
-    // 最多显示的数量（实际显示数量会根据输入值调整）
+    /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 4
+     */
     showCount: {
         type: [Number],
         default: () => 7
     },
-    // 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'slider'
+     */
     dataZoomType: {
         type: [String],
         default: () => 'inside'
-        // default: () => 'slider'
     },
-    // 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+     * @example 12
+     */
     dataZoomBottom: {
         type: [Number],
         default: () => 0
     },
-    // 是否显示 legend
+    /**
+     * @description 是否显示 legend
+     * @example false
+     */
     showLegend: {
         type: [Boolean],
         default: () => true
     },
-    // 自定义 tooltip 的格式，支持模板字符串或函数
+    /**
+     * @description 自定义 tooltip 的格式，支持模板字符串或函数
+     * @example function (...params) {
+     *     return '返回自定义格式'
+     * }
+     */
     tooltipFormatter: {
         type: [Function, String],
         default: () => ''
     },
-    // legend 颜色
-    // legendColors: {
-    //     type: [Array],
-    //     default: () => ['#2E9DFF', '#D0F1FF']
-    // },
-    // tooltipColors: {
-    //     type: [Array],
-    //     default: () => ['#2E9DFF', '#D0F1FF']
-    // },
-    // legend 图表，支持字符串或数组
+    /**
+     * @description legend 图表，支持字符串或数组
+     * @example ['rect']
+     */
     legendIcon: {
         type: [String, Array],
         default: () => ['rect']
     },
-    // 图表项颜色
+    /**
+     * @description 图表项颜色
+     * @example ['blue', 'grey']
+     */
     color: {
         type: [String, Array],
         default: () => ['blue', 'grey']
     },
-    // tooltip 标题
+    /**
+     * @description tooltip 标题
+     * @example ['标题A']
+     */
     tooltipTitle: {
         type: [Array],
         default: () => null
     },
-    // 高亮区域的索引
+    /**
+     * @description 高亮区域的索引
+     * @example [2, 4]
+     */
     xAxisHighlightArea: {
         type: [Array],
         default: () => []
     },
-    // 从末尾开始显示图表
+    /**
+     * @description 从末尾开始显示图表
+     * @example false
+     */
     dataZoomStartAtEnd: {
         type: [Boolean],
         default: () => true
     },
-    // 图表缩放比例
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
     scale: {
         type: [Number],
-        // default: () => window.innerHeight / 1080;
         default: () => 1
     },
-    // visualMap: {
-    //     type: [Array],
-    //     // default: () => null
-    //     default: () => [
-    //         {
-    //             seriesIndex: 0,
-    //             start: 1,
-    //             end: 2
-    //         }
-    //     ]
-    // },
-    // 万能方法，图表渲染之前执行
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     beforeSetOption: {
         type: [Function],
         default: () => null
     },
-    // 万能方法，图表渲染之后执行
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
     afterSetOption: {
         type: [Function],
         default: () => null
