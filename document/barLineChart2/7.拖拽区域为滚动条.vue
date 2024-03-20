@@ -53,7 +53,7 @@ onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 264px;
+    height: 364px;
     background-color: rgb(3, 43, 68);
 }
 </style>

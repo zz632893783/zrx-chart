@@ -5,6 +5,8 @@
 import { ref } from 'vue';
 import * as echarts from 'echarts';
 import { setMaxVal } from '../utils/index.js';
+// 以下这串字符串为特殊字符串，用于指定组件自动生成的 “属性.vue” 说明文件中，每列列宽
+/* @attribute-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr); */
 // 图表实例
 let chart;
 // 图表 dom 对象
@@ -14,8 +16,8 @@ const props = defineProps({
     /**
      * @description y 轴坐标
      * @example [
-     *     ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],
-     *     ['农', '工', '建', '批', '交', '住', '金', '房', '其']
+     *     ['农业', '工业', '建筑', '批发', '交通', '住宿', '金融'],
+     *     ['农', '工', '建', '批', '交', '住', '金']
      * ]
      */
     yAxisData: {

@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-20 15:26:49 -->
+<!-- 创建时间 2024-3-20 16:10:41 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -26,7 +26,7 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农', '工', '建', '批', '交', '住', '金', '房', '其']<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农业', '工业', '建筑', '批发', '交通', '住宿', '金融'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农', '工', '建', '批', '交', '住', '金']<br/>]
                 </div>
             </div>
             <div class="table-row">
@@ -391,6 +391,6 @@
 </template>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr);
 }
 </style>

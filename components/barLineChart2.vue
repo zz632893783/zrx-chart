@@ -12,7 +12,7 @@ const chartRef = ref();
 const props = defineProps({
     /**
      * @description x 轴坐标
-     * @example ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月']
+     * @example ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月']
      */
     xAxisData: {
         type: [Array],
@@ -39,12 +39,12 @@ const props = defineProps({
      *         type: 'bar',
      *         // 需要指定 y 轴索引
      *         yAxisIndex: 0,
-     *         data: [163, 129, 123, 198, 152, 152, 178, 133, 193]
+     *         data: [163, 129, 123, 198, 152, 152, 178]
      *     },
      *     {
      *         type: 'line',
      *         yAxisIndex: 1,
-     *         data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+     *         data: [81, 17, 30, 94, 45, 54, 60]
      *     }
      * ]
      */

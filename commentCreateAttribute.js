@@ -11,6 +11,12 @@ names.forEach(name => {
     try {
         // 将组件解析为文本
         const content = fs.readFileSync(`./components/${ name }.vue`).toString();
+        // 匹配组件文件中的特殊字符串 /* @attribute-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr); */
+        let attributeTemplateColumns = content.match(/(?<=\/\* *@attribute-template-columns: *)[\w\W]+?(?=;? *\*\/)/);
+        attributeTemplateColumns = (attributeTemplateColumns ? attributeTemplateColumns[0] : 'minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr)').trim();
+        // 匹配组件文件中的特殊字符串 /* @method-template-columns: minmax(0, 1.5fr) minmax(0, 3fr) minmax(0, 4.5fr); */
+        // let methodTemplateColumns = content.match(/(?<=\/\* *@attribute-template-columns: *)[\w\W]+?(?=;? *\*\/)/);
+        // methodTemplateColumns = (methodTemplateColumns ? methodTemplateColumns[0] : 'minmax(0, 1.5fr) minmax(0, 3fr) minmax(0, 4.5fr)').trim();
         // 匹配组件中的属性
         const match = content.match(/(?<=defineProps\(\{[\w\W]+?\/\*\*)[\w\W]+?\*\/[^:]+?([a-zA-Z\d]+):[\w\W]+?type: ?\[?([a-zA-Z\d, ]+\])[\w\W]+?default: ?[\w\W]+?\n {4}\}/g);
         // 遍历所有属性
@@ -38,7 +44,7 @@ names.forEach(name => {
             '<template>',
             '    <div class="table">',
             '        <div class="table-header">',
-            '            <div class="table-row">',
+            `            <div class="table-row">`,
             '                <div class="table-cell">属性名</div>',
             '                <div class="table-cell">说明</div>',
             '                <div class="table-cell">类型</div>',
@@ -49,7 +55,7 @@ names.forEach(name => {
             '        <div class="table-body">'
         ];
         rows.forEach(row => {
-            writeContent.push('            <div class="table-row">');
+            writeContent.push(`            <div class="table-row">`);
             // 遍历每个属性的属性名，说明，类型，默认值，参考值字段
             ['attrName', 'description', 'type', 'defaultValue', 'example'].forEach(key => {
                 writeContent.push('                <div class="table-cell">');
@@ -65,7 +71,7 @@ names.forEach(name => {
         writeContent.push('</template>');
         writeContent.push('<style lang="scss" scoped>');
         writeContent.push('.table-row {');
-        writeContent.push('    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 3fr);');
+        writeContent.push(`    grid-template-columns: ${ attributeTemplateColumns };`);
         writeContent.push('}');
         writeContent.push('</style>');
         // 对应的目录下自动生成 "属性.vue" 文件
