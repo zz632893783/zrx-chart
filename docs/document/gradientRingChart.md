@@ -1,13 +1,10 @@
 ## 1.基础用法
-<demo916cdb4f654f />
+<demobc4b37ec2ad5 />
 ```vue{4}
 <template>
-	<gradient-ring-chart ref="chartRef" :value="value" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
+	<gradient-ring-chart ref="chartRef" :value="50" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
 </template>
-<script setup>
-import { ref, onUnmounted } from 'vue';
-const value = ref(50);
-</script>
+<script setup></script>
 <style lang="scss" scoped>
 .zrx-chart {
 	background-color: #042a44;
@@ -16,8 +13,8 @@ const value = ref(50);
 </style>
 ```
 ## 属性
-<demof4183fd873ed />
+<demo1e4e36ae6d63 />
 <script setup>
-import demo916cdb4f654f from '../../document/gradientRingChart/1.基础用法.vue'
-import demof4183fd873ed from '../../document/gradientRingChart/属性.vue'
+import demobc4b37ec2ad5 from '../../document/gradientRingChart/1.基础用法.vue'
+import demo1e4e36ae6d63 from '../../document/gradientRingChart/属性.vue'
 </script>
