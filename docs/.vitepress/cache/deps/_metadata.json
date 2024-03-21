@@ -1,62 +1,41 @@
 {
-  "hash": "cabf8dad",
+  "hash": "2ccab5f3",
   "configHash": "66d2cfe8",
-  "lockfileHash": "a8fea9c9",
-  "browserHash": "3ef03fc6",
+  "lockfileHash": "6120b003",
+  "browserHash": "e9cf9da9",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "ff0f4dfe",
+      "fileHash": "d491398b",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "ad83b2b2",
+      "fileHash": "46cd56a0",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/vitepress/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "38862ea2",
+      "fileHash": "febba484",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../../node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "41f64387",
+      "fileHash": "8348ba40",
       "needsInterop": false
     },
     "echarts": {
       "src": "../../../../node_modules/echarts/index.js",
       "file": "echarts.js",
-      "fileHash": "99f32cf5",
-      "needsInterop": false
-    },
-    "echarts/core": {
-      "src": "../../../../node_modules/echarts/core.js",
-      "file": "echarts_core.js",
-      "fileHash": "781edd82",
-      "needsInterop": false
-    },
-    "echarts/charts": {
-      "src": "../../../../node_modules/echarts/charts.js",
-      "file": "echarts_charts.js",
-      "fileHash": "31c5aaad",
+      "fileHash": "3ae80972",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-UZOSFBWH": {
-      "file": "chunk-UZOSFBWH.js"
-    },
-    "chunk-NBHEBSS6": {
-      "file": "chunk-NBHEBSS6.js"
-    },
-    "chunk-2WTEYOCX": {
-      "file": "chunk-2WTEYOCX.js"
-    },
     "chunk-J226FIFC": {
       "file": "chunk-J226FIFC.js"
     },

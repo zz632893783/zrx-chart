@@ -4,6 +4,7 @@
 <script setup>
 import * as echarts from 'echarts';
 import { defineProps, ref, onMounted, defineExpose } from 'vue';
+import { computeColorRGBA } from '../utils/index.js';
 // 以下这串字符串为特殊字符串，用于指定组件自动生成的 “属性.vue” 说明文件中，每列列宽
 /* @attribute-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 3fr); */
 // 图表实例
@@ -110,85 +111,19 @@ const props = defineProps({
     },
     /**
      * @description 预设颜色
-     * @example [
-     *     {
-     *         color: '#405FFE',
-     *         lineColor: '#405FFE',
-     *         areaColor: {
-     *             type: 'linear',
-     *             x: 0, y: 0, x2: 0, y2: 1,
-     *             colorStops: [
-     *                 {
-     *                     offset: 0,
-     *                     color: 'rgba(64, 95, 254, 0.4)'
-     *                 },
-     *                 {
-     *                     offset: 1,
-     *                     color: 'rgba(64, 95, 254, 0)'
-     *                 }
-     *             ]
-     *         }
-     *     },
-     *     {
-     *         color: '#1BBE8C',
-     *         lineColor: '#1BBE8C',
-     *         areaColor: {
-     *             type: 'linear',
-     *             x: 0, y: 0, x2: 0, y2: 1,
-     *             colorStops: [
-     *                 {
-     *                     offset: 0,
-     *                     color: 'rgba(27, 190, 140, 0.4)'
-     *                 },
-     *                 {
-     *                     offset: 1,
-     *                     color: 'rgba(27, 190, 140, 0)'
-     *                 }
-     *             ]
-     *         }
-     *     }
-     * ]
+     * @example ['#405FFE', '#1BBE8C', '#FFA433']
      */
     color: {
         type: [Array],
-        default: () => [
-            {
-                color: '#405FFE',
-                lineColor: '#405FFE',
-                areaColor: {
-                    type: 'linear',
-                    x: 0, y: 0, x2: 0, y2: 1,
-                    colorStops: [
-                        {
-                            offset: 0,
-                            color: 'rgba(64, 95, 254, 0.4)'
-                        },
-                        {
-                            offset: 1,
-                            color: 'rgba(64, 95, 254, 0)'
-                        }
-                    ]
-                }
-            },
-            {
-                color: '#1BBE8C',
-                lineColor: '#1BBE8C',
-                areaColor: {
-                    type: 'linear',
-                    x: 0, y: 0, x2: 0, y2: 1,
-                    colorStops: [
-                        {
-                            offset: 0,
-                            color: 'rgba(27, 190, 140, 0.4)'
-                        },
-                        {
-                            offset: 1,
-                            color: 'rgba(27, 190, 140, 0)'
-                        }
-                    ]
-                }
-            }
-        ]
+        default: () => ['#405FFE', '#1BBE8C', '#FFA433']
+    },
+    /**
+     * @description 线条区域是否显示渐变色
+     * @example false
+     */
+    showLineArea: {
+        type: [Boolean],
+        default: () => true
     },
     /**
      * @description 万能方法，图表渲染之前执行
@@ -236,7 +171,7 @@ const renderChart = () => {
                     icon: 'path://M 10, 10 m -10, 0 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0 Z',
                     name,
                     itemStyle: {
-                        color: color.color,
+                        color,
                         borderWidth: 0
                     }
                 }
@@ -269,7 +204,7 @@ const renderChart = () => {
                     const unit = props.unit instanceof Array ? props.unit[seriesIndex % props.unit.length] : props.unit
                     return `
                         <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px auto min-content; grid-column-gap: 8px; align-items: center;">
-                            <i style="background-color: ${color.color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
+                            <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
                             <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
                             <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                                 ${item.value}
@@ -330,7 +265,8 @@ const renderChart = () => {
             }
         },
         series: props.seriesData.map((seriesItem, seriesIndex) => {
-            const color = props.color[seriesIndex % props.color.length]
+            const color = props.color[seriesIndex % props.color.length];
+            const { r, g, b, a } = computeColorRGBA(color);
             return {
                 name: props.legendData[seriesIndex % props.legendData.length],
                 type: 'line',
@@ -340,7 +276,7 @@ const renderChart = () => {
                         value,
                         itemStyle: {
                             color: props.showSymbol ? 'white' : 'rgba(255, 255, 255, 0)',
-                            borderColor: props.showSymbol ? color.color : 'transparent'
+                            borderColor: props.showSymbol ? color : 'transparent'
                         },
                         label: {
                             show: props.showLabel,
@@ -377,14 +313,14 @@ const renderChart = () => {
                 smooth: props.smooth,
                 itemStyle: {
                     color: 'white',
-                    borderColor: color.color,
+                    borderColor: color,
                     borderWidth: 1
                 },
                 emphasis: {
                     disabled: true,
                     scale: 2,
                     itemStyle: {
-                        color: color.color,
+                        color,
                         borderColor: 'white',
                         borderWidth: 2,
                         shadowColor: 'rgba(0, 0, 0, 0.4)',
@@ -392,11 +328,18 @@ const renderChart = () => {
                         shadowOffsetY: 2
                     }
                 },
-                lineStyle: {
-                    color: color.lineColor
-                },
+                lineStyle: { color },
                 areaStyle: {
-                    color: color.areaColor
+                    color: props.showLineArea ?
+                        {
+                            type: 'linear',
+                            x: 0, y: 0, x2: 0, y2: 1,
+                            colorStops: [
+                                { offset: 0, color: `rgba(${ r }, ${ g }, ${ b }, ${ a * 0.5 })` },
+                                { offset: 1, color: `rgba(${ r }, ${ g }, ${ b }, ${ a * 0 })` },
+                            ]
+                        } :
+                        'transparent'
                 },
                 label: {
                     show: true,

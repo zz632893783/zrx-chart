@@ -12,45 +12,16 @@ const seriesData = [
 ];
 const legendData = ['用水', '用电'];
 const unit = ['吨', '千瓦时'];
-const color = [
-    {
-        color: 'yellowgreen',
-        lineColor: 'green',
-        areaColor: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-                { offset: 0, color: 'rgb(0, 221, 255)' },
-                { offset: 1, color: 'rgb(77, 119, 255)' }
-            ]
-        }
-    },
-    {
-        color: 'blue',
-        lineColor: 'red',
-        areaColor: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-                { offset: 0, color: 'rgb(128, 255, 165)' },
-                { offset: 1, color: 'rgb(1, 191, 236)' }
-            ]
-        }
-    }
-];
+const color = ['green', 'red'];
+const smooth = false;
 // 组合配置项
 const chartOption = {
     xAxisData,
     seriesData,
     legendData,
     unit,
-    color
+    color,
+    smooth
 };
 
 onMounted(() => chartRef.value.renderChart());

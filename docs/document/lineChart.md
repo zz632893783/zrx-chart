@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demobe5c95fd3f91 />
+<demo46e95ad5e543 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -34,7 +34,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.显示数值与圆点
-<demoac8f66a2d8c0 />
+<democ58ea427bb9e />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -73,7 +73,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.颜色配置
-<demoa7a99174e4e9 />
+<demo8603419f1515 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -89,38 +89,7 @@ const seriesData = [
 ];
 const legendData = ['用水', '用电'];
 const unit = ['吨', '千瓦时'];
-const color = [
-    {
-        color: 'yellowgreen',
-        lineColor: 'green',
-        areaColor: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-                { offset: 0, color: 'rgb(0, 221, 255)' },
-                { offset: 1, color: 'rgb(77, 119, 255)' }
-            ]
-        }
-    },
-    {
-        color: 'blue',
-        lineColor: 'red',
-        areaColor: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-                { offset: 0, color: 'rgb(128, 255, 165)' },
-                { offset: 1, color: 'rgb(1, 191, 236)' }
-            ]
-        }
-    }
-];
+const color = ['green', 'red'];
 // 组合配置项
 const chartOption = {
     xAxisData,
@@ -141,13 +110,13 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo77a4a89f1070 />
+<demoa6d2449e38d1 />
 ## 支持方法
-<demo1cfef4755aa9 />
+<demod2ec275402c3 />
 <script setup>
-import demobe5c95fd3f91 from '../../document/lineChart/1.基础用法.vue'
-import demoac8f66a2d8c0 from '../../document/lineChart/2.显示数值与圆点.vue'
-import demoa7a99174e4e9 from '../../document/lineChart/3.颜色配置.vue'
-import demo77a4a89f1070 from '../../document/lineChart/属性.vue'
-import demo1cfef4755aa9 from '../../document/lineChart/支持方法.vue'
+import demo46e95ad5e543 from '../../document/lineChart/1.基础用法.vue'
+import democ58ea427bb9e from '../../document/lineChart/2.显示数值与圆点.vue'
+import demo8603419f1515 from '../../document/lineChart/3.颜色配置.vue'
+import demoa6d2449e38d1 from '../../document/lineChart/属性.vue'
+import demod2ec275402c3 from '../../document/lineChart/支持方法.vue'
 </script>
