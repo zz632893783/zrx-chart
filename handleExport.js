@@ -23,7 +23,7 @@ const install = function (Vue, opts = {}) {
             x.push(`${ i === 0 ? '' : '    ' }Vue.component('${ y }', ${ y });`);
             if (y.match(/(?<=[a-z\d])[A-Z]/)) {
                 // 计算出 bar-chart 这样的组件名
-                const alias = y.replace(/(?<=[a-z\d])[A-Z]/, c => `-${ c.toLowerCase() }`);
+                const alias = y.replace(/(?<=[a-z\d])[A-Z]/g, c => `-${ c.toLowerCase() }`);
                 x.push(`    Vue.component('${ alias }', ${ y });`);
                 // 计算出 ring-chart-2-canvas-3 这样的别名
                 const splitAlias = alias.replace(/(?<=[a-z\d])\d+/g, c => `-${ c }`).replace(/\d+(?=[a-z\d])/g, (c) => `${ c }-`);
