@@ -7,6 +7,7 @@ import barLineChart2 from './components/barLineChart2.vue';
 import barLineChart3 from './components/barLineChart3.vue';
 import barLineChart4 from './components/barLineChart4.vue';
 import dashboardChart from './components/dashboardChart.vue';
+import gradientRingChart from './components/gradientRingChart.vue';
 import lineChart from './components/lineChart.vue';
 import ringChart from './components/ringChart.vue';
 import ringChart2 from './components/ringChart2.vue';
@@ -15,7 +16,7 @@ import ringChart4 from './components/ringChart4.vue';
 import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
 
-export { barChart, barChart2, barChart3, barLineChart, barLineChart2, barLineChart3, barLineChart4, dashboardChart, lineChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };
+export { barChart, barChart2, barChart3, barLineChart, barLineChart2, barLineChart3, barLineChart4, dashboardChart, gradientRingChart, lineChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue, opts = {}) {
@@ -45,6 +46,8 @@ const install = function (Vue, opts = {}) {
     Vue.component('bar-lineChart-4', barLineChart4);
     Vue.component('dashboardChart', dashboardChart);
     Vue.component('dashboard-chart', dashboardChart);
+    Vue.component('gradientRingChart', gradientRingChart);
+    Vue.component('gradient-ringChart', gradientRingChart);
     Vue.component('lineChart', lineChart);
     Vue.component('line-chart', lineChart);
     Vue.component('ringChart', ringChart);
@@ -66,4 +69,4 @@ const install = function (Vue, opts = {}) {
     Vue.component('ring-chart-6', ringChart6);
 };
 
-export default { install, barChart, barChart2, barChart3, barLineChart, barLineChart2, barLineChart3, barLineChart4, dashboardChart, lineChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };
+export default { install, barChart, barChart2, barChart3, barLineChart, barLineChart2, barLineChart3, barLineChart4, dashboardChart, gradientRingChart, lineChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };

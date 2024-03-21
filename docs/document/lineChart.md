@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo46e95ad5e543 />
+<demo799101733239 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -11,10 +11,11 @@ const chartRef = ref();
 const xAxisData = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 const seriesData = [
     [8, 30, 50, 82, 73, 84, 50],
-    [32, 94, 61, 11, 52, 68, 58]
+    [32, 94, 61, 11, 52, 68, 58],
+    [30, 44, 56, 24, 42, 58, 45]
 ];
-const legendData = ['用水', '用电'];
-const unit = ['吨', '千瓦时'];
+const legendData = ['用水', '用电', '用工'];
+const unit = ['吨', '千瓦时', '人'];
 // 组合配置项
 const chartOption = {
     xAxisData,
@@ -34,7 +35,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.显示数值与圆点
-<democ58ea427bb9e />
+<demo95907140db66 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -73,7 +74,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.颜色配置
-<demo8603419f1515 />
+<demo45ed2d0f6f41 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -90,13 +91,15 @@ const seriesData = [
 const legendData = ['用水', '用电'];
 const unit = ['吨', '千瓦时'];
 const color = ['green', 'red'];
+const smooth = false;
 // 组合配置项
 const chartOption = {
     xAxisData,
     seriesData,
     legendData,
     unit,
-    color
+    color,
+    smooth
 };
 
 onMounted(() => chartRef.value.renderChart());
@@ -110,13 +113,13 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demoa6d2449e38d1 />
+<demo8285d2630276 />
 ## 支持方法
-<demod2ec275402c3 />
+<demo8584d836489f />
 <script setup>
-import demo46e95ad5e543 from '../../document/lineChart/1.基础用法.vue'
-import democ58ea427bb9e from '../../document/lineChart/2.显示数值与圆点.vue'
-import demo8603419f1515 from '../../document/lineChart/3.颜色配置.vue'
-import demoa6d2449e38d1 from '../../document/lineChart/属性.vue'
-import demod2ec275402c3 from '../../document/lineChart/支持方法.vue'
+import demo799101733239 from '../../document/lineChart/1.基础用法.vue'
+import demo95907140db66 from '../../document/lineChart/2.显示数值与圆点.vue'
+import demo45ed2d0f6f41 from '../../document/lineChart/3.颜色配置.vue'
+import demo8285d2630276 from '../../document/lineChart/属性.vue'
+import demo8584d836489f from '../../document/lineChart/支持方法.vue'
 </script>

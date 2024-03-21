@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo9ef89e21e5b2 />
+<demoac0c81bc2115 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -34,7 +34,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.指定区域高亮
-<demo592c38e8d670 />
+<demoeb4b8f746ada />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -52,7 +52,7 @@ const seriesData = [
 const xAxisData = ['1-3月', '4-6月', '7-9月', '10-12月', '2023年1-3月', '4-6月', '7-9月'];
 const legendData = ['建筑业总产值', '前20名产值'];
 const yAxisName = '亿元';
-const xAxisHighlightArea = [4, 5, 6];
+const xAxisHighlightArea = [2, 4, 5];
 const chartOption = {
     seriesData,
     xAxisData,
@@ -71,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demo111559742a78 />
+<demob4afa64bea2e />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -109,13 +109,13 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo98d5b5eef00f />
+<demo478ff40712c1 />
 ## 支持方法
-<demoa2479c8403d1 />
+<demof6f3af0ef8ad />
 <script setup>
-import demo9ef89e21e5b2 from '../../document/barChart/1.基础用法.vue'
-import demo592c38e8d670 from '../../document/barChart/2.指定区域高亮.vue'
-import demo111559742a78 from '../../document/barChart/3.拖拽区域为滚动条.vue'
-import demo98d5b5eef00f from '../../document/barChart/属性.vue'
-import demoa2479c8403d1 from '../../document/barChart/支持方法.vue'
+import demoac0c81bc2115 from '../../document/barChart/1.基础用法.vue'
+import demoeb4b8f746ada from '../../document/barChart/2.指定区域高亮.vue'
+import demob4afa64bea2e from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demo478ff40712c1 from '../../document/barChart/属性.vue'
+import demof6f3af0ef8ad from '../../document/barChart/支持方法.vue'
 </script>

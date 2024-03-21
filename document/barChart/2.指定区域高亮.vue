@@ -14,7 +14,7 @@ const seriesData = [
 const xAxisData = ['1-3月', '4-6月', '7-9月', '10-12月', '2023年1-3月', '4-6月', '7-9月'];
 const legendData = ['建筑业总产值', '前20名产值'];
 const yAxisName = '亿元';
-const xAxisHighlightArea = [4, 5, 6];
+const xAxisHighlightArea = [2, 4, 5];
 const chartOption = {
     seriesData,
     xAxisData,
