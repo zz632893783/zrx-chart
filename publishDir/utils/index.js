@@ -41,3 +41,13 @@ export const setFixed = (value, toFixedNum = 2) => {
     }
     return flag + Math.abs(value)
 };
+// 计算颜色对应的 rgba 值
+export const computeColorRGBA = (color) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+    return { r, g, b, a: a / 255 };
+};

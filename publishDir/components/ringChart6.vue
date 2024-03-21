@@ -257,6 +257,11 @@ defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
 <style lang="scss" scoped>
 $remh: 1px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .zrx-chart {
     position: relative;
     .chart-container {

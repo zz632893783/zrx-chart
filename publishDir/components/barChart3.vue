@@ -320,7 +320,6 @@ const renderChart = () => {
             }
         },
         yAxis: props.yAxisData.map((yAxis, index) => {
-            console.log(yAxis, props.yAxisHighlightArea)
             return {
                 type: 'category',
                 inverse: true,
