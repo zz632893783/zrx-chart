@@ -1,5 +1,5 @@
 ## 1.带线段标签
-<demo17a169d8cb88 />
+<demo9d527ac2c502 />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -40,7 +40,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心自定义
-<demoaa51e25ab57d />
+<democe94ea62b222 />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef">
@@ -83,7 +83,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.自定义标签
-<demo6ed3f511c589 />
+<demo9b4e9d68a143 />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -156,7 +156,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.绑定原生html属性
-<demod997c068e102 />
+<demoe5018ba34dfe />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -192,14 +192,14 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo62b13622f08e />
+<demo1a817e0bba84 />
 ## 支持方法
-<demo4ab9b90c3f3e />
+<demo6c75b6edb6a3 />
 <script setup>
-import demo17a169d8cb88 from '../../document/ringChart2/1.带线段标签.vue'
-import demoaa51e25ab57d from '../../document/ringChart2/2.中心自定义.vue'
-import demo6ed3f511c589 from '../../document/ringChart2/3.自定义标签.vue'
-import demod997c068e102 from '../../document/ringChart2/4.绑定原生html属性.vue'
-import demo62b13622f08e from '../../document/ringChart2/属性.vue'
-import demo4ab9b90c3f3e from '../../document/ringChart2/支持方法.vue'
+import demo9d527ac2c502 from '../../document/ringChart2/1.带线段标签.vue'
+import democe94ea62b222 from '../../document/ringChart2/2.中心自定义.vue'
+import demo9b4e9d68a143 from '../../document/ringChart2/3.自定义标签.vue'
+import demoe5018ba34dfe from '../../document/ringChart2/4.绑定原生html属性.vue'
+import demo1a817e0bba84 from '../../document/ringChart2/属性.vue'
+import demo6c75b6edb6a3 from '../../document/ringChart2/支持方法.vue'
 </script>
