@@ -1,10 +1,17 @@
 ## 1.基础用法
-<demob02d9d97878d />
+<demo0d1932196ff3 />
 ```vue{4}
 <template>
-    <gradient-ring-chart :value="50" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
+    <gradient-ring-chart :value="v" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
+    <el-button @click="randomValue">随机值</el-button>
 </template>
-<script setup></script>
+<script setup>;
+import { ref } from 'vue';
+
+const v = ref(50);
+
+const randomValue = () => (v.value = Math.round(Math.random() * 100));
+</script>
 <style lang="scss" scoped>
 .zrx-chart {
     background-color: #042a44;
@@ -13,7 +20,7 @@
 </style>
 ```
 ## 2.颜色半径设置
-<demo2e1c8278cc6c />
+<demo4dad2d6e0e14 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -38,7 +45,7 @@ const option = {
 </style>
 ```
 ## 3.角度范围控制
-<demo9cc016bd27f0 />
+<demo7000b93d0224 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -76,7 +83,7 @@ const option3 = {
 </style>
 ```
 ## 4.顺时针、逆时针
-<demo6e6b3ce374a0 />
+<demobab062bd7d95 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -103,11 +110,11 @@ const option2 = {
 </style>
 ```
 ## 属性
-<demo93a93d32f73c />
+<demoeabffca43a12 />
 <script setup>
-import demob02d9d97878d from '../../document/gradientRingChart/1.基础用法.vue'
-import demo2e1c8278cc6c from '../../document/gradientRingChart/2.颜色半径设置.vue'
-import demo9cc016bd27f0 from '../../document/gradientRingChart/3.角度范围控制.vue'
-import demo6e6b3ce374a0 from '../../document/gradientRingChart/4.顺时针、逆时针.vue'
-import demo93a93d32f73c from '../../document/gradientRingChart/属性.vue'
+import demo0d1932196ff3 from '../../document/gradientRingChart/1.基础用法.vue'
+import demo4dad2d6e0e14 from '../../document/gradientRingChart/2.颜色半径设置.vue'
+import demo7000b93d0224 from '../../document/gradientRingChart/3.角度范围控制.vue'
+import demobab062bd7d95 from '../../document/gradientRingChart/4.顺时针、逆时针.vue'
+import demoeabffca43a12 from '../../document/gradientRingChart/属性.vue'
 </script>
