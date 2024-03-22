@@ -1,6 +1,7 @@
 <template>
     <div class="zrx-tip">
-        <div ref="containerRef" :class="['container', `placement-${ placement }`]">
+        <div ref="containerRef" :class="['container', `placement-${ placement }`]" :style="`
+        backdrop-filter: blur(${ filterBlur }px);`">
             <slot></slot>
         </div>
     </div>
@@ -42,6 +43,14 @@ const props = defineProps({
     borderRadius: {
         type: [Number],
         default: () => 10
+    },
+    /**
+     * @description 模糊程度
+     * @example 6
+     */
+    filterBlur: {
+        type: [Number],
+        default: () => 6
     }
 });
 // 观察者对象
@@ -123,7 +132,6 @@ onBeforeUnmount(() => {
     position: relative;
     .container {
         background-color: rgba(white, 0.05);
-        backdrop-filter: blur(6px);
     }
     .placement-top {
         position: absolute;
