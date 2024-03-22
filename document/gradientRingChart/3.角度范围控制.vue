@@ -15,14 +15,14 @@ const option2 = {
     value: 80,
     subTitle: '副标题',
     valueUnit: '人',
-    startAngle: 120,
+    startAngle: 240,
     angleRange: 240
 };
 const option3 = {
     value: 80,
     subTitle: '副标题',
     valueUnit: '人',
-    startAngle: 120,
+    startAngle: 0,
     angleRange: 360
 };
 </script>

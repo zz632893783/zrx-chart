@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 0:16:41 -->
+<!-- 创建时间 2024-3-22 10:15:21 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -248,6 +248,23 @@
                 </div>
                 <div class="table-cell">
                     '风险指数'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    clockwise
+                </div>
+                <div class="table-cell">
+                    是否是顺时针排布。
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
                 </div>
             </div>
         </div>

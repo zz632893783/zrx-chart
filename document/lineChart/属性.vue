@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 0:16:41 -->
+<!-- 创建时间 2024-3-22 10:15:21 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -156,10 +156,10 @@
                     y 轴名称
                 </div>
                 <div class="table-cell">
-                    String
+                    Array
                 </div>
                 <div class="table-cell">
-                    ''
+                    ['']
                 </div>
                 <div class="table-cell">
                     '亿元'

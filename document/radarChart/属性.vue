@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 0:16:41 -->
+<!-- 创建时间 2024-3-22 10:15:21 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -95,6 +95,40 @@
                 </div>
                 <div class="table-cell">
                     ['总能耗', '能耗照明']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    beforeSetOption
+                </div>
+                <div class="table-cell">
+                    万能方法，图表渲染之前执行
+                </div>
+                <div class="table-cell">
+                    Function
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    afterSetOption
+                </div>
+                <div class="table-cell">
+                    万能方法，图表渲染之后执行
+                </div>
+                <div class="table-cell">
+                    Function
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
                 </div>
             </div>
         </div>

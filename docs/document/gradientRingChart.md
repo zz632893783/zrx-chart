@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo291d779a9c33 />
+<demoe12a41ed3d2d />
 ```vue{4}
 <template>
     <gradient-ring-chart :value="50" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
@@ -13,7 +13,7 @@
 </style>
 ```
 ## 2.颜色半径设置
-<demo5da05a57f28f />
+<demofd97922a180e />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -38,7 +38,7 @@ const option = {
 </style>
 ```
 ## 3.角度范围控制
-<demo1812b5555e73 />
+<demoea6039c23c26 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -57,14 +57,14 @@ const option2 = {
     value: 80,
     subTitle: '副标题',
     valueUnit: '人',
-    startAngle: 120,
+    startAngle: 240,
     angleRange: 240
 };
 const option3 = {
     value: 80,
     subTitle: '副标题',
     valueUnit: '人',
-    startAngle: 120,
+    startAngle: 0,
     angleRange: 360
 };
 </script>
@@ -75,11 +75,36 @@ const option3 = {
 }
 </style>
 ```
-## 属性
-<demofad11ffac59b />
+## 4.顺时针、逆时针
+<demoef3c77f6bd9d />
+```vue{4}
+<template>
+    <gradient-ring-chart v-bind="option"></gradient-ring-chart>
+    <gradient-ring-chart v-bind="option2"></gradient-ring-chart>
+</template>
 <script setup>
-import demo291d779a9c33 from '../../document/gradientRingChart/1.基础用法.vue'
-import demo5da05a57f28f from '../../document/gradientRingChart/2.颜色半径设置.vue'
-import demo1812b5555e73 from '../../document/gradientRingChart/3.角度范围控制.vue'
-import demofad11ffac59b from '../../document/gradientRingChart/属性.vue'
+const option = {
+    value: 60,
+    clockwise: true
+};
+const option2 = {
+    value: 80,
+    clockwise: false
+};
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    background-color: #042a44;
+    padding: 32px;
+}
+</style>
+```
+## 属性
+<demoa6c7ee03b590 />
+<script setup>
+import demoe12a41ed3d2d from '../../document/gradientRingChart/1.基础用法.vue'
+import demofd97922a180e from '../../document/gradientRingChart/2.颜色半径设置.vue'
+import demoea6039c23c26 from '../../document/gradientRingChart/3.角度范围控制.vue'
+import demoef3c77f6bd9d from '../../document/gradientRingChart/4.顺时针、逆时针.vue'
+import demoa6c7ee03b590 from '../../document/gradientRingChart/属性.vue'
 </script>
