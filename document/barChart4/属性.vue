@@ -14,23 +14,6 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    xAxisData
-                </div>
-                <div class="table-cell">
-                    x 轴坐标
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     grid
                 </div>
                 <div class="table-cell">
@@ -40,18 +23,18 @@
                     Object
                 </div>
                 <div class="table-cell">
-                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 109,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 76,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 38,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 53<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+                    ({ top: 0, right: 20, bottom: 0, left: 20 })
                 </div>
                 <div class="table-cell">
-                    { top: 84, right: 18, bottom: 56, left: 56 }
+                    { top: 0, right: 0, bottom: 0, left: 0 }
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    seriesData
+                    legendData
                 </div>
                 <div class="table-cell">
-                    数据数组
+                    legend 数据
                 </div>
                 <div class="table-cell">
                     Array
@@ -60,24 +43,126 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定类型<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定 y 轴索引<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [163, 129, 123, 198, 152, 152, 178]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [81, 17, 30, 94, 45, 54, 60]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
+                    ['男', '女']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    yAxisName
+                    seriesData
                 </div>
                 <div class="table-cell">
-                    y轴单位
+                    纵坐标数据
                 </div>
                 <div class="table-cell">
-                    String, Array
+                    Array
                 </div>
                 <div class="table-cell">
-                    ['']
+                    []
                 </div>
                 <div class="table-cell">
-                    ['亿元', '%']
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;[12, 64, 84, 11, 69, 51],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[87, 29, 80, 66, 21, 23]<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    yAxisData
+                </div>
+                <div class="table-cell">
+                    纵坐标数据
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    ['0-6岁', '7-17岁', '18-35岁', '36-59岁', '60-79岁', '>80岁']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    yAxisWidth
+                </div>
+                <div class="table-cell">
+                    中心部分 y 轴的宽度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    72
+                </div>
+                <div class="table-cell">
+                    120
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    barBorderRadius
+                </div>
+                <div class="table-cell">
+                    圆柱的圆角
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    4
+                </div>
+                <div class="table-cell">
+                    4
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    barWidth
+                </div>
+                <div class="table-cell">
+                    圆的宽度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    16
+                </div>
+                <div class="table-cell">
+                    24
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showValue
+                </div>
+                <div class="table-cell">
+                    是否显示数值
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    unit
+                </div>
+                <div class="table-cell">
+                    单位
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    ''
+                </div>
+                <div class="table-cell">
+                    '人'
                 </div>
             </div>
             <div class="table-row">
@@ -91,7 +176,7 @@
                     Number
                 </div>
                 <div class="table-cell">
-                    5
+                    3
                 </div>
                 <div class="table-cell">
                     3
@@ -116,10 +201,10 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    dataZoomBottom
+                    dataZoomRight
                 </div>
                 <div class="table-cell">
-                    当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+                    当 dataZoomType 为 slider 时，拖动区域距离右侧的距离
                 </div>
                 <div class="table-cell">
                     Number
@@ -133,138 +218,19 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    showLegend
-                </div>
-                <div class="table-cell">
-                    是否显示 legend
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    true
-                </div>
-                <div class="table-cell">
-                    false
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    legendData
-                </div>
-                <div class="table-cell">
-                    legend 数据
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    ['统计金额', '开票金额']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    markLine
-                </div>
-                <div class="table-cell">
-                    标记线
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 134,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#33FFBB'<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 166,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#F74768'<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     color
                 </div>
                 <div class="table-cell">
-                    图表项颜色
+                    颜色
                 </div>
                 <div class="table-cell">
                     Array
                 </div>
                 <div class="table-cell">
-                    ['blue', 'yellow', 'grey']
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'linear',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x1: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y1: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorStops: [<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#1261c5'<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#3eb1ff'<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'linear',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x1: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y1: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorStops: [<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#d2f3ff'<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#8bbbf2'<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
                 </div>
                 <div class="table-cell">
-                    ['blue', 'yellow', 'grey']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    showLineArea
-                </div>
-                <div class="table-cell">
-                    线条是否显示区域颜色
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    false
-                </div>
-                <div class="table-cell">
-                    true
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    tooltipTitle
-                </div>
-                <div class="table-cell">
-                    tooltip 标题
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    null
-                </div>
-                <div class="table-cell">
-                    ['标题A']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    xAxisHighlightArea
-                </div>
-                <div class="table-cell">
-                    高亮区域的索引
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [2, 4]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    dataZoomStartAtEnd
-                </div>
-                <div class="table-cell">
-                    从末尾开始显示图表
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    true
-                </div>
-                <div class="table-cell">
-                    false
+                    ['blue', 'grey']
                 </div>
             </div>
             <div class="table-row">
@@ -323,6 +289,6 @@
 </template>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 3fr);
 }
 </style>

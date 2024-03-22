@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoada3a0a90862 />
+<demodd02581771b9 />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -36,7 +36,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.滑块间距设置
-<demo8e092151a5cb />
+<demo17c412009b21 />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -77,7 +77,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.修改 tooltip 标题
-<demo372bba94e80a />
+<demo1146a1987dd2 />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -116,7 +116,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.部分区域高亮
-<demobe5a418cebd7 />
+<demo9ff35d352b4f />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -156,7 +156,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.隐藏 y 轴每项背景
-<demo382046435b10 />
+<demo1d25b2e3e3dc />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -195,7 +195,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 6.隐藏辅助刻度线
-<demo15a79f504584 />
+<demoada74e9b0b90 />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -234,7 +234,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 7.柱宽与数值显示
-<demo380662d76f20 />
+<demob69e89ddf21e />
 ```vue{4}
 <template>
     <bar-chart-2 ref="chartRef" v-bind="option"></bar-chart-2>
@@ -275,17 +275,17 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demoff1e88102f31 />
+<demoeb144848da09 />
 ## 支持方法
-<demob752fb2f69de />
+<demoaa56dad3a698 />
 <script setup>
-import demoada3a0a90862 from '../../document/barChart2/1.基础用法.vue'
-import demo8e092151a5cb from '../../document/barChart2/2.滑块间距设置.vue'
-import demo372bba94e80a from '../../document/barChart2/3.修改 tooltip 标题.vue'
-import demobe5a418cebd7 from '../../document/barChart2/4.部分区域高亮.vue'
-import demo382046435b10 from '../../document/barChart2/5.隐藏 y 轴每项背景.vue'
-import demo15a79f504584 from '../../document/barChart2/6.隐藏辅助刻度线.vue'
-import demo380662d76f20 from '../../document/barChart2/7.柱宽与数值显示.vue'
-import demoff1e88102f31 from '../../document/barChart2/属性.vue'
-import demob752fb2f69de from '../../document/barChart2/支持方法.vue'
+import demodd02581771b9 from '../../document/barChart2/1.基础用法.vue'
+import demo17c412009b21 from '../../document/barChart2/2.滑块间距设置.vue'
+import demo1146a1987dd2 from '../../document/barChart2/3.修改 tooltip 标题.vue'
+import demo9ff35d352b4f from '../../document/barChart2/4.部分区域高亮.vue'
+import demo1d25b2e3e3dc from '../../document/barChart2/5.隐藏 y 轴每项背景.vue'
+import demoada74e9b0b90 from '../../document/barChart2/6.隐藏辅助刻度线.vue'
+import demob69e89ddf21e from '../../document/barChart2/7.柱宽与数值显示.vue'
+import demoeb144848da09 from '../../document/barChart2/属性.vue'
+import demoaa56dad3a698 from '../../document/barChart2/支持方法.vue'
 </script>
