@@ -33,6 +33,10 @@ const install = function (Vue, opts = {}) {
         }, []).join('\n')
     }
 };`);
+// 计算目前组件数量，并对首页相关说明进行更新
+let readmeContent = fs.readFileSync('./docs/index.md').toString();
+readmeContent = readmeContent.replace(/(?<=目前提供 *)(\d+)(?= *种类型组件)/, names.length);
+fs.writeFileSync('./docs/index.md', readmeContent);
 // 设置 export default 增加 install 方法
 exportContent.push(`\nexport default { install, ${ names.join(', ') } };`);
 // 将文本作为 js 写入 ./index.js 中
