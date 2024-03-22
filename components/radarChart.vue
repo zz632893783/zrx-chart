@@ -62,6 +62,26 @@ const props = defineProps({
     legendData: {
         type: [Array],
         default: () => []
+    },
+    /**
+     * @description 万能方法，图表渲染之前执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    beforeSetOption: {
+        type: [Function],
+        default: () => null
+    },
+    /**
+     * @description 万能方法，图表渲染之后执行
+     * @example function (option, chart) {
+     *     return '执行对 option 的修改，绑定自定义事件等'
+     * }
+     */
+    afterSetOption: {
+        type: [Function],
+        default: () => null
     }
 });
 // 渲染函数
@@ -116,7 +136,9 @@ const renderChart = () => {
             }
         }
     };
+    typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
+    typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 // 绘制雷达图背景
 const createRadarBg = async () => {

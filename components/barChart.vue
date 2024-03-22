@@ -151,6 +151,14 @@ const props = defineProps({
         default: () => 1
     },
     /**
+     * @description 圆柱的圆角
+     * @example [4, 4, 0, 0]
+     */
+    barBorderRadius: {
+        type: [Number, Array],
+        default: () => [0]
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -331,7 +339,8 @@ const renderChart = () => {
                     barWidth: 12 * props.scale,
                     itemStyle: {
                         // color: props.itemColors[seriesIndex % props.itemColors.length]
-                        color: colorMap[colorName]?.barArea
+                        color: colorMap[colorName]?.barArea,
+                        borderRadius: props.barBorderRadius || 0,
                     },
                     backgroundStyle: { color: 'rgba(180, 180, 180, 0.2)' }
                 }

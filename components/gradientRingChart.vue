@@ -140,10 +140,10 @@ const draw = () => {
     const capAngle = Math.atan(props.barWidth / 2 / radius) * 2;
     let value = props.value < props.min ? props.min : (props.value > props.max ? props.max : props.value);
     if (value < currentValue.value) {
-        currentValue.value = currentValue.value - (currentValue.value - value) * 0.1;
+        currentValue.value = currentValue.value - (currentValue.value - value) * 0.05;
         value = currentValue.value;
     } else if (value > currentValue.value) {
-        currentValue.value = currentValue.value + (value - currentValue.value) * 0.1;
+        currentValue.value = currentValue.value + (value - currentValue.value) * 0.05;
         value = currentValue.value;
     }
     let startAngle = props.startAngle / 180 * Math.PI;

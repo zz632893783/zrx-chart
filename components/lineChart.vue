@@ -90,8 +90,8 @@ const props = defineProps({
      * @example '亿元'
      */
     yAxisName: {
-        type: [String],
-        default: () => ''
+        type: [Array],
+        default: () => ['']
     },
     /**
      * @description legend 定位
@@ -244,34 +244,40 @@ const renderChart = () => {
                 margin: 4
             }
         },
-        yAxis: {
-            type: 'value',
-            name: props.yAxisName || '',
-            splitNumber: 4,
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                fontFamily: 'MicrosoftYaHei',
-                fontSize: 12,
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                margin: 8
-            },
-            splitLine: {
-                lineStyle: {
-                    color: '#DCDFE8',
-                    type: 'dashed'
+        yAxis: [
+            ...(typeof props.yAxisName === 'string' ? [props.yAxisName] : props.yAxisName).map((name, index) => {
+                return {
+                    name,
+                    type: 'value',
+                    splitNumber: 4,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        fontFamily: 'MicrosoftYaHei',
+                        fontSize: 12,
+                        color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
+                        margin: 8
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#DCDFE8',
+                            type: 'dashed'
+                        }
+                    }
                 }
-            }
-        },
+            })
+        ],
         series: props.seriesData.map((seriesItem, seriesIndex) => {
             const color = props.color[seriesIndex % props.color.length];
             const { r, g, b, a } = computeColorRGBA(color);
+            console.log(seriesItem);
             return {
                 name: props.legendData[seriesIndex % props.legendData.length],
                 type: 'line',
                 legendHoverLink: false,
-                data: seriesItem.map(value => {
+                yAxisIndex: seriesItem.yAxisIndex || 0,
+                data: seriesItem.data.map(value => {
                     return {
                         value,
                         itemStyle: {
