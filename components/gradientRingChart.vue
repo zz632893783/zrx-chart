@@ -158,8 +158,8 @@ const draw = () => {
     let endAngle = (props.startAngle + value / (props.max - props.min) * props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI;
     const gradient = ctx.createConicGradient(startAngle, canvasRef.value.width / 2, canvasRef.value.height / 2);
     if (!props.clockwise) {
-        gradient.addColorStop(1 - props.angleRange / 360, props.startColor);
-        gradient.addColorStop(1, props.endColor);
+        gradient.addColorStop(1 - props.angleRange / 360, props.endColor);
+        gradient.addColorStop(1, props.startColor);
     } else {
         gradient.addColorStop(0, props.startColor);
         gradient.addColorStop(props.angleRange / 360, props.endColor);

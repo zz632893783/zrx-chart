@@ -163,6 +163,14 @@ const props = defineProps({
         default: () => true
     },
     /**
+     * @description 圆柱的圆角
+     * @example [4, 4, 0, 0]
+     */
+    barBorderRadius: {
+        type: [Number, Array],
+        default: () => [0]
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -413,6 +421,7 @@ const renderChart = () => {
                 if (seriesOption.type === 'bar') {
                     seriesOption.barWidth = 8 * props.scale;
                     seriesOption.barGap = `${4 / 8 * 100}%`;
+                    seriesOption.itemStyle.borderRadius = props.barBorderRadius || 0;
                 }
                 if (seriesOption.type === 'line') {
                     seriesOption.symbol = 'circle';

@@ -177,6 +177,14 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 圆柱的圆角
+     * @example [4, 4, 0, 0]
+     */
+    barBorderRadius: {
+        type: [Number, Array],
+        default: () => [0]
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -359,7 +367,10 @@ const renderChart = () => {
                     }
                     return {
                         value,
-                        itemStyle: { color: barAreaColor }
+                        itemStyle: {
+                            color: barAreaColor,
+                            borderRadius: props.barBorderRadius || 0
+                        }
                     }
                 }),
                 name: props.legendData[seriesIndex % props.legendData.length],
