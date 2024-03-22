@@ -24,8 +24,14 @@ const props = defineProps({
     /**
      * @description 图表数据
      * @example [
-     *     [8, 30, 50, 82, 73, 84, 50],
-     *     [32, 94, 61, 11, 52, 68, 58]
+     *     {
+     *         yAxisIndex: 0,
+     *         data: [8, 30, 50, 82, 73, 84, 50]
+     *     },
+     *     {
+     *         yAxisIndex: 1,
+     *         data: [32, 94, 61, 11, 52, 68, 58]
+     *     }
      * ]
      */
     seriesData: {
@@ -122,6 +128,14 @@ const props = defineProps({
      * @example false
      */
     showLineArea: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
+     * @description 是否显示分割线
+     * @example false
+     */
+    showSplitLine: {
         type: [Boolean],
         default: () => true
     },
@@ -260,6 +274,7 @@ const renderChart = () => {
                         margin: 8
                     },
                     splitLine: {
+                        show: props.showSplitLine,
                         lineStyle: {
                             color: '#DCDFE8',
                             type: 'dashed'
@@ -271,7 +286,6 @@ const renderChart = () => {
         series: props.seriesData.map((seriesItem, seriesIndex) => {
             const color = props.color[seriesIndex % props.color.length];
             const { r, g, b, a } = computeColorRGBA(color);
-            console.log(seriesItem);
             return {
                 name: props.legendData[seriesIndex % props.legendData.length],
                 type: 'line',

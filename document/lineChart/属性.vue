@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 10:37:5 -->
+<!-- 创建时间 2024-3-22 10:50:37 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -43,7 +43,7 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;[8, 30, 50, 82, 73, 84, 50],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[32, 94, 61, 11, 52, 68, 58]<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [8, 30, 50, 82, 73, 84, 50]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [32, 94, 61, 11, 52, 68, 58]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
                 </div>
             </div>
             <div class="table-row">
@@ -222,6 +222,23 @@
                 </div>
                 <div class="table-cell">
                     线条区域是否显示渐变色
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showSplitLine
+                </div>
+                <div class="table-cell">
+                    是否显示分割线
                 </div>
                 <div class="table-cell">
                     Boolean

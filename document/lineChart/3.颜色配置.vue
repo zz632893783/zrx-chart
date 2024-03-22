@@ -7,8 +7,14 @@ import { ref, onMounted } from 'vue';
 const chartRef = ref();
 const xAxisData = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 const seriesData = [
-    [8, 30, 50, 82, 73, 84, 50],
-    [32, 94, 61, 11, 52, 68, 58]
+    {
+        yAxisIndex: 0,
+        data: [8, 30, 50, 82, 73, 84, 50]
+    },
+    {
+        yAxisIndex: 0,
+        data: [32, 94, 61, 11, 52, 68, 58]
+    }
 ];
 const legendData = ['用水', '用电'];
 const unit = ['吨', '千瓦时'];
