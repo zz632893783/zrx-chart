@@ -16,14 +16,14 @@ hero:
 
 features:
   - icon: 🚀
-    title: 图表组件
-    details: 目前提供 13 种类型组件
-  - icon: 🥽
+    title: 基于 vue3, echarts
+    details: 目前提供 18 种类型组件
+  - icon: 🛸
     title: 应用
-    details: 适用于 PC 端
-  - icon: 🦄
-    title: 案例
-    details: 香洲经济大脑，鹿泉一体化驾驶舱
+    details: 适用于 PC 端项目
+  - icon: 🛩
+    title: 具体项目
+    details: 目前阶段还未经过具体项目验证
 ---
 <style>
 :root {
