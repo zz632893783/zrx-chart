@@ -1,5 +1,5 @@
 ## 1.基础用法
-<democcaee1a87a97 />
+<demo8fbd15e9e368 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -34,7 +34,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.指定区域高亮
-<demo97dfa6a54f22 />
+<demo669f49699322 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -71,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demoabccceab892a />
+<demo29e1726c2ce9 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -109,13 +109,13 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demoa52e3f1ab4bc />
+<demo4d63283a4b02 />
 ## 支持方法
-<demo789b126d93eb />
+<demo62e087237fa8 />
 <script setup>
-import democcaee1a87a97 from '../../document/barChart/1.基础用法.vue'
-import demo97dfa6a54f22 from '../../document/barChart/2.指定区域高亮.vue'
-import demoabccceab892a from '../../document/barChart/3.拖拽区域为滚动条.vue'
-import demoa52e3f1ab4bc from '../../document/barChart/属性.vue'
-import demo789b126d93eb from '../../document/barChart/支持方法.vue'
+import demo8fbd15e9e368 from '../../document/barChart/1.基础用法.vue'
+import demo669f49699322 from '../../document/barChart/2.指定区域高亮.vue'
+import demo29e1726c2ce9 from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demo4d63283a4b02 from '../../document/barChart/属性.vue'
+import demo62e087237fa8 from '../../document/barChart/支持方法.vue'
 </script>

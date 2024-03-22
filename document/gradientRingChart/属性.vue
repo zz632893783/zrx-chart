@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 14:25:28 -->
+<!-- 创建时间 2024-3-22 20:28:42 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -207,7 +207,7 @@
                     中心数字的位数
                 </div>
                 <div class="table-cell">
-                    Boolean
+                    Number
                 </div>
                 <div class="table-cell">
                     1
