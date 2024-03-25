@@ -1,8 +1,0 @@
-{
-    "compilerOptions": {
-        "out": "", 
-        "sourceMap": true, 
-        "target": "es5"
-    }, 
-    "files": []
-}

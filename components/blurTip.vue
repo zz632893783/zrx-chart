@@ -51,12 +51,28 @@ const props = defineProps({
     filterBlur: {
         type: [Number],
         default: () => 6
+    },
+    /**
+     * @description 线条的宽度
+     * @example 1
+     */
+    borderWidth: {
+        type: [Number],
+        default: () => 12
+    },
+    /**
+     * @description 线条的颜色
+     * @example rgba(255, 0, 0, 0.5)
+     */
+    borderColor: {
+        type: [String],
+        default: () => 'rgba(255, 255, 255, 0.05)'
     }
 });
 // 观察者对象
 let observer = null;
 // 绘制 mask 要用到的背景
-const computeMaskBg = async () => {
+const computeMaskBg = async (borderBackground) => {
     containerRef.value.style.padding = 0;
     const padding = `padding${ ({ top: 'Bottom', bottom: 'Top', left: 'Right', right: 'Left' })[props.placement] }`;
     containerRef.value.style[padding] = `${ props.tipHeight }px`;
@@ -69,54 +85,66 @@ const computeMaskBg = async () => {
     ctx.beginPath();
     switch (props.placement) {
         case 'top':
-            ctx.moveTo(canvas.width / 2, canvas.height);
-            ctx.lineTo(canvas.width / 2 - props.tipWidth / 2, canvas.height - props.tipHeight);
-            ctx.arc(props.borderRadius, canvas.height - props.tipHeight - props.borderRadius, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
-            ctx.arc(props.borderRadius, props.borderRadius, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.borderRadius, props.borderRadius, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.borderRadius, canvas.height - props.tipHeight - props.borderRadius, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
-            ctx.lineTo(canvas.width / 2 + props.tipWidth / 2, canvas.height - props.tipHeight);
+            ctx.moveTo(canvas.width / 2, canvas.height - 0);
+            ctx.lineTo(canvas.width / 2 - props.tipWidth / 2, canvas.height - props.tipHeight - 0);
+            ctx.arc(props.borderRadius + 0, canvas.height - props.tipHeight - props.borderRadius - 0, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
+            ctx.arc(props.borderRadius + 0, props.borderRadius + 0, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.borderRadius - 0, props.borderRadius + 0, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.borderRadius - 0, canvas.height - props.tipHeight - props.borderRadius - 0, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
+            ctx.lineTo(canvas.width / 2 + props.tipWidth / 2, canvas.height - props.tipHeight - 0);
             break;
         case 'bottom':
             ctx.moveTo(canvas.width / 2, 0);
-            ctx.lineTo(canvas.width / 2 + props.tipWidth / 2, props.tipHeight);
-            ctx.arc(canvas.width - props.borderRadius, props.tipHeight + props.borderRadius, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 0 * Math.PI, 90 / 180 * Math.PI);
-            ctx.arc(props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
-            ctx.arc(props.borderRadius, props.tipHeight + props.borderRadius, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
-            ctx.lineTo(canvas.width / 2 - props.tipWidth / 2, props.tipHeight);
+            ctx.lineTo(canvas.width / 2 + props.tipWidth / 2, props.tipHeight + 0);
+            ctx.arc(canvas.width - props.borderRadius - 0, props.tipHeight + props.borderRadius + 0, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.borderRadius - 0, canvas.height - props.borderRadius - 0, props.borderRadius, 0 * Math.PI, 90 / 180 * Math.PI);
+            ctx.arc(props.borderRadius + 0, canvas.height - props.borderRadius - 0, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
+            ctx.arc(props.borderRadius + 0, props.tipHeight + props.borderRadius + 0, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
+            ctx.lineTo(canvas.width / 2 - props.tipWidth / 2, props.tipHeight + 0);
             break;
         case 'right':
             ctx.moveTo(0, canvas.height / 2);
-            ctx.lineTo(props.tipHeight, canvas.height / 2 - props.tipWidth / 2);
-            ctx.arc(props.tipHeight + props.borderRadius, props.borderRadius, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.borderRadius, props.borderRadius, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
-            ctx.arc(props.tipHeight + props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
-            ctx.lineTo(props.tipHeight, canvas.height / 2 + props.tipWidth / 2);
+            ctx.lineTo(props.tipHeight + 0, canvas.height / 2 - props.tipWidth / 2);
+            ctx.arc(props.tipHeight + props.borderRadius + 0, props.borderRadius + 0, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.borderRadius - 0, props.borderRadius + 0, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.borderRadius - 0, canvas.height - props.borderRadius - 0, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
+            ctx.arc(props.tipHeight + props.borderRadius + 0, canvas.height - props.borderRadius - 0, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
+            ctx.lineTo(props.tipHeight + 0, canvas.height / 2 + props.tipWidth / 2);
             break;
         case 'left':
-            ctx.moveTo(canvas.width, canvas.height / 2);
-            ctx.lineTo(canvas.width - props.tipHeight, canvas.height / 2 + props.tipWidth / 2);
-            ctx.arc(canvas.width - props.tipHeight - props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
-            ctx.arc(props.borderRadius, canvas.height - props.borderRadius, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
-            ctx.arc(props.borderRadius, props.borderRadius, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
-            ctx.arc(canvas.width - props.tipHeight - props.borderRadius, props.borderRadius, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
-            ctx.lineTo(canvas.width - props.tipHeight, canvas.height / 2 - props.tipWidth / 2);
+            ctx.moveTo(canvas.width - 0, canvas.height / 2);
+            ctx.lineTo(canvas.width - props.tipHeight - 0, canvas.height / 2 + props.tipWidth / 2);
+            ctx.arc(canvas.width - props.tipHeight - props.borderRadius - 0, canvas.height - props.borderRadius - 0, props.borderRadius, 0 / 180 * Math.PI, 90 / 180 * Math.PI);
+            ctx.arc(props.borderRadius + 0, canvas.height - props.borderRadius - 0, props.borderRadius, 90 / 180 * Math.PI, 180 / 180 * Math.PI);
+            ctx.arc(props.borderRadius + 0, props.borderRadius + 0, props.borderRadius, 180 / 180 * Math.PI, 270 / 180 * Math.PI);
+            ctx.arc(canvas.width - props.tipHeight - props.borderRadius - 0, props.borderRadius + 0, props.borderRadius, 270 / 180 * Math.PI, 360 / 180 * Math.PI);
+            ctx.lineTo(canvas.width - props.tipHeight - 0, canvas.height / 2 - props.tipWidth / 2);
             break;
     }
     ctx.closePath();
-    ctx.fillStyle = 'white';
-    ctx.fill();
-    const base64 = canvas.toDataURL();
-    containerRef.value.style.mask = `url(${ base64 })`;
+    if (borderBackground === 'background') {
+        ctx.fillStyle = 'white';
+        ctx.fill();
+    }
+    if (borderBackground === 'border') {
+        ctx.strokeStyle = props.borderColor;
+        ctx.lineWidth = props.borderWidth * 2;
+        ctx.stroke();
+    }
+    return canvas.toDataURL();
 };
 // 监听内容位置变化
 watch(() => props.placement, computeMaskBg);
 
 onMounted(() => {
-    computeMaskBg();
-    observer = new ResizeObserver(mutations => computeMaskBg());
+    observer = new ResizeObserver(async mutations => {
+        const [background, border] = await Promise.all([
+            computeMaskBg('background'),
+            computeMaskBg('border')
+        ]);
+        containerRef.value.style.mask = `url(${ background })`;
+        containerRef.value.style.backgroundImage = `url(${ border })`;
+    });
     observer.observe(containerRef.value);
 });
 

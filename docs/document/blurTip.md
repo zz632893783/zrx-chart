@@ -1,12 +1,8 @@
 ## 1.基础用法
-<demoef14202194c1 />
+<demo5940f884a3fb />
 ```vue{4}
 <template>
 	<div class="page">
-		<!-- <template v-for="n in 4">
-			<gradient-ring-chart :value="66" :radius="100"></gradient-ring-chart>
-			<blur-tip :placement="['top', 'right', 'bottom', 'left'][n]"><p>运营风险</p></blur-tip>
-		</template> -->
 		<gradient-ring-chart v-for="n in 3" :value="66"></gradient-ring-chart>
 		<blur-tip v-for="n in 4" :placement="['top', 'right', 'bottom', 'left'][n % 4]"><p>运营风险</p></blur-tip>
 	</div>
@@ -18,6 +14,7 @@ import { ref, onMounted } from 'vue';
 .page {
 	background-color: rgb(3, 43, 68);
 	position: relative;
+	white-space: nowrap;
 	.zrx-tip {
 		z-index: 1;
 		position: absolute;
@@ -32,8 +29,8 @@ import { ref, onMounted } from 'vue';
 			top: 110px;
 		}
 		&:nth-child(5) {
-			left: 300px;
-			top: 100px;
+			left: 310px;
+			top: 110px;
 		}
 		&:nth-child(6) {
 			left: 540px;
@@ -48,8 +45,8 @@ import { ref, onMounted } from 'vue';
 </style>
 ```
 ## 属性
-<demo5fbbea128c37 />
+<demo5501e63e0572 />
 <script setup>
-import demoef14202194c1 from '../../document/blurTip/1.基础用法.vue'
-import demo5fbbea128c37 from '../../document/blurTip/属性.vue'
+import demo5940f884a3fb from '../../document/blurTip/1.基础用法.vue'
+import demo5501e63e0572 from '../../document/blurTip/属性.vue'
 </script>

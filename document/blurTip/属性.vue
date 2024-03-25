@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-22 20:32:19 -->
+<!-- 创建时间 2024-3-25 10:5:54 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -78,6 +78,57 @@
                 </div>
                 <div class="table-cell">
                     12
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    filterBlur
+                </div>
+                <div class="table-cell">
+                    模糊程度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    6
+                </div>
+                <div class="table-cell">
+                    6
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    borderWidth
+                </div>
+                <div class="table-cell">
+                    线条的宽度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    12
+                </div>
+                <div class="table-cell">
+                    1
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    borderColor
+                </div>
+                <div class="table-cell">
+                    线条的颜色
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    'rgba(255, 255, 255, 0.05)'
+                </div>
+                <div class="table-cell">
+                    rgba(255, 0, 0, 0.5)
                 </div>
             </div>
         </div>

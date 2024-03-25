@@ -109,7 +109,7 @@ const props = defineProps({
      * @example 0
      */
     valueFixBit: {
-        type: [Boolean],
+        type: [Number],
         default: () => 1
     },
     /**
