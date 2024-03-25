@@ -58,7 +58,7 @@ const props = defineProps({
      */
     borderWidth: {
         type: [Number],
-        default: () => 12
+        default: () => 1
     },
     /**
      * @description 线条的颜色
