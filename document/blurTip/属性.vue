@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-25 10:5:54 -->
+<!-- 创建时间 2024-3-26 9:48:51 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -108,7 +108,7 @@
                     Number
                 </div>
                 <div class="table-cell">
-                    12
+                    1
                 </div>
                 <div class="table-cell">
                     1

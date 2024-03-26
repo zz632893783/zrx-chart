@@ -49,7 +49,7 @@ const props = defineProps({
     },
     /**
      * @description 数据项
-     * @example [4, 2, 1, 5, 3]
+     * @example [[4, 2, 1, 5, 3], [2, 1, 5, 3, 3]]
      */
     seriesData: {
         type: [Array],

@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo0d245e65e6cf />
+<demob795a38049de />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -47,7 +47,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.显示数值与圆点
-<demofc0193b29b58 />
+<demobfbe511252a7 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -92,7 +92,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.颜色配置
-<demoa3913549d700 />
+<democc38020e7f84 />
 ```vue{4}
 <template>
     <line-chart ref="chartRef" v-bind="chartOption"></line-chart>
@@ -137,13 +137,13 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo374c8103d165 />
+<demobdad65d3189e />
 ## 支持方法
-<demo47154bda88c7 />
+<demoa90412f9e287 />
 <script setup>
-import demo0d245e65e6cf from '../../document/lineChart/1.基础用法.vue'
-import demofc0193b29b58 from '../../document/lineChart/2.显示数值与圆点.vue'
-import demoa3913549d700 from '../../document/lineChart/3.颜色配置.vue'
-import demo374c8103d165 from '../../document/lineChart/属性.vue'
-import demo47154bda88c7 from '../../document/lineChart/支持方法.vue'
+import demob795a38049de from '../../document/lineChart/1.基础用法.vue'
+import demobfbe511252a7 from '../../document/lineChart/2.显示数值与圆点.vue'
+import democc38020e7f84 from '../../document/lineChart/3.颜色配置.vue'
+import demobdad65d3189e from '../../document/lineChart/属性.vue'
+import demoa90412f9e287 from '../../document/lineChart/支持方法.vue'
 </script>

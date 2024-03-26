@@ -58,10 +58,10 @@ const props = defineProps({
      */
     borderWidth: {
         type: [Number],
-        default: () => 12
+        default: () => 1
     },
     /**
-     * @description 线条的宽度
+     * @description 线条的颜色
      * @example rgba(255, 0, 0, 0.5)
      */
     borderColor: {
