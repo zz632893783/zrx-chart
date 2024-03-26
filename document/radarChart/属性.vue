@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-26 9:48:51 -->
+<!-- 创建时间 2024-3-26 16:10:14 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -65,6 +65,57 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
+                    indicatorColor
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器文字颜色
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    'white'
+                </div>
+                <div class="table-cell">
+                    'red'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicatorFontSize
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器字号
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    16
+                </div>
+                <div class="table-cell">
+                    32
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicatorNameGap
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器文字与图标的间距
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    16
+                </div>
+                <div class="table-cell">
+                    16
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
                     seriesData
                 </div>
                 <div class="table-cell">
@@ -95,6 +146,23 @@
                 </div>
                 <div class="table-cell">
                     ['总能耗', '能耗照明']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    color
+                </div>
+                <div class="table-cell">
+                    预设颜色
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    ['rgb(48, 213, 235)']
+                </div>
+                <div class="table-cell">
+                    ['red', 'green', 'blue']
                 </div>
             </div>
             <div class="table-row">

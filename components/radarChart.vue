@@ -7,6 +7,7 @@
 <script setup>
 import { ref } from 'vue';
 import * as echarts from 'echarts';
+import { computeColorRGBA } from '../utils/index.js';
 // 图表对象
 let chart = null;
 // 图表 dom 对象
@@ -48,6 +49,30 @@ const props = defineProps({
         default: () => []
     },
     /**
+     * @description 雷达图的指示器文字颜色
+     * @example 'red'
+     */
+    indicatorColor: {
+        type: [String],
+        default: () => 'white'
+    },
+    /**
+     * @description 雷达图的指示器字号
+     * @example 32
+     */
+    indicatorFontSize: {
+        type: [Number],
+        default: () => 16
+    },
+    /**
+     * @description 雷达图的指示器文字与图标的间距
+     * @example 16
+     */
+    indicatorNameGap: {
+        type: [Number],
+        default: () => 16
+    },
+    /**
      * @description 数据项
      * @example [[4, 2, 1, 5, 3], [2, 1, 5, 3, 3]]
      */
@@ -62,6 +87,14 @@ const props = defineProps({
     legendData: {
         type: [Array],
         default: () => []
+    },
+    /**
+     * @description 预设颜色
+     * @example ['red', 'green', 'blue']
+     */
+    color: {
+        type: [Array],
+        default: () => ['rgb(48, 213, 235)']
     },
     /**
      * @description 万能方法，图表渲染之前执行
@@ -110,30 +143,34 @@ const renderChart = () => {
                 }
             },
             axisName: {
-                color: 'rgba(255, 255, 255, 0.75)'
-            }
+                color: props.indicatorColor,
+                fontSize: props.indicatorFontSize
+            },
+            nameGap: props.indicatorNameGap
         },
         series: {
             type: 'radar',
             data: props.seriesData.map((group, index) => {
+                const color = props.color[index % props.color.length];
+                const { r, g, b, a } = computeColorRGBA(color);
                 return {
                     value: group,
-                    name: props.legendData[props.legendData.length % index] || ''
+                    name: props.legendData[props.legendData.length % index] || '',
+                    itemStyle: {
+                        color: props.color[index % props.color.length]
+                    },
+                    areaStyle: {
+                        color: `rgba(${ r }, ${ g }, ${ b }, ${ a * 0.7 })`
+                    }
                 }
             }),
             symbol: 'circle',
             symbolSize: 6,
             itemStyle: {
-                color: 'rgb(48, 213, 235)',
                 borderColor: 'white',
                 borderWidth: 1
             },
-            lineStyle: {
-                width: 1
-            },
-            areaStyle: {
-                color: 'rgba(48, 213, 235, 0.3)'
-            }
+            lineStyle: { width: 1 }
         }
     };
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);

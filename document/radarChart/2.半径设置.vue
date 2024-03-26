@@ -20,7 +20,7 @@ const seriesData = [
     [5, 3, 6, 6, 7, 7]
 ];
 
-const radius = 140;
+const radius = 130;
 
 const splitNumber = 8;
 
