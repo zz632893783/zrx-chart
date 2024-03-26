@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoe2e2b8ef4cca />
+<demofa9a98296599 />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -45,7 +45,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.只有折线
-<demo91abdde5f7e5 />
+<demob34aaa4b739f />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -104,7 +104,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.只有折线
-<demo83daadccd7f9 />
+<demob2ab02445918 />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -161,7 +161,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.混合
-<democ957cb9166c1 />
+<demo882d5bc9c2e0 />
 ```vue{4}
 <template>
     <bar-line-chart-3 v-bind="chartOption" ref="chartRef"></bar-line-chart-3>
@@ -245,14 +245,14 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo3fcb837d353d />
+<demob5367acfebf0 />
 ## 支持方法
-<demo7731013ab4aa />
+<demo10d086e66a1c />
 <script setup>
-import demoe2e2b8ef4cca from '../../document/barLineChart3/1.基础用法.vue'
-import demo91abdde5f7e5 from '../../document/barLineChart3/2.只有折线.vue'
-import demo83daadccd7f9 from '../../document/barLineChart3/3.只有折线.vue'
-import democ957cb9166c1 from '../../document/barLineChart3/4.混合.vue'
-import demo3fcb837d353d from '../../document/barLineChart3/属性.vue'
-import demo7731013ab4aa from '../../document/barLineChart3/支持方法.vue'
+import demofa9a98296599 from '../../document/barLineChart3/1.基础用法.vue'
+import demob34aaa4b739f from '../../document/barLineChart3/2.只有折线.vue'
+import demob2ab02445918 from '../../document/barLineChart3/3.只有折线.vue'
+import demo882d5bc9c2e0 from '../../document/barLineChart3/4.混合.vue'
+import demob5367acfebf0 from '../../document/barLineChart3/属性.vue'
+import demo10d086e66a1c from '../../document/barLineChart3/支持方法.vue'
 </script>

@@ -160,6 +160,14 @@ const props = defineProps({
         default: () => true
     },
     /**
+     * @description 是否平滑
+     * @example true
+     */
+    smooth: {
+        type: [Boolean, Number],
+        default: () => false
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -447,6 +455,7 @@ const renderChart = () => {
                     };
                 }
                 if (seriesOption.type === 'line') {
+                    seriesOption.smooth = props.smooth;
                     seriesOption.symbol = 'circle';
                     seriesOption.symbolSize = 8 * props.scale;
                     seriesOption.itemStyle = {

@@ -1,5 +1,5 @@
 ## 1.基本用法
-<demo784fdaebe4a2 />
+<demo664d1c746490 />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -38,7 +38,7 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 2.半径设置
-<demo3cd10afdbb77 />
+<demo0922be7c428c />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -85,7 +85,7 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 3.颜色设置
-<demo5df07b6e47bc />
+<demofeb04eba49e6 />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -101,23 +101,20 @@ const indicator = [
     { name: '管理能力', max: 10 },
     { name: '贡献能力', max: 10 },
     { name: '能效水平', max: 10 },
-    { name: '其他', max: 10 }
+    { name: '其他', max: 10 },
+    { name: '额外项', max: 10 }
 ];
-
 const seriesData = [
-    [6, 8, 7, 5, 8, 8],
-    [5, 3, 6, 6, 7, 7]
+    [8, 8, 7, 5, 8, 8, 9],
+    [5, 3, 6, 6, 7, 7, 2],
+    [3, 6, 6, 7, 7, 2, 3]
 ];
-
-const radius = 140;
-
-const splitNumber = 8;
-
+const color = ['green', 'blue', 'orange'];
 const option = {
     indicator,
     seriesData,
-    radius,
-    splitNumber
+    color,
+    indicatorColor: 'red'
 };
 
 onMounted(() => radarChartRef.value.renderChart());
@@ -132,10 +129,10 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demod16e6c643b77 />
+<demo926eaffbf372 />
 <script setup>
-import demo784fdaebe4a2 from '../../document/radarChart/1.基本用法.vue'
-import demo3cd10afdbb77 from '../../document/radarChart/2.半径设置.vue'
-import demo5df07b6e47bc from '../../document/radarChart/3.颜色设置.vue'
-import demod16e6c643b77 from '../../document/radarChart/属性.vue'
+import demo664d1c746490 from '../../document/radarChart/1.基本用法.vue'
+import demo0922be7c428c from '../../document/radarChart/2.半径设置.vue'
+import demofeb04eba49e6 from '../../document/radarChart/3.颜色设置.vue'
+import demo926eaffbf372 from '../../document/radarChart/属性.vue'
 </script>

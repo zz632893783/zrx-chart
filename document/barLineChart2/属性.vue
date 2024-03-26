@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-3-26 16:10:14 -->
+<!-- 创建时间 2024-3-26 20:25:57 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -265,6 +265,23 @@
                 </div>
                 <div class="table-cell">
                     false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    smooth
+                </div>
+                <div class="table-cell">
+                    是否平滑
+                </div>
+                <div class="table-cell">
+                    Boolean, Number
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
                 </div>
             </div>
             <div class="table-row">
