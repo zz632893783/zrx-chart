@@ -1,4 +1,4 @@
-# 图表组件库
+# 图表组件库.
 
 ## [文档地址 Click me](https://zrx-chart.pages.dev/)
 
