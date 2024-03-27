@@ -9,6 +9,11 @@
 npm install zrx-chart
 ```
 
+#### 镜像源同步可能存在延迟，若要下载最新请从官方源下载
+```bash{4}
+npm install zrx-chart --save --registry=https://registry.npmjs.org
+```
+
 ### 全局安装
 ```js{4}
 import { createApp } from 'vue';
