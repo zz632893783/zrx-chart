@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo7e138c885b19 />
+<demo30807e6d1016 />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -44,7 +44,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.柱宽度调整
-<demo3d15c3f08bc1 />
+<demo6dde54cec67f />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -84,7 +84,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.折线辅助线
-<demo0ea02bc90ecd />
+<demo5a9a73579d3b />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -140,7 +140,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.多柱
-<demoab5c5f8b47e0 />
+<demo897a4b6fc99b />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -189,7 +189,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.自定义x轴label
-<demo19a840283e85 />
+<demo08a83763e663 />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -261,7 +261,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 6.指定区域高亮
-<demoe3b9587c4df7 />
+<demo83c22cb3c11b />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -319,7 +319,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 7.拖拽区域为滚动条
-<demodc0e8b2e842d />
+<demoe444e7acb32a />
 ```vue{4}
 <template>
     <bar-line-chart2 v-bind="chartOption" ref="chartRef"></bar-line-chart2>
@@ -382,17 +382,17 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demofdd26a93d51b />
+<demofb3c300c6e5f />
 ## 支持方法
-<demoa3db2dbf0632 />
+<demo307e8d6a19ee />
 <script setup>
-import demo7e138c885b19 from '../../document/barLineChart2/1.基础用法.vue'
-import demo3d15c3f08bc1 from '../../document/barLineChart2/2.柱宽度调整.vue'
-import demo0ea02bc90ecd from '../../document/barLineChart2/3.折线辅助线.vue'
-import demoab5c5f8b47e0 from '../../document/barLineChart2/4.多柱.vue'
-import demo19a840283e85 from '../../document/barLineChart2/5.自定义x轴label.vue'
-import demoe3b9587c4df7 from '../../document/barLineChart2/6.指定区域高亮.vue'
-import demodc0e8b2e842d from '../../document/barLineChart2/7.拖拽区域为滚动条.vue'
-import demofdd26a93d51b from '../../document/barLineChart2/属性.vue'
-import demoa3db2dbf0632 from '../../document/barLineChart2/支持方法.vue'
+import demo30807e6d1016 from '../../document/barLineChart2/1.基础用法.vue'
+import demo6dde54cec67f from '../../document/barLineChart2/2.柱宽度调整.vue'
+import demo5a9a73579d3b from '../../document/barLineChart2/3.折线辅助线.vue'
+import demo897a4b6fc99b from '../../document/barLineChart2/4.多柱.vue'
+import demo08a83763e663 from '../../document/barLineChart2/5.自定义x轴label.vue'
+import demo83c22cb3c11b from '../../document/barLineChart2/6.指定区域高亮.vue'
+import demoe444e7acb32a from '../../document/barLineChart2/7.拖拽区域为滚动条.vue'
+import demofb3c300c6e5f from '../../document/barLineChart2/属性.vue'
+import demo307e8d6a19ee from '../../document/barLineChart2/支持方法.vue'
 </script>
