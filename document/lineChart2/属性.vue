@@ -60,7 +60,7 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定类型<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定 y 轴索引<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [163, 129, 123, 198, 152, 152, 178]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [81, 17, 30, 94, 45, 54, 60]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定 y 轴索引<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [163, 129, 123, 198, 152, 152, 178]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [81, 17, 30, 94, 45, 54, 60]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
                 </div>
             </div>
             <div class="table-row">
@@ -108,7 +108,7 @@
                     String
                 </div>
                 <div class="table-cell">
-                    'slider'
+                    'inside'
                 </div>
                 <div class="table-cell">
                     'slider'
@@ -167,6 +167,23 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
+                    showLabel
+                </div>
+                <div class="table-cell">
+                    是否显示 label
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
                     legendData
                 </div>
                 <div class="table-cell">
@@ -210,10 +227,10 @@
                     Array
                 </div>
                 <div class="table-cell">
-                    ['blue', 'yellow', 'grey']
+                    ['rgb(243, 220, 60)', 'rgb(102, 255, 255)']
                 </div>
                 <div class="table-cell">
-                    ['blue', 'yellow', 'grey']
+                    ['red', 'green']
                 </div>
             </div>
             <div class="table-row">
@@ -227,10 +244,10 @@
                     Boolean
                 </div>
                 <div class="table-cell">
-                    false
+                    true
                 </div>
                 <div class="table-cell">
-                    true
+                    false
                 </div>
             </div>
             <div class="table-row">
@@ -252,23 +269,6 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    xAxisHighlightArea
-                </div>
-                <div class="table-cell">
-                    高亮区域的索引
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [2, 4]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     smooth
                 </div>
                 <div class="table-cell">
@@ -278,10 +278,27 @@
                     Boolean, Number
                 </div>
                 <div class="table-cell">
-                    false
+                    true
                 </div>
                 <div class="table-cell">
                     true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    xAxisHighlightArea
+                </div>
+                <div class="table-cell">
+                    高亮区域的索引
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    [2, 4]
+                </div>
+                <div class="table-cell">
+                    [2, 4]
                 </div>
             </div>
             <div class="table-row">
