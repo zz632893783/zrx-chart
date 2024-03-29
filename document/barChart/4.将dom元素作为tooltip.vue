@@ -36,7 +36,6 @@ const chartOption = {
         }
     }
 };
-
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
