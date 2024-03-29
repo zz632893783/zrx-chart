@@ -1,14 +1,16 @@
 <template>
-    <div class="zrx-chart" ref="chartRef"></div>
+    <!-- <div class="zrx-chart" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
 import * as echarts from 'echarts';
 import { setFixed } from '../utils/index.js';
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -120,7 +122,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(chartRef.value);
+    // chart = echarts.init(chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         legend: {
             show: true,

@@ -1,5 +1,5 @@
 ## 1.基本用法
-<demo7873c9ac2ec3 />
+<democ092512c9f0c />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -38,7 +38,7 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 2.半径设置
-<demo5b2ebeac5259 />
+<demoba94296df424 />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -85,7 +85,7 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 3.颜色设置
-<demo0a03e06c7450 />
+<demo13c13a980341 />
 ```vue{4}
 <template>
     <radar-chart ref="radarChartRef" v-bind="option"></radar-chart>
@@ -129,10 +129,10 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demob9899ea4141b />
+<demo14a03d342989 />
 <script setup>
-import demo7873c9ac2ec3 from '../../document/radarChart/1.基本用法.vue'
-import demo5b2ebeac5259 from '../../document/radarChart/2.半径设置.vue'
-import demo0a03e06c7450 from '../../document/radarChart/3.颜色设置.vue'
-import demob9899ea4141b from '../../document/radarChart/属性.vue'
+import democ092512c9f0c from '../../document/radarChart/1.基本用法.vue'
+import demoba94296df424 from '../../document/radarChart/2.半径设置.vue'
+import demo13c13a980341 from '../../document/radarChart/3.颜色设置.vue'
+import demo14a03d342989 from '../../document/radarChart/属性.vue'
 </script>

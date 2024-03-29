@@ -7,13 +7,15 @@
             </div>
             <h4 class="sub-title" v-if="subTitle">{{ subTitle }}</h4>
         </div>
-        <canvas ref="canvasRef" :width="radius * 2" :height="radius * 2"></canvas>
+        <!-- <canvas ref="canvasRef" :width="radius * 2" :height="radius * 2"></canvas> -->
+        <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2" :height="radius * 2"></canvas>
     </div>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // canvas 元素
-const canvasRef = ref();
+// const canvasRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -144,6 +146,7 @@ let ctx;
 let animation;
 // 绘制函数
 const draw = () => {
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
     const radius = props.radius - props.barWidth / 2;
     const capAngle = Math.atan(props.barWidth / 2 / radius) * 2 * (props.clockwise ? 1 : -1);
     let value = props.value < props.min ? props.min : (props.value > props.max ? props.max : props.value);
@@ -156,7 +159,7 @@ const draw = () => {
     }
     let startAngle = props.startAngle / 180 * Math.PI;
     let endAngle = (props.startAngle + value / (props.max - props.min) * props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI;
-    const gradient = ctx.createConicGradient(startAngle, canvasRef.value.width / 2, canvasRef.value.height / 2);
+    const gradient = ctx.createConicGradient(startAngle, canvas.width / 2, canvas.height / 2);
     if (!props.clockwise) {
         gradient.addColorStop(1 - props.angleRange / 360, props.endColor);
         gradient.addColorStop(1, props.startColor);
@@ -165,21 +168,21 @@ const draw = () => {
         gradient.addColorStop(props.angleRange / 360, props.endColor);
     }
     let angle = startAngle + capAngle / 2;
-    let x = Math.cos(angle) * radius + canvasRef.value.width / 2;
-    let y = Math.sin(angle) * radius + canvasRef.value.height / 2;
+    let x = Math.cos(angle) * radius + canvas.width / 2;
+    let y = Math.sin(angle) * radius + canvas.height / 2;
     // 绘制底色
     ctx.beginPath();
     ctx.arc(x, y, props.barWidth / 2, angle - Math.PI, angle, !props.clockwise);
-    ctx.arc(canvasRef.value.width / 2, canvasRef.value.height / 2, props.radius, startAngle + capAngle / 2, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, !props.clockwise);
-    x = Math.cos((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvasRef.value.width / 2;
-    y = Math.sin((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvasRef.value.height / 2;
+    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius, startAngle + capAngle / 2, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, !props.clockwise);
+    x = Math.cos((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvas.width / 2;
+    y = Math.sin((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvas.height / 2;
     ctx.arc(x, y, props.barWidth / 2, (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2), (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2) + Math.PI, !props.clockwise);
-    ctx.arc(canvasRef.value.width / 2, canvasRef.value.height / 2, props.radius - props.barWidth, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
+    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius - props.barWidth, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
     ctx.fillStyle = props.layerColor;
     ctx.closePath();
     ctx.fill();
-    x = Math.cos(angle) * radius + canvasRef.value.width / 2;
-    y = Math.sin(angle) * radius + canvasRef.value.height / 2;
+    x = Math.cos(angle) * radius + canvas.width / 2;
+    y = Math.sin(angle) * radius + canvas.height / 2;
     // 如果小于最小的角度，则只绘制起始位置的一个点
     if (Math.abs(startAngle - endAngle) < capAngle) {
         ctx.beginPath();
@@ -190,12 +193,12 @@ const draw = () => {
     } else {
         ctx.beginPath();
         ctx.arc(x, y, props.barWidth / 2, angle - Math.PI, angle, !props.clockwise);
-        ctx.arc(canvasRef.value.width / 2, canvasRef.value.height / 2, props.radius, startAngle + capAngle / 2, endAngle - capAngle / 2, !props.clockwise);
+        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius, startAngle + capAngle / 2, endAngle - capAngle / 2, !props.clockwise);
         angle = endAngle - capAngle / 2;
-        x = Math.cos(angle) * radius + canvasRef.value.width / 2;
-        y = Math.sin(angle) * radius + canvasRef.value.height / 2;
+        x = Math.cos(angle) * radius + canvas.width / 2;
+        y = Math.sin(angle) * radius + canvas.height / 2;
         ctx.arc(x, y, props.barWidth / 2, angle, angle - Math.PI, !props.clockwise);
-        ctx.arc(canvasRef.value.width / 2, canvasRef.value.height / 2, props.radius - props.barWidth, endAngle - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
+        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius - props.barWidth, endAngle - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
         ctx.closePath();
         ctx.fillStyle = gradient;
         ctx.fill();
@@ -203,13 +206,15 @@ const draw = () => {
 };
 
 const setAnimation = () => {
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
     animation = window.requestAnimationFrame(setAnimation);
-    ctx.clearRect(0, 0, canvasRef.value.width, canvasRef.value.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
 };
 
 onMounted(() => {
-    ctx = canvasRef.value.getContext('2d');
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
+    ctx = canvas.getContext('2d');
     setAnimation();
 });
 

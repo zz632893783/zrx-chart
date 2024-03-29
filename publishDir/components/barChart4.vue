@@ -1,15 +1,17 @@
 <template>
-    <div class="zrx-chart" ref="chartRef"></div>
+    <!-- <div class="zrx-chart" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
 import * as echarts from 'echarts';
 // 以下这串字符串为特殊字符串，用于指定组件自动生成的 “属性.vue” 说明文件中，每列列宽
 /* @attribute-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 3fr); */
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -189,7 +191,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(chartRef.value);
+    // chart = echarts.init(chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     // 计算最大值
     let max = Math.max(...props.seriesData.reduce((x, y) => [...x, ...y], []));
     const n = Math.floor(Math.log10(max))
@@ -236,10 +239,12 @@ const renderChart = () => {
                 left: grid.left,
                 top: grid.top,
                 bottom: grid.bottom,
-                right: grid.right + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
+                // right: grid.right + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
+                right: grid.right + (document.getElementById(`zrx-chart-${ randomId }`).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
             },
             {
-                left: grid.left + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
+                // left: grid.left + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
+                left: grid.left + (document.getElementById(`zrx-chart-${ randomId }`).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
                 top: grid.top,
                 bottom: grid.bottom,
                 right: grid.right

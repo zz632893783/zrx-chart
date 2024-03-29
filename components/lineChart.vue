@@ -1,5 +1,6 @@
 <template>
-    <div class="zrx-chart" ref="chartDom"></div>
+    <!-- <div class="zrx-chart" ref="chartDom"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -7,10 +8,11 @@ import { defineProps, ref, onMounted, defineExpose } from 'vue';
 import { computeColorRGBA } from '../utils/index.js';
 // 以下这串字符串为特殊字符串，用于指定组件自动生成的 “属性.vue” 说明文件中，每列列宽
 /* @attribute-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 3fr); */
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartDom = ref();
+// const chartDom = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -166,7 +168,8 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
     }
-    chart = echarts.init(chartDom.value)
+    // chart = echarts.init(chartDom.value)
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         legend: {
             show: true,

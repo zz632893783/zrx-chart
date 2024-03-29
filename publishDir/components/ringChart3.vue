@@ -3,16 +3,18 @@
         <div class="ring-label">
             <slot></slot>
         </div>
-        <div class="chart" ref="chartDom"></div>
+        <!-- <div class="chart" ref="chartDom"></div> -->
+        <div class="chart" :id="`zrx-chart-${ randomId }`"></div>
     </div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
 import { defineProps, ref, onMounted } from 'vue';
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartDom = ref();
+// const chartDom = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -111,7 +113,8 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
     }
-    chart = echarts.init(chartDom.value)
+    // chart = echarts.init(chartDom.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const rich = {
         a: {
             fontSize: props.centerValueFontSize,

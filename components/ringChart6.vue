@@ -1,23 +1,26 @@
 <template>
-    <div class="zrx-chart" ref="containerRef">
-        <div class="chart-container" ref="chartRef"></div>
-        <div class="bar" :style="computeBarStyle()">
+    <!-- <div class="zrx-chart" ref="containerRef">
+        <div class="chart-container" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`">
+        <div class="chart-container"></div>
+        <div class="bar" :style="barStyle">
             <div class="bar-item" v-for="(n, i) in barSeriesData" :style="`background-color: ${ barColor[i % barColor.length] };`"></div>
         </div>
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import * as echarts from 'echarts';
 import { setFixed } from '../utils/index.js';
 // 以下这串字符串为特殊字符串，用于指定组件自动生成的 “属性.vue” 说明文件中，每列列宽
 /* @attribute-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2.6fr); */
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 图表外侧容器 dom 对象
-const containerRef = ref();
+// const containerRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -135,7 +138,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(chartRef.value);
+    // chart = echarts.init(chartRef.value);
+    chart = echarts.init(document.querySelector(`#zrx-chart-${ randomId } .chart-container`));
     const option = {
         legend: {
             show: true,
@@ -233,8 +237,10 @@ const renderChart = () => {
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
 };
 
+const barStyle = ref({});
+
 const computeBarStyle = () => {
-    if (!containerRef.value) {
+    if (!document.getElementById(`zrx-chart-${ randomId }`)) {
         return false;
     }
     const style = {
@@ -245,13 +251,19 @@ const computeBarStyle = () => {
     const sum = props.barSeriesData.reduce((x, y) => x + y, 0);
     // style['grid-template-rows'] = sum ? props.barSeriesData.map(n => `minmax(0, ${n || 0}fr)`).join(' ') : `repeat(${ props.barSeriesData.length }, minmax(0, 1fr))`;
     style['grid-template-rows'] = sum ? props.barSeriesData.map(n => `minmax(0, ${n || 0}fr)`).join(' ') : `repeat(${ props.barSeriesData.length }, 0)`;
-    const { offsetWidth, offsetHeight } = containerRef.value;
+    const { offsetWidth, offsetHeight } = document.getElementById(`zrx-chart-${ randomId }`);
     const left = offsetWidth / 2 + Math.cos(props.startAngle / 180 * Math.PI) * props.radius[1] * props.scale + props.lineLength * props.scale + 9 * props.scale;
     const top = offsetHeight / 2 - Math.sin(props.startAngle / 180 * Math.PI) * props.radius[1] * props.scale - 6 * props.scale;
     style.top = `${ top }px`;
     style.left = `${ left }px`;
-    return style;
+    barStyle.value = style;
 };
+
+watch(() => props, computeBarStyle);
+
+onMounted(() => {
+    computeBarStyle();
+});
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="zrx-tip">
-        <div ref="containerRef" :class="['container', `placement-${ placement }`]" :style="`
-        backdrop-filter: blur(${ filterBlur }px);`">
+        <!-- <div ref="containerRef" :class="['container', `placement-${ placement }`]" :style="`backdrop-filter: blur(${ filterBlur }px);`"> -->
+        <div :class="['container', `placement-${ placement }`]" :style="`backdrop-filter: blur(${ filterBlur }px);`" :id="`zrx-chart-${ randomId }`">
             <slot></slot>
         </div>
     </div>
@@ -9,7 +9,8 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 // 容器 dom 对象
-const containerRef = ref();
+// const containerRef = ref();
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 可支持配置属性
 const props = defineProps({
     /**
@@ -73,13 +74,14 @@ const props = defineProps({
 let observer = null;
 // 绘制 mask 要用到的背景
 const computeMaskBg = async (borderBackground) => {
-    containerRef.value.style.padding = 0;
+    const container = document.getElementById(`zrx-chart-${ randomId }`);
+    container.style.padding = 0;
     const padding = `padding${ ({ top: 'Bottom', bottom: 'Top', left: 'Right', right: 'Left' })[props.placement] }`;
-    containerRef.value.style[padding] = `${ props.tipHeight }px`;
+    container.style[padding] = `${ props.tipHeight }px`;
     await Promise.resolve();
     const canvas = document.createElement('canvas');
-    canvas.width = containerRef.value.offsetWidth;
-    canvas.height = containerRef.value.offsetHeight;
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
     await Promise.resolve();
     const ctx = canvas.getContext('2d');
     ctx.beginPath();
@@ -137,19 +139,21 @@ const computeMaskBg = async (borderBackground) => {
 watch(() => props.placement, computeMaskBg);
 
 onMounted(() => {
+    const container = document.getElementById(`zrx-chart-${ randomId }`);
     observer = new ResizeObserver(async mutations => {
         const [background, border] = await Promise.all([
             computeMaskBg('background'),
             computeMaskBg('border')
         ]);
-        containerRef.value.style.mask = `url(${ background })`;
-        containerRef.value.style.backgroundImage = `url(${ border })`;
+        container.style.mask = `url(${ background })`;
+        container.style.backgroundImage = `url(${ border })`;
     });
-    observer.observe(containerRef.value);
+    observer.observe(container);
 });
 
 onBeforeUnmount(() => {
-    observer?.disconnect(containerRef.value);
+    const container = document.getElementById(`zrx-chart-${ randomId }`);
+    observer?.disconnect(container);
     observer = null;
 });
 </script>

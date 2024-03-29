@@ -1,21 +1,26 @@
 <template>
-    <div class="zrx-chart" ref="containerRef">
+    <!-- <div class="zrx-chart" ref="containerRef">
         <div class="chart" ref="chartRef"></div>
         <canvas class="bg" ref="canvasRef"></canvas>
+    </div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`">
+        <div class="chart"></div>
+        <canvas class="bg"></canvas>
     </div>
 </template>
 <script setup>
 import { ref } from 'vue';
 import * as echarts from 'echarts';
 import { computeColorRGBA } from '../utils/index.js';
+const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表对象
 let chart = null;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // canvas 背景 dom 对象
-const canvasRef = ref();
+// const canvasRef = ref();
 // 外侧容器 dom 对象
-const containerRef = ref();
+// const containerRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -124,7 +129,8 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose();
         chart = null;
     }
-    chart = echarts.init(chartRef.value);
+    // chart = echarts.init(chartRef.value);
+    chart = echarts.init(document.querySelector(`#zrx-chart-${ randomId } .chart`));
     const option = {
         radar: {
             radius: props.radius,
@@ -179,35 +185,36 @@ const renderChart = () => {
 };
 // 绘制雷达图背景
 const createRadarBg = async () => {
-    canvasRef.value.width = containerRef.value.offsetWidth;
-    canvasRef.value.height = containerRef.value.offsetHeight;
+    const canvas = document.querySelector(`#zrx-chart-${ randomId } canvas.bg`)
+    canvas.width = document.getElementById(`zrx-chart-${ randomId }`).offsetWidth;
+    canvas.height = document.getElementById(`zrx-chart-${ randomId }`).offsetHeight;
     await Promise.resolve();
-    const ctx = canvasRef.value.getContext('2d');
+    const ctx = canvas.getContext('2d');
     ctx.lineWidth = 1;
     const offsetAngle = 0;
     for (let j = 1; j <= props.splitNumber; j++) {
         let maxDistance = 0
         for (let i = 0; i < props.indicator.length; i++) {
             const angle = offsetAngle + (360 / props.indicator.length) * i
-            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvasRef.value.width / 2
-            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvasRef.value.height / 2
-            const distance = Math.pow(Math.pow(x - canvasRef.value.width / 2, 2) + Math.pow(y - canvasRef.value.height / 2, 2), 1 / 2)
+            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.width / 2
+            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.height / 2
+            const distance = Math.pow(Math.pow(x - canvas.width / 2, 2) + Math.pow(y - canvas.height / 2, 2), 1 / 2)
             maxDistance = maxDistance < distance ? distance : maxDistance
         }
         const startAngle = -29 - 90 + 180
         const endAngle = -29 - 90
-        const x1 = Math.cos(startAngle / 180 * Math.PI) * maxDistance + canvasRef.value.width / 2
-        const y1 = Math.sin(startAngle / 180 * Math.PI) * maxDistance + canvasRef.value.height / 2
-        const x2 = Math.cos(endAngle / 180 * Math.PI) * maxDistance + canvasRef.value.width / 2
-        const y2 = Math.sin(endAngle / 180 * Math.PI) * maxDistance + canvasRef.value.height / 2
+        const x1 = Math.cos(startAngle / 180 * Math.PI) * maxDistance + canvas.width / 2
+        const y1 = Math.sin(startAngle / 180 * Math.PI) * maxDistance + canvas.height / 2
+        const x2 = Math.cos(endAngle / 180 * Math.PI) * maxDistance + canvas.width / 2
+        const y2 = Math.sin(endAngle / 180 * Math.PI) * maxDistance + canvas.height / 2
         const linearGradient = ctx.createLinearGradient(x1, y1, x2, y2)
         linearGradient.addColorStop(0, 'rgba(11, 20, 65, 0)')
         linearGradient.addColorStop(1, 'rgba(202, 237, 242, 0.14)')
         ctx.beginPath()
         for (let i = 0; i < props.indicator.length; i++) {
             const angle = offsetAngle + (360 / props.indicator.length) * i - 90
-            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvasRef.value.width / 2
-            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvasRef.value.height / 2
+            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.width / 2
+            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.height / 2
             ctx[i === 0 ? 'moveTo' : 'lineTo'](x, y)
         }
         ctx.closePath()
