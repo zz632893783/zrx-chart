@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demob05507b62eab />
+<demo5d17dc28bd10 />
 ```vue{4}
 <template>
     <bar-chart-4 ref="chartRef" v-bind="chartOption"></bar-chart-4>
@@ -32,7 +32,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.拖动
-<demo6ee3caaf8b27 />
+<demof74160205300 />
 ```vue{4}
 <template>
     <bar-chart-4 ref="chartRef" v-bind="{ ...chartOption }"></bar-chart-4>
@@ -76,9 +76,9 @@ onMounted(() => {
 </style>
 ```
 ## 属性
-<demod4040d06ee76 />
+<demoa7edb1afed52 />
 <script setup>
-import demob05507b62eab from '../../document/barChart4/1.基础用法.vue'
-import demo6ee3caaf8b27 from '../../document/barChart4/2.拖动.vue'
-import demod4040d06ee76 from '../../document/barChart4/属性.vue'
+import demo5d17dc28bd10 from '../../document/barChart4/1.基础用法.vue'
+import demof74160205300 from '../../document/barChart4/2.拖动.vue'
+import demoa7edb1afed52 from '../../document/barChart4/属性.vue'
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<gradient-ring-chart v-for="n in 3" :value="66"></gradient-ring-chart>
-		<blur-tip v-for="n in 4" :placement="['top', 'right', 'bottom', 'left'][n % 4]"><p>运营风险</p></blur-tip>
+		<blur-tip v-for="n in 4" :placement="['top', 'right', 'bottom', 'left'][n % 4]"><p>风险运营{{ n }}</p></blur-tip>
 	</div>
 </template>
 <script setup>

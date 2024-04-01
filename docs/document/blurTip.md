@@ -1,10 +1,10 @@
 ## 1.基础用法
-<demofedd1f5b9af9 />
+<demofa52c7edf210 />
 ```vue{4}
 <template>
 	<div class="page">
 		<gradient-ring-chart v-for="n in 3" :value="66"></gradient-ring-chart>
-		<blur-tip v-for="n in 4" :placement="['top', 'right', 'bottom', 'left'][n % 4]"><p>运营风险</p></blur-tip>
+		<blur-tip v-for="n in 4" :placement="['top', 'right', 'bottom', 'left'][n % 4]"><p>风险运营{{ n }}</p></blur-tip>
 	</div>
 </template>
 <script setup>
@@ -45,8 +45,8 @@ import { ref, onMounted } from 'vue';
 </style>
 ```
 ## 属性
-<demo609c82cc4e74 />
+<demo1fffd65da365 />
 <script setup>
-import demofedd1f5b9af9 from '../../document/blurTip/1.基础用法.vue'
-import demo609c82cc4e74 from '../../document/blurTip/属性.vue'
+import demofa52c7edf210 from '../../document/blurTip/1.基础用法.vue'
+import demo1fffd65da365 from '../../document/blurTip/属性.vue'
 </script>
