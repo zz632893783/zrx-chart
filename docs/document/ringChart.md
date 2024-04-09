@@ -1,5 +1,5 @@
 ## 1.只有圆环
-<demo35cb33ea2ba8 />
+<demof239950422f2 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -33,7 +33,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心部分总量
-<demo457c5d8dfa11 />
+<demof068116aed21 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -71,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.中心部分单项
-<democ1e96e525ff8 />
+<demoe096875cb764 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
 </style>
 ```
 ## 4.与图表联动
-<democ6324e60e5db />
+<demo6fb989765709 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -219,7 +219,47 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.中心只显示值
-<demo4c1212b14f43 />
+<demoda3d9beb13fc />
+```vue{4}
+<template>
+    <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
+</template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const chartRef = ref();
+
+const color = ['#d0f1ff', '#1dd1ff', '#b5bfe2', '#0e8fff'];
+const seriesData = [
+    { value: 2, name: '住宿业营业额' },
+    { value: 3, name: '餐饮业营业额' },
+    { value: 5, name: '零售业营业额' },
+    { value: 4, name: '批发业营业额' }
+];
+// 单项显示
+const centerDisplay = 'itemValue';
+const unit = '%';
+
+const chartOption = {
+    unit,
+    color,
+    seriesData,
+    centerDisplay
+};
+
+onMounted(() => chartRef.value.renderChart());
+</script>
+<style lang="scss" scoped>
+.zrx-chart {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(3, 43, 68);
+}
+</style>
+```
+## 6.插槽
+<demo280eceadf7a6 />
 ```vue{4}
 <template>
     <ring-chart v-bind="chartOption" ref="chartRef"></ring-chart>
@@ -259,15 +299,16 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo3165d7c923ca />
+<demo1bd6c1e2f183 />
 ## 支持方法
-<demo5c6d0000df29 />
+<demo00568a2276be />
 <script setup>
-import demo35cb33ea2ba8 from '../../document/ringChart/1.只有圆环.vue'
-import demo457c5d8dfa11 from '../../document/ringChart/2.中心部分总量.vue'
-import democ1e96e525ff8 from '../../document/ringChart/3.中心部分单项.vue'
-import democ6324e60e5db from '../../document/ringChart/4.与图表联动.vue'
-import demo4c1212b14f43 from '../../document/ringChart/5.中心只显示值.vue'
-import demo3165d7c923ca from '../../document/ringChart/属性.vue'
-import demo5c6d0000df29 from '../../document/ringChart/支持方法.vue'
+import demof239950422f2 from '../../document/ringChart/1.只有圆环.vue'
+import demof068116aed21 from '../../document/ringChart/2.中心部分总量.vue'
+import demoe096875cb764 from '../../document/ringChart/3.中心部分单项.vue'
+import demo6fb989765709 from '../../document/ringChart/4.与图表联动.vue'
+import demoda3d9beb13fc from '../../document/ringChart/5.中心只显示值.vue'
+import demo280eceadf7a6 from '../../document/ringChart/6.插槽.vue'
+import demo1bd6c1e2f183 from '../../document/ringChart/属性.vue'
+import demo00568a2276be from '../../document/ringChart/支持方法.vue'
 </script>

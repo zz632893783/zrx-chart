@@ -1,6 +1,11 @@
 <template>
     <!-- <div class="zrx-chart" ref="chartRef"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
+    <div class="zrx-chart">
+        <div class="chart" :id="`zrx-chart-${ randomId }`"></div>
+        <div class="chart-center">
+            <slot></slot>
+        </div>
+    </div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -360,4 +365,22 @@ const renderChart = () => {
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.zrx-chart {
+    position: relative;
+    .chart {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .chart-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+}
+</style>
