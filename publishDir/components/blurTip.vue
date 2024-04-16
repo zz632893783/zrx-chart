@@ -133,7 +133,8 @@ const computeMaskBg = async (borderBackground) => {
         ctx.lineWidth = props.borderWidth * 2;
         ctx.stroke();
     }
-    return canvas.toDataURL();
+    // return canvas.toDataURL();
+    return new Promise(resolve => canvas.toBlob(blob => resolve(window.URL.createObjectURL(blob))));
 };
 // 监听内容位置变化
 watch(() => props.placement, computeMaskBg);
