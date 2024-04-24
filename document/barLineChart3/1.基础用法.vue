@@ -19,7 +19,7 @@ const seriesData = [
     {
         type: 'line',
         yAxisIndex: 1,
-        data: [81, 17, 30, 94, 45, 54, 60, 1, 69]
+        data: [81, 17, 30, 94, 45, 54, 60, -1, 69]
     }
 ];
 const yAxisName = ['亿元', '%'];
@@ -29,7 +29,10 @@ const chartOption = {
     xAxisData,
     seriesData,
     yAxisName,
-    legendData
+    legendData,
+    beforeSetOption: (option) => {
+        console.log(option)
+    }
 };
 
 onMounted(() => chartRef.value.renderChart());

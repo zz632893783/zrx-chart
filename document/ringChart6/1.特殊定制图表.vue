@@ -15,6 +15,9 @@ const ringSeriesData = [
 const barSeriesData = [73, 54];
 
 const chartOption = {
+    icons: [
+        `https://www.baidu.com/img/flexible/logo/pc/result.png`
+    ],
     ringSeriesData,
     barSeriesData
 };

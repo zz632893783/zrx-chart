@@ -1,5 +1,5 @@
 ## 1.特殊定制图表
-<demo50b8e2cdc125 />
+<demo56d8a5f7b5fc />
 ```vue{4}
 <template>
     <ring-chart-6 v-bind="chartOption" ref="chartRef"></ring-chart-6>
@@ -7,6 +7,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+im
 
 const chartRef = ref();
 
@@ -18,6 +19,9 @@ const ringSeriesData = [
 const barSeriesData = [73, 54];
 
 const chartOption = {
+    icons: [
+        `https://www.baidu.com/img/flexible/logo/pc/result.png`
+    ],
     ringSeriesData,
     barSeriesData
 };
@@ -33,7 +37,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.颜色修改
-<demo316ac6953ec8 />
+<demo6ea6f7343ea3 />
 ```vue{4}
 <template>
     <ring-chart-6 v-bind="chartOption" ref="chartRef"></ring-chart-6>
@@ -75,12 +79,12 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo44f59b5a28d8 />
+<demoa050f869ec3e />
 ## 支持方法
-<demo003961a3d235 />
+<demoe0a33717eb4b />
 <script setup>
-import demo50b8e2cdc125 from '../../document/ringChart6/1.特殊定制图表.vue'
-import demo316ac6953ec8 from '../../document/ringChart6/2.颜色修改.vue'
-import demo44f59b5a28d8 from '../../document/ringChart6/属性.vue'
-import demo003961a3d235 from '../../document/ringChart6/支持方法.vue'
+import demo56d8a5f7b5fc from '../../document/ringChart6/1.特殊定制图表.vue'
+import demo6ea6f7343ea3 from '../../document/ringChart6/2.颜色修改.vue'
+import demoa050f869ec3e from '../../document/ringChart6/属性.vue'
+import demoe0a33717eb4b from '../../document/ringChart6/支持方法.vue'
 </script>

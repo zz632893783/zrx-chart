@@ -14,121 +14,70 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    placement
+                    icons
                 </div>
                 <div class="table-cell">
-                    内容部分的位置，可选值 'top', 'right', 'bottom', 'left'
+                    天气 icon 数组
                 </div>
                 <div class="table-cell">
-                    String
+                    Array
                 </div>
                 <div class="table-cell">
-                    'top'
+                    ['icon0', 'icon1', 'icon2']
                 </div>
                 <div class="table-cell">
-                    'left'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    tipWidth
-                </div>
-                <div class="table-cell">
-                    凸起部分的宽度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    14
-                </div>
-                <div class="table-cell">
-                    12
+                    ['icon0', 'icon1', 'icon2']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    tipHeight
+                    iconSize
                 </div>
                 <div class="table-cell">
-                    凸起部分的高度
+                    图表尺寸
                 </div>
                 <div class="table-cell">
-                    Number
+                    Array
                 </div>
                 <div class="table-cell">
-                    10
+                    [40, 40]
                 </div>
                 <div class="table-cell">
-                    12
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    borderRadius
-                </div>
-                <div class="table-cell">
-                    容器圆角
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    10
-                </div>
-                <div class="table-cell">
-                    12
+                    [40, 40]
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    filterBlur
+                    dates
                 </div>
                 <div class="table-cell">
-                    模糊程度
+                    日期数组
                 </div>
                 <div class="table-cell">
-                    Number
+                    Array
                 </div>
                 <div class="table-cell">
-                    6
+                    ['今天\n03/25', '明天\n03/26', '周三\n03/27', '周四\n03/28', '周五\n03/29', '周六\n03/30', '周日\n03/31']
                 </div>
                 <div class="table-cell">
-                    6
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    borderWidth
-                </div>
-                <div class="table-cell">
-                    线条的宽度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    1
-                </div>
-                <div class="table-cell">
-                    1
+                    ['今天\n03/25', '明天\n03/26', '周三\n03/27', '周四\n03/28', '周五\n03/29', '周六\n03/30', '周日\n03/31']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    borderColor
+                    temperature
                 </div>
                 <div class="table-cell">
-                    线条的颜色
+                    每一天的温度，二维数组
                 </div>
                 <div class="table-cell">
-                    String
+                    Array
                 </div>
                 <div class="table-cell">
-                    'rgba(255, 255, 255, 0.05)'
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7, 18],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12, 24],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15, 26],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13, 22],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15, 24],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11, 27],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13, 25]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
                 </div>
                 <div class="table-cell">
-                    rgba(255, 0, 0, 0.5)
+                    [[7, 18], [12, 24], [15, 26], [13, 22], [15, 24], [11, 27], [13, 25]]
                 </div>
             </div>
         </div>

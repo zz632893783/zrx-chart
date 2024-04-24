@@ -19,8 +19,9 @@ import ringChart3 from './components/ringChart3.vue';
 import ringChart4 from './components/ringChart4.vue';
 import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
+import weatherChart from './components/weatherChart.vue';
 
-export { barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };
+export { barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue, opts = {}) {
@@ -81,6 +82,8 @@ const install = function (Vue, opts = {}) {
     Vue.component('ringChart6', ringChart6);
     Vue.component('ring-chart6', ringChart6);
     Vue.component('ring-chart-6', ringChart6);
+    Vue.component('weatherChart', weatherChart);
+    Vue.component('weather-chart', weatherChart);
 };
 
-export default { install, barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6 };
+export default { install, barChart, barChart2, barChart3, barChart4, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
