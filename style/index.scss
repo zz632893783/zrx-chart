@@ -36,3 +36,22 @@
 		}
 	}
 }
+.language-vue {
+	border-radius: 0 !important;
+}
+:root {
+	::-webkit-scrollbar {
+	    width: 8px;
+	    height: 8px;
+	}
+	::-webkit-scrollbar-thumb {
+	    border-radius: 4px;
+	    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	    background-color: rgba(#99a9bf, 0.5);
+	}
+	::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.12);
+	    border-radius: 5px;
+	    background-color: rgba(#d3dce6, 0.2);
+	}
+}
