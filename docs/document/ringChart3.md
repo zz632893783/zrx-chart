@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo4677277bb04f />
+<demo7b59f574319c />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -33,7 +33,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.颜色设置
-<democ0c39e42e11e />
+<demo04b7cfd90d17 />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -67,7 +67,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.尺寸设置
-<demo18e74d84776b />
+<demo44b33b51d455 />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -105,13 +105,13 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo5b928818290c />
+<demof99ec395a926 />
 ## 支持方法
-<demo0bc7cf27eaa7 />
+<demoabcdbfcddd62 />
 <script setup>
-import demo4677277bb04f from '../../document/ringChart3/1.基础用法.vue'
-import democ0c39e42e11e from '../../document/ringChart3/2.颜色设置.vue'
-import demo18e74d84776b from '../../document/ringChart3/3.尺寸设置.vue'
-import demo5b928818290c from '../../document/ringChart3/属性.vue'
-import demo0bc7cf27eaa7 from '../../document/ringChart3/支持方法.vue'
+import demo7b59f574319c from '../../document/ringChart3/1.基础用法.vue'
+import demo04b7cfd90d17 from '../../document/ringChart3/2.颜色设置.vue'
+import demo44b33b51d455 from '../../document/ringChart3/3.尺寸设置.vue'
+import demof99ec395a926 from '../../document/ringChart3/属性.vue'
+import demoabcdbfcddd62 from '../../document/ringChart3/支持方法.vue'
 </script>

@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demob07c40d022de />
+<demo7bd8702ea19b />
 ```vue{4}
 <template>
     <weather-chart ref="chartRef" v-bind="chartOption"></weather-chart>
@@ -15,8 +15,8 @@ const chartOption = {
         'http://cn.vitejs.dev/logo-with-shadow.png',
         'http://v2.cn.vuejs.org/images/logo.svg'
     ],
-    dates: ['今天\n03/25', '明天\n03/26', '周三\n03/27', '周四\n03/28', '周五\n03/29', '周六\n03/30', '周日\n03/31', '周一\n04/01'],
-    temperature: [[7, 18], [12, 24], [15, 26], [13, 22], [15, 24], [11, 27], [13, 25], [13, 25]]
+    dates: ['今天\n03/25', '明天\n03/26', '周三\n03/27', '周四\n03/28', '周五\n03/29', '周六\n03/30', '周日\n03/31'],
+    temperature: [[7, 18], [12, 24], [15, 26], [13, 22], [15, 24], [11, 27], [13, 25]]
 };
 
 onMounted(() => {
@@ -33,8 +33,8 @@ onMounted(() => {
 
 ```
 ## 属性
-<demo6890e3b02bf8 />
+<demoe15b00ab5e61 />
 <script setup>
-import demob07c40d022de from '../../document/weatherChart/1.基础用法.vue'
-import demo6890e3b02bf8 from '../../document/weatherChart/属性.vue'
+import demo7bd8702ea19b from '../../document/weatherChart/1.基础用法.vue'
+import demoe15b00ab5e61 from '../../document/weatherChart/属性.vue'
 </script>

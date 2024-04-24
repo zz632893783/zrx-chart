@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo7e717284bcc5 />
+<demo69f0ecca0f35 />
 ```vue{4}
 <template>
     <ring-chart-4 ref="chartRef" v-bind="chartOption"></ring-chart-4>
@@ -31,11 +31,11 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demob12ef33f70a2 />
+<demof30192ec2515 />
 ## 支持方法
-<demoadcd93ed1bd5 />
+<demo8999fc5fb359 />
 <script setup>
-import demo7e717284bcc5 from '../../document/ringChart4/1.基础用法.vue'
-import demob12ef33f70a2 from '../../document/ringChart4/属性.vue'
-import demoadcd93ed1bd5 from '../../document/ringChart4/支持方法.vue'
+import demo69f0ecca0f35 from '../../document/ringChart4/1.基础用法.vue'
+import demof30192ec2515 from '../../document/ringChart4/属性.vue'
+import demo8999fc5fb359 from '../../document/ringChart4/支持方法.vue'
 </script>
