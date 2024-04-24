@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-4-24 13:42:58 -->
+<!-- 创建时间 2024-4-24 14:9:30 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -78,6 +78,74 @@
                 </div>
                 <div class="table-cell">
                     [[7, 18], [12, 24], [15, 26], [13, 22], [15, 24], [11, 27], [13, 25]]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showCount
+                </div>
+                <div class="table-cell">
+                    最多显示的数量（实际显示数量会根据输入值调整）
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    7
+                </div>
+                <div class="table-cell">
+                    4
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomType
+                </div>
+                <div class="table-cell">
+                    何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    'inside'
+                </div>
+                <div class="table-cell">
+                    'slider'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomBottom
+                </div>
+                <div class="table-cell">
+                    当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    0
+                </div>
+                <div class="table-cell">
+                    12
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    barWidth
+                </div>
+                <div class="table-cell">
+                    柱子的宽度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    90
+                </div>
+                <div class="table-cell">
+                    46
                 </div>
             </div>
         </div>

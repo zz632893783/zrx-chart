@@ -53,6 +53,38 @@ const props = defineProps({
             [11, 27],
             [13, 25]
         ]
+    },
+    /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 4
+     */
+    showCount: {
+        type: [Number],
+        default: () => 7
+    },
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'slider'
+     */
+    dataZoomType: {
+        type: [String],
+        default: () => 'inside'
+    },
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+     * @example 12
+     */
+    dataZoomBottom: {
+        type: [Number],
+        default: () => 0
+    },
+    /**
+     * @description 柱子的宽度
+     * @example 46
+     */
+    barWidth: {
+        type: [Number],
+        default: () => 90
     }
 });
 // 渲染函数
@@ -115,15 +147,13 @@ const renderChart = () => {
                 type: 'category',
                 position: 'top',
                 offset: -134,
-                data: new Array(props.dates.length).fill(''),
+                data: new Array(props.dates.length).fill().map((n, i) => i),
                 axisLine: { show: false },
                 axisTick: { show: false },
                 gridIndex: 1,
                 z: 2,
                 axisLabel: {
-                    formatter: (icon, index) => {
-                        return `{${ icons[index % icons.length].name }|}`;
-                    },
+                    formatter: index => `{${ icons[(Number(index) || 0) % icons.length].name }|}`,
                     rich: icons.reduce((x, y) => ({
                         ...x,
                         [y.name]: {
@@ -209,6 +239,8 @@ const renderChart = () => {
                         r: 0.5,
                         colorStops: [
                             { offset: 0, color: 'rgba(127, 127, 127, 1)' },
+                            { offset: 0.33, color: 'rgba(127, 127, 127, 1)' },
+                            { offset: 0.33, color: 'rgba(127, 127, 127, 0.75)' },
                             { offset: 1, color: 'rgba(127, 127, 127, 0)' }
                         ]
                     }
@@ -224,6 +256,8 @@ const renderChart = () => {
                             r: 0.5,
                             colorStops: [
                                 { offset: 0, color: 'rgba(80, 199, 187, 1)' },
+                                { offset: 0.33, color: 'rgba(80, 199, 187, 1)' },
+                                { offset: 0.33, color: 'rgba(80, 199, 187, 0.75)' },
                                 { offset: 1, color: 'rgba(80, 199, 187, 0)' }
                             ]
                         }
@@ -251,6 +285,8 @@ const renderChart = () => {
                         r: 0.5,
                         colorStops: [
                             { offset: 0, color: 'rgba(127, 127, 127, 1)' },
+                            { offset: 0.33, color: 'rgba(127, 127, 127, 1)' },
+                            { offset: 0.33, color: 'rgba(127, 127, 127, 0.75)' },
                             { offset: 1, color: 'rgba(127, 127, 127, 0)' }
                         ]
                     }
@@ -266,6 +302,8 @@ const renderChart = () => {
                             r: 0.5,
                             colorStops: [
                                 { offset: 0, color: 'rgba(80, 199, 187, 1)' },
+                                { offset: 0.33, color: 'rgba(80, 199, 187, 1)' },
+                                { offset: 0.33, color: 'rgba(80, 199, 187, 0.75)' },
                                 { offset: 1, color: 'rgba(80, 199, 187, 0)' }
                             ]
                         }
@@ -313,7 +351,7 @@ const renderChart = () => {
                                 canvas.height = 7;
                                 const ctx = canvas.getContext('2d');
                                 ctx.fillStyle = 'rgba(80, 199, 187, 1)';
-                                ctx.fillRect(0, 0, 1, 3);
+                                ctx.fillRect(0, 0, 1, 7);
                                 return canvas;
                             })(),
                             repeat: 'repeat'
@@ -326,7 +364,7 @@ const renderChart = () => {
                 yAxisIndex: 1,
                 xAxisIndex: 1,
                 data: new Array(props.dates.length).fill(1),
-                barWidth: 90,
+                barWidth: props.barWidth,
                 itemStyle: {
                     color: 'rgba(46, 46, 46, 0.6)',
                     borderRadius: 8
@@ -349,12 +387,67 @@ const renderChart = () => {
             }
         ]
     };
+    let start = 0;
+    let end = props.showCount / props.dates.length * 100;
+    if (props.showCount) {
+        if (props.dataZoomType === 'slider') {
+            // if (props.dataZoomStartAtEnd) {
+            //     start = 100 - end;
+            //     end = 100;
+            // }
+            option.dataZoom = [
+                {
+                    type: 'slider',
+                    xAxisIndex: [0, 1, 2, 3, 4],
+                    brushSelect : false,
+                    handleIcon: 'none',
+                    borderColor: 'transparent',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    selectedDataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    height: 8,
+                    fillerColor: '#467C9F',
+                    labelFormatter: '',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    borderWidth: 0,
+                    start,
+                    end,
+                    handleStyle: {
+                        color: 'red'
+                    },
+                    bottom: props.dataZoomBottom
+                }
+            ];
+        } else {
+            option.dataZoom = [
+                { xAxisIndex: [0, 1, 2, 3, 4], type: 'inside', start, end }
+            ];
+        }
+    };
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
+    chart.dispatchAction({ type: 'highlight', dataIndex: 0 });
     chart.on('mouseover', data => {
         chart.dispatchAction({ type: 'downplay' });
         chart.dispatchAction({ type: 'highlight', dataIndex: data.dataIndex });
+    });
+    chart.on('mouseout', data => {
+        chart.dispatchAction({ type: 'downplay' });
+        chart.dispatchAction({ type: 'highlight', dataIndex: 0 })
     });
 };
 
