@@ -8,9 +8,9 @@ const chartRef = ref();
 
 const chartOption = {
     icons: [
-        'http://sponsors.vuejs.org/images/chrome_frameworks_fund.png',
         'http://cn.vitejs.dev/logo-with-shadow.png',
-        'http://v2.cn.vuejs.org/images/logo.svg'
+        'http://v2.cn.vuejs.org/images/logo.svg',
+        'http://sponsors.vuejs.org/images/chrome_frameworks_fund.png'
     ],
     dates: ['今天\n03/25', '明天\n03/26', '周三\n03/27', '周四\n03/28', '周五\n03/29', '周六\n03/30', '周日\n03/31', '周一\n04/01', '周二\n04/02'],
     temperature: [[7, 18], [12, 24], [15, 26], [13, 22], [15, 24], [11, 27], [13, 25], [11, 27], [13, 25]]

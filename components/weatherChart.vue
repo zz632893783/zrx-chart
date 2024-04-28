@@ -94,8 +94,9 @@ const renderChart = () => {
         chart = null;
     }
     chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
-    const icons = props.icons.map(icon => ({
-        name: `icon${ Math.round(0xffffff * Math.random()).toString(16).padStart(6, 0) }`,
+    const icons = props.icons.map((icon, i) => ({
+        name: `icon${ i }`,
+        // name: `icon${ Math.round(0xffffff * Math.random()).toString(16).padStart(6, 0) }`,
         icon
     }));
     const option = {
@@ -153,15 +154,18 @@ const renderChart = () => {
                 gridIndex: 1,
                 z: 2,
                 axisLabel: {
-                    formatter: index => `{${ icons[(Number(index) || 0) % icons.length].name }|}`,
-                    rich: icons.reduce((x, y) => ({
-                        ...x,
-                        [y.name]: {
-                            width: props.iconSize instanceof Array ? props.iconSize[0] : props.iconSize,
-                            height: props.iconSize instanceof Array ? (props.iconSize[1] || props.iconSize[0]) : props.iconSize,
-                            backgroundColor: { image: y.icon }
-                        }
-                    }), {})
+                    formatter: index => `{icon${ (Number(index) || 0) % icons.length }|}`,
+                    rich: icons.reduce((x, y) => {
+                        const iconSize = props.iconSize instanceof Array ? props.iconSize : new Array(2).fill(props.iconSize);
+                        return {
+                            ...x,
+                            [y.name]: {
+                                width: props.iconSize[0],
+                                height: props.iconSize[1],
+                                backgroundColor: { image: y.icon }
+                            }
+                        };
+                    }, {})
                 }
             },
             {
