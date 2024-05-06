@@ -109,7 +109,7 @@ const props = defineProps({
      */
     showCount: {
         type: [Number],
-        default: () => 12
+        default: () => 6
     },
     /**
      * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
@@ -219,7 +219,14 @@ const renderChart = () => {
                 return {
                     name,
                     type: 'value',
-                    alignTicks: true,
+                    // max: value => {
+                    //     const valueArr = props.markLine.filter(i => i.yAxisIndex == index).map(i => i.value);
+                    //     const maxV = Math.max(...[valueArr]);
+                    //     if (value.max < maxV) {
+                    //         return maxV;
+                    //     }
+                    // },
+                    // alignTicks: props.yAxisName instanceof Array && props.yAxisName.length > 1,
                     splitNumber: 4,
                     axisLine: { show: false },
                     axisTick: { show: false },
@@ -237,7 +244,7 @@ const renderChart = () => {
                         padding: [[0, 14, 14, 0], [0, 0, 14, 14]][index].map(n => n * props.scale)
                     },
                     splitLine: {
-                        show: props.showSplitLine,
+                        show: !index && props.showSplitLine,
                         lineStyle: {
                             type: 'dashed',
                             color: 'rgba(255, 255, 255, 0.15)'
@@ -313,9 +320,45 @@ const renderChart = () => {
                     silent: true,
                     data: markLines.map(n => ({
                         yAxis: n.value,
-                        lineStyle: { color: n.color, type: n.type }
-                    })),
-                    label: { show: false }
+                        lineStyle: { color: n.color, type: n.type },
+                        label: {
+                            show: true,
+                            align: 'right',
+                            distance: 0,
+                            color: '#FFFFFF',
+                            fontSize: 28 * props.scale,
+                            // backgroundColor: '#0F325C',
+                            // padding: [6 + 6, 20, 0 + 6].map(n => n * props.scale),
+                            // offset: [-38, 0].map(n => n * props.scale),
+                            formatter: param => `{name|${ !n.name ? '' : n.name + ': ' }}{value|${ param.value }}{unit|${ n.unit || '' }}\n{middle|}\n{gap|}`,
+                            rich: {
+                                name: {
+                                    fontWeight: 400,
+                                    color: '#B0D0EE',
+                                    fontFamily: 'MicrosoftYaHei',
+                                    fontSize: 14 * props.scale,
+                                    lineHeight: 21 * props.scale
+                                },
+                                value: {
+                                    fontWeight: 700,
+                                    color: '#FF9811',
+                                    fontSize: 18 * props.scale,
+                                    lineHeight: 21 * props.scale,
+                                    fontFamily: 'DINAlternate-Bold',
+                                    padding: [0, 4, 0, 0].map(n => n * props.scale),
+                                },
+                                unit: {
+                                    fontWeight: 400,
+                                    color: '#B0D0EE',
+                                    fontFamily: 'MicrosoftYaHei',
+                                    fontSize: 14 * props.scale,
+                                    lineHeight: 21 * props.scale
+                                },
+                                middle: { height: 21 * props.scale },
+                                gap: { height: 21 * props.scale }
+                            }
+                        }
+                    }))
                 });
                 return seriesOption;
             });
@@ -343,7 +386,7 @@ const renderChart = () => {
                 itemGap: 16 * props.scale,
                 itemWidth: 6 * props.scale,
                 itemHeight: 6 * props.scale
-            }
+            };
             return legendConfig;
         })(),
         tooltip: {

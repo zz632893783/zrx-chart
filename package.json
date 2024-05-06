@@ -1,6 +1,6 @@
 {
   "name": "zrx-chart",
-  "version": "0.0.37",
+  "version": "0.0.49",
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
@@ -9,7 +9,9 @@
     "docs:build": "node commentCreateAttribute.js && node handleDirectory.js && node copyReadme.js && node handleExport.js && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "doc": "node commentCreateAttribute.js && node handleDirectory.js && node handleExport.js && vitepress dev docs",
-    "publish": "node publish.js && cd ./publishDir && npm publish"
+    "publicPublish": "npm config set registry https://registry.npmjs.org && node publish.js public autoUpdateVersion && cd ./publishDir && npm publish --registry=https://registry.npmjs.org",
+    "privatePublish": "npm config set registry http://10.10.120.191:8081/repository/npm-private/ && node publish.js private && cd ./publishDir && npm publish --registry=http://10.10.120.191:8081/repository/npm-private/",
+    "publish": "npm run publicPublish && npm run privatePublish"
   },
   "dependencies": {
     "vue": "^3.3.4",

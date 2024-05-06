@@ -1,15 +1,15 @@
 {
   "name": "zrx-chart",
-  "version": "0.0.37",
+  "version": "0.0.49",
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
-  "publishConfig": {
-    "registry": "http://10.10.120.191:8081/repository/npm-private/"
-  },
   "dependencies": {
     "vue": "^3.3.4",
     "echarts": "^5.5.0",
     "sass": "^1.71.1"
+  },
+  "publishConfig": {
+    "registry": "http://10.10.120.191:8081/repository/npm-private/"
   }
 }
