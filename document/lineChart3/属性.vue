@@ -14,142 +14,6 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    title
-                </div>
-                <div class="table-cell">
-                    标题
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    ''
-                </div>
-                <div class="table-cell">
-                    '标题标题'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    radius
-                </div>
-                <div class="table-cell">
-                    半径
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    [128, 150]
-                </div>
-                <div class="table-cell">
-                    [60, 70]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    itemGap
-                </div>
-                <div class="table-cell">
-                    间距
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    4
-                </div>
-                <div class="table-cell">
-                    8
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    seriesData
-                </div>
-                <div class="table-cell">
-                    数据项
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 2, name: '住宿业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 3, name: '餐饮业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 5, name: '零售业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 4, name: '批发业营业额' }<br/>]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    color
-                </div>
-                <div class="table-cell">
-                    预设颜色
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    ['#ae7efd', '#7670d7', '#709ad7', '#72dde0', '#d0f1ff', '#b5bfe2', '#206e8a', '#1dd1ff', '#d2abea', '#0e8fff']
-                </div>
-                <div class="table-cell">
-                    ['#405FFE', '#1BBE8C', '#48CBA3', '#A4E5D1', '#ECEFFE']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    unit
-                </div>
-                <div class="table-cell">
-                    单位
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    ''
-                </div>
-                <div class="table-cell">
-                    '个'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    centerDisplay
-                </div>
-                <div class="table-cell">
-                    中心部分的展示部分<br/>&nbsp;null，'' 或者不传，表示中心部分不显示<br/>&nbsp;'item' 表示中心部分展示单项<br/>&nbsp;'sum' 表示中心部分展示总量<br/>&nbsp;'itemValue' 表示中心部分展示值<br/>&nbsp;'itemPercentage' 表示中心部分展示单项占比
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    null
-                </div>
-                <div class="table-cell">
-                    'item'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    minAngle
-                </div>
-                <div class="table-cell">
-                    单项的最小角度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    0
-                </div>
-                <div class="table-cell">
-                    4
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     scale
                 </div>
                 <div class="table-cell">
@@ -162,41 +26,245 @@
                     1
                 </div>
                 <div class="table-cell">
-                    2
+                    1
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    beforeSetOption
+                    xAxisData
                 </div>
                 <div class="table-cell">
-                    万能方法，图表渲染之前执行
+                    x 轴坐标
                 </div>
                 <div class="table-cell">
-                    Function
+                    Array
                 </div>
                 <div class="table-cell">
-                    null
+                    []
                 </div>
                 <div class="table-cell">
-                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
+                    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    afterSetOption
+                    yAxisName
                 </div>
                 <div class="table-cell">
-                    万能方法，图表渲染之后执行
+                    y轴单位
                 </div>
                 <div class="table-cell">
-                    Function
+                    String, Array
                 </div>
                 <div class="table-cell">
-                    null
+                    ['']
                 </div>
                 <div class="table-cell">
-                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
+                    ['亿元', '%']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    seriesData
+                </div>
+                <div class="table-cell">
+                    数据数组
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定 y 轴索引<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [163, 129, 123, 198, 152, 152, 178]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [81, 17, 30, 94, 45, 54, 60]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    color
+                </div>
+                <div class="table-cell">
+                    图表项颜色
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    ['#66FFFF', '#F4DC3C']
+                </div>
+                <div class="table-cell">
+                    ['red', 'green']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    legendData
+                </div>
+                <div class="table-cell">
+                    legend 数据
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    ['统计金额', '开票金额']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    smooth
+                </div>
+                <div class="table-cell">
+                    是否平滑
+                </div>
+                <div class="table-cell">
+                    Boolean, Number
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showLineArea
+                </div>
+                <div class="table-cell">
+                    线条是否显示区域颜色
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showSplitLine
+                </div>
+                <div class="table-cell">
+                    是否显示辅助刻度线
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    grid
+                </div>
+                <div class="table-cell">
+                    上下左右边距
+                </div>
+                <div class="table-cell">
+                    Object
+                </div>
+                <div class="table-cell">
+                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 56,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 60,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 40,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 60<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+                </div>
+                <div class="table-cell">
+                    { top: 84, right: 18, bottom: 56, left: 56 }
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showLegend
+                </div>
+                <div class="table-cell">
+                    是否显示 legend
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showCount
+                </div>
+                <div class="table-cell">
+                    最多显示的数量（实际显示数量会根据输入值调整）
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    7
+                </div>
+                <div class="table-cell">
+                    4
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomType
+                </div>
+                <div class="table-cell">
+                    何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    'inside'
+                </div>
+                <div class="table-cell">
+                    'slider'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomBottom
+                </div>
+                <div class="table-cell">
+                    当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    0
+                </div>
+                <div class="table-cell">
+                    12
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomStartAtEnd
+                </div>
+                <div class="table-cell">
+                    从末尾开始显示图表
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
                 </div>
             </div>
         </div>
@@ -204,6 +272,6 @@
 </template>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 3fr);
 }
 </style>
