@@ -1,7 +1,7 @@
 <template>
     <!-- <div class="zrx-chart" ref="containerRef">
         <div class="chart-container" ref="chartRef"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`">
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef">
         <div class="chart-container"></div>
         <div class="bar" :style="barStyle">
             <div class="bar-item" v-for="(n, i) in barSeriesData" :style="`background-color: ${ barColor[i % barColor.length] };`"></div>
@@ -18,7 +18,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-// const chartRef = ref();
+const chartRef = ref();
 // 图表外侧容器 dom 对象
 // const containerRef = ref();
 // 可配置属性
@@ -139,7 +139,7 @@ const renderChart = () => {
         chart = null;
     }
     // chart = echarts.init(chartRef.value);
-    chart = echarts.init(document.querySelector(`#zrx-chart-${ randomId } .chart-container`));
+    chart = echarts.init((document.querySelector(`#zrx-chart-${ randomId }`) || chartRef.value).querySelector('.chart-container'));
     const option = {
         legend: {
             show: true,
@@ -240,7 +240,7 @@ const renderChart = () => {
 const barStyle = ref({});
 
 const computeBarStyle = () => {
-    if (!document.getElementById(`zrx-chart-${ randomId }`)) {
+    if (!document.getElementById(`zrx-chart-${ randomId }`) && !chartRef.value) {
         return false;
     }
     const style = {
@@ -251,7 +251,7 @@ const computeBarStyle = () => {
     const sum = props.barSeriesData.reduce((x, y) => x + y, 0);
     // style['grid-template-rows'] = sum ? props.barSeriesData.map(n => `minmax(0, ${n || 0}fr)`).join(' ') : `repeat(${ props.barSeriesData.length }, minmax(0, 1fr))`;
     style['grid-template-rows'] = sum ? props.barSeriesData.map(n => `minmax(0, ${n || 0}fr)`).join(' ') : `repeat(${ props.barSeriesData.length }, 0)`;
-    const { offsetWidth, offsetHeight } = document.getElementById(`zrx-chart-${ randomId }`);
+    const { offsetWidth, offsetHeight } = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     const left = offsetWidth / 2 + Math.cos(props.startAngle / 180 * Math.PI) * props.radius[1] * props.scale + props.lineLength * props.scale + 9 * props.scale;
     const top = offsetHeight / 2 - Math.sin(props.startAngle / 180 * Math.PI) * props.radius[1] * props.scale - 6 * props.scale;
     style.top = `${ top }px`;
@@ -261,9 +261,7 @@ const computeBarStyle = () => {
 
 watch(() => props, computeBarStyle);
 
-onMounted(() => {
-    computeBarStyle();
-});
+onMounted(computeBarStyle);
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
 </script>

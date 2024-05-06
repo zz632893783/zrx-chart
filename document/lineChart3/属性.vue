@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-5-6 14:44:27 -->
+<!-- 创建时间 2024-5-6 16:53:24 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -265,6 +265,40 @@
                 </div>
                 <div class="table-cell">
                     false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showLabel
+                </div>
+                <div class="table-cell">
+                    是否显示 label
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    tooltipTitle
+                </div>
+                <div class="table-cell">
+                    tooltip 标题
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    ['标题A']
                 </div>
             </div>
             <div class="table-row">

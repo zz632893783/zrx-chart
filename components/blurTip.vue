@@ -1,7 +1,7 @@
 <template>
     <div class="zrx-tip">
         <!-- <div ref="containerRef" :class="['container', `placement-${ placement }`]" :style="`backdrop-filter: blur(${ filterBlur }px);`"> -->
-        <div :class="['container', `placement-${ placement }`]" :style="`backdrop-filter: blur(${ filterBlur }px);`" :id="`zrx-chart-${ randomId }`">
+        <div :class="['container', `placement-${ placement }`]" :style="`backdrop-filter: blur(${ filterBlur }px);`" :id="`zrx-chart-${ randomId }`" ref="chartRef">
             <slot></slot>
         </div>
     </div>
@@ -9,7 +9,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 // 容器 dom 对象
-// const containerRef = ref();
+const chartRef = ref();
 const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 可支持配置属性
 const props = defineProps({
@@ -74,7 +74,7 @@ const props = defineProps({
 let observer = null;
 // 绘制 mask 要用到的背景
 const computeMaskBg = async (borderBackground) => {
-    const container = document.getElementById(`zrx-chart-${ randomId }`);
+    const container = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     container.style.padding = 0;
     const padding = `padding${ ({ top: 'Bottom', bottom: 'Top', left: 'Right', right: 'Left' })[props.placement] }`;
     container.style[padding] = `${ props.tipHeight }px`;
@@ -140,7 +140,7 @@ const computeMaskBg = async (borderBackground) => {
 watch(() => props.placement, computeMaskBg);
 
 onMounted(() => {
-    const container = document.getElementById(`zrx-chart-${ randomId }`);
+    const container = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     observer = new ResizeObserver(async mutations => {
         const [background, border] = await Promise.all([
             computeMaskBg('background'),
@@ -153,7 +153,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    const container = document.getElementById(`zrx-chart-${ randomId }`);
+    const container = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     observer?.disconnect(container);
     observer = null;
 });

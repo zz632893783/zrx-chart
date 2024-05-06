@@ -8,14 +8,14 @@
             <h4 class="sub-title" v-if="subTitle">{{ subTitle }}</h4>
         </div>
         <!-- <canvas ref="canvasRef" :width="radius * 2" :height="radius * 2"></canvas> -->
-        <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2" :height="radius * 2"></canvas>
+        <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2" :height="radius * 2" ref="chartRef"></canvas>
     </div>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // canvas 元素
-// const canvasRef = ref();
+const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -146,7 +146,7 @@ let ctx;
 let animation;
 // 绘制函数
 const draw = () => {
-    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     const radius = props.radius - props.barWidth / 2;
     const capAngle = Math.atan(props.barWidth / 2 / radius) * 2 * (props.clockwise ? 1 : -1);
     let value = props.value < props.min ? props.min : (props.value > props.max ? props.max : props.value);
@@ -206,14 +206,14 @@ const draw = () => {
 };
 
 const setAnimation = () => {
-    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     animation = window.requestAnimationFrame(setAnimation);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
 };
 
 onMounted(() => {
-    const canvas = document.getElementById(`zrx-chart-${ randomId }`);
+    const canvas = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     ctx = canvas.getContext('2d');
     setAnimation();
 });

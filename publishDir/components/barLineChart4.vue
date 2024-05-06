@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="zrx-chart" ref="chartDom"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
+    <!-- <div class="zrx-chart" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -140,15 +140,14 @@ const props = defineProps({
 // 图表实例
 let chart;
 // 图表 dom 对象
-// const chartDom = ref();
+const chartRef = ref();
 // 渲染函数
 const renderChart = () => {
     if (chart) {
         typeof chart.dispose === 'function' && chart.dispose();
         chart = null;
     }
-    // chart = echarts.init(chartDom.value);
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
     // UI 要求的高亮时覆盖上一层 0.4 透明度白色
     // 但是由于 props.color 可能为 red, #f00, #ff0000, rgb(255, 0, 0), rgba(255, 0, 0, 1) 中的任意一种格式
     // 所以引入一个 canvas 用于计算高亮颜色 emphasisColor

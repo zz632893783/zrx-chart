@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="zrx-chart" ref="chartRef"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -11,7 +11,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-// const chartRef = ref();
+const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -192,7 +192,7 @@ const renderChart = () => {
         chart = null;
     }
     // chart = echarts.init(chartRef.value);
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
     // 计算最大值
     let max = Math.max(...props.seriesData.reduce((x, y) => [...x, ...y], []));
     const n = Math.floor(Math.log10(max))
@@ -240,11 +240,11 @@ const renderChart = () => {
                 top: grid.top,
                 bottom: grid.bottom,
                 // right: grid.right + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
-                right: grid.right + (document.getElementById(`zrx-chart-${ randomId }`).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
+                right: grid.right + ((document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
             },
             {
                 // left: grid.left + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
-                left: grid.left + (document.getElementById(`zrx-chart-${ randomId }`).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
+                left: grid.left + ((document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
                 top: grid.top,
                 bottom: grid.bottom,
                 right: grid.right

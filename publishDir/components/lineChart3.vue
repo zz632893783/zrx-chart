@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="zrx-chart" ref="chartDom"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
+    <!-- <div class="zrx-chart" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -12,7 +12,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-// const chartDom = ref();
+const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -151,6 +151,22 @@ const props = defineProps({
         default: () => true
     },
     /**
+     * @description 是否显示 label
+     * @example true
+     */
+    showLabel: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
+     * @description tooltip 标题
+     * @example ['标题A']
+     */
+    tooltipTitle: {
+        type: [Array],
+        default: () => null
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -177,7 +193,7 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
     }
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
     const option = {
         grid: (() => {
             const grid = { top: 56, right: 60, bottom: 40, left: 60 };
@@ -271,7 +287,7 @@ const renderChart = () => {
                 seriesOption.label = {
                     textShadowOffsetX: 0,
                     show: props.showLabel,
-                    fontSize: 28 * props.scale,
+                    fontSize: 14 * props.scale,
                     fontFamily: 'DINAlternate-Bold',
                     textShadowBlur: 4 * props.scale,
                     textShadowOffsetY: 2 * props.scale,
@@ -373,7 +389,7 @@ const renderChart = () => {
                 align: 'left',
                 textStyle: {
                     color: '#B0D0EE',
-                    padding: [0, 0, 0, 6],
+                    padding: [0, 0, 0, 6].map(n => n * props.scale),
                     fontSize: 14 * props.scale,
                     fontFamily: 'MicrosoftYaHei',
                     lineHeight: 24 * props.scale
@@ -407,7 +423,7 @@ const renderChart = () => {
                         lineStyle: { color: 'transparent' },
                         areaStyle: { color: 'transparent' }
                     },
-                    height: 8,
+                    height: 8 * props.scale,
                     fillerColor: '#467C9F',
                     labelFormatter: '',
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',

@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="zrx-chart" ref="chartRef" :id="`zrx-chart-${ randomId }`"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -12,7 +12,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-// const chartRef = ref();
+const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -189,7 +189,7 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
     const option = {
         grid: (() => {
             const grid = { top: 56, right: 60, bottom: 40, left: 60 };
@@ -378,7 +378,7 @@ const renderChart = () => {
                 align: 'left',
                 textStyle: {
                     color: '#B0D0EE',
-                    padding: [0, 0, 0, 6],
+                    padding: [0, 0, 0, 6].map(n => n * props.scale),
                     fontSize: 14 * props.scale,
                     fontFamily: 'MicrosoftYaHei',
                     lineHeight: 24 * props.scale
@@ -456,7 +456,7 @@ const renderChart = () => {
                         lineStyle: { color: 'transparent' },
                         areaStyle: { color: 'transparent' }
                     },
-                    height: 8,
+                    height: 8 * props.scale,
                     fillerColor: '#467C9F',
                     labelFormatter: '',
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
