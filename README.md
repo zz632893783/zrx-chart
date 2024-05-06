@@ -59,6 +59,7 @@ npm run doc
 
 # 组件库文档（基于 vitepress）
 
+
 ### 文档打包
 ```bash{4}
 npm run docs:build
@@ -67,3 +68,47 @@ npm run docs:build
 打包后文档位于 "根路径/docs/.vitepress/dist/" 目录下
 
 按照正常 vue 项目类似方式部署
+
+
+
+# 组件 npm 发布
+
+运行根路径下 publish.js 脚本
+
+### 公网发布
+```bash{4}
+node publish.js public updateVersion
+```
+其中参数 public 表示在公网发布，参数 updateVersion 表示读取当前版本后，自动将组建小版本 + 1，例如当前版本 1.0.2 会被自动更新为 1.0.3
+之后会在跟路径下生成 publishDir 目录，然后 cd ./publishDir 进入发布目录后
+```bash{4}
+npm publish
+```
+发布
+
+package.json 下已配置完成发布脚本，运行
+```bash{4}
+npm run publicPublish
+```
+
+### 私服发布（运行根目录下 publish.js 脚本）
+```bash{4}
+node publish.js private updateVersion
+```
+其中参数 private 表示在私服发布，参数 updateVersion 表示读取当前版本后，自动将组建小版本 + 1，例如当前版本 1.0.2 会被自动更新为 1.0.3
+之后会在跟路径下生成 publishDir 目录，然后 cd ./publishDir 进入发布目录后
+```bash{4}
+npm publish
+```
+发布
+
+package.json 下已配置完成发布脚本，运行
+```bash{4}
+npm run privatePublish
+```
+
+### 公网/私服一键发布
+```bash{4}
+npm run publish
+```
+会依次在公网/私服发布

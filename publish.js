@@ -6,7 +6,7 @@ const args = process.argv.splice(2);
 // 判断是公网/私服发布
 const publicPrivate = args[0];
 // 是否需要自动添加一个版本号
-const autoUpdateVersion = !!args[1];
+const updateVersion = !!args[1];
 // 清空文档目录
 fs.existsSync(publishPath) && fs.rmSync(publishPath, { recursive: true, force: true });
 // 如果目录不存在，则创建目录
@@ -16,7 +16,7 @@ fs.mkdirSync(publishPath);
 // 复制工具函数
 fs.copyFileSync('./utils/index.js', `${ publishPath }/utils/index.js`);
 // 每次自动将版本最后一位 + 1
-const packageJsonContent = fs.readFileSync('./package.json').toString().replace(/(?<="version": *"\d+\.\d+\.)\d+(?=")/, c => (Number(c) + (autoUpdateVersion ? 1 : 0)).toString());
+const packageJsonContent = fs.readFileSync('./package.json').toString().replace(/(?<="version": *"\d+\.\d+\.)\d+(?=")/, c => (Number(c) + (updateVersion ? 1 : 0)).toString());
 // 在发布目录下写入 package.json
 fs.writeFileSync('./package.json', packageJsonContent);
 // 发布包中的 packageJson
