@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-5-6 11:7:52 -->
+<!-- 创建时间 2024-5-6 12:25:2 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -210,7 +210,7 @@
                     Number
                 </div>
                 <div class="table-cell">
-                    7
+                    12
                 </div>
                 <div class="table-cell">
                     4
@@ -265,6 +265,40 @@
                 </div>
                 <div class="table-cell">
                     false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    beforeSetOption
+                </div>
+                <div class="table-cell">
+                    万能方法，图表渲染之前执行
+                </div>
+                <div class="table-cell">
+                    Function
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    afterSetOption
+                </div>
+                <div class="table-cell">
+                    万能方法，图表渲染之后执行
+                </div>
+                <div class="table-cell">
+                    Function
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    function (option, chart) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;return '执行对 option 的修改，绑定自定义事件等'<br/>}
                 </div>
             </div>
         </div>
