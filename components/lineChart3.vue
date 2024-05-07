@@ -208,8 +208,8 @@ const renderChart = () => {
                 return {
                     name,
                     type: 'value',
-                    alignTicks: true,
                     splitNumber: 4,
+                    alignTicks: true,
                     axisLine: { show: false },
                     axisTick: { show: false },
                     axisLabel: {
@@ -332,13 +332,13 @@ const renderChart = () => {
             return series;
         })(),
         tooltip: {
-            trigger: 'axis',
-            confine: true,
-            backgroundColor: 'transparent',
             padding: 0,
-            borderRadius: 0,
+            confine: true,
             borderWidth: 0,
+            borderRadius: 0,
+            trigger: 'axis',
             borderColor: 'transparent',
+            backgroundColor: 'transparent',
             axisPointer: {
                 type: 'line',
                 lineStyle: {
@@ -389,10 +389,10 @@ const renderChart = () => {
                 align: 'left',
                 textStyle: {
                     color: '#B0D0EE',
-                    padding: [0, 0, 0, 6].map(n => n * props.scale),
                     fontSize: 14 * props.scale,
+                    lineHeight: 24 * props.scale,
                     fontFamily: 'MicrosoftYaHei',
-                    lineHeight: 24 * props.scale
+                    padding: [0, 0, 0, 6].map(n => n * props.scale)
                 },
                 itemGap: 16 * props.scale,
                 itemWidth: 4 * props.scale,

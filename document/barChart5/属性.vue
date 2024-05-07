@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-5-6 17:12:56 -->
+<!-- 创建时间 2024-5-7 17:23:0 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -108,7 +108,7 @@
                     String, Array
                 </div>
                 <div class="table-cell">
-                    ['blue', 'grey']
+                    ['#3196FA', '#24AB86']
                 </div>
                 <div class="table-cell">
                     ['blue', 'grey']
