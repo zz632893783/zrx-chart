@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoa8e2165f8259 />
+<demo8d409eb74397 />
 ```vue{4}
 <template>
     <bar-chart-5 ref="chartRef" v-bind="chartOption"></bar-chart-5>
@@ -44,7 +44,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.辅助线
-<demod4b3a9aab74d />
+<demo7e7af4a846c1 />
 ```vue{4}
 <template>
     辅助线可能位于 y 轴自动计算的最小-最大值区间之外，可通过 beforeSetOption 指定 y 轴最大/最小值控制
@@ -66,14 +66,20 @@ const markLine = [
 ];
 const chartOption = {
     markLine,
-    yAxisName: '万元',
+    yAxisName: ['万元', '%'],
     legendData: ['实际值', '当前目标'],
     seriesData: [
-        { data: [52, 94, 61, 11, 52, 68, 58, 94, 61, 11, 52, 68] },
-        { data: [50, 130, 150, 182, 173, 184, 150, 18, 130, 150, 182, 173] }
+        {
+            yAxisIndex: 0,
+            data: [52, 94, 61, 11, 52, 68, 58, 94, 61, 11, 52, 68]
+        },
+        {
+            yAxisIndex: 1,
+            data: [50, 130, 150, 182, 173, 184, 150, 18, 130, 150, 182, 173]
+        }
     ],
     xAxisData: ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月', '1-10月', '1-11月', '1-12月'],
-    beforeSetOption: option => (option.yAxis[0].max = markLine[0].value)
+    beforeSetOption: option => (option.yAxis[0].max = Math.max(...option.series[0].data, markLine[0].value))
 };
 
 onMounted(() => chartRef.value.renderChart());
@@ -87,9 +93,9 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo62d6e94eadc8 />
+<demof76d674a29ca />
 <script setup>
-import demoa8e2165f8259 from '../../document/barChart5/1.基础用法.vue'
-import demod4b3a9aab74d from '../../document/barChart5/2.辅助线.vue'
-import demo62d6e94eadc8 from '../../document/barChart5/属性.vue'
+import demo8d409eb74397 from '../../document/barChart5/1.基础用法.vue'
+import demo7e7af4a846c1 from '../../document/barChart5/2.辅助线.vue'
+import demof76d674a29ca from '../../document/barChart5/属性.vue'
 </script>

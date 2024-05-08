@@ -18,14 +18,20 @@ const markLine = [
 ];
 const chartOption = {
     markLine,
-    yAxisName: '万元',
+    yAxisName: ['万元', '%'],
     legendData: ['实际值', '当前目标'],
     seriesData: [
-        { data: [52, 94, 61, 11, 52, 68, 58, 94, 61, 11, 52, 68] },
-        { data: [50, 130, 150, 182, 173, 184, 150, 18, 130, 150, 182, 173] }
+        {
+            yAxisIndex: 0,
+            data: [52, 94, 61, 11, 52, 68, 58, 94, 61, 11, 52, 68]
+        },
+        {
+            yAxisIndex: 1,
+            data: [50, 130, 150, 182, 173, 184, 150, 18, 130, 150, 182, 173]
+        }
     ],
     xAxisData: ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月', '1-9月', '1-10月', '1-11月', '1-12月'],
-    beforeSetOption: option => (option.yAxis[0].max = markLine[0].value)
+    beforeSetOption: option => (option.yAxis[0].max = Math.max(...option.series[0].data, markLine[0].value))
 };
 
 onMounted(() => chartRef.value.renderChart());
