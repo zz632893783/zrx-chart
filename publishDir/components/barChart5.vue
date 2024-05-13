@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="zrx-chart" ref="chartRef" :id="`zrx-chart-${ randomId }`"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+    <!-- <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -64,7 +64,7 @@ const props = defineProps({
      */
     color: {
         type: [String, Array],
-        default: () => ['blue', 'grey']
+        default: () => ['#3196FA', '#24AB86']
     },
     /**
      * @description tooltip 标题
@@ -189,7 +189,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef?.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         grid: (() => {
             const grid = { top: 56, right: 60, bottom: 40, left: 60 };
@@ -258,11 +259,11 @@ const renderChart = () => {
                 const { r, g, b, a } = computeColorRGBA(props.color[seriesIndex % props.color.length]);
                 const seriesOption = {
                     type: 'bar',
-                    data: seriesItem.data || [],
-                    yAxisIndex: seriesItem.yAxisIndex || 0,
-                    name: props.legendData[seriesIndex % props.legendData.length] || '',
                     barWidth: 16 * props.scale,
-                    barGap: `${ 3 / 16 * 100 }%`
+                    data: seriesItem.data || [],
+                    barGap: `${ 3 / 16 * 100 }%`,
+                    yAxisIndex: seriesItem.yAxisIndex || 0,
+                    name: props.legendData[seriesIndex % props.legendData.length] || ''
                 };
                 seriesOption.itemStyle = {
                     borderWidth: 0,
@@ -276,9 +277,9 @@ const renderChart = () => {
                     }
                 };
                 seriesOption.label = {
-                    show: props.showBarTopRect,
                     position: 'top',
                     formatter: '{rect|}',
+                    show: props.showBarTopRect,
                     offset: [0, 8 * props.scale],
                     rich: {
                         rect: {
@@ -301,9 +302,9 @@ const renderChart = () => {
                         }
                     },
                     label: {
-                        show: props.showBarTopRect,
                         position: 'top',
                         formatter: '{rect|}',
+                        show: props.showBarTopRect,
                         offset: [0, 8 * props.scale],
                         rich: {
                             rect: {
@@ -316,15 +317,15 @@ const renderChart = () => {
                 };
                 const markLines = props.markLine.filter(n => (n.yAxisIndex || 0) === seriesOption.yAxisIndex);
                 markLines.length && (seriesOption.markLine = {
-                    symbol:'none',
                     silent: true,
+                    symbol:'none',
                     data: markLines.map(n => ({
                         yAxis: n.value,
                         lineStyle: { color: n.color, type: n.type },
                         label: {
                             show: true,
-                            align: 'right',
                             distance: 0,
+                            align: 'right',
                             color: '#FFFFFF',
                             fontSize: 28 * props.scale,
                             // backgroundColor: '#0F325C',
@@ -335,8 +336,8 @@ const renderChart = () => {
                                 name: {
                                     fontWeight: 400,
                                     color: '#B0D0EE',
-                                    fontFamily: 'MicrosoftYaHei',
                                     fontSize: 14 * props.scale,
+                                    fontFamily: 'MicrosoftYaHei',
                                     lineHeight: 21 * props.scale
                                 },
                                 value: {
@@ -350,12 +351,12 @@ const renderChart = () => {
                                 unit: {
                                     fontWeight: 400,
                                     color: '#B0D0EE',
-                                    fontFamily: 'MicrosoftYaHei',
                                     fontSize: 14 * props.scale,
+                                    fontFamily: 'MicrosoftYaHei',
                                     lineHeight: 21 * props.scale
                                 },
-                                middle: { height: 21 * props.scale },
-                                gap: { height: 21 * props.scale }
+                                gap: { height: 21 * props.scale },
+                                middle: { height: 21 * props.scale }
                             }
                         }
                     }))
@@ -378,10 +379,10 @@ const renderChart = () => {
                 align: 'left',
                 textStyle: {
                     color: '#B0D0EE',
-                    padding: [0, 0, 0, 6].map(n => n * props.scale),
                     fontSize: 14 * props.scale,
                     fontFamily: 'MicrosoftYaHei',
-                    lineHeight: 24 * props.scale
+                    lineHeight: 24 * props.scale,
+                    padding: [0, 0, 0, 6].map(n => n * props.scale)
                 },
                 itemGap: 16 * props.scale,
                 itemWidth: 6 * props.scale,
@@ -390,18 +391,18 @@ const renderChart = () => {
             return legendConfig;
         })(),
         tooltip: {
-            trigger: 'axis',
-            confine: true,
-            backgroundColor: 'transparent',
             padding: 0,
-            borderRadius: 0,
+            confine: true,
             borderWidth: 0,
+            borderRadius: 0,
+            trigger: 'axis',
             borderColor: 'transparent',
+            backgroundColor: 'transparent',
             axisPointer: {
                 type: 'line',
                 lineStyle: {
-                    color: '#B0D0EE',
-                    type: 'dashed'
+                    type: 'dashed',
+                    color: '#B0D0EE'
                 }
             },
             formatter: params => {
@@ -438,16 +439,25 @@ const renderChart = () => {
     let end = props.showCount / props.xAxisData.length * 100;
     if (props.showCount) {
         if (props.dataZoomStartAtEnd) {
-            start = 100 - end;
             end = 100;
+            start = 100 - end;
         }
         if (props.dataZoomType === 'slider') {
             option.dataZoom = [
                 {
+                    end,
+                    start,
                     type: 'slider',
-                    brushSelect : false,
+                    borderWidth: 0,
                     handleIcon: 'none',
+                    labelFormatter: '',
+                    brushSelect : false,
+                    fillerColor: '#467C9F',
+                    height: 8 * props.scale,
                     borderColor: 'transparent',
+                    bottom: props.dataZoomBottom,
+                    handleStyle: { color: 'red' },
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     dataBackground: {
                         lineStyle: { color: 'transparent' },
                         areaStyle: { color: 'transparent' }
@@ -455,16 +465,7 @@ const renderChart = () => {
                     selectedDataBackground: {
                         lineStyle: { color: 'transparent' },
                         areaStyle: { color: 'transparent' }
-                    },
-                    height: 8 * props.scale,
-                    fillerColor: '#467C9F',
-                    labelFormatter: '',
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    borderWidth: 0,
-                    start,
-                    end,
-                    handleStyle: { color: 'red' },
-                    bottom: props.dataZoomBottom
+                    }
                 }
             ];
         } else {

@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="zrx-chart" ref="chartRef" :id="`zrx-chart-${ randomId }`"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+    <!-- <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import { ref } from 'vue';
@@ -189,7 +189,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef?.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         grid: (() => {
             const grid = { top: 56, right: 60, bottom: 40, left: 60 };

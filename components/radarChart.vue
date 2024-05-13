@@ -3,7 +3,8 @@
         <div class="chart" ref="chartRef"></div>
         <canvas class="bg" ref="canvasRef"></canvas>
     </div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef">
+    <!-- <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`">
         <div class="chart"></div>
         <canvas class="bg"></canvas>
     </div>
@@ -16,7 +17,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表对象
 let chart = null;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // canvas 背景 dom 对象
 // const canvasRef = ref();
 // 外侧容器 dom 对象
@@ -130,8 +131,8 @@ const renderChart = () => {
         chart = null;
     }
     // chart = echarts.init(chartRef.value);
-    // chart = echarts.init(document.querySelector(`#zrx-chart-${ randomId } .chart`));
-    chart = echarts.init((document.querySelector(`#zrx-chart-${ randomId }`) || chartRef.value).querySelector('.chart'));
+    // chart = echarts.init((document.querySelector(`#zrx-chart-${ randomId }`) || chartRef.value).querySelector('.chart'));
+    chart = echarts.init((document.querySelector(`#zrx-chart-${ randomId }`)).querySelector('.chart'));
     const option = {
         radar: {
             radius: props.radius,
@@ -186,9 +187,12 @@ const renderChart = () => {
 };
 // 绘制雷达图背景
 const createRadarBg = async () => {
-    const canvas = (document.querySelector(`#zrx-chart-${ randomId }`) || chartRef.value).querySelector('canvas.bg');
-    canvas.width = (document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth;
-    canvas.height = (document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetHeight;
+    // const canvas = (document.querySelector(`#zrx-chart-${ randomId }`) || chartRef.value).querySelector('canvas.bg');
+    // canvas.width = (document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth;
+    // canvas.height = (document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetHeight;
+    const canvas = (document.querySelector(`#zrx-chart-${ randomId }`)).querySelector('canvas.bg');
+    canvas.width = (document.getElementById(`zrx-chart-${ randomId }`)).offsetWidth;
+    canvas.height = (document.getElementById(`zrx-chart-${ randomId }`)).offsetHeight;
     await Promise.resolve();
     const ctx = canvas.getContext('2d');
     ctx.lineWidth = 1;

@@ -1,7 +1,7 @@
 <template>
     <div class="zrx-chart">
-        <!-- <div class="chart-content" ref="chartRef"></div> -->
-        <div class="chart-content" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+        <!-- <div class="chart-content" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+        <div class="chart-content" :id="`zrx-chart-${ randomId }`"></div>
         <div class="center">
             <slot></slot>
         </div>
@@ -16,7 +16,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -128,8 +128,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    // chart = echarts.init(chartRef.value);
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         legend: {
             show: true,
@@ -186,7 +186,7 @@ const renderChart = () => {
             formatter: param => `
                 <div style="background-color: #125176; padding: ${ 12 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(158,202,255,0.40);">
                     ${ props.title ? `<h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; margin-bottom: ${ 8 * props.scale }px;">${ props.title }</h4>` : '' }
-                    <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center;">
+                    <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; align-items: center;">
                         ${
                             (() => {
                                 const colors = props.color;

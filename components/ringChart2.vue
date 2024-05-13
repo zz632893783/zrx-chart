@@ -1,7 +1,7 @@
 <template>
     <div class="zrx-chart">
-        <!-- <div class="chart-container" ref="chartRef"></div> -->
-        <div class="chart-container" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+        <!-- <div class="chart-container" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+        <div class="chart-container" :id="`zrx-chart-${ randomId }`"></div>
         <div class="center">
             <slot></slot>
         </div>
@@ -18,7 +18,7 @@ const fallIcon = 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -135,8 +135,8 @@ const renderChart = () => {
         chart.dispose();
         chart = null;
     }
-    // chart = echarts.init(chartRef.value);
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         legend: {
             show: true,

@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="zrx-chart" ref="chartRef"></div> -->
-    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+    <!-- <div class="zrx-chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+    <div class="zrx-chart" :id="`zrx-chart-${ randomId }`"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
@@ -12,7 +12,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -193,7 +193,8 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
     }
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const option = {
         grid: (() => {
             const grid = { top: 56, right: 60, bottom: 40, left: 60 };
@@ -208,8 +209,8 @@ const renderChart = () => {
                 return {
                     name,
                     type: 'value',
-                    alignTicks: true,
                     splitNumber: 4,
+                    alignTicks: true,
                     axisLine: { show: false },
                     axisTick: { show: false },
                     axisLabel: {
@@ -332,13 +333,13 @@ const renderChart = () => {
             return series;
         })(),
         tooltip: {
-            trigger: 'axis',
-            confine: true,
-            backgroundColor: 'transparent',
             padding: 0,
-            borderRadius: 0,
+            confine: true,
             borderWidth: 0,
+            borderRadius: 0,
+            trigger: 'axis',
             borderColor: 'transparent',
+            backgroundColor: 'transparent',
             axisPointer: {
                 type: 'line',
                 lineStyle: {
@@ -389,10 +390,10 @@ const renderChart = () => {
                 align: 'left',
                 textStyle: {
                     color: '#B0D0EE',
-                    padding: [0, 0, 0, 6].map(n => n * props.scale),
                     fontSize: 14 * props.scale,
+                    lineHeight: 24 * props.scale,
                     fontFamily: 'MicrosoftYaHei',
-                    lineHeight: 24 * props.scale
+                    padding: [0, 0, 0, 6].map(n => n * props.scale)
                 },
                 itemGap: 16 * props.scale,
                 itemWidth: 4 * props.scale,

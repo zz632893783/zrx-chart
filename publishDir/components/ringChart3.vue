@@ -3,8 +3,8 @@
         <div class="ring-label">
             <slot></slot>
         </div>
-        <!-- <div class="chart" ref="chartDom"></div> -->
-        <div class="chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div>
+        <!-- <div class="chart" :id="`zrx-chart-${ randomId }`" ref="chartRef"></div> -->
+        <div class="chart" :id="`zrx-chart-${ randomId }`"></div>
     </div>
 </template>
 <script setup>
@@ -14,7 +14,7 @@ const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()
 // 图表实例
 let chart;
 // 图表 dom 对象
-const chartRef = ref();
+// const chartRef = ref();
 // 可配置属性
 const props = defineProps({
     /**
@@ -113,8 +113,8 @@ const renderChart = () => {
         typeof chart.dispose === 'function' && chart.dispose()
         chart = null
     }
-    // chart = echarts.init(chartDom.value);
-    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
+    chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const rich = {
         a: {
             fontSize: props.centerValueFontSize,

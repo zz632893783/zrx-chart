@@ -1,5 +1,5 @@
 ## 1.特殊定制图表
-<demoe4ebe24f46d1 />
+<demoa3ddb45f8460 />
 ```vue{4}
 <template>
     <ring-chart-6 v-bind="chartOption" ref="chartRef"></ring-chart-6>
@@ -36,7 +36,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.颜色修改
-<demod6a6cf1aa3bb />
+<demo48fe151d65e2 />
 ```vue{4}
 <template>
     <ring-chart-6 v-bind="chartOption" ref="chartRef"></ring-chart-6>
@@ -78,12 +78,12 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demobb227704aeee />
+<demoe9a87c33bec0 />
 ## 支持方法
-<demob243bbc46b2c />
+<demo8715dd5ac913 />
 <script setup>
-import demoe4ebe24f46d1 from '../../document/ringChart6/1.特殊定制图表.vue'
-import demod6a6cf1aa3bb from '../../document/ringChart6/2.颜色修改.vue'
-import demobb227704aeee from '../../document/ringChart6/属性.vue'
-import demob243bbc46b2c from '../../document/ringChart6/支持方法.vue'
+import demoa3ddb45f8460 from '../../document/ringChart6/1.特殊定制图表.vue'
+import demo48fe151d65e2 from '../../document/ringChart6/2.颜色修改.vue'
+import demoe9a87c33bec0 from '../../document/ringChart6/属性.vue'
+import demo8715dd5ac913 from '../../document/ringChart6/支持方法.vue'
 </script>
