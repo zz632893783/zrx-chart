@@ -148,6 +148,7 @@ const renderChart = () => {
                 type: 'pie',
                 width: '100%',
                 height: '100%',
+                padAngle: props.itemGap / (Math.max(...props.radius) * 2 * Math.PI) * 360,
                 radius: [
                     props.radius[0] - props.itemGap,
                     props.radius[1] + props.itemGap
@@ -222,8 +223,8 @@ const renderChart = () => {
                 }),
                 labelLine: { show: false },
                 itemStyle: {
-                    borderWidth: props.itemGap,
-                    borderColor: 'rgb(3, 43, 68)'
+                    borderWidth: 0,
+                    borderColor: 'transparent'
                 },
                 emphasis: { scaleSize: 5 * props.scale }
             }

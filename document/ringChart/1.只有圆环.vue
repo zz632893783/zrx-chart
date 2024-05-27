@@ -25,6 +25,6 @@ onMounted(() => chartRef.value.renderChart());
 .zrx-chart {
     width: 256px;
     height: 256px;
-    background-color: rgb(3, 43, 68);
+    // background-color: rgb(3, 43, 68);
 }
 </style>

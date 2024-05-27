@@ -248,7 +248,7 @@ const renderChart = () => {
                 return `
                     <div style="background-color: #124776; padding: ${16 * props.scale}px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(158, 202, 255, 0.4); box-shadow: 0 ${6 * props.scale}px ${24 * props.scale}px ${2 * props.scale}px rgba(3, 28, 45, 0.8);">
                         <h4 style="font-family: MicrosoftYaHei; font-size: ${28 * props.scale}px; color: #FFFFFF; font-weight: 700;">${tooltipTitle}</h4>
-                        <div style="display: grid; grid-auto-rows: ${37 * props.scale}px; grid-row-gap: ${8 * props.scale}px; grid-template-columns: ${ 32 * props.scale }px min-content min-content; grid-column-gap: ${4 * props.scale}px ${12 * props.scale}px; align-items: center; margin-top: ${8 * props.scale}px;">
+                        <div style="display: grid; grid-auto-rows: ${37 * props.scale}px; grid-row-gap: ${8 * props.scale}px; grid-template-columns: ${ 32 * props.scale }px min-content min-content; align-items: center; margin-top: ${8 * props.scale}px;">
                             ${ params
                                 .slice(0, params.length - 1)
                                 .map(n => {

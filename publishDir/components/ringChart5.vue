@@ -186,7 +186,7 @@ const renderChart = () => {
             formatter: param => `
                 <div style="background-color: #125176; padding: ${ 12 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(158,202,255,0.40);">
                     ${ props.title ? `<h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400; margin-bottom: ${ 8 * props.scale }px;">${ props.title }</h4>` : '' }
-                    <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center;">
+                    <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; align-items: center;">
                         ${
                             (() => {
                                 const colors = props.color;
@@ -222,6 +222,7 @@ const renderChart = () => {
             {
                 type: 'pie',
                 name: 'pie',
+                padAngle: props.itemGap / (Math.max(...props.radius) * 2 * Math.PI) * 360,
                 radius: [
                     props.radius[0] - props.itemGap,
                     props.radius[1] + props.itemGap
@@ -344,9 +345,8 @@ const renderChart = () => {
                 labelLine: { show: false },
                 // silent: props.centerDisplay === 'sum',
                 itemStyle: {
-                    borderWidth: props.itemGap,
-                    // borderColor: 'rgb(3, 43, 68)',
-                    borderColor: 'rgb(27,85,148)'
+                    borderWidth: 0,
+                    borderColor: 'transparent'
                 },
                 emphasis: { scaleSize: 5 * props.scale }
             }

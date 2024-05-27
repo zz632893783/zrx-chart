@@ -287,7 +287,7 @@ const renderChart = () => {
                 return `
                     <div style="background-color: #125176; padding: ${ 16 * props.scale }px; border-radius: 0; border: ${ 2 * props.scale }px solid rgba(102, 255, 255, 0.2);">
                         <h4 style="font-family: MicrosoftYaHei; font-size: ${ 28 * props.scale }px; color: #FFFFFF; font-weight: 400;">${ tooltipTitle }</h4>
-                        <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 4 * props.scale }px ${ 12 * props.scale }px; align-items: center; margin-top: ${ 8 * props.scale }px;">
+                        <div style="display: grid; grid-auto-rows: ${ 37 * props.scale }px; grid-row-gap: ${ 8 * props.scale }px; grid-template-columns: ${ 18 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; align-items: center; margin-top: ${ 8 * props.scale }px;">
                             ${
                                 params.map(n => {
                                     const seriesIndex = n.seriesIndex / 2;

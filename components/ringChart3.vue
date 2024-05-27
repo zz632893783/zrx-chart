@@ -26,6 +26,14 @@ const props = defineProps({
         default: () => [58, 76]
     },
     /**
+     * @description 间距
+     * @example 4
+     */
+    itemGap: {
+        type: [Number],
+        default: () => 0
+    },
+    /**
      * @description 底色圆环半径
      * @example [50, 70]
      */
@@ -191,6 +199,7 @@ const renderChart = () => {
             },
             {
                 type: 'pie',
+                padAngle: props.itemGap / (Math.max(...props.radius) * 2 * Math.PI) * 360,
                 clockwise: props.clockwise,
                 label: {
                     // show: props.showLabel,

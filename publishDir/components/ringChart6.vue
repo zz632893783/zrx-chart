@@ -151,6 +151,7 @@ const renderChart = () => {
             {
                 type: 'pie',
                 startAngle: props.startAngle,
+                padAngle: props.itemGap / (Math.max(...props.radius) * 2 * Math.PI) * 360,
                 radius: [
                     props.radius[0] - props.itemGap,
                     props.radius[1] + props.itemGap
@@ -179,8 +180,8 @@ const renderChart = () => {
                 }),
                 labelLine: { show: false },
                 itemStyle: {
-                    borderWidth: props.itemGap * props.scale,
-                    borderColor: 'rgb(3, 43, 68)'
+                    borderWidth: 0,
+                    borderColor: 'transparent'
                 }
                 // emphasis: { scaleSize: 5 },
             }
@@ -200,7 +201,7 @@ const renderChart = () => {
             formatter: param => `
                 <div style="background-color: #125176; padding: ${ 8 * props.scale }px; border-radius: 0; border: ${ 1 * props.scale }px solid rgba(102, 255, 255, 0.2);">
                     ${ props.title ? `<h4 style="font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #FFFFFF; font-weight: 400; margin-bottom: ${ 8 * props.scale }px;">${ props.title }</h4>` : '' }
-                    <div style="display: grid; grid-auto-rows: ${ 19 * props.scale }px; grid-row-gap: ${ 4 * props.scale }px; grid-template-columns: ${ 8 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; grid-column-gap: ${ 2 * props.scale }px ${ 12 * props.scale }px; align-items: center;">
+                    <div style="display: grid; grid-auto-rows: ${ 19 * props.scale }px; grid-row-gap: ${ 4 * props.scale }px; grid-template-columns: ${ 8 * props.scale }px ${ 8 * props.scale }px min-content ${ 12 * props.scale }px min-content; align-items: center;">
                         ${
                             (() => {
                                 const colors = props.ringColor;

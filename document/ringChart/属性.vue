@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-5-13 10:13:54 -->
+<!-- 创建时间 2024-5-27 17:40:57 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -163,6 +163,23 @@
                 </div>
                 <div class="table-cell">
                     2
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    padAngle
+                </div>
+                <div class="table-cell">
+                    饼图扇区之间的间隔角度（0 ~ 360）
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    2
+                </div>
+                <div class="table-cell">
+                    8
                 </div>
             </div>
             <div class="table-row">
