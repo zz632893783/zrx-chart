@@ -477,6 +477,7 @@ const renderChart = () => {
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
+    return chart;
 };
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });

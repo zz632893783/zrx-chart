@@ -737,6 +737,7 @@ const renderChart = () => {
             });
         }
     });
+    return chart;
 };
 
 defineExpose({

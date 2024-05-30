@@ -1,5 +1,5 @@
 ## 1.基础用法
-<democc0388e4bfed />
+<demo81952aa6c01b />
 ```vue{4}
 <template>
     <gradient-ring-chart :value="v" subTitle="风险指数" valueUnit="%"></gradient-ring-chart>
@@ -20,7 +20,7 @@ const randomValue = () => (v.value = Math.round(Math.random() * 100));
 </style>
 ```
 ## 2.颜色半径设置
-<demo7c958fbc3004 />
+<demoe182c7a80757 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -45,7 +45,7 @@ const option = {
 </style>
 ```
 ## 3.角度范围控制
-<demo3c1cb9113ccd />
+<demob1548996fb87 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -83,7 +83,7 @@ const option3 = {
 </style>
 ```
 ## 4.顺时针、逆时针
-<democ26e3bde7472 />
+<demo2d5478212084 />
 ```vue{4}
 <template>
     <gradient-ring-chart v-bind="option"></gradient-ring-chart>
@@ -110,11 +110,11 @@ const option2 = {
 </style>
 ```
 ## 属性
-<demo203f22848039 />
+<democe3353396f21 />
 <script setup>
-import democc0388e4bfed from '../../document/gradientRingChart/1.基础用法.vue'
-import demo7c958fbc3004 from '../../document/gradientRingChart/2.颜色半径设置.vue'
-import demo3c1cb9113ccd from '../../document/gradientRingChart/3.角度范围控制.vue'
-import democ26e3bde7472 from '../../document/gradientRingChart/4.顺时针、逆时针.vue'
-import demo203f22848039 from '../../document/gradientRingChart/属性.vue'
+import demo81952aa6c01b from '../../document/gradientRingChart/1.基础用法.vue'
+import demoe182c7a80757 from '../../document/gradientRingChart/2.颜色半径设置.vue'
+import demob1548996fb87 from '../../document/gradientRingChart/3.角度范围控制.vue'
+import demo2d5478212084 from '../../document/gradientRingChart/4.顺时针、逆时针.vue'
+import democe3353396f21 from '../../document/gradientRingChart/属性.vue'
 </script>

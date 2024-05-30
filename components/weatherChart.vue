@@ -454,6 +454,7 @@ const renderChart = () => {
         chart.dispatchAction({ type: 'downplay' });
         chart.dispatchAction({ type: 'highlight', dataIndex: 0 })
     });
+    return chart;
 };
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });

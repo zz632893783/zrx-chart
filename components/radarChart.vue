@@ -184,6 +184,7 @@ const renderChart = () => {
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);
     typeof props.afterSetOption === 'function' && props.afterSetOption(option, chart);
+    return chart;
 };
 // 绘制雷达图背景
 const createRadarBg = async () => {

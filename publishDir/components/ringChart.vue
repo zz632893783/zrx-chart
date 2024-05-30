@@ -363,6 +363,7 @@ const renderChart = () => {
     // chart.on('mouseout', param => {
     //     console.log(param.dataIndex)
     // })
+    return chart;
 };
 
 defineExpose({ renderChart, clearChart: () => chart?.clear() });
