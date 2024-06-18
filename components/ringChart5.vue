@@ -223,10 +223,7 @@ const renderChart = () => {
                 type: 'pie',
                 name: 'pie',
                 padAngle: props.itemGap / (Math.max(...props.radius) * 2 * Math.PI) * 360,
-                radius: [
-                    props.radius[0] - props.itemGap,
-                    props.radius[1] + props.itemGap
-                ].map(n => n * props.scale),
+                radius: props.radius.map(n => n * props.scale),
                 minAngle: props.minAngle,
                 data: props.seriesData.map((value, index) => {
                     typeof value !== 'object' && (value = { value });

@@ -1,5 +1,5 @@
 ## 1.带线段标签
-<demo74e5c1308ec8 />
+<demo9cd99323e755 />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -40,7 +40,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.中心自定义
-<demo96640d17af18 />
+<demo480ef600023b />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef">
@@ -83,7 +83,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.自定义标签
-<demo9222fd3505bf />
+<demofb3903f10dc7 />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -134,7 +134,7 @@ const seriesData = [
 ];
 const title = '企业总数';
 const unit = '家';
-const edgeDistance = 80;
+const edgeDistance = 20;
 const chartOption = {
     radius,
     color,
@@ -149,14 +149,14 @@ onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    width: 740px;
+    width: 760px;
     height: 256px;
     background-color: rgb(3, 43, 68);
 }
 </style>
 ```
 ## 4.绑定原生html属性
-<demo5362ac4d3154 />
+<demoac83077ea03f />
 ```vue{4}
 <template>
     <ring-chart-2 v-bind="chartOption" ref="chartRef"></ring-chart-2>
@@ -192,14 +192,14 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo0e4a41e54179 />
+<demoe392af40f38e />
 ## 支持方法
-<demo6988ad88d77c />
+<demoaa321dc2f1e0 />
 <script setup>
-import demo74e5c1308ec8 from '../../document/ringChart2/1.带线段标签.vue'
-import demo96640d17af18 from '../../document/ringChart2/2.中心自定义.vue'
-import demo9222fd3505bf from '../../document/ringChart2/3.自定义标签.vue'
-import demo5362ac4d3154 from '../../document/ringChart2/4.绑定原生html属性.vue'
-import demo0e4a41e54179 from '../../document/ringChart2/属性.vue'
-import demo6988ad88d77c from '../../document/ringChart2/支持方法.vue'
+import demo9cd99323e755 from '../../document/ringChart2/1.带线段标签.vue'
+import demo480ef600023b from '../../document/ringChart2/2.中心自定义.vue'
+import demofb3903f10dc7 from '../../document/ringChart2/3.自定义标签.vue'
+import demoac83077ea03f from '../../document/ringChart2/4.绑定原生html属性.vue'
+import demoe392af40f38e from '../../document/ringChart2/属性.vue'
+import demoaa321dc2f1e0 from '../../document/ringChart2/支持方法.vue'
 </script>

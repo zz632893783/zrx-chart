@@ -47,7 +47,7 @@ const seriesData = [
 ];
 const title = '企业总数';
 const unit = '家';
-const edgeDistance = 80;
+const edgeDistance = 20;
 const chartOption = {
     radius,
     color,
@@ -62,7 +62,7 @@ onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    width: 740px;
+    width: 760px;
     height: 256px;
     background-color: rgb(3, 43, 68);
 }
