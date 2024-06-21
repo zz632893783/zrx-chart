@@ -464,6 +464,7 @@ const renderChart = () => {
             option.dataZoom = [
                 {
                     type: 'slider',
+                    zoomLock: props.zoomLock,
                     yAxisIndex: props.yAxisData.map((n, i) => i),
                     brushSelect : false,
                     handleIcon: 'none',
@@ -505,7 +506,8 @@ const renderChart = () => {
                     type: 'inside',
                     yAxisIndex: props.yAxisData.map((n, i) => i),
                     start,
-                    end
+                    end,
+                    zoomLock: props.zoomLock
                 }
             ];
         }

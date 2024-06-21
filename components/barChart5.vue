@@ -456,6 +456,7 @@ const renderChart = () => {
                     end,
                     start,
                     type: 'slider',
+                    zoomLock: props.zoomLock,
                     borderWidth: 0,
                     handleIcon: 'none',
                     labelFormatter: '',
@@ -478,7 +479,7 @@ const renderChart = () => {
             ];
         } else {
             option.dataZoom = [
-                { type: 'inside', start, end }
+                { type: 'inside', start, end, zoomLock: props.zoomLock }
             ];
         }
     };

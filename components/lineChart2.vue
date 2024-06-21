@@ -551,6 +551,7 @@ const renderChart = () => {
             option.dataZoom = [
                 {
                     type: 'slider',
+                    zoomLock: props.zoomLock,
                     brushSelect: false,
                     handleIcon: 'none',
                     borderColor: 'transparent',
@@ -586,7 +587,7 @@ const renderChart = () => {
                 }
             ];
         } else {
-            option.dataZoom = [{ type: 'inside', start, end }];
+            option.dataZoom = [{ type: 'inside', start, end, zoomLock: props.zoomLock }];
         }
     }
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
