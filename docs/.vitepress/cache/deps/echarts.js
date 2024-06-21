@@ -1,15 +1,13 @@
 import {
   __export
-} from "./chunk-ZS7NZCD4.js";
+} from "./chunk-G3PMV62Z.js";
 
 // node_modules/tslib/tslib.es6.js
 var extendStatics = function(d, b) {
   extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
     d2.__proto__ = b2;
   } || function(d2, b2) {
-    for (var p in b2)
-      if (Object.prototype.hasOwnProperty.call(b2, p))
-        d2[p] = b2[p];
+    for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
   };
   return extendStatics(d, b);
 };
@@ -8426,71 +8424,70 @@ function parseRichText(text, style) {
     calculatedHeight += lineHeight2;
     calculatedWidth = Math.max(calculatedWidth, lineWidth2);
   }
-  outer:
-    for (var i = 0; i < contentBlock.lines.length; i++) {
-      var line = contentBlock.lines[i];
-      var lineHeight = 0;
-      var lineWidth = 0;
-      for (var j = 0; j < line.tokens.length; j++) {
-        var token = line.tokens[j];
-        var tokenStyle = token.styleName && style.rich[token.styleName] || {};
-        var textPadding = token.textPadding = tokenStyle.padding;
-        var paddingH = textPadding ? textPadding[1] + textPadding[3] : 0;
-        var font = token.font = tokenStyle.font || style.font;
-        token.contentHeight = getLineHeight(font);
-        var tokenHeight = retrieve2(tokenStyle.height, token.contentHeight);
-        token.innerHeight = tokenHeight;
-        textPadding && (tokenHeight += textPadding[0] + textPadding[2]);
-        token.height = tokenHeight;
-        token.lineHeight = retrieve3(tokenStyle.lineHeight, style.lineHeight, tokenHeight);
-        token.align = tokenStyle && tokenStyle.align || style.align;
-        token.verticalAlign = tokenStyle && tokenStyle.verticalAlign || "middle";
-        if (truncateLine && topHeight != null && calculatedHeight + token.lineHeight > topHeight) {
-          if (j > 0) {
-            line.tokens = line.tokens.slice(0, j);
-            finishLine(line, lineWidth, lineHeight);
-            contentBlock.lines = contentBlock.lines.slice(0, i + 1);
-          } else {
-            contentBlock.lines = contentBlock.lines.slice(0, i);
-          }
-          break outer;
-        }
-        var styleTokenWidth = tokenStyle.width;
-        var tokenWidthNotSpecified = styleTokenWidth == null || styleTokenWidth === "auto";
-        if (typeof styleTokenWidth === "string" && styleTokenWidth.charAt(styleTokenWidth.length - 1) === "%") {
-          token.percentWidth = styleTokenWidth;
-          pendingList.push(token);
-          token.contentWidth = getWidth(token.text, font);
+  outer: for (var i = 0; i < contentBlock.lines.length; i++) {
+    var line = contentBlock.lines[i];
+    var lineHeight = 0;
+    var lineWidth = 0;
+    for (var j = 0; j < line.tokens.length; j++) {
+      var token = line.tokens[j];
+      var tokenStyle = token.styleName && style.rich[token.styleName] || {};
+      var textPadding = token.textPadding = tokenStyle.padding;
+      var paddingH = textPadding ? textPadding[1] + textPadding[3] : 0;
+      var font = token.font = tokenStyle.font || style.font;
+      token.contentHeight = getLineHeight(font);
+      var tokenHeight = retrieve2(tokenStyle.height, token.contentHeight);
+      token.innerHeight = tokenHeight;
+      textPadding && (tokenHeight += textPadding[0] + textPadding[2]);
+      token.height = tokenHeight;
+      token.lineHeight = retrieve3(tokenStyle.lineHeight, style.lineHeight, tokenHeight);
+      token.align = tokenStyle && tokenStyle.align || style.align;
+      token.verticalAlign = tokenStyle && tokenStyle.verticalAlign || "middle";
+      if (truncateLine && topHeight != null && calculatedHeight + token.lineHeight > topHeight) {
+        if (j > 0) {
+          line.tokens = line.tokens.slice(0, j);
+          finishLine(line, lineWidth, lineHeight);
+          contentBlock.lines = contentBlock.lines.slice(0, i + 1);
         } else {
-          if (tokenWidthNotSpecified) {
-            var textBackgroundColor = tokenStyle.backgroundColor;
-            var bgImg = textBackgroundColor && textBackgroundColor.image;
-            if (bgImg) {
-              bgImg = findExistImage(bgImg);
-              if (isImageReady(bgImg)) {
-                token.width = Math.max(token.width, bgImg.width * tokenHeight / bgImg.height);
-              }
+          contentBlock.lines = contentBlock.lines.slice(0, i);
+        }
+        break outer;
+      }
+      var styleTokenWidth = tokenStyle.width;
+      var tokenWidthNotSpecified = styleTokenWidth == null || styleTokenWidth === "auto";
+      if (typeof styleTokenWidth === "string" && styleTokenWidth.charAt(styleTokenWidth.length - 1) === "%") {
+        token.percentWidth = styleTokenWidth;
+        pendingList.push(token);
+        token.contentWidth = getWidth(token.text, font);
+      } else {
+        if (tokenWidthNotSpecified) {
+          var textBackgroundColor = tokenStyle.backgroundColor;
+          var bgImg = textBackgroundColor && textBackgroundColor.image;
+          if (bgImg) {
+            bgImg = findExistImage(bgImg);
+            if (isImageReady(bgImg)) {
+              token.width = Math.max(token.width, bgImg.width * tokenHeight / bgImg.height);
             }
-          }
-          var remainTruncWidth = truncate && topWidth != null ? topWidth - lineWidth : null;
-          if (remainTruncWidth != null && remainTruncWidth < token.width) {
-            if (!tokenWidthNotSpecified || remainTruncWidth < paddingH) {
-              token.text = "";
-              token.width = token.contentWidth = 0;
-            } else {
-              token.text = truncateText(token.text, remainTruncWidth - paddingH, font, style.ellipsis, { minChar: style.truncateMinChar });
-              token.width = token.contentWidth = getWidth(token.text, font);
-            }
-          } else {
-            token.contentWidth = getWidth(token.text, font);
           }
         }
-        token.width += paddingH;
-        lineWidth += token.width;
-        tokenStyle && (lineHeight = Math.max(lineHeight, token.lineHeight));
+        var remainTruncWidth = truncate && topWidth != null ? topWidth - lineWidth : null;
+        if (remainTruncWidth != null && remainTruncWidth < token.width) {
+          if (!tokenWidthNotSpecified || remainTruncWidth < paddingH) {
+            token.text = "";
+            token.width = token.contentWidth = 0;
+          } else {
+            token.text = truncateText(token.text, remainTruncWidth - paddingH, font, style.ellipsis, { minChar: style.truncateMinChar });
+            token.width = token.contentWidth = getWidth(token.text, font);
+          }
+        } else {
+          token.contentWidth = getWidth(token.text, font);
+        }
       }
-      finishLine(line, lineWidth, lineHeight);
+      token.width += paddingH;
+      lineWidth += token.width;
+      tokenStyle && (lineHeight = Math.max(lineHeight, token.lineHeight));
     }
+    finishLine(line, lineWidth, lineHeight);
+  }
   contentBlock.outerWidth = contentBlock.width = retrieve2(topWidth, calculatedWidth);
   contentBlock.outerHeight = contentBlock.height = retrieve2(topHeight, calculatedHeight);
   contentBlock.contentHeight = calculatedHeight;
@@ -9592,181 +9589,180 @@ var PathProxy = function() {
         return;
       }
     }
-    lo:
-      for (var i = 0; i < len2; ) {
-        var cmd = d[i++];
-        var isFirst = i === 1;
-        if (isFirst) {
-          xi = d[i];
-          yi = d[i + 1];
-          x0 = xi;
-          y0 = yi;
-        }
-        if (cmd !== CMD.L && pendingPtDist > 0) {
-          ctx.lineTo(pendingPtX, pendingPtY);
-          pendingPtDist = 0;
-        }
-        switch (cmd) {
-          case CMD.M:
-            x0 = xi = d[i++];
-            y0 = yi = d[i++];
-            ctx.moveTo(xi, yi);
-            break;
-          case CMD.L: {
-            x = d[i++];
-            y = d[i++];
-            var dx = mathAbs(x - xi);
-            var dy = mathAbs(y - yi);
-            if (dx > ux || dy > uy) {
-              if (drawPart) {
-                var l = pathSegLen[segCount++];
-                if (accumLength + l > displayedLength) {
-                  var t = (displayedLength - accumLength) / l;
-                  ctx.lineTo(xi * (1 - t) + x * t, yi * (1 - t) + y * t);
-                  break lo;
-                }
-                accumLength += l;
-              }
-              ctx.lineTo(x, y);
-              xi = x;
-              yi = y;
-              pendingPtDist = 0;
-            } else {
-              var d2 = dx * dx + dy * dy;
-              if (d2 > pendingPtDist) {
-                pendingPtX = x;
-                pendingPtY = y;
-                pendingPtDist = d2;
-              }
-            }
-            break;
-          }
-          case CMD.C: {
-            var x1 = d[i++];
-            var y1 = d[i++];
-            var x2 = d[i++];
-            var y2 = d[i++];
-            var x3 = d[i++];
-            var y3 = d[i++];
+    lo: for (var i = 0; i < len2; ) {
+      var cmd = d[i++];
+      var isFirst = i === 1;
+      if (isFirst) {
+        xi = d[i];
+        yi = d[i + 1];
+        x0 = xi;
+        y0 = yi;
+      }
+      if (cmd !== CMD.L && pendingPtDist > 0) {
+        ctx.lineTo(pendingPtX, pendingPtY);
+        pendingPtDist = 0;
+      }
+      switch (cmd) {
+        case CMD.M:
+          x0 = xi = d[i++];
+          y0 = yi = d[i++];
+          ctx.moveTo(xi, yi);
+          break;
+        case CMD.L: {
+          x = d[i++];
+          y = d[i++];
+          var dx = mathAbs(x - xi);
+          var dy = mathAbs(y - yi);
+          if (dx > ux || dy > uy) {
             if (drawPart) {
               var l = pathSegLen[segCount++];
               if (accumLength + l > displayedLength) {
                 var t = (displayedLength - accumLength) / l;
-                cubicSubdivide(xi, x1, x2, x3, t, tmpOutX);
-                cubicSubdivide(yi, y1, y2, y3, t, tmpOutY);
-                ctx.bezierCurveTo(tmpOutX[1], tmpOutY[1], tmpOutX[2], tmpOutY[2], tmpOutX[3], tmpOutY[3]);
+                ctx.lineTo(xi * (1 - t) + x * t, yi * (1 - t) + y * t);
                 break lo;
               }
               accumLength += l;
             }
-            ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3);
-            xi = x3;
-            yi = y3;
-            break;
+            ctx.lineTo(x, y);
+            xi = x;
+            yi = y;
+            pendingPtDist = 0;
+          } else {
+            var d2 = dx * dx + dy * dy;
+            if (d2 > pendingPtDist) {
+              pendingPtX = x;
+              pendingPtY = y;
+              pendingPtDist = d2;
+            }
           }
-          case CMD.Q: {
-            var x1 = d[i++];
-            var y1 = d[i++];
-            var x2 = d[i++];
-            var y2 = d[i++];
-            if (drawPart) {
-              var l = pathSegLen[segCount++];
-              if (accumLength + l > displayedLength) {
-                var t = (displayedLength - accumLength) / l;
-                quadraticSubdivide(xi, x1, x2, t, tmpOutX);
-                quadraticSubdivide(yi, y1, y2, t, tmpOutY);
-                ctx.quadraticCurveTo(tmpOutX[1], tmpOutY[1], tmpOutX[2], tmpOutY[2]);
-                break lo;
-              }
-              accumLength += l;
-            }
-            ctx.quadraticCurveTo(x1, y1, x2, y2);
-            xi = x2;
-            yi = y2;
-            break;
-          }
-          case CMD.A:
-            var cx = d[i++];
-            var cy = d[i++];
-            var rx = d[i++];
-            var ry = d[i++];
-            var startAngle = d[i++];
-            var delta = d[i++];
-            var psi = d[i++];
-            var anticlockwise = !d[i++];
-            var r = rx > ry ? rx : ry;
-            var isEllipse = mathAbs(rx - ry) > 1e-3;
-            var endAngle = startAngle + delta;
-            var breakBuild = false;
-            if (drawPart) {
-              var l = pathSegLen[segCount++];
-              if (accumLength + l > displayedLength) {
-                endAngle = startAngle + delta * (displayedLength - accumLength) / l;
-                breakBuild = true;
-              }
-              accumLength += l;
-            }
-            if (isEllipse && ctx.ellipse) {
-              ctx.ellipse(cx, cy, rx, ry, psi, startAngle, endAngle, anticlockwise);
-            } else {
-              ctx.arc(cx, cy, r, startAngle, endAngle, anticlockwise);
-            }
-            if (breakBuild) {
+          break;
+        }
+        case CMD.C: {
+          var x1 = d[i++];
+          var y1 = d[i++];
+          var x2 = d[i++];
+          var y2 = d[i++];
+          var x3 = d[i++];
+          var y3 = d[i++];
+          if (drawPart) {
+            var l = pathSegLen[segCount++];
+            if (accumLength + l > displayedLength) {
+              var t = (displayedLength - accumLength) / l;
+              cubicSubdivide(xi, x1, x2, x3, t, tmpOutX);
+              cubicSubdivide(yi, y1, y2, y3, t, tmpOutY);
+              ctx.bezierCurveTo(tmpOutX[1], tmpOutY[1], tmpOutX[2], tmpOutY[2], tmpOutX[3], tmpOutY[3]);
               break lo;
             }
-            if (isFirst) {
-              x0 = mathCos2(startAngle) * rx + cx;
-              y0 = mathSin2(startAngle) * ry + cy;
-            }
-            xi = mathCos2(endAngle) * rx + cx;
-            yi = mathSin2(endAngle) * ry + cy;
-            break;
-          case CMD.R:
-            x0 = xi = d[i];
-            y0 = yi = d[i + 1];
-            x = d[i++];
-            y = d[i++];
-            var width = d[i++];
-            var height = d[i++];
-            if (drawPart) {
-              var l = pathSegLen[segCount++];
-              if (accumLength + l > displayedLength) {
-                var d_1 = displayedLength - accumLength;
-                ctx.moveTo(x, y);
-                ctx.lineTo(x + mathMin3(d_1, width), y);
-                d_1 -= width;
-                if (d_1 > 0) {
-                  ctx.lineTo(x + width, y + mathMin3(d_1, height));
-                }
-                d_1 -= height;
-                if (d_1 > 0) {
-                  ctx.lineTo(x + mathMax3(width - d_1, 0), y + height);
-                }
-                d_1 -= width;
-                if (d_1 > 0) {
-                  ctx.lineTo(x, y + mathMax3(height - d_1, 0));
-                }
-                break lo;
-              }
-              accumLength += l;
-            }
-            ctx.rect(x, y, width, height);
-            break;
-          case CMD.Z:
-            if (drawPart) {
-              var l = pathSegLen[segCount++];
-              if (accumLength + l > displayedLength) {
-                var t = (displayedLength - accumLength) / l;
-                ctx.lineTo(xi * (1 - t) + x0 * t, yi * (1 - t) + y0 * t);
-                break lo;
-              }
-              accumLength += l;
-            }
-            ctx.closePath();
-            xi = x0;
-            yi = y0;
+            accumLength += l;
+          }
+          ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+          xi = x3;
+          yi = y3;
+          break;
         }
+        case CMD.Q: {
+          var x1 = d[i++];
+          var y1 = d[i++];
+          var x2 = d[i++];
+          var y2 = d[i++];
+          if (drawPart) {
+            var l = pathSegLen[segCount++];
+            if (accumLength + l > displayedLength) {
+              var t = (displayedLength - accumLength) / l;
+              quadraticSubdivide(xi, x1, x2, t, tmpOutX);
+              quadraticSubdivide(yi, y1, y2, t, tmpOutY);
+              ctx.quadraticCurveTo(tmpOutX[1], tmpOutY[1], tmpOutX[2], tmpOutY[2]);
+              break lo;
+            }
+            accumLength += l;
+          }
+          ctx.quadraticCurveTo(x1, y1, x2, y2);
+          xi = x2;
+          yi = y2;
+          break;
+        }
+        case CMD.A:
+          var cx = d[i++];
+          var cy = d[i++];
+          var rx = d[i++];
+          var ry = d[i++];
+          var startAngle = d[i++];
+          var delta = d[i++];
+          var psi = d[i++];
+          var anticlockwise = !d[i++];
+          var r = rx > ry ? rx : ry;
+          var isEllipse = mathAbs(rx - ry) > 1e-3;
+          var endAngle = startAngle + delta;
+          var breakBuild = false;
+          if (drawPart) {
+            var l = pathSegLen[segCount++];
+            if (accumLength + l > displayedLength) {
+              endAngle = startAngle + delta * (displayedLength - accumLength) / l;
+              breakBuild = true;
+            }
+            accumLength += l;
+          }
+          if (isEllipse && ctx.ellipse) {
+            ctx.ellipse(cx, cy, rx, ry, psi, startAngle, endAngle, anticlockwise);
+          } else {
+            ctx.arc(cx, cy, r, startAngle, endAngle, anticlockwise);
+          }
+          if (breakBuild) {
+            break lo;
+          }
+          if (isFirst) {
+            x0 = mathCos2(startAngle) * rx + cx;
+            y0 = mathSin2(startAngle) * ry + cy;
+          }
+          xi = mathCos2(endAngle) * rx + cx;
+          yi = mathSin2(endAngle) * ry + cy;
+          break;
+        case CMD.R:
+          x0 = xi = d[i];
+          y0 = yi = d[i + 1];
+          x = d[i++];
+          y = d[i++];
+          var width = d[i++];
+          var height = d[i++];
+          if (drawPart) {
+            var l = pathSegLen[segCount++];
+            if (accumLength + l > displayedLength) {
+              var d_1 = displayedLength - accumLength;
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + mathMin3(d_1, width), y);
+              d_1 -= width;
+              if (d_1 > 0) {
+                ctx.lineTo(x + width, y + mathMin3(d_1, height));
+              }
+              d_1 -= height;
+              if (d_1 > 0) {
+                ctx.lineTo(x + mathMax3(width - d_1, 0), y + height);
+              }
+              d_1 -= width;
+              if (d_1 > 0) {
+                ctx.lineTo(x, y + mathMax3(height - d_1, 0));
+              }
+              break lo;
+            }
+            accumLength += l;
+          }
+          ctx.rect(x, y, width, height);
+          break;
+        case CMD.Z:
+          if (drawPart) {
+            var l = pathSegLen[segCount++];
+            if (accumLength + l > displayedLength) {
+              var t = (displayedLength - accumLength) / l;
+              ctx.lineTo(xi * (1 - t) + x0 * t, yi * (1 - t) + y0 * t);
+              break lo;
+            }
+            accumLength += l;
+          }
+          ctx.closePath();
+          xi = x0;
+          yi = y0;
       }
+    }
   };
   PathProxy2.prototype.clone = function() {
     var newProxy = new PathProxy2();
@@ -28096,23 +28092,22 @@ var GeoJSONRegion = (
       if (!rect.contain(coord[0], coord[1])) {
         return false;
       }
-      loopGeo:
-        for (var i = 0, len2 = geometries.length; i < len2; i++) {
-          var geo = geometries[i];
-          if (geo.type !== "polygon") {
-            continue;
-          }
-          var exterior = geo.exterior;
-          var interiors = geo.interiors;
-          if (contain3(exterior, coord[0], coord[1])) {
-            for (var k = 0; k < (interiors ? interiors.length : 0); k++) {
-              if (contain3(interiors[k], coord[0], coord[1])) {
-                continue loopGeo;
-              }
-            }
-            return true;
-          }
+      loopGeo: for (var i = 0, len2 = geometries.length; i < len2; i++) {
+        var geo = geometries[i];
+        if (geo.type !== "polygon") {
+          continue;
         }
+        var exterior = geo.exterior;
+        var interiors = geo.interiors;
+        if (contain3(exterior, coord[0], coord[1])) {
+          for (var k = 0; k < (interiors ? interiors.length : 0); k++) {
+            if (contain3(interiors[k], coord[0], coord[1])) {
+              continue loopGeo;
+            }
+          }
+          return true;
+        }
+      }
       return false;
     };
     GeoJSONRegion2.prototype.transformTo = function(x, y, width, height) {
