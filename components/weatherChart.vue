@@ -79,6 +79,14 @@ const props = defineProps({
         default: () => 0
     },
     /**
+     * @description 是否锁定选择区域的大小
+     * @example true
+     */
+    zoomLock: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 柱子的宽度
      * @example 46
      */

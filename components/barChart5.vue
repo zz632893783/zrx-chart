@@ -163,6 +163,14 @@ const props = defineProps({
         default: () => []
     },
     /**
+     * @description 是否锁定选择区域的大小
+     * @example true
+     */
+    zoomLock: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
