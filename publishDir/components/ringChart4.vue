@@ -214,10 +214,13 @@ const renderChart = () => {
                         labelLine: {
                             show: true,
                             lineStyle: { color: '#B0E2FF', width: 2 * props.scale }
-                        }
+                        },
                         // emphasis: {
                         //     label: { show: props.centerDisplay === 'item' }
-                        // }
+                        // },
+                        emphasis: {
+                            labelLine: { show: true }
+                        }
                     }
                 }),
                 labelLine: {

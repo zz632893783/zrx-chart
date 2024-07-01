@@ -212,10 +212,13 @@ const renderChart = () => {
                         labelLine: {
                             show: true,
                             lineStyle: { color: '#5c768d' }
-                        }
+                        },
                         // emphasis: {
                         //     label: { show: props.centerDisplay === 'item' }
-                        // }
+                        // },
+                        emphasis: {
+                            labelLine: { show: true }
+                        }
                     }
                 }),
                 labelLine: { show: false },

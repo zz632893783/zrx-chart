@@ -163,6 +163,14 @@ const props = defineProps({
         default: () => []
     },
     /**
+     * @description 是否锁定选择区域的大小
+     * @example true
+     */
+    zoomLock: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -448,6 +456,7 @@ const renderChart = () => {
                     end,
                     start,
                     type: 'slider',
+                    zoomLock: props.zoomLock,
                     borderWidth: 0,
                     handleIcon: 'none',
                     labelFormatter: '',
@@ -470,7 +479,7 @@ const renderChart = () => {
             ];
         } else {
             option.dataZoom = [
-                { type: 'inside', start, end }
+                { type: 'inside', start, end, zoomLock: props.zoomLock }
             ];
         }
     };

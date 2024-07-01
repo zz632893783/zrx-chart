@@ -25,13 +25,17 @@ const publishPackageJson = JSON.parse(packageJsonContent);
 delete publishPackageJson.scripts;
 delete publishPackageJson.devDependencies;
 // 匹配 vue 版本
-const vueVersion = (publishPackageJson.dependencies.vue.match(/[^"]+/) || ['^3.3.4'])[0];
+// const vueVersion = (publishPackageJson.dependencies.vue.match(/[^"]+/) || ['^3.3.4'])[0];
 // 匹配 echarts 版本
 const echartsVersion = (publishPackageJson.dependencies.echarts.match(/[^"]+/) || ['^5.5.0'])[0];
 // 匹配 sass 版本
 const sassVersion = (publishPackageJson.dependencies.sass.match(/[^"]+/) || ['^1.71.1'])[0];
 // 重新指定 dependencies 中 vue, echarts, sass 版本
-publishPackageJson.dependencies = { vue: vueVersion, echarts: echartsVersion, sass: sassVersion };
+publishPackageJson.dependencies = {
+    // vue: vueVersion,
+    echarts: echartsVersion,
+    sass: sassVersion
+};
 // 如果私服发布，则需要写入 publishConfig 字段
 publicPrivate === 'private' && (publishPackageJson.publishConfig = { registry: 'http://10.10.120.191:8081/repository/npm-private/' });
 // 生成打包所用的 package.json （只含有必要的 vue 与 echarts 这俩依赖）

@@ -1,11 +1,10 @@
 {
   "name": "zrx-chart",
-  "version": "0.0.62",
+  "version": "0.0.66",
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
   "dependencies": {
-    "vue": "^3.3.4",
     "echarts": "^5.5.0",
     "sass": "^1.71.1"
   },

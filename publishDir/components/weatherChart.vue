@@ -79,6 +79,14 @@ const props = defineProps({
         default: () => 0
     },
     /**
+     * @description 是否锁定选择区域的大小
+     * @example true
+     */
+    zoomLock: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 柱子的宽度
      * @example 46
      */
@@ -403,6 +411,7 @@ const renderChart = () => {
             option.dataZoom = [
                 {
                     type: 'slider',
+                    zoomLock: props.zoomLock,
                     xAxisIndex: [0, 1, 2, 3, 4],
                     brushSelect : false,
                     handleIcon: 'none',
@@ -438,7 +447,7 @@ const renderChart = () => {
             ];
         } else {
             option.dataZoom = [
-                { xAxisIndex: [0, 1, 2, 3, 4], type: 'inside', start, end }
+                { xAxisIndex: [0, 1, 2, 3, 4], type: 'inside', start, end, zoomLock: props.zoomLock }
             ];
         }
     };
