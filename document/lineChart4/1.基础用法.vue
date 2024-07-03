@@ -18,12 +18,10 @@ const seriesData = [
 ];
 const unit = ['万元', '%'];
 const yAxisName = ['万元', '%'];
-const color = ['#66FFFF', '#F4DC3C'];
 const legendData = ['实际毛利率', '目标毛利率'];
 // 组合配置项
 const chartOption = {
     unit,
-    color,
     xAxisData,
     yAxisName,
     seriesData,
@@ -37,7 +35,6 @@ onMounted(() => chartRef.value.renderChart());
 .zrx-chart {
     height: 250px;
     width: 420px;
-    // background-image: url('./bg.png');
     background-color: rgb(11, 31, 49);
 }
 </style>

@@ -26,24 +26,7 @@
                     []
                 </div>
                 <div class="table-cell">
-                    ['1月', '1-2月', '1-3月', '1-4月', '1-5月', '1-6月', '1-7月', '1-8月']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    grid
-                </div>
-                <div class="table-cell">
-                    上下左右边距
-                </div>
-                <div class="table-cell">
-                    Object
-                </div>
-                <div class="table-cell">
-                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 60,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 50,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 33,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 56<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
-                </div>
-                <div class="table-cell">
-                    { top: 84, right: 18, bottom: 56, left: 56 }
+                    ['农业', '工业', '建筑业', '批发和零售业', '交通运输', '住宿和餐饮业', '金融业', '房地产业', '其他服务业']
                 </div>
             </div>
             <div class="table-row">
@@ -60,24 +43,24 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定类型<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 需要指定 y 轴索引<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [163, 129, 123, 198, 152, 152, 178, 133]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [102, 126, 120, 136, 160, 198, 128, 141]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [182, 108, 114, 149, 188, 178, 122, 160]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'bar',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [187, 119, 141, 131, 139, 195, 113, 101]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [81, 17, 30, 94, 45, 54, 60, 69]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [36, 17, 43, 86, 23, 77, 66, 60]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [19, 97, 96, 21, 57, 71, 5, 65]<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'line',<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: [46, 51, 35, 23, 78, 29, 79, 37]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;[54, 89, 86, 65, 54, 53, 72, 65, 60],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[95, 97, 75, 72, 90, 88, 54, 77, 98]<br/>]
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    color
+                    legendData
                 </div>
                 <div class="table-cell">
-                    图表项颜色
+                    legend 数据
                 </div>
                 <div class="table-cell">
                     Array
                 </div>
                 <div class="table-cell">
-                    ['blue', 'green', 'celeste', 'grey']
+                    []
                 </div>
                 <div class="table-cell">
-                    ['blue', 'green', 'celeste', 'grey']
+                    ['统计金额', '开票金额']
                 </div>
             </div>
             <div class="table-row">
@@ -99,6 +82,108 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
+                    showLegend
+                </div>
+                <div class="table-cell">
+                    是否显示 legend
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    color
+                </div>
+                <div class="table-cell">
+                    图表项颜色
+                </div>
+                <div class="table-cell">
+                    String, Array
+                </div>
+                <div class="table-cell">
+                    ['#DE882C', '#2CB0DE', '#82ED9A']
+                </div>
+                <div class="table-cell">
+                    ['blue', 'grey']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    tooltipTitle
+                </div>
+                <div class="table-cell">
+                    tooltip 标题
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    ['标题A']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    scale
+                </div>
+                <div class="table-cell">
+                    图表缩放比例
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    1
+                </div>
+                <div class="table-cell">
+                    2
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    grid
+                </div>
+                <div class="table-cell">
+                    上下左右边距
+                </div>
+                <div class="table-cell">
+                    Object
+                </div>
+                <div class="table-cell">
+                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 42,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 50,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 28,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 50<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+                </div>
+                <div class="table-cell">
+                    { top: 84, right: 18, bottom: 56, left: 56 }
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showSplitLine
+                </div>
+                <div class="table-cell">
+                    是否显示辅助刻度线
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
                     showCount
                 </div>
                 <div class="table-cell">
@@ -108,10 +193,10 @@
                     Number
                 </div>
                 <div class="table-cell">
-                    5
+                    6
                 </div>
                 <div class="table-cell">
-                    3
+                    4
                 </div>
             </div>
             <div class="table-row">
@@ -150,74 +235,6 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    showLegend
-                </div>
-                <div class="table-cell">
-                    是否显示 legend
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    true
-                </div>
-                <div class="table-cell">
-                    false
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    legendData
-                </div>
-                <div class="table-cell">
-                    legend 数据
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    ['统计金额', '开票金额']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    tooltipTitle
-                </div>
-                <div class="table-cell">
-                    tooltip 标题
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    null
-                </div>
-                <div class="table-cell">
-                    ['标题A']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    xAxisHighlightArea
-                </div>
-                <div class="table-cell">
-                    高亮区域的索引
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [2, 4]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     dataZoomStartAtEnd
                 </div>
                 <div class="table-cell">
@@ -235,36 +252,36 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    barBorderRadius
+                    showBarTopRect
                 </div>
                 <div class="table-cell">
-                    圆柱的圆角
+                    柱子顶部是否显示白色方块
                 </div>
                 <div class="table-cell">
-                    Number, Array
+                    Boolean
                 </div>
                 <div class="table-cell">
-                    [0]
-                </div>
-                <div class="table-cell">
-                    [4, 4, 0, 0]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    smooth
-                </div>
-                <div class="table-cell">
-                    是否平滑
-                </div>
-                <div class="table-cell">
-                    Boolean, Number
+                    true
                 </div>
                 <div class="table-cell">
                     false
                 </div>
+            </div>
+            <div class="table-row">
                 <div class="table-cell">
-                    true
+                    markLine
+                </div>
+                <div class="table-cell">
+                    标记线
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 134,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#33FFBB'<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 166,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#F74768'<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
                 </div>
             </div>
             <div class="table-row">
@@ -282,23 +299,6 @@
                 </div>
                 <div class="table-cell">
                     true
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    scale
-                </div>
-                <div class="table-cell">
-                    图表缩放比例
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    1
-                </div>
-                <div class="table-cell">
-                    2
                 </div>
             </div>
             <div class="table-row">

@@ -300,6 +300,16 @@ const createOption = (isShadow) => {
                         ]
                     }
                 };
+                seriesOption.areaStyle = {
+                    color: isShadow ? 'transparent' : {
+                        type: 'linear',
+                        x: 0, y: 0, x2: 1, y2: 1,
+                        colorStops: [
+                            { color: `rgba(0, 137, 221, 0.12)`, offset: 0 },
+                            { color: `rgba(0, 147, 221, 0.00)`, offset: 1 }
+                        ]
+                    }
+                };
                 // seriesOption.areaStyle = {
                 //     color: props.showLineArea ?
                 //         {

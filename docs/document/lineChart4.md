@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo1bb5e4be98a2 />
+<demo91f052a00dc3 />
 ```vue{4}
 <template>
     <line-chart-4 ref="chartRef" v-bind="chartOption"></line-chart-4>
@@ -21,31 +21,31 @@ const seriesData = [
 ];
 const unit = ['万元', '%'];
 const yAxisName = ['万元', '%'];
-const color = ['#66FFFF', '#F4DC3C'];
 const legendData = ['实际毛利率', '目标毛利率'];
 // 组合配置项
 const chartOption = {
     unit,
-    color,
     xAxisData,
     yAxisName,
     seriesData,
-    legendData
+    legendData,
+    showCount: 4
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 310px;
-    background-color: black;
+    height: 250px;
+    width: 420px;
+    background-color: rgb(11, 31, 49);
 }
 </style>
 
 ```
 ## 属性
-<demo853fab20f530 />
+<demo3af607bb5b8e />
 <script setup>
-import demo1bb5e4be98a2 from '../../document/lineChart4/1.基础用法.vue'
-import demo853fab20f530 from '../../document/lineChart4/属性.vue'
+import demo91f052a00dc3 from '../../document/lineChart4/1.基础用法.vue'
+import demo3af607bb5b8e from '../../document/lineChart4/属性.vue'
 </script>

@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-7-3 10:5:5 -->
+<!-- 创建时间 2024-7-3 17:37:13 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -82,23 +82,6 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    color
-                </div>
-                <div class="table-cell">
-                    图表项颜色
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    ['#66FFFF', '#F4DC3C']
-                </div>
-                <div class="table-cell">
-                    ['red', 'green']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
                     legendData
                 </div>
                 <div class="table-cell">
@@ -176,27 +159,10 @@
                     Object
                 </div>
                 <div class="table-cell">
-                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 56,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 60,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 40,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 60<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 42,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 50,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 32,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 50<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
                 </div>
                 <div class="table-cell">
                     { top: 84, right: 18, bottom: 56, left: 56 }
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    showLegend
-                </div>
-                <div class="table-cell">
-                    是否显示 legend
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    true
-                </div>
-                <div class="table-cell">
-                    false
                 </div>
             </div>
             <div class="table-row">
@@ -210,7 +176,7 @@
                     Number
                 </div>
                 <div class="table-cell">
-                    12
+                    4
                 </div>
                 <div class="table-cell">
                     4
@@ -316,6 +282,57 @@
                 </div>
                 <div class="table-cell">
                     true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    shadowBlur
+                </div>
+                <div class="table-cell">
+                    阴影模糊程度
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    3
+                </div>
+                <div class="table-cell">
+                    10
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    shadowOffsetX
+                </div>
+                <div class="table-cell">
+                    阴影 x 方向偏移量
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    0
+                </div>
+                <div class="table-cell">
+                    10
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    shadowOffsetY
+                </div>
+                <div class="table-cell">
+                    阴影 y 方向偏移量
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    12
+                </div>
+                <div class="table-cell">
+                    20
                 </div>
             </div>
             <div class="table-row">

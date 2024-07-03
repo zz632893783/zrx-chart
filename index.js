@@ -4,6 +4,7 @@ import barChart2 from './components/barChart2.vue';
 import barChart3 from './components/barChart3.vue';
 import barChart4 from './components/barChart4.vue';
 import barChart5 from './components/barChart5.vue';
+import barChart6 from './components/barChart6.vue';
 import barLineChart from './components/barLineChart.vue';
 import barLineChart2 from './components/barLineChart2.vue';
 import barLineChart3 from './components/barLineChart3.vue';
@@ -24,7 +25,7 @@ import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
 import weatherChart from './components/weatherChart.vue';
 
-export { barChart, barChart2, barChart3, barChart4, barChart5, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export { barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue, opts = {}) {
@@ -47,6 +48,9 @@ const install = function (Vue, opts = {}) {
     Vue.component('barChart5', barChart5);
     Vue.component('bar-chart5', barChart5);
     Vue.component('bar-chart-5', barChart5);
+    Vue.component('barChart6', barChart6);
+    Vue.component('bar-chart6', barChart6);
+    Vue.component('bar-chart-6', barChart6);
     Vue.component('barLineChart', barLineChart);
     Vue.component('bar-line-chart', barLineChart);
     Vue.component('barLineChart2', barLineChart2);
@@ -98,4 +102,4 @@ const install = function (Vue, opts = {}) {
     Vue.component('weather-chart', weatherChart);
 };
 
-export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
