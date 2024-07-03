@@ -1,8 +1,5 @@
-## 1.基础用法
-<demo0d15bf9372ab />
-```vue{4}
 <template>
-    <line-chart-3 ref="chartRef" v-bind="chartOption"></line-chart-3>
+    <line-chart-4 ref="chartRef" v-bind="chartOption"></line-chart-4>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -30,22 +27,17 @@ const chartOption = {
     xAxisData,
     yAxisName,
     seriesData,
-    legendData
+    legendData,
+    showCount: 4
 };
 
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
-    height: 310px;
-    background-color: black;
+    height: 250px;
+    width: 420px;
+    // background-image: url('./bg.png');
+    background-color: rgb(11, 31, 49);
 }
 </style>
-
-```
-## 属性
-<demob17531eb567b />
-<script setup>
-import demo0d15bf9372ab from '../../document/lineChart3/1.基础用法.vue'
-import demob17531eb567b from '../../document/lineChart3/属性.vue'
-</script>
