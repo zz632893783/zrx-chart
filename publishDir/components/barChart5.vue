@@ -447,8 +447,8 @@ const renderChart = () => {
     let end = props.showCount / props.xAxisData.length * 100;
     if (props.showCount) {
         if (props.dataZoomStartAtEnd) {
-            end = 100;
             start = 100 - end;
+            end = 100;
         }
         if (props.dataZoomType === 'slider') {
             option.dataZoom = [
