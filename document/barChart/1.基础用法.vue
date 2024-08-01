@@ -21,7 +21,9 @@ const chartOption = {
 };
 
 onMounted(async () => {
+    console.log(111);
     await Promise.resolve();
+    console.log(222);
     chartRef.value.renderChart();
 });
 </script>
