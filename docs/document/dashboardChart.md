@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demodcbc684f2020 />
+<demo540e0e41244d />
 ```vue{4}
 <template>
     <dashboard-chart ref="chartRef" :value="66" :max="100">
@@ -42,7 +42,7 @@ onMounted(() => {
 
 ```
 ## 2.修改颜色
-<demod8bd10147476 />
+<demo744db9dc23f5 />
 ```vue{4}
 <template>
     <dashboard-chart ref="chartRef" v-bind="chartOption">
@@ -73,7 +73,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.设置角度
-<demo44fb22ab54e7 />
+<demod613c399ae9e />
 ```vue{4}
 <template>
     <dashboard-chart ref="chartRef" v-bind="chartOption">
@@ -104,7 +104,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 4.宽度半径
-<demo8c148d72637c />
+<demo61197137a69d />
 ```vue{4}
 <template>
     <dashboard-chart ref="chartRef" v-bind="chartOption">
@@ -135,14 +135,14 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demoadb7f77b4969 />
+<demo17b24b735572 />
 ## 支持方法
-<demoe833989c7f94 />
+<demob2291485ef88 />
 <script setup>
-import demodcbc684f2020 from '../../document/dashboardChart/1.基础用法.vue'
-import demod8bd10147476 from '../../document/dashboardChart/2.修改颜色.vue'
-import demo44fb22ab54e7 from '../../document/dashboardChart/3.设置角度.vue'
-import demo8c148d72637c from '../../document/dashboardChart/4.宽度半径.vue'
-import demoadb7f77b4969 from '../../document/dashboardChart/属性.vue'
-import demoe833989c7f94 from '../../document/dashboardChart/支持方法.vue'
+import demo540e0e41244d from '../../document/dashboardChart/1.基础用法.vue'
+import demo744db9dc23f5 from '../../document/dashboardChart/2.修改颜色.vue'
+import demod613c399ae9e from '../../document/dashboardChart/3.设置角度.vue'
+import demo61197137a69d from '../../document/dashboardChart/4.宽度半径.vue'
+import demo17b24b735572 from '../../document/dashboardChart/属性.vue'
+import demob2291485ef88 from '../../document/dashboardChart/支持方法.vue'
 </script>

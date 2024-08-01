@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo461dc665d6eb />
+<demo27cd778388ae />
 ```vue{4}
 <template>
     <line-chart-4 ref="chartRef" v-bind="chartOption"></line-chart-4>
@@ -44,8 +44,8 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo4a42771edcc1 />
+<demodb4e98dad97f />
 <script setup>
-import demo461dc665d6eb from '../../document/lineChart4/1.基础用法.vue'
-import demo4a42771edcc1 from '../../document/lineChart4/属性.vue'
+import demo27cd778388ae from '../../document/lineChart4/1.基础用法.vue'
+import demodb4e98dad97f from '../../document/lineChart4/属性.vue'
 </script>

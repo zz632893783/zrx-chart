@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demof0ed3d06bdb7 />
+<demobcdb1233c94c />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -23,10 +23,7 @@ const chartOption = {
     yAxisName
 };
 
-onMounted(async () => {
-    await Promise.resolve();
-    chartRef.value.renderChart();
-});
+onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
@@ -37,7 +34,7 @@ onMounted(async () => {
 
 ```
 ## 2.指定区域高亮
-<demoe63435b8e6e8 />
+<demo9e31cda2a51a />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -74,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demo314b6601578a />
+<demoe4f49819553a />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -112,7 +109,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.将dom元素作为tooltip
-<demo10c30cecb0b6 />
+<demoe806298845ec />
 ```vue{4}
 <template>
     <div v-show="appendReady" class="custom-tooltip" ref="tooltipRef">
@@ -175,14 +172,14 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo87f84fcba716 />
+<demo4ac55481f676 />
 ## 支持方法
-<demo7a1d4c1b9b8b />
+<demofc9df87b2325 />
 <script setup>
-import demof0ed3d06bdb7 from '../../document/barChart/1.基础用法.vue'
-import demoe63435b8e6e8 from '../../document/barChart/2.指定区域高亮.vue'
-import demo314b6601578a from '../../document/barChart/3.拖拽区域为滚动条.vue'
-import demo10c30cecb0b6 from '../../document/barChart/4.将dom元素作为tooltip.vue'
-import demo87f84fcba716 from '../../document/barChart/属性.vue'
-import demo7a1d4c1b9b8b from '../../document/barChart/支持方法.vue'
+import demobcdb1233c94c from '../../document/barChart/1.基础用法.vue'
+import demo9e31cda2a51a from '../../document/barChart/2.指定区域高亮.vue'
+import demoe4f49819553a from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demoe806298845ec from '../../document/barChart/4.将dom元素作为tooltip.vue'
+import demo4ac55481f676 from '../../document/barChart/属性.vue'
+import demofc9df87b2325 from '../../document/barChart/支持方法.vue'
 </script>

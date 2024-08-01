@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo1c69edcd5f89 />
+<demoa97dcac8c460 />
 ```vue{4}
 <template>
     <weather-chart ref="chartRef" v-bind="chartOption"></weather-chart>
@@ -33,8 +33,8 @@ onMounted(() => {
 
 ```
 ## 属性
-<demo842e4101204a />
+<demo99bdf47bbde0 />
 <script setup>
-import demo1c69edcd5f89 from '../../document/weatherChart/1.基础用法.vue'
-import demo842e4101204a from '../../document/weatherChart/属性.vue'
+import demoa97dcac8c460 from '../../document/weatherChart/1.基础用法.vue'
+import demo99bdf47bbde0 from '../../document/weatherChart/属性.vue'
 </script>
