@@ -27,6 +27,7 @@ const legendData = ['申请', '审批', '完成'];
 
 const chartOption = {
     unit,
+    scale: 2,
     showCount: 6,
     xAxisData,
     yAxisName,
@@ -39,6 +40,7 @@ onMounted(() => chartRef.value.renderChart());
 <style lang="scss" scoped>
 .zrx-chart {
     height: 180px;
+    height: 380px;
     // width: 420px;
     // background-image: url('./bg.png');
     background-color: black;

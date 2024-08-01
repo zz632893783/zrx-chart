@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demob66e5a63f424 />
+<demo44a24fb29a10 />
 ```vue{4}
 <template>
     <bar-chart-6 ref="chartRef" v-bind="chartOption"></bar-chart-6>
@@ -30,6 +30,8 @@ const legendData = ['申请', '审批', '完成'];
 
 const chartOption = {
     unit,
+    scale: 2,
+    showCount: 6,
     xAxisData,
     yAxisName,
     seriesData,
@@ -41,7 +43,8 @@ onMounted(() => chartRef.value.renderChart());
 <style lang="scss" scoped>
 .zrx-chart {
     height: 180px;
-    width: 420px;
+    height: 380px;
+    // width: 420px;
     // background-image: url('./bg.png');
     background-color: black;
 }
@@ -49,8 +52,8 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo7a9e8332cc9b />
+<demob1dabb97664b />
 <script setup>
-import demob66e5a63f424 from '../../document/barChart6/1.基础用法.vue'
-import demo7a9e8332cc9b from '../../document/barChart6/属性.vue'
+import demo44a24fb29a10 from '../../document/barChart6/1.基础用法.vue'
+import demob1dabb97664b from '../../document/barChart6/属性.vue'
 </script>

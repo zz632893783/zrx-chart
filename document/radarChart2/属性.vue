@@ -14,19 +14,19 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    title
+                    splitNumber
                 </div>
                 <div class="table-cell">
-                    标题
+                    指示器轴的分割段数。
                 </div>
                 <div class="table-cell">
-                    String
+                    Number
                 </div>
                 <div class="table-cell">
-                    ''
+                    5
                 </div>
                 <div class="table-cell">
-                    '标题'
+                    5
                 </div>
             </div>
             <div class="table-row">
@@ -34,33 +34,84 @@
                     radius
                 </div>
                 <div class="table-cell">
-                    半径
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    [68, 80]
-                </div>
-                <div class="table-cell">
-                    [68, 80]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    itemGap
-                </div>
-                <div class="table-cell">
-                    间距
+                    轴的半径
                 </div>
                 <div class="table-cell">
                     Number
                 </div>
                 <div class="table-cell">
-                    2
+                    90
                 </div>
                 <div class="table-cell">
-                    4
+                    90
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicator
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器，用来指定雷达图中的多个变量（维度），如下示例
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '经营情况', max: 10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '发展潜力', max: 10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '管理能力', max: 10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '贡献能力', max: 10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '能效水平', max: 10 }<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicatorColor
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器文字颜色
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    '#323233'
+                </div>
+                <div class="table-cell">
+                    'red'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicatorFontSize
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器字号
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    14
+                </div>
+                <div class="table-cell">
+                    32
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    indicatorNameGap
+                </div>
+                <div class="table-cell">
+                    雷达图的指示器文字与图标的间距
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    8
+                </div>
+                <div class="table-cell">
+                    16
                 </div>
             </div>
             <div class="table-row">
@@ -77,7 +128,24 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 2, name: '住宿业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 3, name: '餐饮业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 5, name: '零售业营业额' },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ value: 4, name: '批发业营业额' }<br/>]
+                    [[4, 2, 1, 5, 3], [2, 1, 5, 3, 3]]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    legendData
+                </div>
+                <div class="table-cell">
+                    legend 数据
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    ['总能耗', '能耗照明']
                 </div>
             </div>
             <div class="table-row">
@@ -85,67 +153,16 @@
                     color
                 </div>
                 <div class="table-cell">
-                    颜色
+                    预设颜色
                 </div>
                 <div class="table-cell">
                     Array
                 </div>
                 <div class="table-cell">
-                    ['#ae7efd', '#7670d7', '#709ad7', '#72dde0', '#d0f1ff', '#b5bfe2', '#206e8a', '#1dd1ff', '#d2abea', '#0e8fff']
+                    ['#0055FF']
                 </div>
                 <div class="table-cell">
-                    ['#ae7efd', '#7670d7', '#709ad7', '#72dde0', '#d0f1ff', '#b5bfe2', '#206e8a', '#1dd1ff', '#d2abea', '#0e8fff']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    unit
-                </div>
-                <div class="table-cell">
-                    单位
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    ''
-                </div>
-                <div class="table-cell">
-                    '个'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    centerDisplay
-                </div>
-                <div class="table-cell">
-                    中心部分的展示部分<br/>&nbsp;null，'' 或者不传，表示中心部分不显示<br/>&nbsp;'item' 表示中心部分展示单项<br/>&nbsp;'sum' 表示中心部分展示总量<br/>&nbsp;'itemValue' 表示中心部分展示值<br/>&nbsp;'itemPercentage' 表示中心部分展示单项占比
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    null
-                </div>
-                <div class="table-cell">
-                    'item'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    minAngle
-                </div>
-                <div class="table-cell">
-                    单项的最小角度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    0
-                </div>
-                <div class="table-cell">
-                    4
+                    ['red', 'green', 'blue']
                 </div>
             </div>
             <div class="table-row">
