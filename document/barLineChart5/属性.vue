@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-8-1 15:3:17 -->
+<!-- 创建时间 2024-8-1 17:46:21 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -316,6 +316,23 @@
                 </div>
                 <div class="table-cell">
                     'circle'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showLineArea
+                </div>
+                <div class="table-cell">
+                    线条是否显示区域颜色
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
                 </div>
             </div>
             <div class="table-row">

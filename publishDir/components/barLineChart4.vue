@@ -122,7 +122,7 @@ const props = defineProps({
      */
     showLineSymbol: {
         type: [Boolean],
-        default: () => true
+        default: () => false
     },
     /**
      * @description 万能方法，图表渲染之前执行

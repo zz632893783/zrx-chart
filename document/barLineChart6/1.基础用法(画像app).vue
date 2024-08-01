@@ -1,7 +1,5 @@
 <template>
-    <div class="page">
-        <bar-line-chart-5 ref="chartRef" v-bind="option"></bar-line-chart-5>
-    </div>
+    <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -14,7 +12,7 @@ const option = {
     unit: ['kw/h', '吨', '元'],
     yAxisName: ['左侧y轴', '右侧y轴'],
     legendData: ['总能耗', '总用水', '支出'],
-    color: ['#0055FF', '#1FC49D', '#FF9700'],
+    // color: ['#0055FF', '#1FC49D', '#FF9700'],
     xAxisData: new Array(12).fill().map((n, i) => `${ (i + 1).toString().padStart(2, 0) }月`),
     seriesData: [
         {
@@ -38,13 +36,7 @@ const option = {
 onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
-// .page {
-//     padding: 32px;
-//     background-color: white;
-// }
 .zrx-chart {
-    // width: 700px;
-    // height: 450px;
     width: 350px;
     height: 272px;
     background-color: white;

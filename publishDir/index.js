@@ -9,9 +9,11 @@ import barLineChart from './components/barLineChart.vue';
 import barLineChart2 from './components/barLineChart2.vue';
 import barLineChart3 from './components/barLineChart3.vue';
 import barLineChart4 from './components/barLineChart4.vue';
+import barLineChart5 from './components/barLineChart5.vue';
 import blurTip from './components/blurTip.vue';
 import dashboardChart from './components/dashboardChart.vue';
 import gradientRingChart from './components/gradientRingChart.vue';
+import gradientRingChart2 from './components/gradientRingChart2.vue';
 import lineChart from './components/lineChart.vue';
 import lineChart2 from './components/lineChart2.vue';
 import lineChart3 from './components/lineChart3.vue';
@@ -24,9 +26,10 @@ import ringChart3 from './components/ringChart3.vue';
 import ringChart4 from './components/ringChart4.vue';
 import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
+import ringChart7 from './components/ringChart7.vue';
 import weatherChart from './components/weatherChart.vue';
 
-export { barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export { barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, barLineChart5, blurTip, dashboardChart, gradientRingChart, gradientRingChart2, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, ringChart7, weatherChart };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue, opts = {}) {
@@ -63,12 +66,18 @@ const install = function (Vue, opts = {}) {
     Vue.component('barLineChart4', barLineChart4);
     Vue.component('bar-line-chart4', barLineChart4);
     Vue.component('bar-line-chart-4', barLineChart4);
+    Vue.component('barLineChart5', barLineChart5);
+    Vue.component('bar-line-chart5', barLineChart5);
+    Vue.component('bar-line-chart-5', barLineChart5);
     Vue.component('blurTip', blurTip);
     Vue.component('blur-tip', blurTip);
     Vue.component('dashboardChart', dashboardChart);
     Vue.component('dashboard-chart', dashboardChart);
     Vue.component('gradientRingChart', gradientRingChart);
     Vue.component('gradient-ring-chart', gradientRingChart);
+    Vue.component('gradientRingChart2', gradientRingChart2);
+    Vue.component('gradient-ring-chart2', gradientRingChart2);
+    Vue.component('gradient-ring-chart-2', gradientRingChart2);
     Vue.component('lineChart', lineChart);
     Vue.component('line-chart', lineChart);
     Vue.component('lineChart2', lineChart2);
@@ -102,8 +111,11 @@ const install = function (Vue, opts = {}) {
     Vue.component('ringChart6', ringChart6);
     Vue.component('ring-chart6', ringChart6);
     Vue.component('ring-chart-6', ringChart6);
+    Vue.component('ringChart7', ringChart7);
+    Vue.component('ring-chart7', ringChart7);
+    Vue.component('ring-chart-7', ringChart7);
     Vue.component('weatherChart', weatherChart);
     Vue.component('weather-chart', weatherChart);
 };
 
-export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, barLineChart5, blurTip, dashboardChart, gradientRingChart, gradientRingChart2, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, ringChart7, weatherChart };

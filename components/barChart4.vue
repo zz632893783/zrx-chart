@@ -124,8 +124,8 @@ const props = defineProps({
                 type: 'linear',
                 x: 0,
                 y: 0,
-                x1: 1,
-                y1: 0,
+                x2: 1,
+                y2: 0,
                 colorStops: [
                     {
                         offset: 0,
@@ -141,8 +141,8 @@ const props = defineProps({
                 type: 'linear',
                 x: 0,
                 y: 0,
-                x1: 1,
-                y1: 0,
+                x2: 1,
+                y2: 0,
                 colorStops: [
                     {
                         offset: 0,
