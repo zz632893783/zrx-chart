@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-8-1 11:2:29 -->
+<!-- 创建时间 2024-8-1 15:3:17 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -231,6 +231,23 @@
                 </div>
                 <div class="table-cell">
                     'rgba(255, 0, 0, 0.3)'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showLineSymbol
+                </div>
+                <div class="table-cell">
+                    折线是否显示 symbol
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    'circle'
                 </div>
             </div>
             <div class="table-row">

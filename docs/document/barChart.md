@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demob69bab9bc5c7 />
+<demo2dd7a2c7a1a5 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -34,7 +34,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.指定区域高亮
-<demofb50724dd02e />
+<demod74e05604566 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -71,7 +71,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demo829d8de148c0 />
+<demo25a1e8c53edf />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -109,7 +109,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.将dom元素作为tooltip
-<demof822820ad75d />
+<demo41f22537d57a />
 ```vue{4}
 <template>
     <div v-show="appendReady" class="custom-tooltip" ref="tooltipRef">
@@ -172,14 +172,14 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo75dccacfee41 />
+<demof45a70db80cf />
 ## 支持方法
-<demo63c3a55ec608 />
+<demoe881d318f6ac />
 <script setup>
-import demob69bab9bc5c7 from '../../document/barChart/1.基础用法.vue'
-import demofb50724dd02e from '../../document/barChart/2.指定区域高亮.vue'
-import demo829d8de148c0 from '../../document/barChart/3.拖拽区域为滚动条.vue'
-import demof822820ad75d from '../../document/barChart/4.将dom元素作为tooltip.vue'
-import demo75dccacfee41 from '../../document/barChart/属性.vue'
-import demo63c3a55ec608 from '../../document/barChart/支持方法.vue'
+import demo2dd7a2c7a1a5 from '../../document/barChart/1.基础用法.vue'
+import demod74e05604566 from '../../document/barChart/2.指定区域高亮.vue'
+import demo25a1e8c53edf from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demo41f22537d57a from '../../document/barChart/4.将dom元素作为tooltip.vue'
+import demof45a70db80cf from '../../document/barChart/属性.vue'
+import demoe881d318f6ac from '../../document/barChart/支持方法.vue'
 </script>

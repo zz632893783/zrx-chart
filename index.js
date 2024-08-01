@@ -9,6 +9,7 @@ import barLineChart from './components/barLineChart.vue';
 import barLineChart2 from './components/barLineChart2.vue';
 import barLineChart3 from './components/barLineChart3.vue';
 import barLineChart4 from './components/barLineChart4.vue';
+import barLineChart5 from './components/barLineChart5.vue';
 import blurTip from './components/blurTip.vue';
 import dashboardChart from './components/dashboardChart.vue';
 import gradientRingChart from './components/gradientRingChart.vue';
@@ -26,7 +27,7 @@ import ringChart5 from './components/ringChart5.vue';
 import ringChart6 from './components/ringChart6.vue';
 import weatherChart from './components/weatherChart.vue';
 
-export { barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export { barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, barLineChart5, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue, opts = {}) {
@@ -63,6 +64,9 @@ const install = function (Vue, opts = {}) {
     Vue.component('barLineChart4', barLineChart4);
     Vue.component('bar-line-chart4', barLineChart4);
     Vue.component('bar-line-chart-4', barLineChart4);
+    Vue.component('barLineChart5', barLineChart5);
+    Vue.component('bar-line-chart5', barLineChart5);
+    Vue.component('bar-line-chart-5', barLineChart5);
     Vue.component('blurTip', blurTip);
     Vue.component('blur-tip', blurTip);
     Vue.component('dashboardChart', dashboardChart);
@@ -106,4 +110,4 @@ const install = function (Vue, opts = {}) {
     Vue.component('weather-chart', weatherChart);
 };
 
-export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };
+export default { install, barChart, barChart2, barChart3, barChart4, barChart5, barChart6, barLineChart, barLineChart2, barLineChart3, barLineChart4, barLineChart5, blurTip, dashboardChart, gradientRingChart, lineChart, lineChart2, lineChart3, lineChart4, radarChart, radarChart2, ringChart, ringChart2, ringChart3, ringChart4, ringChart5, ringChart6, weatherChart };

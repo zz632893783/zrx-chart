@@ -1,5 +1,5 @@
 ## 1.柱-折线混合
-<demofdb8e7128bf0 />
+<demo18c22f137b5d />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -57,7 +57,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 2.只有折线
-<demo0f93a8f146d3 />
+<demoba3aec3d08dd />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -127,7 +127,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.只有柱
-<demo8c8249404088 />
+<demo1177350f83e2 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -177,7 +177,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.与图表联动
-<demo61e37712dd64 />
+<demo5566284f72a4 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -230,7 +230,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 5.指定区域高亮
-<demo559af34adda4 />
+<demoaadd06fb0b22 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -282,7 +282,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 6.拖拽区域为滚动条
-<demodd60e95c71f5 />
+<democ330bb43ca04 />
 ```vue{4}
 <template>
     <bar-line-chart v-bind="chartOption" ref="chartRef"></bar-line-chart>
@@ -339,16 +339,16 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demof58fa7532898 />
+<demo4af64dec3422 />
 ## 支持方法
-<demo150a7991bd5a />
+<democbc95a6d07a4 />
 <script setup>
-import demofdb8e7128bf0 from '../../document/barLineChart/1.柱-折线混合.vue'
-import demo0f93a8f146d3 from '../../document/barLineChart/2.只有折线.vue'
-import demo8c8249404088 from '../../document/barLineChart/3.只有柱.vue'
-import demo61e37712dd64 from '../../document/barLineChart/4.与图表联动.vue'
-import demo559af34adda4 from '../../document/barLineChart/5.指定区域高亮.vue'
-import demodd60e95c71f5 from '../../document/barLineChart/6.拖拽区域为滚动条.vue'
-import demof58fa7532898 from '../../document/barLineChart/属性.vue'
-import demo150a7991bd5a from '../../document/barLineChart/支持方法.vue'
+import demo18c22f137b5d from '../../document/barLineChart/1.柱-折线混合.vue'
+import demoba3aec3d08dd from '../../document/barLineChart/2.只有折线.vue'
+import demo1177350f83e2 from '../../document/barLineChart/3.只有柱.vue'
+import demo5566284f72a4 from '../../document/barLineChart/4.与图表联动.vue'
+import demoaadd06fb0b22 from '../../document/barLineChart/5.指定区域高亮.vue'
+import democ330bb43ca04 from '../../document/barLineChart/6.拖拽区域为滚动条.vue'
+import demo4af64dec3422 from '../../document/barLineChart/属性.vue'
+import democbc95a6d07a4 from '../../document/barLineChart/支持方法.vue'
 </script>

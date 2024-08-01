@@ -255,6 +255,7 @@ const renderChart = () => {
                     splitLine: {
                         show: !index && props.showSplitLine,
                         lineStyle: {
+                            width: props.scale,
                             type: 'dashed',
                             color: 'rgb(23, 73, 101)'
                         }
@@ -300,8 +301,8 @@ const renderChart = () => {
                 for (let i = 0; i < count; i++) {
                     // const w = Math.ceil(Math.random() * 2) * props.scale;
                     // const h = w > 1 ? 1 : Math.ceil(Math.random() * 3) * props.scale;
-                    const w = 1;
-                    const h = 1;
+                    const w = 1 * props.scale;
+                    const h = 1 * props.scale;
                     const x = Math.random() * (canvas.width - w);
                     const y = Math.random() * (canvas.height - h);
                     // ctx.beginPath();
@@ -375,7 +376,7 @@ const renderChart = () => {
                 let rate = 0.05;
                 linearGradient.addColorStop(0, `rgba(${ r + (255 - r) * rate }, ${ g + (255 - g) * rate }, ${ b + (255 - b) * rate }, ${ a * 0.32 })`);
                 rate = 0.1;
-                linearGradient.addColorStop(1, `rgba(${ r + (255 - r) * rate }, ${ g + (255 - g) * rate }, ${ b + (255 - b) * rate }, ${ a * 0.48 })`);
+                linearGradient.addColorStop(1, `rgba(${ r + (255 - r) * rate }, ${ g + (255 - g) * rate }, ${ b + (255 - b) * rate }, ${ 1 })`);
                 ctx.fillStyle = linearGradient;
                 ctx.fill();
                 result.push({
@@ -471,7 +472,7 @@ const renderChart = () => {
                                     }
                                     !tooltipTitle && (tooltipTitle = params[0]?.axisValue);
                                     return `
-                                        <i style="background-color: ${ color }; height: 6px; border-radius: 50%;"></i>
+                                        <i style="background-color: ${ color }; height: ${ 6 * props.scale }px; border-radius: 50%;"></i>
                                         <span style="font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #B0D0EE; font-weight: 400;">${ n.seriesName }</span>
                                         <div style="font-family: DINAlternate-Bold; font-size: ${ 18 * props.scale }px; color: #FF9811; font-weight: 700;">
                                             ${ n.data }

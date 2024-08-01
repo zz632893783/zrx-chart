@@ -6,6 +6,11 @@
 import * as echarts from 'echarts';
 import { defineProps, ref, onMounted } from 'vue';
 const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
+// legend 图标映射
+const legendIconMap = {
+    bar: 'path://M4,4L12,4L12,12L4,12ZM0,0L16,16M16,0L0,16',
+    line: 'path://M3,7L13,7L13,9L3,9ZM0,0L16,16M16,0L0,16',
+};
 // 可配置属性
 const props = defineProps({
     /**
@@ -37,6 +42,38 @@ const props = defineProps({
         default: () => []
     },
     /**
+     * @description 最多显示的数量（实际显示数量会根据输入值调整）
+     * @example 5
+     */
+    showCount: {
+        type: [Number],
+        default: () => 9
+    },
+    /**
+     * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
+     * @example 'inside'
+     */
+    dataZoomType: {
+        type: [String],
+        default: () => 'slider'
+    },
+    /**
+     * @description 当 dataZoomType 为 slider 时，拖动区域距离底部的距离
+     * @example 12
+     */
+    dataZoomBottom: {
+        type: [Number],
+        default: () => 0
+    },
+    /**
+     * @description 从末尾开始显示图表
+     * @example false
+     */
+    dataZoomStartAtEnd: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
      * @description legend 数据
      * @example ['总能耗', '能耗照明', '节约能耗', '同环比']
      */
@@ -62,11 +99,11 @@ const props = defineProps({
     },
     /**
      * @description 上下左右间距
-     * @example { top: 89, right: 16, bottom: 40, left: 53 }
+     * @example { top: 89, right: 12, bottom: 40, left: 53 }
      */
     grid: {
         type: [Object],
-        default: () => ({ top: 89, right: 16, bottom: 40, left: 53 })
+        default: () => ({ top: 65, right: 12, bottom: 34, left: 40 })
     },
     /**
      * @description 是否显示 legend
@@ -90,7 +127,7 @@ const props = defineProps({
      */
     barWidth: {
         type: [Number],
-        default: () => 12
+        default: () => 6
     },
     /**
      * @description 是否平滑
@@ -123,6 +160,14 @@ const props = defineProps({
     showLineSymbol: {
         type: [Boolean],
         default: () => true
+    },
+    /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
     },
     /**
      * @description 万能方法，图表渲染之前执行
@@ -176,17 +221,18 @@ const renderChart = () => {
     });
     const option = {
         legend: {
+            selectedMode: false,
             show: props.showLegend,
-            top: 12,
-            right: 24,
-            itemHeight: 8,
-            itemWidth: 8,
-            itemGap: 16,
+            // top: 12 * props.scale,
+            // right: 24 * props.scale,
+            itemHeight: 16 * props.scale,
+            itemWidth: 16 * props.scale,
+            itemGap: 12 * props.scale,
             data: props.legendData.map((name, index) => {
                 const color = props.color[index % props.color.length];
                 return {
-                    icon: 'path://M 10, 10 m -10, 0 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0 Z',
                     name,
+                    icon: legendIconMap[props.seriesData[index].type || 'bar'],
                     itemStyle: {
                         color,
                         borderWidth: 0
@@ -194,17 +240,22 @@ const renderChart = () => {
                 };
             }),
             textStyle: {
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                fontSize: 14,
-                fontFamily: 'MicrosoftYaHei'
+                color: `rgba(${0x32}, ${0x32}, ${0x33}, 1)`,
+                fontSize: 12 * props.scale,
+                fontFamily: 'PingFangSC-Regular',
+                height: 18,
+                lineHeight: 18,
+                verticalAlign: 'middle'
             }
         },
-        grid: {
-            top: props.grid.top || 89,
-            right: props.grid.right || 16,
-            bottom: props.grid.bottom || 40,
-            left: props.grid.left || 53
-        },
+        grid: (() => {
+            const grid = { top: 65, right: 12, bottom: 34, left: 40 };
+            for (const k in grid) {
+                props.grid[k] !== undefined && (grid[k] = props.grid[k]);
+                grid[k] = grid[k] * props.scale;
+            }
+            return grid;
+        })(),
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -215,22 +266,28 @@ const renderChart = () => {
             },
             formatter: (params) => {
                 const templateStr = params.map(item => {
+                    let dot;
                     const seriesIndex = item.seriesIndex;
                     const color = props.color[seriesIndex % props.color.length];
                     const unit = props.unit instanceof Array ? props.unit[seriesIndex % props.unit.length] : props.unit;
+                    if (props.seriesData[item.seriesIndex]?.type === 'line') {
+                        dot = `<i style="width: ${ 10 * props.scale }px; height: ${ 2 * props.scale }px; background-color: ${ color };"></i>`;
+                    } else {
+                        dot = `<i style="width: ${ 8 * props.scale }px; height: ${ 8 * props.scale }px; background-color: ${ color };"></i>`;
+                    }
                     return `
-                        <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px auto min-content; grid-column-gap: 8px; align-items: center;">
-                            <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
-                            <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
-                            <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
+                        <div style="display: grid; grid-template-columns: ${8 * props.scale}px auto min-content; grid-template-rows: ${24 * props.scale}px auto min-content; grid-column-gap: ${8 * props.scale}px; align-items: center;">
+                            ${ dot }
+                            <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
+                            <span style="font-family: MicrosoftYaHei; font-size: ${16 * props.scale}px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                                 ${item.value}
-                                <i style="font-weight: 400; font-size: 12px; font-style: normal;">${unit || ''}</i>
+                                <i style="font-weight: 400; font-size: ${12 * props.scale}px; font-style: normal;">${unit || ''}</i>
                             </span>
                         </div>
                     `;
                 }).join('');
                 return `
-                    <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155; line-height: 24px;">${params[0].axisValue}</h4>
+                    <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155; line-height: ${24 * props.scale}px;">${params[0].axisValue}</h4>
                     ${templateStr}
                 `;
             }
@@ -241,23 +298,25 @@ const renderChart = () => {
             axisTick: {
                 show: false,
                 inside: true,
-                length: 3,
+                length: 3 * props.scale,
                 alignWithLabel: true,
                 lineStyle: {
-                    color: '#DCDFE8'
+                    color: '#E5E7EA'
                 }
             },
             axisLine: {
                 lineStyle: {
-                    color: '#DCDFE8'
+                    color: '#E5E7EA'
                 }
             },
             axisLabel: {
-                fontFamily: 'MicrosoftYaHei',
-                fontSize: 12,
-                color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                lineHeight: 20,
-                margin: 4
+                fontFamily: 'PingFangSC-Regular',
+                fontSize: 12 * props.scale,
+                color: `rgba(${0x96}, ${0x97}, ${0x99}, 1)`,
+                // lineHeight: 18 * props.scale,
+                // height: 18 * props.scale,
+                // margin: 6 * props.scale,
+                margin: 12 * props.scale
             }
         },
         // yAxis: {
@@ -293,24 +352,26 @@ const renderChart = () => {
                 type: 'value',
                 name,
                 nameTextStyle: {
-                    align: 'left',
-                    padding: [0, 0, 0, -36],
-                    fontFamily: 'MicrosoftYaHei',
-                    fontSize: 14,
-                    color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                    lineHeight: 32
+                    align: index === 0 ? 'left' : 'right',
+                    padding: index === 0
+                        ? [0, 0, 0, -36].map(n => n * props.scale)
+                        : [0, -30, 0, 0].map(n => n * props.scale),
+                    fontFamily: 'PingFangSC-Regular',
+                    fontSize: 12 * props.scale,
+                    color: `rgba(${0x96}, ${0x97}, ${0x99}, 1)`,
+                    lineHeight: 18 * props.scale
                 },
-                splitNumber: 4,
+                splitNumber: 4 * props.scale,
                 axisTick: { show: false },
                 axisLabel: {
-                    fontFamily: 'MicrosoftYaHei',
-                    fontSize: 12,
-                    color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`,
-                    margin: 8
+                    fontFamily: 'PingFangSC-Regular',
+                    fontSize: 12 * props.scale,
+                    color: `rgba(${0x96}, ${0x97}, ${0x99}, 1)`,
+                    margin: 4 * props.scale
                 },
                 splitLine: {
                     lineStyle: {
-                        color: '#DCDFE8',
+                        color: '#E5E7EA',
                         type: 'dashed'
                     }
                 }
@@ -328,23 +389,23 @@ const renderChart = () => {
                         label: {
                             show: false,
                             formatter: `{a|${value}}\n{b|}`,
-                            distance: 4,
+                            distance: 4 * props.scale,
                             rich: {
                                 a: {
                                     backgroundColor: 'white',
-                                    padding: [1, 9],
-                                    fontFamily: 'MicrosoftYaHei',
-                                    fontSize: 12,
+                                    padding: [1, 9].map(n => n * props.scale),
+                                    fontFamily: 'PingFangSC-Regular',
+                                    fontSize: 12 * props.scale,
                                     color: '#3B4155',
-                                    lineHeight: 20,
-                                    height: 20,
-                                    borderRadius: 4,
+                                    lineHeight: 20 * props.scale,
+                                    height: 20 * props.scale,
+                                    borderRadius: 2 * props.scale,
                                     shadowColor: 'rgba(0, 0, 0, 0.12)',
-                                    shadowBlur: 4
+                                    shadowBlur: 4 * props.scale
                                 },
                                 b: {
-                                    width: 8,
-                                    height: 4,
+                                    width: 8 * props.scale,
+                                    height: 4 * props.scale,
                                     align: 'center',
                                     backgroundColor: {
                                         image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAACxJREFUGFdj/P///38GAoARJI9PISMIwAzBphAmD1eEbiKyASiKYAqRFYDEANlzFAIJfsytAAAAAElFTkSuQmCC'
@@ -361,9 +422,10 @@ const renderChart = () => {
             }
             if (seriesItem.type === 'bar') {
                 conf.symbol = 'none';
-                conf.barWidth = props.barWidth;
+                conf.barWidth = props.barWidth * props.scale;
+                // conf.barGap = 8 / props.barWidth;
                 conf.barGap = 4 / props.barWidth;
-                conf.itemStyle = { color, borderRadius: [2, 2, 0, 0] };
+                conf.itemStyle = { color, borderRadius: [1, 1, 0, 0].map(n => n * props.scale) };
                 conf.data.forEach(n => {
                     n.emphasis = {
                         itemStyle: { color: emphasisColor[seriesIndex % emphasisColor.length] }
@@ -373,24 +435,74 @@ const renderChart = () => {
             if (seriesItem.type === 'line') {
                 conf.smooth = props.smooth;
                 conf.symbol = 'circle';
-                conf.symbolSize = 6;
-                conf.itemStyle = { color: props.showLineSymbol ? color : 'transparent', borderColor: 'transparent', borderWidth: 1 };
+                conf.symbolSize = 6 * props.scale;
+                conf.itemStyle = { color: props.showLineSymbol ? color : 'transparent', borderColor: 'transparent', borderWidth: 1 * props.scale };
                 conf.emphasis = {
                     disabled: true,
                     scale: 2,
                     itemStyle: {
                         color,
                         borderColor: 'white',
-                        borderWidth: 2,
+                        borderWidth: 2 * props.scale,
                         shadowColor: 'rgba(0, 0, 0, 0.4)',
-                        shadowBlur: 4,
-                        shadowOffsetY: 2
+                        shadowBlur: 4 * props.scale,
+                        shadowOffsetY: 2 * props.scale
                     }
                 }
                 conf.lineStyle = { color };
             }
             return conf;
         })
+    }
+    let start = 0;
+    let end = props.showCount / props.xAxisData.length * 100;
+    if (props.showCount) {
+        if (props.dataZoomType === 'slider') {
+            if (props.dataZoomStartAtEnd) {
+                start = 100 - end;
+                end = 100;
+            }
+            option.dataZoom = [
+                {
+                    type: 'slider',
+                    zoomLock: props.zoomLock,
+                    brushSelect : false,
+                    handleIcon: 'none',
+                    borderColor: 'transparent',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    selectedDataBackground: {
+                        lineStyle: {
+                            color: 'transparent'
+                        },
+                        areaStyle: {
+                            color: 'transparent'
+                        }
+                    },
+                    height: 4 * props.scale,
+                    fillerColor: '#E5E7EA',
+                    labelFormatter: '',
+                    backgroundColor: 'transparent',
+                    borderWidth: 0,
+                    start,
+                    end,
+                    handleStyle: {
+                        color: 'red'
+                    },
+                    bottom: props.dataZoomBottom
+                }
+            ];
+        } else {
+            option.dataZoom = [
+                { type: 'inside', start, end, zoomLock: props.zoomLock }
+            ];
+        }
     }
     typeof props.beforeSetOption === 'function' && props.beforeSetOption(option, chart);
     chart.setOption(option);

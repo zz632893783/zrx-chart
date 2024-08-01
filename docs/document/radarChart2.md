@@ -1,5 +1,5 @@
 ## 1.基本用法
-<demo384c554ce3db />
+<demofc6ee7db8d4c />
 ```vue{4}
 <template>
     <radar-chart-2 ref="radarChartRef" v-bind="option"></radar-chart-2>
@@ -37,8 +37,8 @@ onMounted(() => radarChartRef.value.renderChart());
 </style>
 ```
 ## 属性
-<demo956d20f92cc5 />
+<demo2804a6cae7c6 />
 <script setup>
-import demo384c554ce3db from '../../document/radarChart2/1.基本用法.vue'
-import demo956d20f92cc5 from '../../document/radarChart2/属性.vue'
+import demofc6ee7db8d4c from '../../document/radarChart2/1.基本用法.vue'
+import demo2804a6cae7c6 from '../../document/radarChart2/属性.vue'
 </script>

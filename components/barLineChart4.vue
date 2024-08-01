@@ -117,6 +117,14 @@ const props = defineProps({
         default: () => 'rgba(59, 65, 85, 0.3)'
     },
     /**
+     * @description 折线是否显示 symbol
+     * @example 'circle'
+     */
+    showLineSymbol: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -366,7 +374,7 @@ const renderChart = () => {
                 conf.smooth = props.smooth;
                 conf.symbol = 'circle';
                 conf.symbolSize = 6;
-                conf.itemStyle = { color: 'transparent', borderColor: 'transparent', borderWidth: 1 };
+                conf.itemStyle = { color: props.showLineSymbol ? color : 'transparent', borderColor: 'transparent', borderWidth: 1 };
                 conf.emphasis = {
                     disabled: true,
                     scale: 2,
