@@ -20,7 +20,7 @@ const props = defineProps({
      */
     grid: {
         type: [Object],
-        default: () => ({ top: 0, right: 20, bottom: 0, left: 20 })
+        default: () => ({ top: 0, right: 40, bottom: 0, left: 40 })
     },
     /**
      * @description legend 数据
@@ -61,7 +61,7 @@ const props = defineProps({
      * @description 圆柱的圆角
      * @example 4
      */
-    barBorderRadius: {
+    borderRadius: {
         type: [Number],
         default: () => 4
     },
@@ -71,7 +71,7 @@ const props = defineProps({
      */
     barWidth: {
         type: [Number],
-        default: () => 16
+        default: () => 8
     },
     /**
      * @description 是否显示数值
@@ -79,7 +79,7 @@ const props = defineProps({
      */
     showValue: {
         type: [Boolean],
-        default: () => true
+        default: () => false
     },
     /**
      * @description 单位
@@ -95,7 +95,7 @@ const props = defineProps({
      */
     showCount: {
         type: [Number],
-        default: () => 3
+        default: () => 5
     },
     /**
      * @description 何种方式拖动 inside 内容区域拖动，slider 滑块拖动
@@ -122,36 +122,18 @@ const props = defineProps({
         default: () => [
             {
                 type: 'linear',
-                x: 0,
-                y: 0,
-                x2: 1,
-                y2: 0,
+                x: 0, y: 0, x2: 1, y2: 0,
                 colorStops: [
-                    {
-                        offset: 0,
-                        color: '#1261c5'
-                    },
-                    {
-                        offset: 1,
-                        color: '#3eb1ff'
-                    }
+                    { offset: 0, color: '#61CCFF' },
+                    { offset: 1, color: '#0055FF' }
                 ]
             },
             {
                 type: 'linear',
-                x: 0,
-                y: 0,
-                x2: 1,
-                y2: 0,
+                x: 0, y: 0, x2: 1, y2: 0,
                 colorStops: [
-                    {
-                        offset: 0,
-                        color: '#d2f3ff'
-                    },
-                    {
-                        offset: 1,
-                        color: '#8bbbf2'
-                    }
+                    { offset: 0, color: '#1FC49D' },
+                    { offset: 1, color: '#23DFE1' }
                 ]
             }
         ]
@@ -206,19 +188,19 @@ const renderChart = () => {
     const n = Math.floor(Math.log10(max))
     max = Math.ceil(Number((max / Math.pow(10, n)).toFixed(1))) * Math.pow(10, n);
     // 计算 上下组有边距
-    const grid = { top: 0, right: 0, bottom: 0, left: 0 };
+    const grid = { top: 0, right: 40, bottom: 0, left: 40 };
     for (const k in grid) {
         props.grid[k] !== undefined && (grid[k] = props.grid[k]);
         grid[k] = grid[k] * props.scale;
     }
     const option = {
         tooltip: {
-            show: true,
+            show: false,
             trigger: 'axis',
             axisPointer: {
                 type: 'line',
                 lineStyle: {
-                    color: 'rgba(255, 255, 255, 0.25)'
+                    color: 'rgba(0, 0, 0, 0.1)'
                 }
             },
             padding: 0,
@@ -292,9 +274,11 @@ const renderChart = () => {
                     formatter: v => `{labelStyle|${ v }}`,
                     rich: {
                         labelStyle: {
-                            fontSize: 14,
-                            color: 'white',
-                            align: 'center'
+                            fontSize: 12 * props.scale,
+                            color: '#969799',
+                            align: 'center',
+                            fontFamily: 'PingFangSC-Regular',
+                            lineHeight: 21 * props.scale,
                         }
                     }
                 },
@@ -310,11 +294,45 @@ const renderChart = () => {
                 axisLabel: {
                     show: false,
                     color: '#fff',
-                    fontSize: 14
+                    fontSize: 14 * props.scale
                 },
                 axisLine: { show: false },
                 splitLine: { show: false },
                 data: props.yAxisData
+            },
+            {
+                type: 'category',
+                inverse: true,
+                gridIndex: 0,
+                axisTick: { show: false },
+                axisLabel: {
+                    show: true,
+                    margin: 3 * props.scale,
+                    color: '#323233',
+                    fontSize: 12 * props.scale,
+                    fontFamily: 'PingFangSC-Regular',
+                    lineHeight: 21 * props.scale,
+                },
+                axisLine: { show: false },
+                splitLine: { show: false },
+                data: props.seriesData[0]
+            },
+            {
+                type: 'category',
+                inverse: true,
+                gridIndex: 1,
+                axisTick: { show: false },
+                axisLabel: {
+                    show: true,
+                    margin: 3 * props.scale,
+                    color: '#323233',
+                    fontSize: 12 * props.scale,
+                    fontFamily: 'PingFangSC-Regular',
+                    lineHeight: 21 * props.scale,
+                },
+                axisLine: { show: false },
+                splitLine: { show: false },
+                data: props.seriesData[1]
             }
         ],
         series: [
@@ -324,16 +342,23 @@ const renderChart = () => {
                 stack: 'age',
                 data: props.seriesData[0].map(n => -1 * n),
                 barWidth: props.barWidth,
+                showBackground: true,
+                backgroundStyle: {
+                	borderRadius: new Array(4).fill(props.borderRadius * props.scale)
+                },
                 itemStyle: {
-                    borderRadius: [props.barBorderRadius, 0, 0, props.barBorderRadius],
+                    borderRadius: new Array(4).fill(props.borderRadius * props.scale),
                     color: props.color[0]
                 },
                 label: {
                     show: props.showValue,
+                    fontFamily: 'PingFangSC-Regular',
                     position: 'left',
                     formatter: (param) => param.value * (param.seriesIndex === 0 ? -1 : 1),
-                    color: 'white',
-                    fontSize: 14
+                    color: '#323233',
+                    fontSize: 12 * props.scale,
+                    lineHeight: 21 * props.scale,
+					fontWeight: 400
                 },
                 emphasis: {
                     disabled: true,
@@ -348,15 +373,19 @@ const renderChart = () => {
                 stack: 'age',
                 data: props.seriesData[1],
                 barWidth: props.barWidth,
+                showBackground: true,
+                backgroundStyle: {
+                	borderRadius: new Array(4).fill(props.borderRadius * props.scale)
+                },
                 itemStyle: {
-                    borderRadius: [0, props.barBorderRadius, props.barBorderRadius, 0],
+                    borderRadius: new Array(4).fill(props.borderRadius * props.scale),
                     color: props.color[1]
                 },
                 label: {
                     show: props.showValue,
                     position: 'right',
                     color: 'white',
-                    fontSize: 14
+                    fontSize: 14 * props.scale
                 },
                 emphasis: {
                     disabled: true,
