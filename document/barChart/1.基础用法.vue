@@ -20,12 +20,7 @@ const chartOption = {
     yAxisName
 };
 
-onMounted(async () => {
-    console.log(111);
-    await Promise.resolve();
-    console.log(222);
-    chartRef.value.renderChart();
-});
+onMounted(() => chartRef.value.renderChart());
 </script>
 <style lang="scss" scoped>
 .zrx-chart {
