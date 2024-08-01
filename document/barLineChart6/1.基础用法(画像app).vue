@@ -12,7 +12,6 @@ const option = {
     unit: ['kw/h', '吨', '元'],
     yAxisName: ['左侧y轴', '右侧y轴'],
     legendData: ['总能耗', '总用水', '支出'],
-    // color: ['#0055FF', '#1FC49D', '#FF9700'],
     xAxisData: new Array(12).fill().map((n, i) => `${ (i + 1).toString().padStart(2, 0) }月`),
     seriesData: [
         {

@@ -6,19 +6,13 @@ import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
 
-// const grid = { right: 60, left: 20 };
-const yAxisData = ['<20岁', '20-35岁', '35-50岁', '50-65岁', '>65岁'];
-const seriesData = [
-    [12, 64, 84, 11, 39],
-    [87, 29, 80, 66, 49]
-];
-const legendData = ['男性', '女性'];
-
 const chartOption = {
-    // grid,
-	yAxisData,
-    seriesData,
-    legendData
+    legendData: ['男性', '女性'],
+	yAxisData: ['<20岁', '20-35岁', '35-50岁', '50-65岁', '>65岁'],
+    seriesData: [
+        [12, 64, 84, 11, 39],
+        [87, 29, 80, 66, 49]
+    ]
 };
 
 onMounted(() => {
