@@ -223,15 +223,12 @@ const colorMap = {
 };
 // 渲染函数
 const renderChart = () => {
-    console.log('renderChart');
     if (chart) {
         chart.dispose();
         chart = null;
     }
-    console.log('init');
     // chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value);
     chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
-    console.log(234);
     const option = {
         grid: (() => {
             // 默认间距

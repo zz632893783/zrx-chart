@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo8da0861ed458 />
+<demof0ed3d06bdb7 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -23,11 +23,9 @@ const chartOption = {
     yAxisName
 };
 
-onMounted(() => {
-    console.log('onMounted');
-    console.log(chartRef);
+onMounted(async () => {
+    await Promise.resolve();
     chartRef.value.renderChart();
-    console.log(27)
 });
 </script>
 <style lang="scss" scoped>
@@ -39,7 +37,7 @@ onMounted(() => {
 
 ```
 ## 2.指定区域高亮
-<demo6179ec9aaee4 />
+<demoe63435b8e6e8 />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -76,7 +74,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 3.拖拽区域为滚动条
-<demo891a9089ed0b />
+<demo314b6601578a />
 ```vue{4}
 <template>
     <bar-chart ref="chartRef" v-bind="chartOption"></bar-chart>
@@ -114,7 +112,7 @@ onMounted(() => chartRef.value.renderChart());
 </style>
 ```
 ## 4.将dom元素作为tooltip
-<demo15bdf7470bdf />
+<demo10c30cecb0b6 />
 ```vue{4}
 <template>
     <div v-show="appendReady" class="custom-tooltip" ref="tooltipRef">
@@ -177,14 +175,14 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo9e102adba2a3 />
+<demo87f84fcba716 />
 ## 支持方法
-<demo63ebd6f8b612 />
+<demo7a1d4c1b9b8b />
 <script setup>
-import demo8da0861ed458 from '../../document/barChart/1.基础用法.vue'
-import demo6179ec9aaee4 from '../../document/barChart/2.指定区域高亮.vue'
-import demo891a9089ed0b from '../../document/barChart/3.拖拽区域为滚动条.vue'
-import demo15bdf7470bdf from '../../document/barChart/4.将dom元素作为tooltip.vue'
-import demo9e102adba2a3 from '../../document/barChart/属性.vue'
-import demo63ebd6f8b612 from '../../document/barChart/支持方法.vue'
+import demof0ed3d06bdb7 from '../../document/barChart/1.基础用法.vue'
+import demoe63435b8e6e8 from '../../document/barChart/2.指定区域高亮.vue'
+import demo314b6601578a from '../../document/barChart/3.拖拽区域为滚动条.vue'
+import demo10c30cecb0b6 from '../../document/barChart/4.将dom元素作为tooltip.vue'
+import demo87f84fcba716 from '../../document/barChart/属性.vue'
+import demo7a1d4c1b9b8b from '../../document/barChart/支持方法.vue'
 </script>

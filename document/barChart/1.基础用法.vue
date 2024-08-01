@@ -20,11 +20,9 @@ const chartOption = {
     yAxisName
 };
 
-onMounted(() => {
-    console.log('onMounted');
-    console.log(chartRef);
+onMounted(async () => {
+    await Promise.resolve();
     chartRef.value.renderChart();
-    console.log(27)
 });
 </script>
 <style lang="scss" scoped>

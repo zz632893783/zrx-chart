@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo469772f25762 />
+<demo6154ab0935f3 />
 ```vue{4}
 <template>
     <ring-chart-7 ref="chartRef" v-bind="chartOption"></ring-chart-7>
@@ -37,8 +37,8 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demoaa0d23ac83e3 />
+<demo6323441fafba />
 <script setup>
-import demo469772f25762 from '../../document/ringChart7/1.基础用法(画像app).vue'
-import demoaa0d23ac83e3 from '../../document/ringChart7/属性.vue'
+import demo6154ab0935f3 from '../../document/ringChart7/1.基础用法(画像app).vue'
+import demo6323441fafba from '../../document/ringChart7/属性.vue'
 </script>
