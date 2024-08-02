@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo38675231dca7 />
+<democee630a3436f />
 ```vue{4}
 <template>
     <bar-line-chart-5 ref="chartRef" v-bind="option"></bar-line-chart-5>
@@ -48,7 +48,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.只有柱(画像app)
-<demo93e1594c622d />
+<demof452f789f5ba />
 ```vue{4}
 <template>
     <bar-line-chart-5 ref="chartRef" v-bind="option"></bar-line-chart-5>
@@ -91,7 +91,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.只有折线(画像app)
-<demo8c0307089366 />
+<demo4cc6b4638f6e />
 ```vue{4}
 <template>
     <bar-line-chart-5 ref="chartRef" v-bind="option"></bar-line-chart-5>
@@ -130,10 +130,10 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demoa9ea08311c33 />
+<demo6b2950f262b8 />
 <script setup>
-import demo38675231dca7 from '../../document/barLineChart5/1.基础用法(画像app).vue'
-import demo93e1594c622d from '../../document/barLineChart5/2.只有柱(画像app).vue'
-import demo8c0307089366 from '../../document/barLineChart5/3.只有折线(画像app).vue'
-import demoa9ea08311c33 from '../../document/barLineChart5/属性.vue'
+import democee630a3436f from '../../document/barLineChart5/1.基础用法(画像app).vue'
+import demof452f789f5ba from '../../document/barLineChart5/2.只有柱(画像app).vue'
+import demo4cc6b4638f6e from '../../document/barLineChart5/3.只有折线(画像app).vue'
+import demo6b2950f262b8 from '../../document/barLineChart5/属性.vue'
 </script>
