@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demoee60cbba7155 />
+<demo2de2b6917925 />
 ```vue{4}
 <template>
     <bar-chart-5 ref="chartRef" v-bind="chartOption"></bar-chart-5>
@@ -44,7 +44,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.辅助线
-<demo197d6e72d619 />
+<demo47de3c2d8041 />
 ```vue{4}
 <template>
     辅助线可能位于 y 轴自动计算的最小-最大值区间之外，可通过 beforeSetOption 指定 y 轴最大/最小值控制
@@ -93,9 +93,9 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo4b3fde4487af />
+<demo02f40c37e0a4 />
 <script setup>
-import demoee60cbba7155 from '../../document/barChart5/1.基础用法.vue'
-import demo197d6e72d619 from '../../document/barChart5/2.辅助线.vue'
-import demo4b3fde4487af from '../../document/barChart5/属性.vue'
+import demo2de2b6917925 from '../../document/barChart5/1.基础用法.vue'
+import demo47de3c2d8041 from '../../document/barChart5/2.辅助线.vue'
+import demo02f40c37e0a4 from '../../document/barChart5/属性.vue'
 </script>

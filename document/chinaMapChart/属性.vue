@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-8-2 15:49:5 -->
+<!-- 创建时间 2024-8-2 16:1:9 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -57,10 +57,10 @@
                     Array
                 </div>
                 <div class="table-cell">
-                    ([<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'黑龙江省', value: 50 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'浙江省', value: 15 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'四川省', value: 75 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'江苏省', value: 100 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'安徽省', value: 0 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'云南省', value: -10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'广东省', value: 110 }<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;])
+                    []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '浙江', value: 50 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '江苏', value: 75 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '上海', value: 100 }<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name:'黑龙江省', value: 50 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name:'浙江省', value: 15 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name:'四川省', value: 75 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name:'江苏省', value: 100 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name:'安徽省', value: 0 }<br/>]
                 </div>
             </div>
             <div class="table-row">

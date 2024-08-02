@@ -50,22 +50,16 @@ const props = defineProps({
     /**
      * @description 数据数组
      * @example [
-     *     { name: '浙江', value: 50 },
-     *     { name: '江苏', value: 75 },
-     *     { name: '上海', value: 100 }
+     *     { name:'黑龙江省', value: 50 },
+     *     { name:'浙江省', value: 15 },
+     *     { name:'四川省', value: 75 },
+     *     { name:'江苏省', value: 100 },
+     *     { name:'安徽省', value: 0 }
      * ]
      */
     seriesData: {
         type: [Array],
-        default: () => ([
-            { name:'黑龙江省', value: 50 },
-            { name:'浙江省', value: 15 },
-            { name:'四川省', value: 75 },
-            { name:'江苏省', value: 100 },
-            { name:'安徽省', value: 0 },
-            { name:'云南省', value: -10 },
-            { name:'广东省', value: 110 }
-        ])
+        default: () => []
     },
     /**
      * @description 中心位置的经纬度
