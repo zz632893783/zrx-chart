@@ -17,7 +17,7 @@ hero:
 features:
   - icon: 🚀
     title: 基于 vue3, echarts
-    details: 目前提供 31 种类型组件
+    details: 目前提供 32 种类型组件
   - icon: 🛸
     title: 应用
     details: 适用于 PC 端项目

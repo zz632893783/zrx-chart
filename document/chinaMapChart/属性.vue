@@ -14,172 +14,87 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    radius
+                    range
                 </div>
                 <div class="table-cell">
-                    半径
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    [60, 68]
-                </div>
-                <div class="table-cell">
-                    [60, 70]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    ringColor
-                </div>
-                <div class="table-cell">
-                    圆环颜色
+                    值区间
                 </div>
                 <div class="table-cell">
                     Array
                 </div>
                 <div class="table-cell">
-                    ['#0e8fff', '#00d5ef', '#b5bfe2']
+                    [0, 100]
                 </div>
                 <div class="table-cell">
-                    ['#0e8fff', '#00d5ef', '#b5bfe2']
+                    [100, 200]
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    barColor
+                    rangeColor
                 </div>
                 <div class="table-cell">
-                    柱子颜色
+                    区间颜色
                 </div>
                 <div class="table-cell">
                     Array
                 </div>
                 <div class="table-cell">
-                    ['#206e8a', '#72dde0']
+                    ['#0055FF', '#65F1B6', '#FFD655', '#FF9512']
                 </div>
                 <div class="table-cell">
-                    ['#206e8a', '#72dde0']
+                    ['red', 'green', 'blue']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    itemGap
+                    seriesData
                 </div>
                 <div class="table-cell">
-                    间距
+                    数据数组
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    ([<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'黑龙江省', value: 50 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'浙江省', value: 15 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'四川省', value: 75 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'江苏省', value: 100 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'安徽省', value: 0 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'云南省', value: -10 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ name:'广东省', value: 110 }<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;])
+                </div>
+                <div class="table-cell">
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '浙江', value: 50 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '江苏', value: 75 },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ name: '上海', value: 100 }<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    centerLngLat
+                </div>
+                <div class="table-cell">
+                    中心位置的经纬度
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    ([104, 35])
+                </div>
+                <div class="table-cell">
+                    [104, 35]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    zoom
+                </div>
+                <div class="table-cell">
+                    当前视角的缩放比例
                 </div>
                 <div class="table-cell">
                     Number
                 </div>
                 <div class="table-cell">
-                    2
+                    1.5
                 </div>
                 <div class="table-cell">
-                    4
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    ringSeriesData
-                </div>
-                <div class="table-cell">
-                    圆环数据
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [73, 54, 98]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    barSeriesData
-                </div>
-                <div class="table-cell">
-                    柱子数据
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    []
-                </div>
-                <div class="table-cell">
-                    [73, 54, 23, 66]
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    barHeight
-                </div>
-                <div class="table-cell">
-                    柱子的高度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    120
-                </div>
-                <div class="table-cell">
-                    160
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    lineLength
-                </div>
-                <div class="table-cell">
-                    连接线长度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    34
-                </div>
-                <div class="table-cell">
-                    20
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    unit
-                </div>
-                <div class="table-cell">
-                    单位
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    ''
-                </div>
-                <div class="table-cell">
-                    '个'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    startAngle
-                </div>
-                <div class="table-cell">
-                    起始角度
-                </div>
-                <div class="table-cell">
-                    Number
-                </div>
-                <div class="table-cell">
-                    52
-                </div>
-                <div class="table-cell">
-                    40
+                    1.4
                 </div>
             </div>
             <div class="table-row">
@@ -238,6 +153,6 @@
 </template>
 <style lang="scss" scoped>
 .table-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2.6fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 3fr);
 }
 </style>
