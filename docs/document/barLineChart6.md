@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo5f723b66cee5 />
+<demob81df2549457 />
 ```vue{4}
 <template>
     <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
@@ -47,8 +47,8 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo3455be16d488 />
+<demo5a23ec241f53 />
 <script setup>
-import demo5f723b66cee5 from '../../document/barLineChart6/1.基础用法(画像app).vue'
-import demo3455be16d488 from '../../document/barLineChart6/属性.vue'
+import demob81df2549457 from '../../document/barLineChart6/1.基础用法(画像app).vue'
+import demo5a23ec241f53 from '../../document/barLineChart6/属性.vue'
 </script>
