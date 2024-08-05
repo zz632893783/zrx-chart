@@ -15,6 +15,8 @@ fs.mkdirSync(publishPath);
 !fs.existsSync(`${ publishPath }/utils`) && fs.mkdirSync(`${ publishPath }/utils`);
 // 复制工具函数
 fs.copyFileSync('./utils/index.js', `${ publishPath }/utils/index.js`);
+// 复制地图组件用到的区划边界 json 文件
+fs.copyFileSync('./utils/china.json', `${ publishPath }/utils/china.json`);
 // 每次自动将版本最后一位 + 1
 const packageJsonContent = fs.readFileSync('./package.json').toString().replace(/(?<="version": *"\d+\.\d+\.)\d+(?=")/, c => (Number(c) + (updateVersion ? 1 : 0)).toString());
 // 在发布目录下写入 package.json
