@@ -489,7 +489,6 @@ const renderChart = () => {
     };
     let start = 0;
     let end = props.showCount / props.xAxisData.length * 100;
-    console.log(start, end);
     if (props.showCount) {
         if (props.dataZoomStartAtEnd) {
             start = 100 - end;

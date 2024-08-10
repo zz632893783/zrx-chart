@@ -179,6 +179,14 @@ const props = defineProps({
         default: () => 1
     },
     /**
+     * @description 处理 tooltip 的值方法
+     * @example null
+     */
+    tooltipValueFormatter: {
+        type: [Function],
+        default: () => null
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -273,7 +281,7 @@ const renderChart = () => {
                     color: props.axisLineColor
                 }
             },
-            formatter: (params) => {
+            formatter: (params, ...args) => {
                 const templateStr = params.map(item => {
                     let dot;
                     const seriesIndex = item.seriesIndex;
@@ -289,7 +297,7 @@ const renderChart = () => {
                             ${ dot }
                             <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
                             <span style="font-family: MicrosoftYaHei; font-size: ${16 * props.scale}px; color: #3B4155; font-weight: 600; white-space: nowrap;">
-                                ${item.value}
+                                ${ typeof props.tooltipValueFormatter === 'function' ? props.tooltipValueFormatter(item.value, seriesIndex, item.dataIndex) : item.value }
                                 <i style="font-weight: 400; font-size: ${12 * props.scale}px; font-style: normal;">${unit || ''}</i>
                             </span>
                         </div>

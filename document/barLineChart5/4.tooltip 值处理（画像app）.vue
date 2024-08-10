@@ -1,8 +1,5 @@
-## 1.基础用法(画像app)
-<demo553b437a2fd6 />
-```vue{4}
 <template>
-    <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
+    <bar-line-chart-5 ref="chartRef" v-bind="option"></bar-line-chart-5>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -15,6 +12,7 @@ const option = {
     unit: ['kw/h', '吨', '元'],
     yAxisName: ['左侧y轴', '右侧y轴'],
     legendData: ['总能耗', '总用水', '支出'],
+    color: ['#0055FF', '#1FC49D', '#FF9700'],
     xAxisData: new Array(12).fill().map((n, i) => `${ (i + 1).toString().padStart(2, 0) }月`),
     seriesData: [
         {
@@ -32,7 +30,11 @@ const option = {
             yAxisIndex: 1,
             data: [133, 13, 27, 92, 44, 82, 19, 133, 13, 27, 92, 44]
         }
-    ]
+    ],
+    tooltipValueFormatter: (value, seriesIndex, dataIndex) => {
+    	console.log(value, seriesIndex, dataIndex);
+    	return '*****';
+    }
 };
 
 onMounted(() => chartRef.value.renderChart());
@@ -44,11 +46,3 @@ onMounted(() => chartRef.value.renderChart());
     background-color: white;
 }
 </style>
-
-```
-## 属性
-<demo5fdf27ab82e7 />
-<script setup>
-import demo553b437a2fd6 from '../../document/barLineChart6/1.基础用法(画像app).vue'
-import demo5fdf27ab82e7 from '../../document/barLineChart6/属性.vue'
-</script>

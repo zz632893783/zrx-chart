@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo53ebe5112d35 />
+<demodea5b2e932c6 />
 ```vue{4}
 <template>
     <china-map-chart ref="chartRef" v-bind="chartOption"></china-map-chart>
@@ -36,8 +36,8 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo597949d81941 />
+<demo24f2066ab9f7 />
 <script setup>
-import demo53ebe5112d35 from '../../document/chinaMapChart/1.基础用法(画像app).vue'
-import demo597949d81941 from '../../document/chinaMapChart/属性.vue'
+import demodea5b2e932c6 from '../../document/chinaMapChart/1.基础用法(画像app).vue'
+import demo24f2066ab9f7 from '../../document/chinaMapChart/属性.vue'
 </script>

@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo03a621d046f1 />
+<demo30701d7dd47f />
 ```vue{4}
 <template>
     <gradient-ring-chart-2 :value="v" subTitle="风险指数" valueUnit="%"></gradient-ring-chart-2>
@@ -30,8 +30,8 @@ const v = ref(50);
 </style>
 ```
 ## 属性
-<demo5c2a70bcc660 />
+<demo476fc9bd2150 />
 <script setup>
-import demo03a621d046f1 from '../../document/gradientRingChart2/1.基础用法(画像app).vue'
-import demo5c2a70bcc660 from '../../document/gradientRingChart2/属性.vue'
+import demo30701d7dd47f from '../../document/gradientRingChart2/1.基础用法(画像app).vue'
+import demo476fc9bd2150 from '../../document/gradientRingChart2/属性.vue'
 </script>
