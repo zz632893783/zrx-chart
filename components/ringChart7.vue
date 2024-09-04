@@ -125,6 +125,14 @@ const props = defineProps({
         default: () => null
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -164,17 +172,15 @@ const renderChart = () => {
     const rich = {
         a: {
             fontSize: props.centerValueFontSize,
-            lineHeight: 24,
+            lineHeight: 24 * props.scale,
             fontWeight: 600,
             fontFamily: 'MicrosoftYaHei',
             color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.9)`
         },
-        b: {
-            height: 2
-        },
+        b: { height: 2 * props.scale },
         c: {
-            fontSize: props.centerLabelFontSize,
-            lineHeight: 20,
+            fontSize: props.centerLabelFontSize * props.scale,
+            lineHeight: 20 * props.scale,
             fontFamily: 'MicrosoftYaHei',
             color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`
         }
@@ -222,21 +228,22 @@ const renderChart = () => {
         })(),
         tooltip: {
             trigger: 'item',
-            padding: [6, 12],
+            padding: [6, 12].map(n => n * props.scale),
             borderWidth: 0,
+            confine: props.tooltipConfine,
             formatter: params => {
                 const color = props.color[params.dataIndex % props.color.length]
                 return `
-                    <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px 24px; grid-column-gap: 8px; align-items: center;">
-                        <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
-                        <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${params.name}</span>
-                        <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
-                            ${((params.value || 0) / props.seriesData.reduce((x, y) => x + (y.value || 0), 0) * 100).toFixed(1)}
-                            <i style="font-weight: 400; font-size: 12px;">%</i>
+                    <div style="display: grid; grid-template-columns: ${ 8 * props.scale }px auto min-content; grid-template-rows: ${ 24 * props.scale }px ${ 24 * props.scale }px; grid-column-gap: ${ 8 * props.scale }px; align-items: center;">
+                        <i style="background-color: ${color}; display: inline-block; height: ${ 8 * props.scale }px; border-radius: 50%;"></i>
+                        <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #3B4155;">${params.name}</span>
+                        <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
+                            ${((params.value || 0) / props.seriesData.reduce((x, y) => x + (Number(y.value) || 0), 0) * 100).toFixed(1)}
+                            <i style="font-weight: 400; font-size: ${ 12 * props.scale }px;">%</i>
                         </span>
-                        <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
+                        <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                             ${params.value}
-                            <i style="font-weight: 400; font-size: 12px; font-style: normal;">${props.unit || ''}</i>
+                            <i style="font-weight: 400; font-size: ${ 12 * props.scale }px; font-style: normal;">${props.unit || ''}</i>
                         </span>
                     </div>
                 `
@@ -266,13 +273,11 @@ const renderChart = () => {
             {
                 type: 'pie',
                 clockwise: props.clockwise,
-                radius: props.backgroundRadius,
+                radius: props.backgroundRadius.map(n => n * props.scale),
                 data: [0],
                 silent: true,
                 label: { show: false },
-                itemStyle: {
-                	color: props.backgroundColor
-                },
+                itemStyle: { color: props.backgroundColor },
                 // center: ['50%', props.showLegend ? '62.88%' : '50%']
                 center: ['50%', '50%']
             },
@@ -292,7 +297,7 @@ const renderChart = () => {
                     //         .replace(/(?!^)(?=(\d{3})+$)/, ',')
                     //     }}\n{b|}\n{c|${props.name}}`
                 },
-                radius: props.radius,
+                radius: props.radius.map(n => n * props.scale),
                 data: props.seriesData.map((n, i) => {
                     const color = props.color[i % props.color.length]
                     return {
@@ -300,9 +305,7 @@ const renderChart = () => {
                         emphasis: {
                             scale: true,
                             scaleSize: props.scaleSize,
-                            itemStyle: {
-                                color
-                            }
+                            itemStyle: { color }
                         }
                     }
                 }),

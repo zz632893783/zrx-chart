@@ -163,6 +163,14 @@ const props = defineProps({
         default: () => []
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 是否锁定选择区域的大小
      * @example true
      */
@@ -406,6 +414,7 @@ const renderChart = () => {
             trigger: 'axis',
             borderColor: 'transparent',
             backgroundColor: 'transparent',
+            confine: props.tooltipConfine,
             axisPointer: {
                 type: 'line',
                 lineStyle: {

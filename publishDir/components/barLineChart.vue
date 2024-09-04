@@ -189,6 +189,14 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -326,6 +334,7 @@ const renderChart = () => {
                 type: 'line',
                 lineStyle: { color: '#677b87' }
             },
+            confine: props.tooltipConfine,
             // tooltipTitle
             formatter: params => {
                 // const tooltipTitle = !props.tooltipTitle ? params[0].axisValue : props.tooltipTitle[params[0].dataIndex % props.tooltipTitle.length];

@@ -188,6 +188,14 @@ const props = defineProps({
         default: () => 12
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -384,6 +392,7 @@ const createOption = (isShadow) => {
                     type: 'solid'
                 }
             },
+            confine: props.tooltipConfine,
             formatter: params => {
                 const tooltipTitle = props.tooltipTitle instanceof Array ? props.tooltipTitle[params[0]?.dataIndex] : params[0]?.axisValue;
                 return `

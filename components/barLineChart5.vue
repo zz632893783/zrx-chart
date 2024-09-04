@@ -179,11 +179,27 @@ const props = defineProps({
         default: () => 1
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 处理 tooltip 的值方法
      * @example null
      */
     tooltipValueFormatter: {
         type: [Function],
+        default: () => null
+    },
+    /**
+     * @description tooltip 标题
+     * @example ['标题']
+     */
+    tooltipTitle: {
+        type: [Array],
         default: () => null
     },
     /**
@@ -281,7 +297,13 @@ const renderChart = () => {
                     color: props.axisLineColor
                 }
             },
+            confine: props.tooltipConfine,
             formatter: (params, ...args) => {
+                let tooltipTitle;
+                if (props.tooltipTitle instanceof Array) {
+                    tooltipTitle = props.tooltipTitle[params[0]?.dataIndex % props.tooltipTitle.length];
+                }
+                !tooltipTitle && (tooltipTitle = params[0]?.axisValue);
                 const templateStr = params.map(item => {
                     let dot;
                     const seriesIndex = item.seriesIndex;
@@ -304,7 +326,7 @@ const renderChart = () => {
                     `;
                 }).join('');
                 return `
-                    <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155; line-height: ${24 * props.scale}px;">${params[0].axisValue}</h4>
+                    <h4 style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155; line-height: ${24 * props.scale}px;">${ tooltipTitle }</h4>
                     ${templateStr}
                 `;
             }
@@ -378,7 +400,7 @@ const renderChart = () => {
                     color: `rgba(${0x96}, ${0x97}, ${0x99}, 1)`,
                     lineHeight: 18 * props.scale
                 },
-                splitNumber: 4 * props.scale,
+                splitNumber: 4,
                 axisTick: { show: false },
                 axisLabel: {
                     fontFamily: 'PingFangSC-Regular',

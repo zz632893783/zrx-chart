@@ -8,7 +8,7 @@
             </div>
         </div>
         <!-- <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2" :height="radius * 2" ref="chartRef"></canvas> -->
-        <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2" :height="radius * 2"></canvas>
+        <canvas :id="`zrx-chart-${ randomId }`" :width="radius * 2 * scale" :height="radius * 2 * scale"></canvas>
     </div>
 </template>
 <script setup>
@@ -156,8 +156,8 @@ let animation;
 const draw = () => {
     // const canvas = document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value;
     const canvas = document.getElementById(`zrx-chart-${ randomId }`);
-    const radius = props.radius - props.barWidth / 2;
-    const capAngle = Math.atan(props.barWidth / 2 / radius) * 2 * (props.clockwise ? 1 : -1);
+    const radius = (props.radius - props.barWidth / 2) * props.scale;
+    const capAngle = Math.atan(props.barWidth * props.scale / 2 / radius) * 2 * (props.clockwise ? 1 : -1);
     let value = props.value < props.min ? props.min : (props.value > props.max ? props.max : props.value);
     if (value < currentValue.value) {
         currentValue.value = currentValue.value - (currentValue.value - value) * 0.05;
@@ -181,12 +181,12 @@ const draw = () => {
     let y = Math.sin(angle) * radius + canvas.height / 2;
     // 绘制底色
     ctx.beginPath();
-    ctx.arc(x, y, props.barWidth / 2, angle - Math.PI, angle, !props.clockwise);
-    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius, startAngle + capAngle / 2, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, !props.clockwise);
+    ctx.arc(x, y, props.barWidth * props.scale / 2, angle - Math.PI, angle, !props.clockwise);
+    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius * props.scale, startAngle + capAngle / 2, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, !props.clockwise);
     x = Math.cos((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvas.width / 2;
     y = Math.sin((props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2) * radius + canvas.height / 2;
-    ctx.arc(x, y, props.barWidth / 2, (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2), (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2) + Math.PI, !props.clockwise);
-    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius - props.barWidth, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
+    ctx.arc(x, y, props.barWidth * props.scale / 2, (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2), (startAngle + props.angleRange * (props.clockwise ? 1 : -1) / 180 * Math.PI + capAngle / 2) + Math.PI, !props.clockwise);
+    ctx.arc(canvas.width / 2, canvas.height / 2, props.radius * props.scale - props.barWidth * props.scale, (props.startAngle + props.angleRange * (props.clockwise ? 1 : -1)) / 180 * Math.PI - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
     ctx.fillStyle = props.layerColor;
     ctx.closePath();
     ctx.fill();
@@ -195,19 +195,19 @@ const draw = () => {
     // 如果小于最小的角度，则只绘制起始位置的一个点
     if (Math.abs(startAngle - endAngle) < capAngle) {
         ctx.beginPath();
-        ctx.arc(x, y, props.barWidth / 2, 0, Math.PI * 2);
+        ctx.arc(x, y, props.barWidth * props.scale / 2, 0, Math.PI * 2);
         ctx.closePath();
         ctx.fillStyle = gradient;
         ctx.fill();
     } else {
         ctx.beginPath();
-        ctx.arc(x, y, props.barWidth / 2, angle - Math.PI, angle, !props.clockwise);
-        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius, startAngle + capAngle / 2, endAngle - capAngle / 2, !props.clockwise);
+        ctx.arc(x, y, props.barWidth * props.scale / 2, angle - Math.PI, angle, !props.clockwise);
+        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius * props.scale, startAngle + capAngle / 2, endAngle - capAngle / 2, !props.clockwise);
         angle = endAngle - capAngle / 2;
         x = Math.cos(angle) * radius + canvas.width / 2;
         y = Math.sin(angle) * radius + canvas.height / 2;
-        ctx.arc(x, y, props.barWidth / 2, angle, angle - Math.PI, !props.clockwise);
-        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius - props.barWidth, endAngle - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
+        ctx.arc(x, y, props.barWidth * props.scale / 2, angle, angle - Math.PI, !props.clockwise);
+        ctx.arc(canvas.width / 2, canvas.height / 2, props.radius * props.scale - props.barWidth * props.scale, endAngle - capAngle / 2, startAngle + capAngle / 2, props.clockwise);
         ctx.closePath();
         ctx.fillStyle = gradient;
         ctx.fill();

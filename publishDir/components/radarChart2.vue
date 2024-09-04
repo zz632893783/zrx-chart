@@ -205,14 +205,14 @@ const createRadarBg = async () => {
     canvas.height = (document.getElementById(`zrx-chart-${ randomId }`)).offsetHeight;
     await Promise.resolve();
     const ctx = canvas.getContext('2d');
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1 * props.scale;
     const offsetAngle = 0;
     for (let j = props.splitNumber; j >= 1; j--) {
         let maxDistance = 0
         for (let i = 0; i < props.indicator.length; i++) {
             const angle = offsetAngle + (360 / props.indicator.length) * i
-            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.width / 2
-            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.height / 2
+            const x = Math.cos(angle / 180 * Math.PI) * props.radius * props.scale / props.splitNumber * j + canvas.width / 2
+            const y = Math.sin(angle / 180 * Math.PI) * props.radius * props.scale / props.splitNumber * j + canvas.height / 2
             const distance = Math.pow(Math.pow(x - canvas.width / 2, 2) + Math.pow(y - canvas.height / 2, 2), 1 / 2)
             maxDistance = maxDistance < distance ? distance : maxDistance
         }
@@ -228,15 +228,15 @@ const createRadarBg = async () => {
         ctx.beginPath()
         for (let i = 0; i < props.indicator.length; i++) {
             const angle = offsetAngle + (360 / props.indicator.length) * i - 90
-            const x = Math.cos(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.width / 2
-            const y = Math.sin(angle / 180 * Math.PI) * props.radius / props.splitNumber * j + canvas.height / 2
+            const x = Math.cos(angle / 180 * Math.PI) * props.radius * props.scale / props.splitNumber * j + canvas.width / 2
+            const y = Math.sin(angle / 180 * Math.PI) * props.radius * props.scale / props.splitNumber * j + canvas.height / 2
             ctx[i === 0 ? 'moveTo' : 'lineTo'](x, y)
         }
         ctx.closePath()
         ctx.fillStyle = j % 2 === 1 ? '#F7F8FA' : 'white';
         ctx.fill()
         ctx.strokeStyle = '#E5E7EA'
-        ctx.lineWidth = 1
+        ctx.lineWidth = 1 * props.scale
         ctx.stroke()
     }
 };

@@ -185,6 +185,14 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -247,6 +255,7 @@ const renderChart = () => {
                     type: 'solid'
                 }
             },
+            confine: props.tooltipConfine,
             formatter: params => {
                 let tooltipTitle;
                 if (props.tooltipTitle instanceof Array) {

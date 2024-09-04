@@ -155,6 +155,14 @@ const props = defineProps({
         default: () => 1
     },
     /**
+     * @description 是否将 tooltip 框限制在图表的区域内
+     * @example true
+     */
+    tooltipConfine: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -199,15 +207,14 @@ const renderChart = () => {
             trigger: 'axis',
             axisPointer: {
                 type: 'line',
-                lineStyle: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                }
+                lineStyle: { color: 'rgba(0, 0, 0, 0.1)'}
             },
             padding: 0,
             margin: 0,
             backgroundColor: 'transparent',
             borderWidth: 0,
             borderRadius: 0,
+            confine: props.tooltipConfine,
             formatter: ([param]) => {
                 const value = param.value * (param.seriesIndex === 0 ? -1 : 1);
                 let color = props.color[param.seriesIndex % props.color.length];
@@ -226,20 +233,20 @@ const renderChart = () => {
         },
         grid: [
             {
-                left: grid.left,
-                top: grid.top,
-                bottom: grid.bottom,
+                left: grid.left * props.scale,
+                top: grid.top * props.scale,
+                bottom: grid.bottom * props.scale,
                 // right: grid.right + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
                 // right: grid.right + ((document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
-                right: grid.right + ((document.getElementById(`zrx-chart-${ randomId }`)).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2
+                right: grid.right * props.scale + ((document.getElementById(`zrx-chart-${ randomId }`)).offsetWidth - grid.left * props.scale - grid.right * props.scale) / 2 + props.yAxisWidth / 2 * props.scale
             },
             {
                 // left: grid.left + (chartRef.value.offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
                 // left: grid.left + ((document.getElementById(`zrx-chart-${ randomId }`) || chartRef.value).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
-                left: grid.left + ((document.getElementById(`zrx-chart-${ randomId }`)).offsetWidth - grid.left - grid.right) / 2 + props.yAxisWidth / 2,
-                top: grid.top,
-                bottom: grid.bottom,
-                right: grid.right
+                left: grid.left * props.scale + ((document.getElementById(`zrx-chart-${ randomId }`)).offsetWidth - grid.left * props.scale - grid.right * props.scale) / 2 + props.yAxisWidth / 2 * props.scale,
+                top: grid.top * props.scale,
+                bottom: grid.bottom * props.scale,
+                right: grid.right * props.scale
             }
         ],
         xAxis: [
@@ -268,7 +275,7 @@ const renderChart = () => {
                 axisTick: { show: false },
                 axisLabel: {
                     show: true,
-                    width: props.yAxisWidth,
+                    width: props.yAxisWidth * props.scale,
                     color: '#fff',
                     margin: 0,
                     formatter: v => `{labelStyle|${ v }}`,
@@ -341,7 +348,7 @@ const renderChart = () => {
                 type: 'bar',
                 stack: 'age',
                 data: props.seriesData[0].map(n => -1 * n),
-                barWidth: props.barWidth,
+                barWidth: props.barWidth * props.scale,
                 showBackground: true,
                 backgroundStyle: {
                 	borderRadius: new Array(4).fill(props.borderRadius * props.scale)
@@ -372,7 +379,7 @@ const renderChart = () => {
                 type: 'bar',
                 stack: 'age',
                 data: props.seriesData[1],
-                barWidth: props.barWidth,
+                barWidth: props.barWidth * props.scale,
                 showBackground: true,
                 backgroundStyle: {
                 	borderRadius: new Array(4).fill(props.borderRadius * props.scale)
