@@ -51,3 +51,9 @@ export const computeColorRGBA = (color) => {
     const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
     return { r, g, b, a: a / 255 };
 };
+
+export const handlePrecision = (num, bit = 0, emptyStr = '- -') => {
+    return [null, undefined, '', NaN].includes(num)
+        ? emptyStr
+        : Number(num).toLocaleString(undefined, { maximumFractionDigits: bit, useGrouping: false });
+};

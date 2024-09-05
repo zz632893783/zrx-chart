@@ -9,7 +9,8 @@
 </template>
 <script setup>
 import * as echarts from 'echarts';
-import { setFixed } from '../utils/index.js';
+// import { setFixed } from '../utils/index.js';
+import { handlePrecision } from '../utils/index.js';
 import { defineProps, ref, onMounted } from 'vue';
 const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
@@ -189,10 +190,11 @@ const renderChart = () => {
         color: props.color,
         title: (() => {
             const sum = props.seriesData.reduce((x, y) => x + (Number(typeof y === 'object' ? y?.value : y) || 0), 0);
-            const isInteger = parseInt(sum) === sum;
+            // const isInteger = parseInt(sum) === sum;
             const titleConfig = {
                 show: props.centerDisplay === 'sum',
-                text: `{a|${ props.title || '' }}\n{gap0|}\n{b|${ setFixed(sum || 0, isInteger ? 0 : 2) }}{c|${ props.unit }}`,
+                // text: `{a|${ props.title || '' }}\n{gap0|}\n{b|${ setFixed(sum || 0, isInteger ? 0 : 2) }}{c|${ props.unit }}`,
+                text: `{a|${ props.title || '' }}\n{gap0|}\n{b|${ handlePrecision(sum || 0, 2) }}{c|${ props.unit }}`,
                 left: 'center',
                 top: 'center',
                 textStyle: {
@@ -238,7 +240,10 @@ const renderChart = () => {
                         <i style="background-color: ${color}; display: inline-block; height: ${ 8 * props.scale }px; border-radius: 50%;"></i>
                         <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #3B4155;">${params.name}</span>
                         <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
-                            ${((params.value || 0) / props.seriesData.reduce((x, y) => x + (Number(y.value) || 0), 0) * 100).toFixed(1)}
+                            ${
+                                // ((params.value || 0) / props.seriesData.reduce((x, y) => x + (Number(y.value) || 0), 0) * 100).toFixed(1)
+                                handlePrecision((params.value || 0) / props.seriesData.reduce((x, y) => x + (Number(y.value) || 0), 0) * 100, 2)
+                            }
                             <i style="font-weight: 400; font-size: ${ 12 * props.scale }px;">%</i>
                         </span>
                         <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap;">

@@ -1,6 +1,6 @@
 {
   "name": "zrx-chart",
-  "version": "0.0.91",
+  "version": "0.0.92",
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
