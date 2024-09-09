@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-8-30 15:0:34 -->
+<!-- 创建时间 2024-9-9 19:36:59 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -324,6 +324,23 @@
                 </div>
                 <div class="table-cell">
                     线条是否显示区域颜色
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    tooltipConfine
+                </div>
+                <div class="table-cell">
+                    是否将 tooltip 框限制在图表的区域内
                 </div>
                 <div class="table-cell">
                     Boolean

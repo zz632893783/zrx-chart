@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-8-30 15:0:34 -->
+<!-- 创建时间 2024-9-9 19:36:59 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -282,6 +282,23 @@
                 </div>
                 <div class="table-cell">
                     [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 134,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#33FFBB'<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 166,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxisIndex: 0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: '#F74768'<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    tooltipConfine
+                </div>
+                <div class="table-cell">
+                    是否将 tooltip 框限制在图表的区域内
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+                <div class="table-cell">
+                    true
                 </div>
             </div>
             <div class="table-row">

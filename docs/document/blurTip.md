@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo04f2bedc5eac />
+<demo680276b5ed06 />
 ```vue{4}
 <template>
 	<div class="page">
@@ -45,8 +45,8 @@ import { ref, onMounted } from 'vue';
 </style>
 ```
 ## 属性
-<demofec384c7d954 />
+<demo20d5245f5981 />
 <script setup>
-import demo04f2bedc5eac from '../../document/blurTip/1.基础用法.vue'
-import demofec384c7d954 from '../../document/blurTip/属性.vue'
+import demo680276b5ed06 from '../../document/blurTip/1.基础用法.vue'
+import demo20d5245f5981 from '../../document/blurTip/属性.vue'
 </script>

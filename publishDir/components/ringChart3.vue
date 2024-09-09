@@ -10,6 +10,7 @@
 <script setup>
 import * as echarts from 'echarts';
 import { defineProps, ref, onMounted } from 'vue';
+import { computeColorRGBA } from '../utils/index.js';
 const randomId = new Array(4).fill().map(() => Math.round(0xffff * Math.random()).toString(16).padStart(4, 4)).join('-');
 // 图表实例
 let chart;
@@ -58,6 +59,14 @@ const props = defineProps({
         default: () => ['#1BBE8C', '#F0465A', '#FFA433', '#B8BED5']
     },
     /**
+     * @description 是否让底层图层的颜色与 color 相似，若设置为 true 则 backgroundColor 将失效
+     * @example true
+     */
+    similarBackgroundColor: {
+        type: [Boolean],
+        default: () => false
+    },
+    /**
      * @description 数据项
      * @example [
      *     { value: 1048, name: '正常' },
@@ -103,6 +112,14 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 图表缩放比例
+     * @example 2
+     */
+    scale: {
+        type: [Number],
+        default: () => 1
+    },
+    /**
      * @description 万能方法，图表渲染之前执行
      * @example function (option, chart) {
      *     return '执行对 option 的修改，绑定自定义事件等'
@@ -133,18 +150,18 @@ const renderChart = () => {
     chart = echarts.init(document.getElementById(`zrx-chart-${ randomId }`));
     const rich = {
         a: {
-            fontSize: props.centerValueFontSize,
-            lineHeight: 24,
+            fontSize: props.centerValueFontSize * props.scale,
+            lineHeight: 24 * props.scale,
             fontWeight: 600,
             fontFamily: 'MicrosoftYaHei',
             color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.9)`
         },
         b: {
-            height: 2
+            height: 2 * props.scale
         },
         c: {
-            fontSize: props.centerLabelFontSize,
-            lineHeight: 20,
+            fontSize: props.centerLabelFontSize * props.scale,
+            lineHeight: 20 * props.scale,
             fontFamily: 'MicrosoftYaHei',
             color: `rgba(${0x3B}, ${0x41}, ${0x55}, 0.7)`
         }
@@ -153,22 +170,22 @@ const renderChart = () => {
         color: props.color,
         tooltip: {
             trigger: 'item',
-            padding: [6, 12],
-            borderWidth: 0,
+            padding: [6, 12].map(n => n * props.scale),
+            borderWidth: 0 * props.scale,
             confine: props.tooltipConfine,
             formatter: params => {
                 const color = props.color[params.dataIndex % props.color.length]
                 return `
-                    <div style="display: grid; grid-template-columns: 8px auto min-content; grid-template-rows: 24px 24px; grid-column-gap: 8px; align-items: center;">
-                        <i style="background-color: ${color}; display: inline-block; height: 8px; border-radius: 50%;"></i>
-                        <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: 14px; color: #3B4155;">${params.name}</span>
-                        <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
-                            ${((params.value || 0) / props.seriesData.reduce((x, y) => x + (y.value || 0), 0) * 100).toFixed(1)}
-                            <i style="font-weight: 400; font-size: 12px;">%</i>
+                    <div style="display: grid; grid-template-columns: ${ 8 * props.scale }px auto min-content; grid-template-rows: ${ 24 * props.scale }px ${ 24 * props.scale }px; grid-column-gap: ${ 8 * props.scale }px; align-items: center;">
+                        <i style="background-color: ${color}; display: inline-block; height: ${ 8 * props.scale }px; border-radius: 50%;"></i>
+                        <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #3B4155;">${params.name}</span>
+                        <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
+                            ${ ((params.value || 0) / props.seriesData.reduce((x, y) => x + (y.value || 0), 0) * 100).toFixed(1) }
+                            <i style="font-weight: 400; font-size: ${ 12 * props.scale }px;">%</i>
                         </span>
-                        <span style="font-family: MicrosoftYaHei; font-size: 16px; color: #3B4155; font-weight: 600; white-space: nowrap;">
-                            ${params.value}
-                            <i style="font-weight: 400; font-size: 12px; font-style: normal;">${props.unit || ''}</i>
+                        <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap;">
+                            ${ params.value }
+                            <i style="font-weight: 400; font-size: ${ 12 * props.scale }px; font-style: normal;">${ props.unit || '' }</i>
                         </span>
                     </div>
                 `
@@ -198,13 +215,19 @@ const renderChart = () => {
             {
                 type: 'pie',
                 clockwise: props.clockwise,
-                radius: props.backgroundRadius,
-                data: [0],
+                radius: props.backgroundRadius.map(n => n * props.scale),
                 silent: true,
                 label: { show: false },
-                itemStyle: { color: props.backgroundColor },
-                // center: ['50%', props.showLegend ? '62.88%' : '50%']
-                center: ['50%', '50%']
+                center: ['50%', '50%'],
+                data: props.seriesData.map((n, i) => {
+                    const { r, g, b, a } = computeColorRGBA(props.color[i % props.color.length]);
+                    return {
+                        ...n,
+                        itemStyle: {
+                            color: props.similarBackgroundColor ? `rgba(${ r }, ${ g }, ${ b }, ${ a * 0.5 })` : props.backgroundColor
+                        }
+                    }
+                })
             },
             {
                 type: 'pie',
@@ -222,7 +245,7 @@ const renderChart = () => {
                     //         .replace(/(?!^)(?=(\d{3})+$)/, ',')
                     //     }}\n{b|}\n{c|${props.name}}`
                 },
-                radius: props.radius,
+                radius: props.radius.map(n => n * props.scale),
                 data: props.seriesData.map((n, i) => {
                     const color = props.color[i % props.color.length]
                     return {
@@ -230,9 +253,7 @@ const renderChart = () => {
                         emphasis: {
                             scale: true,
                             scaleSize: props.scaleSize,
-                            itemStyle: {
-                                color
-                            }
+                            itemStyle: { color }
                         }
                     }
                 }),

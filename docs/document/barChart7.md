@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demo6eeb522ede8c />
+<demob4a001761634 />
 ```vue{4}
 <template>
     <bar-chart-7 ref="chartRef" v-bind="chartOption"></bar-chart-7>
@@ -31,8 +31,8 @@ onMounted(() => {
 </style>
 ```
 ## 属性
-<demo8b0a0cc35ea7 />
+<demoed709b7ace7d />
 <script setup>
-import demo6eeb522ede8c from '../../document/barChart7/1.基础用法(画像app).vue'
-import demo8b0a0cc35ea7 from '../../document/barChart7/属性.vue'
+import demob4a001761634 from '../../document/barChart7/1.基础用法(画像app).vue'
+import demoed709b7ace7d from '../../document/barChart7/属性.vue'
 </script>
