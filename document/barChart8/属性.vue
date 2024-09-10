@@ -14,27 +14,10 @@
         <div class="table-body">
             <div class="table-row">
                 <div class="table-cell">
-                    color
+                    yAxisData
                 </div>
                 <div class="table-cell">
-                    各项颜色
-                </div>
-                <div class="table-cell">
-                    Array
-                </div>
-                <div class="table-cell">
-                    ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
-                </div>
-                <div class="table-cell">
-                    ['#405FFE', 'rgb(255, 164, 51)', 'rgb(27, 190, 140)']
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    xAxisData
-                </div>
-                <div class="table-cell">
-                    x 轴坐标数据
+                    y 轴坐标
                 </div>
                 <div class="table-cell">
                     Array
@@ -43,7 +26,7 @@
                     []
                 </div>
                 <div class="table-cell">
-                    ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农业', '工业', '建筑', '批发', '交通', '住宿', '金融'],<br/>&nbsp;&nbsp;&nbsp;&nbsp;['农', '工', '建', '批', '交', '住', '金']<br/>]
                 </div>
             </div>
             <div class="table-row">
@@ -51,7 +34,7 @@
                     seriesData
                 </div>
                 <div class="table-cell">
-                    x 图表数据
+                    数据数组
                 </div>
                 <div class="table-cell">
                     Array
@@ -60,7 +43,24 @@
                     []
                 </div>
                 <div class="table-cell">
-                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;[8, 30, 50, 82, 73, 84, 50],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[32, 94, 61, 11, 52, 68, 58],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[33, 13, 27, 92, 44, 82, 19]<br/>]
+                    [<br/>&nbsp;&nbsp;&nbsp;&nbsp;[54, 89, 86, 65, 54, 53, 72, 65, 60],<br/>&nbsp;&nbsp;&nbsp;&nbsp;[95, 97, 75, 72, 90, 88, 54, 77, 98]<br/>]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    grid
+                </div>
+                <div class="table-cell">
+                    上下左右边距
+                </div>
+                <div class="table-cell">
+                    Object
+                </div>
+                <div class="table-cell">
+                    ({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 84,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right: 58,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom: 56,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 174<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+                </div>
+                <div class="table-cell">
+                    { top: 84, right: 58, bottom: 56, left: 106 }
                 </div>
             </div>
             <div class="table-row">
@@ -77,58 +77,58 @@
                     []
                 </div>
                 <div class="table-cell">
-                    ['总能耗', '能耗照明', '节约能耗', '同环比']
+                    ['统计金额', '开票金额']
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    yAxisName
+                    showCount
                 </div>
                 <div class="table-cell">
-                    y 轴单位
+                    最多显示的数量（实际显示数量会根据输入值调整）
                 </div>
                 <div class="table-cell">
-                    String, Array
+                    Number
                 </div>
                 <div class="table-cell">
-                    ''
+                    4
                 </div>
                 <div class="table-cell">
-                    '单位：次'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    unit
-                </div>
-                <div class="table-cell">
-                    数据的单位
-                </div>
-                <div class="table-cell">
-                    String, Array
-                </div>
-                <div class="table-cell">
-                    ''
-                </div>
-                <div class="table-cell">
-                    ['kw/h', 'kw', 'h']
+                    4
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    grid
+                    dataZoomType
                 </div>
                 <div class="table-cell">
-                    上下左右间距
+                    何种方式拖动 inside 内容区域拖动，slider 滑块拖动
                 </div>
                 <div class="table-cell">
-                    Object
+                    String
                 </div>
                 <div class="table-cell">
-                    ({ top: 89, right: 16, bottom: 40, left: 53 })
+                    'inside'
                 </div>
                 <div class="table-cell">
-                    { top: 89, right: 16, bottom: 40, left: 53 }
+                    'slider'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    dataZoomRight
+                </div>
+                <div class="table-cell">
+                    当 dataZoomType 为 slider 时，拖动区域距离右侧的距离
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    0
+                </div>
+                <div class="table-cell">
+                    12
                 </div>
             </div>
             <div class="table-row">
@@ -142,7 +142,7 @@
                     Boolean
                 </div>
                 <div class="table-cell">
-                    false
+                    true
                 </div>
                 <div class="table-cell">
                     false
@@ -150,19 +150,104 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    emphasisCoverColor
+                    legendIcon
                 </div>
                 <div class="table-cell">
-                    被选中时，遮罩层的颜色
+                    legend 图表，支持字符串或数组
+                </div>
+                <div class="table-cell">
+                    String, Array
+                </div>
+                <div class="table-cell">
+                    ['rect']
+                </div>
+                <div class="table-cell">
+                    ['rect']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    color
+                </div>
+                <div class="table-cell">
+                    图表项颜色
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    ['#0055FF', '#1FC49D']
+                </div>
+                <div class="table-cell">
+                    ['blue', 'grey']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    tooltipTitle
+                </div>
+                <div class="table-cell">
+                    tooltip 标题
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    null
+                </div>
+                <div class="table-cell">
+                    ['标题']
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    yAxisHighlightArea
+                </div>
+                <div class="table-cell">
+                    高亮区域的索引
+                </div>
+                <div class="table-cell">
+                    Array
+                </div>
+                <div class="table-cell">
+                    []
+                </div>
+                <div class="table-cell">
+                    [2, 4]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    highlightAreaColor
+                </div>
+                <div class="table-cell">
+                    高亮区域颜色
                 </div>
                 <div class="table-cell">
                     String
                 </div>
                 <div class="table-cell">
-                    'rgba(255, 255, 255, 0.4)'
+                    'rgba(14, 143, 255, 0.2)'
                 </div>
                 <div class="table-cell">
-                    'rgba(255, 255, 255, 0.4)'
+                    'rgba(255, 143, 255, 0.2)'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    unit
+                </div>
+                <div class="table-cell">
+                    数据的单位
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    ''
+                </div>
+                <div class="table-cell">
+                    '元'
                 </div>
             </div>
             <div class="table-row">
@@ -170,27 +255,112 @@
                     barWidth
                 </div>
                 <div class="table-cell">
-                    柱子宽度
+                    柱子的宽度
                 </div>
                 <div class="table-cell">
                     Number
                 </div>
                 <div class="table-cell">
-                    12
+                    24
                 </div>
                 <div class="table-cell">
-                    24
+                    12
                 </div>
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    smooth
+                    showSplitLine
                 </div>
                 <div class="table-cell">
-                    是否平滑
+                    是否显示辅助刻度线
                 </div>
                 <div class="table-cell">
-                    Boolean, Number
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showItemBackground
+                </div>
+                <div class="table-cell">
+                    是否显示每一项的背景色
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    itemBackgroundColor
+                </div>
+                <div class="table-cell">
+                    每一项的背景色
+                </div>
+                <div class="table-cell">
+                    String
+                </div>
+                <div class="table-cell">
+                    'rgba(0, 0, 0, 0.05)'
+                </div>
+                <div class="table-cell">
+                    'rgba(255, 0, 0, 0.12)'
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    showSeriesLabel
+                </div>
+                <div class="table-cell">
+                    是否显示柱子对应的数值
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    barBorderRadius
+                </div>
+                <div class="table-cell">
+                    圆柱的圆角
+                </div>
+                <div class="table-cell">
+                    Number, Array
+                </div>
+                <div class="table-cell">
+                    [0]
+                </div>
+                <div class="table-cell">
+                    [4, 4, 0, 0]
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    zoomLock
+                </div>
+                <div class="table-cell">
+                    是否锁定选择区域的大小
+                </div>
+                <div class="table-cell">
+                    Boolean
                 </div>
                 <div class="table-cell">
                     false
@@ -201,53 +371,19 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
-                    axisLineType
+                    scale
                 </div>
                 <div class="table-cell">
-                    指示线样式
+                    图表缩放比例
                 </div>
                 <div class="table-cell">
-                    String
+                    Number
                 </div>
                 <div class="table-cell">
-                    'dashed'
+                    1
                 </div>
                 <div class="table-cell">
-                    'solid'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    axisLineColor
-                </div>
-                <div class="table-cell">
-                    指示线颜色
-                </div>
-                <div class="table-cell">
-                    String
-                </div>
-                <div class="table-cell">
-                    'rgba(59, 65, 85, 0.3)'
-                </div>
-                <div class="table-cell">
-                    'rgba(255, 0, 0, 0.3)'
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell">
-                    showLineSymbol
-                </div>
-                <div class="table-cell">
-                    折线是否显示 symbol
-                </div>
-                <div class="table-cell">
-                    Boolean
-                </div>
-                <div class="table-cell">
-                    false
-                </div>
-                <div class="table-cell">
-                    'circle'
+                    2
                 </div>
             </div>
             <div class="table-row">

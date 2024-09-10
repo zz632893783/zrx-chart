@@ -1,5 +1,5 @@
 ## 1.基础用法
-<democc8b54df9a96 />
+<demobab6f99a8a0e />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -33,7 +33,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.颜色设置
-<demo9756c525ea7b />
+<demof714e68805fa />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -67,7 +67,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.尺寸设置
-<demof94732a1bec2 />
+<demo3933b45073a7 />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -105,7 +105,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 4.底色跟随每一项颜色
-<demo1506d18bb14f />
+<demo4bfd4c278a65 />
 ```vue{4}
 <template>
     <ring-chart-3 ref="chartRef" v-bind="chartOption"></ring-chart-3>
@@ -114,18 +114,16 @@ onMounted(() => chartRef.value.renderChart());
 import { ref, onMounted } from 'vue';
 
 const chartRef = ref();
-const unit = '单位';
 
-const seriesData = [
-    { value: 1048, name: '正常' },
-    { value: 735, name: '故障' },
-    { value: 580, name: '告警' },
-    { value: 484, name: '离线' }
-];
 // 组合配置项
 const chartOption = {
-    unit,
-    seriesData,
+    unit: '亿元',
+    seriesData: [
+	    { value: 1048, name: '正常' },
+	    { value: 735, name: '故障' },
+	    { value: 580, name: '告警' },
+	    { value: 484, name: '离线' }
+	],
     similarBackgroundColor: true
 };
 
@@ -140,14 +138,14 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo24f0520f56f2 />
+<demo8f13335d9403 />
 ## 支持方法
-<demob6e266068de7 />
+<demo941d77cbe721 />
 <script setup>
-import democc8b54df9a96 from '../../document/ringChart3/1.基础用法.vue'
-import demo9756c525ea7b from '../../document/ringChart3/2.颜色设置.vue'
-import demof94732a1bec2 from '../../document/ringChart3/3.尺寸设置.vue'
-import demo1506d18bb14f from '../../document/ringChart3/4.底色跟随每一项颜色.vue'
-import demo24f0520f56f2 from '../../document/ringChart3/属性.vue'
-import demob6e266068de7 from '../../document/ringChart3/支持方法.vue'
+import demobab6f99a8a0e from '../../document/ringChart3/1.基础用法.vue'
+import demof714e68805fa from '../../document/ringChart3/2.颜色设置.vue'
+import demo3933b45073a7 from '../../document/ringChart3/3.尺寸设置.vue'
+import demo4bfd4c278a65 from '../../document/ringChart3/4.底色跟随每一项颜色.vue'
+import demo8f13335d9403 from '../../document/ringChart3/属性.vue'
+import demo941d77cbe721 from '../../document/ringChart3/支持方法.vue'
 </script>

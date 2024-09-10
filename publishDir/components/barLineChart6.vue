@@ -179,6 +179,25 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 标记线
+     * @example [
+     *     {
+     *         value: 134,
+     *         yAxisIndex: 0,
+     *         color: '#33FFBB'
+     *     },
+     *     {
+     *         value: 166,
+     *         yAxisIndex: 0,
+     *         color: '#F74768'
+     *     }
+     * ]
+     */
+    markLine: {
+        type: [Array],
+        default: () => []
+    },
+    /**
      * @description 图表缩放比例
      * @example 2
      */
@@ -297,7 +316,7 @@ const renderChart = () => {
                         <div style="display: grid; grid-template-columns: ${8 * props.scale}px auto min-content; grid-template-rows: ${24 * props.scale}px auto min-content; grid-column-gap: ${8 * props.scale}px; align-items: center;">
                             ${ dot }
                             <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${14 * props.scale}px; color: #3B4155;">${props.legendData[seriesIndex % props.legendData.length]}</span>
-                            <span style="font-family: MicrosoftYaHei; font-size: ${16 * props.scale}px; color: #3B4155; font-weight: 600; white-space: nowrap;">
+                            <span style="font-family: DINCondensed-Bold; font-size: ${16 * props.scale}px; color: #3B4155; font-weight: 600; white-space: nowrap;">
                                 ${item.value}
                                 <i style="font-weight: 400; font-size: ${12 * props.scale}px; font-style: normal;">${unit || ''}</i>
                             </span>
@@ -379,6 +398,13 @@ const renderChart = () => {
                     color: `rgba(${0x96}, ${0x97}, ${0x99}, 1)`,
                     lineHeight: 18 * props.scale
                 },
+                max: value => {
+                    const valueArr = props.markLine.filter(i => i.yAxisIndex == index).map(i => i.value);
+                    const maxV = Math.max(...[valueArr]);
+                    if (value.max < maxV) {
+                        return maxV;
+                    }
+                },
                 splitNumber: 4,
                 axisTick: { show: false },
                 axisLabel: {
@@ -405,20 +431,20 @@ const renderChart = () => {
                     return {
                         value,
                         label: {
-                            show: false,
+                            show: !!seriesItem.showLabel,
                             formatter: `{a|${value}}\n{b|}`,
                             distance: 4 * props.scale,
                             rich: {
                                 a: {
-                                    backgroundColor: 'white',
-                                    padding: [1, 9].map(n => n * props.scale),
-                                    fontFamily: 'PingFangSC-Regular',
-                                    fontSize: 12 * props.scale,
-                                    color: '#3B4155',
-                                    lineHeight: 20 * props.scale,
-                                    height: 20 * props.scale,
-                                    borderRadius: 2 * props.scale,
-                                    shadowColor: 'rgba(0, 0, 0, 0.12)',
+                                    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+                                    padding: [0, 0, 0, 6].map(n => n * props.scale),
+                                    fontFamily: 'DINCondensed-Bold',
+                                    fontSize: 14 * props.scale,
+                                    color: '#323233',
+                                    lineHeight: 28 * props.scale,
+                                    height: 28 * props.scale,
+                                    borderRadius: 4 * props.scale,
+                                    shadowColor: 'rgba(0, 0, 0, 0.2)',
                                     shadowBlur: 4 * props.scale
                                 },
                                 b: {
@@ -426,7 +452,21 @@ const renderChart = () => {
                                     height: 4 * props.scale,
                                     align: 'center',
                                     backgroundColor: {
-                                        image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAACxJREFUGFdj/P///38GAoARJI9PISMIwAzBphAmD1eEbiKyASiKYAqRFYDEANlzFAIJfsytAAAAAElFTkSuQmCC'
+                                        // image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAACxJREFUGFdj/P///38GAoARJI9PISMIwAzBphAmD1eEbiKyASiKYAqRFYDEANlzFAIJfsytAAAAAElFTkSuQmCC'
+                                        image: (() => {
+                                            const canvas = document.createElement('canvas');
+                                            canvas.width = 8;
+                                            canvas.height = 4;
+                                            const ctx = canvas.getContext('2d');
+                                            ctx.beginPath();
+                                            ctx.moveTo(0, 0);
+                                            ctx.lineTo(canvas.width, 0);
+                                            ctx.lineTo(canvas.width / 2, canvas.height);
+                                            ctx.closePath();
+                                            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+                                            ctx.fill();
+                                            return canvas.toDataURL();
+                                        })()
                                     }
                                 }
                             }
@@ -492,6 +532,44 @@ const renderChart = () => {
                         }
                     };
                 }
+            }
+            const markLines = props.markLine.filter(n => (n.yAxisIndex || 0) === conf.yAxisIndex);
+            if (markLines.length) {
+                conf.markLine = {
+                    symbol: 'none',
+                    silent: true,
+                    data: markLines.map(n => {
+                        const { r, g, b, a } = computeColorRGBA(n.color);
+                        return {
+                            yAxis: n.value,
+                            lineStyle: {
+                                width: 2 * props.scale,
+                                color: n.color,
+                                type: n.type
+                            },
+                            label: {
+                                show: true,
+                                align: 'right',
+                                distance: 0,
+                                color: '#323233',
+                                fontSize: 12 * props.scale,
+                                fontFamily: 'PingFangSC-Regular',
+                                borderWidth: 1 * props.scale,
+                                borderColor: n.color,
+                                borderRadius: 2 * props.scale,
+                                backgroundColor: `rgba(${ 255 - (255 - r) * 0.15 }, ${ 255 - (255 - g) * 0.15 }, ${ 255 - (255 - b) * 0.15 }, ${ 1 })`,
+                                lineHeight: 18 * props.scale,
+                                fontWeight: 400,
+                                padding: [0, 4].map(n => n * props.scale),
+                                offset: [-12, 0].map(n => n * props.scale),
+                                formatter: param => `{value|${param.value}}`,
+                                rich: {
+                                    value: { fontSize: 14 * props.scale }
+                                }
+                            }
+                        };
+                    })
+                };
             }
             return conf;
         })

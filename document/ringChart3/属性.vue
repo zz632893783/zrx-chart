@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-9-9 19:36:59 -->
+<!-- 创建时间 2024-9-10 15:36:35 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -197,6 +197,23 @@
                 </div>
                 <div class="table-cell">
                     true
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
+                    scale
+                </div>
+                <div class="table-cell">
+                    图表缩放比例
+                </div>
+                <div class="table-cell">
+                    Number
+                </div>
+                <div class="table-cell">
+                    1
+                </div>
+                <div class="table-cell">
+                    2
                 </div>
             </div>
             <div class="table-row">

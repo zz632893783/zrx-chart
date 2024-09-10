@@ -1,14 +1,11 @@
 {
   "name": "zrx-chart",
-  "version": "0.0.94",
+  "version": "0.0.108",
   "type": "module",
   "main": "index.js",
   "keyword": "zrx-chart",
   "dependencies": {
     "echarts": "^5.5.0",
     "sass": "^1.71.1"
-  },
-  "publishConfig": {
-    "registry": "http://10.10.120.191:8081/repository/npm-private/"
   }
 }
