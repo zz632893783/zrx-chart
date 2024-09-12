@@ -1,5 +1,5 @@
 ## 1.基础用法(画像app)
-<demob4628389ac91 />
+<demo8b5a2216bd0c />
 ```vue{4}
 <template>
     <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
@@ -47,7 +47,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.带辅助线的折线图
-<demo46decf34af7c />
+<demo01f72ba9dced />
 ```vue{4}
 <template>
     <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
@@ -102,7 +102,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 3.显示label隐藏线条
-<demob471634b342f />
+<demoeb90fb2f8ac2 />
 ```vue{4}
 <template>
     <bar-line-chart-6 ref="chartRef" v-bind="option"></bar-line-chart-6>
@@ -148,10 +148,10 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo3b4a368cdab8 />
+<demoe1e90bf97bfd />
 <script setup>
-import demob4628389ac91 from '../../document/barLineChart6/1.基础用法(画像app).vue'
-import demo46decf34af7c from '../../document/barLineChart6/2.带辅助线的折线图.vue'
-import demob471634b342f from '../../document/barLineChart6/3.显示label隐藏线条.vue'
-import demo3b4a368cdab8 from '../../document/barLineChart6/属性.vue'
+import demo8b5a2216bd0c from '../../document/barLineChart6/1.基础用法(画像app).vue'
+import demo01f72ba9dced from '../../document/barLineChart6/2.带辅助线的折线图.vue'
+import demoeb90fb2f8ac2 from '../../document/barLineChart6/3.显示label隐藏线条.vue'
+import demoe1e90bf97bfd from '../../document/barLineChart6/属性.vue'
 </script>

@@ -179,6 +179,14 @@ const props = defineProps({
         default: () => false
     },
     /**
+     * @description 是否将 yAxis 刻度线对齐
+     * @example false
+     */
+    alignTicks: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
      * @description 标记线
      * @example [
      *     {
@@ -388,6 +396,7 @@ const renderChart = () => {
             return {
                 type: 'value',
                 name,
+                alignTicks: props.alignTicks,
                 nameTextStyle: {
                     align: index === 0 ? 'left' : 'right',
                     padding: index === 0
@@ -437,20 +446,21 @@ const renderChart = () => {
                             rich: {
                                 a: {
                                     backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                                    padding: [0, 0, 0, 6].map(n => n * props.scale),
+                                    padding: [0, 6, 0, 6].map(n => n * props.scale),
                                     fontFamily: 'DINCondensed-Bold',
                                     fontSize: 14 * props.scale,
                                     color: '#323233',
                                     lineHeight: 28 * props.scale,
                                     height: 28 * props.scale,
                                     borderRadius: 4 * props.scale,
-                                    shadowColor: 'rgba(0, 0, 0, 0.2)',
-                                    shadowBlur: 4 * props.scale
+                                    shadowColor: 'rgba(0, 0, 0, .2)',
+                                    shadowBlur: 12 * props.scale,
+                                    align: 'center'
                                 },
                                 b: {
+                                    align: 'center',
                                     width: 8 * props.scale,
                                     height: 4 * props.scale,
-                                    align: 'center',
                                     backgroundColor: {
                                         // image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAACxJREFUGFdj/P///38GAoARJI9PISMIwAzBphAmD1eEbiKyASiKYAqRFYDEANlzFAIJfsytAAAAAElFTkSuQmCC'
                                         image: (() => {
@@ -543,7 +553,7 @@ const renderChart = () => {
                         return {
                             yAxis: n.value,
                             lineStyle: {
-                                width: 2 * props.scale,
+                                width: 1 * props.scale,
                                 color: n.color,
                                 type: n.type
                             },

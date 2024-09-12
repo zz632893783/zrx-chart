@@ -1,5 +1,5 @@
 ## 1.基础用法
-<demo03e03077e620 />
+<demoaa9919b9f702 />
 ```vue{4}
 <template>
     <bar-line-chart-4 ref="chartRef" v-bind="option"></bar-line-chart-4>
@@ -40,7 +40,7 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 2.宽度颜色调整
-<demo7c0c1642fa22 />
+<demob516b87d28f8 />
 ```vue{4}
 <template>
     <bar-line-chart-4 ref="chartRef" v-bind="option"></bar-line-chart-4>
@@ -99,12 +99,12 @@ onMounted(() => chartRef.value.renderChart());
 
 ```
 ## 属性
-<demo8de8b20efe71 />
+<demo3f8716d1b30e />
 ## 支持方法
-<demo5b863801b517 />
+<demoddb285535a2d />
 <script setup>
-import demo03e03077e620 from '../../document/barLineChart4/1.基础用法.vue'
-import demo7c0c1642fa22 from '../../document/barLineChart4/2.宽度颜色调整.vue'
-import demo8de8b20efe71 from '../../document/barLineChart4/属性.vue'
-import demo5b863801b517 from '../../document/barLineChart4/支持方法.vue'
+import demoaa9919b9f702 from '../../document/barLineChart4/1.基础用法.vue'
+import demob516b87d28f8 from '../../document/barLineChart4/2.宽度颜色调整.vue'
+import demo3f8716d1b30e from '../../document/barLineChart4/属性.vue'
+import demoddb285535a2d from '../../document/barLineChart4/支持方法.vue'
 </script>

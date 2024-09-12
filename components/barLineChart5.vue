@@ -179,6 +179,14 @@ const props = defineProps({
         default: () => 1
     },
     /**
+     * @description 是否将 yAxis 刻度线对齐
+     * @example false
+     */
+    alignTicks: {
+        type: [Boolean],
+        default: () => true
+    },
+    /**
      * @description 是否将 tooltip 框限制在图表的区域内
      * @example true
      */
@@ -390,6 +398,7 @@ const renderChart = () => {
             return {
                 type: 'value',
                 name,
+                alignTicks: props.alignTicks,
                 nameTextStyle: {
                     align: index === 0 ? 'left' : 'right',
                     padding: index === 0
@@ -464,7 +473,18 @@ const renderChart = () => {
                 conf.barWidth = props.barWidth * props.scale;
                 // conf.barGap = 8 / props.barWidth;
                 conf.barGap = 4 / props.barWidth;
-                conf.itemStyle = { color, borderRadius: [1, 1, 0, 0].map(n => n * props.scale) };
+                const { r, g, b, a } = computeColorRGBA(color);
+                conf.itemStyle = {
+                    color: {
+                        type: 'linear',
+                        x: 0, y: 0, x2: 0, y2: 1,
+                        colorStops: [
+                            { offset: 0, color: `rgba(${ 255 - (255 - r) * 0.52 }, ${ 255 - (255 - g) * 0.52 }, ${ 255 - (255 - b) * 0.52 }, ${ a })` },
+                            { offset: 1, color: `rgba(${ r }, ${ g }, ${ b }, ${ a })` },
+                        ]
+                    },
+                    borderRadius: [props.barWidth / 2, props.barWidth / 2, 0, 0].map(n => n * props.scale)
+                };
                 conf.data.forEach(n => {
                     n.emphasis = {
                         itemStyle: { color: emphasisColor[seriesIndex % emphasisColor.length] }
