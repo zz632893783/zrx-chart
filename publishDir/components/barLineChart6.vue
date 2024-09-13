@@ -176,7 +176,7 @@ const props = defineProps({
      */
     tooltipConfine: {
         type: [Boolean],
-        default: () => false
+        default: () => true
     },
     /**
      * @description 是否将 yAxis 刻度线对齐

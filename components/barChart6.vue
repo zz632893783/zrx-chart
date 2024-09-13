@@ -172,11 +172,11 @@ const props = defineProps({
     },
     /**
      * @description 是否将 tooltip 框限制在图表的区域内
-     * @example true
+     * @example false
      */
     tooltipConfine: {
         type: [Boolean],
-        default: () => false
+        default: () => true
     },
     /**
      * @description 万能方法，图表渲染之前执行
