@@ -180,7 +180,7 @@ const renderChart = () => {
                         <i style="background-color: ${color}; display: inline-block; height: ${ 8 * props.scale }px; border-radius: 50%;"></i>
                         <span style="opacity: 0.7; font-family: MicrosoftYaHei; font-size: ${ 14 * props.scale }px; color: #3B4155;">${params.name}</span>
                         <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap; grid-column-start: 2;">
-                            ${ ((params.value || 0) / props.seriesData.reduce((x, y) => x + (y.value || 0), 0) * 100).toFixed(1) }
+                            ${ ((params.value || 0) / props.seriesData.reduce((x, y) => x + (y.value || 0), 0) * 100).toFixed(2) }
                             <i style="font-weight: 400; font-size: ${ 12 * props.scale }px;">%</i>
                         </span>
                         <span style="font-family: MicrosoftYaHei; font-size: ${ 16 * props.scale }px; color: #3B4155; font-weight: 600; white-space: nowrap;">

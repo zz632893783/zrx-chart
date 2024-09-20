@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-9-12 16:23:14 -->
+<!-- 创建时间 2024-9-14 16:1:37 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -159,10 +159,10 @@
                     Boolean
                 </div>
                 <div class="table-cell">
-                    false
+                    true
                 </div>
                 <div class="table-cell">
-                    true
+                    false
                 </div>
             </div>
             <div class="table-row">

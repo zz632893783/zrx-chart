@@ -436,9 +436,11 @@ const renderChart = () => {
                 name: props.legendData[seriesIndex % props.legendData.length],
                 type: seriesItem.type,
                 yAxisIndex: seriesItem.yAxisIndex || 0,
-                data: seriesItem.data.map(value => {
+                data: seriesItem.data.map(originInputValue => {
+                    const value = (typeof originInputValue === 'object' && originInputValue !== null) ? originInputValue.value : originInputValue;
                     return {
                         value,
+                        originInputValue: originInputValue,
                         label: {
                             show: !!seriesItem.showLabel,
                             formatter: `{a|${value}}\n{b|}`,

@@ -1,5 +1,5 @@
 <!-- 该文件由 commentCreateAttrTable.js 自动生成 -->
-<!-- 创建时间 2024-9-12 16:23:14 -->
+<!-- 创建时间 2024-9-14 16:1:37 -->
 <template>
     <div class="table">
         <div class="table-header">
@@ -354,6 +354,23 @@
             </div>
             <div class="table-row">
                 <div class="table-cell">
+                    alignTicks
+                </div>
+                <div class="table-cell">
+                    是否将 yAxis 刻度线对齐
+                </div>
+                <div class="table-cell">
+                    Boolean
+                </div>
+                <div class="table-cell">
+                    true
+                </div>
+                <div class="table-cell">
+                    false
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">
                     tooltipConfine
                 </div>
                 <div class="table-cell">
@@ -363,10 +380,10 @@
                     Boolean
                 </div>
                 <div class="table-cell">
-                    false
+                    true
                 </div>
                 <div class="table-cell">
-                    true
+                    false
                 </div>
             </div>
             <div class="table-row">
